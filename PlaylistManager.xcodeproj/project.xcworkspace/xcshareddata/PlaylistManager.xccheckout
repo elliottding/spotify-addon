@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A888C3DF-AE96-4375-9E89-D813E676834F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PlaylistManager</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1D38816510551B9B58D988014857479E41B5008A</key>
+		<string>https://github.com/elliottding/spotify-addon.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PlaylistManager.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1D38816510551B9B58D988014857479E41B5008A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/elliottding/spotify-addon.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1D38816510551B9B58D988014857479E41B5008A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1D38816510551B9B58D988014857479E41B5008A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>spotify-addon</string>
+		</dict>
+	</array>
+</dict>
+</plist>
