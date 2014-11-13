@@ -25,6 +25,9 @@
 		4F47BB341A12E10000660967 /* UnsortedSongQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BB2E1A12E10000660967 /* UnsortedSongQueueTests.m */; };
 		4F47BB351A12E10000660967 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BB2F1A12E10000660967 /* UserTests.m */; };
 		4F47BB361A12E10000660967 /* VoteBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BB301A12E10000660967 /* VoteBoxTests.m */; };
+		5223534D1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
+		5223534E1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
+		522353501A14333B008782E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534F1A14333B008782E6 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,8 @@
 		4F47BB2E1A12E10000660967 /* UnsortedSongQueueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsortedSongQueueTests.m; sourceTree = "<group>"; };
 		4F47BB2F1A12E10000660967 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		4F47BB301A12E10000660967 /* VoteBoxTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteBoxTests.m; sourceTree = "<group>"; };
+		5223534C1A143007008782E6 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
+		5223534F1A14333B008782E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522353501A14333B008782E6 /* AVFoundation.framework in Frameworks */,
+				5223534D1A143007008782E6 /* Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5223534E1A143007008782E6 /* Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +99,7 @@
 		4F47BAE71A12E09800660967 = {
 			isa = PBXGroup;
 			children = (
+				5223534B1A142FD4008782E6 /* Frameworks */,
 				4F47BAF21A12E09800660967 /* PlaylistManager */,
 				4F47BB0C1A12E09800660967 /* PlaylistManagerTests */,
 				4F47BAF11A12E09800660967 /* Products */,
@@ -162,6 +171,15 @@
 				4F47BB0E1A12E09800660967 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5223534B1A142FD4008782E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5223534F1A14333B008782E6 /* AVFoundation.framework */,
+				5223534C1A143007008782E6 /* Spotify.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,8 +417,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PlaylistManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -409,8 +432,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PlaylistManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -422,6 +450,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -441,6 +470,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = PlaylistManagerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -468,6 +498,7 @@
 				4F47BB151A12E09800660967 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F47BB161A12E09800660967 /* Build configuration list for PBXNativeTarget "PlaylistManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +507,7 @@
 				4F47BB181A12E09800660967 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
