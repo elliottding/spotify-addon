@@ -5,7 +5,7 @@
 //  Created by Elliott Ding on 11/4/14.
 //
 //
-
+#import <Spotify/Spotify.h>
 #import <Foundation/Foundation.h>
 
 #import "VoteBox.h"
@@ -15,6 +15,9 @@
 // Unique identifier.
 @property (nonatomic) int trackID;
 
+//the corresponding spotify track
+@property (nonatomic) SPTTrack* track;
+
 // The VoteBox representing all user votes registered to this Song.
 @property (nonatomic, strong, readonly) VoteBox *voteBox;
 
@@ -22,6 +25,6 @@
 @property (nonatomic, readonly) int voteScore;
 
 // Initialize a new Song with the specified track ID.
-- (instancetype)initWithTrackID:(int)trackID;
+- (instancetype)initWithTrackID:(int)trackID andTrack:(SPTTrack*)track;
 
 @end

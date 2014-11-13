@@ -26,7 +26,7 @@ int const trackID1 = 1234;
 - (void)setUp
 {
     [super setUp];
-    song1 = [[Song alloc] initWithTrackID:trackID1];
+    song1 = [[Song alloc] initWithTrackID:trackID1 andTrack:nil];
 }
 
 - (void)tearDown

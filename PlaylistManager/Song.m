@@ -20,7 +20,7 @@ NSString * const ObserveValueKeypath = @"totalScore";
 
 @implementation Song
 
-- (instancetype)initWithTrackID:(int)trackID
+- (instancetype)initWithTrackID:(int)trackID andTrack:(SPTTrack*)track
 {
     self = [super init];
     if (self)
@@ -29,6 +29,7 @@ NSString * const ObserveValueKeypath = @"totalScore";
         [self.voteBox addObserver:self forKeyPath:ObserveValueKeypath options:0 context:nil];
         self.voteScore = 0;
         self.trackID = trackID;
+        self.track = track;
     }
     return self;
 }

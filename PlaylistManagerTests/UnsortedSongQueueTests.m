@@ -29,10 +29,10 @@
 {
     [super setUp];
     queue1 = [[UnsortedSongQueue alloc] init];
-    song1 = [[Song alloc] initWithTrackID:1];
-    song2 = [[Song alloc] initWithTrackID:2];
-    song3 = [[Song alloc] initWithTrackID:3];
-    song4 = [[Song alloc] initWithTrackID:4];
+    song1 = [[Song alloc] initWithTrackID:1 andTrack:nil];
+    song2 = [[Song alloc] initWithTrackID:2 andTrack:nil];
+    song3 = [[Song alloc] initWithTrackID:3 andTrack:nil];
+    song4 = [[Song alloc] initWithTrackID:4 andTrack:nil];
 }
 
 - (void)tearDown
