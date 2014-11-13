@@ -33,6 +33,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+    for (NSString *username in self.userDictionary)
+    {
+        [self unregisterUsername:username];
+    }
+}
+
 - (bool)containsUser:(User *)user
 {
     return [self containsUsername:user.username];
@@ -45,22 +53,52 @@
 
 - (void)registerUser:(User *)user
 {
+    user.songRoom = self;
     [self.userDictionary setObject:user forKey:user.username];
+    [user addObserver:self forKeyPath:@"songRoom" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+// Internal only; use unregisterUser: instead.
+- (void)removeUser:(User *)user
+{
+    [user removeObserver:self forKeyPath:@"songRoom"];
+    [self.userDictionary removeObjectForKey:user.username];
 }
 
 - (void)unregisterUser:(User *)user
 {
-    [self unregisterUsername:user.username];
+    if ([self containsUser:user])
+    {
+        [self removeUser:user];
+        user.songRoom = nil;
+    }
 }
 
 - (void)unregisterUsername:(NSString *)username
 {
-    [self.userDictionary removeObjectForKey:username];
+    [self unregisterUser:[self.userDictionary objectForKey:username]];
 }
 
 - (User *)userWithUsername:(NSString *)username
 {
     return [self.userDictionary valueForKey:username];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if (![keyPath isEqualToString:@"songRoom"])
+    {
+        return;
+    }
+    User *user = (User *)object;
+    SongRoom *newSongRoom = [change objectForKey:NSKeyValueChangeNewKey];
+    if (newSongRoom != self)
+    {
+        [self removeUser:user];
+    }
 }
 
 @end

@@ -12,11 +12,18 @@
 
 @interface User : NSObject
 
-// Usernames MUST be unique
+// String representing the username of this User.
+// NOTE: Usernames MUST be unique.
 @property (nonatomic, strong, readonly) NSString *username;
 
+// The SongRoom containing this User.
+// NOTE: Do not set this property; treat as readonly. However, the readonly qualifier can't be used here
+// because SongRoom needs to modify this. Need to come up with some way of qualifying this as readonly
+// while still allowing SongRoom to set its value.
+// If this property is modified, then the User is automatically unregistered from the previous SongRoom.
 @property (nonatomic, weak) SongRoom *songRoom;
 
+// Initializes a User with the given username.
 - (instancetype)initWithUsername:(NSString *)username;
 
 @end

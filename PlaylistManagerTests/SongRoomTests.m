@@ -17,6 +17,7 @@
 @interface SongRoomTests : XCTestCase
 {
     SongRoom *r;
+    SongRoom *r2;
     User *user1;
     User *user2;
 }
@@ -29,6 +30,7 @@
 {
     [super setUp];
     r = [[SongRoom alloc] initWithName:@"songroom"];
+    r2 = [[SongRoom alloc] initWithName:@"songroom2"];
     user1 = [[User alloc] initWithUsername:@"user1"];
     user2 = [[User alloc] initWithUsername:@"user2"];
 }
@@ -64,6 +66,13 @@
 {
     [r registerUser:user1];
     XCTAssert([r containsUsername:@"user1"], @"returned false after user1 was registered");
+    
+    XCTAssertEqualObjects(r, user1.songRoom, @"registered user's song room property is incorrect");
+    
+    [r2 registerUser:user1];
+    XCTAssert([r2 containsUsername:@"user1"], @"returned false after user1 was registered");
+    XCTAssertEqualObjects(r2, user1.songRoom, @"registered user's song room property is incorrect");
+    XCTAssertFalse([r containsUser:user1], @"first song room still contains a user that was registered to a different song room");
 }
 
 - (void)test_unregisterUser
@@ -74,6 +83,8 @@
     
     [r unregisterUser:user2];
     XCTAssertFalse([r containsUser:user2], @"returned true even though user2 is unregistered");
+    
+    XCTAssertNil(user1.songRoom, @"user1's song room was not properly set to nil after unregistration");
 }
 
 - (void)test_unregisterUsername

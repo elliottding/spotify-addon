@@ -15,16 +15,16 @@
 // Unique identifier.
 @property (nonatomic) int trackID;
 
-//the corresponding spotify track
-@property (nonatomic) SPTTrack* track;
+// The corresponding Spotify track.
+@property (nonatomic, strong) SPTTrack *track;
 
 // The VoteBox representing all user votes registered to this Song.
 @property (nonatomic, strong, readonly) VoteBox *voteBox;
 
-// Returns the sum total of all votes in the vote box registered to this Song.
+// The sum total of all votes in the vote box registered to this Song.
 @property (nonatomic, readonly) int voteScore;
 
-// Initialize a new Song with the specified track ID.
-- (instancetype)initWithTrackID:(int)trackID andTrack:(SPTTrack*)track;
+// Initializes a new Song with the specified track ID.
+- (instancetype)initWithTrackID:(int)trackID andTrack:(SPTTrack *)track;
 
 @end
