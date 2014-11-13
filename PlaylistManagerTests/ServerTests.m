@@ -13,11 +13,11 @@
 #import "ServerConnection.h"
 
 @interface ServerTests : XCTestCase
-
-// hold the server so it can be broken down between tests
-@property (nonatomic) Server* currentServer;
-
-@property (nonatomic, strong) Client* otherClient;
+{
+    // hold the server so it can be broken down between tests
+    Server *currentServer;
+    Client *otherClient;
+}
 
 - (void)serverThread;
 
@@ -38,13 +38,12 @@
 
 - (void)serverThread
 {
-    Server * newServer = [[Server alloc] init];
-    newServer.numberOfEchos = 2;
-    self.currentServer = newServer;
+    currentServer = [[Server alloc] init];
+    currentServer.numberOfEchos = 2;
     
-    if ( [newServer start:@"songroom"] )
+    if ([currentServer start:@"songroom"])
     {
-        NSLog(@"Started server on port %zu.", (size_t) [newServer port]);
+        NSLog(@"Started server on port %zu.", (size_t) [currentServer port]);
         [[NSRunLoop currentRunLoop] run];
     }
     else
@@ -55,12 +54,10 @@
 
 - (void)startAnotherClientThread
 {
-    Client *newClient= [[Client alloc] init];
-    newClient.message = @"single client\r\n";
-    newClient.connectTo = @"songroom";// the name of our server thread
-    self.otherClient = newClient;
-    [newClient startBrowser];
-    
+    otherClient = [[Client alloc] init];
+    otherClient.message = @"single client\r\n";
+    otherClient.connectTo = @"songroom"; // the name of our server thread
+    [otherClient startBrowser];
 }
 
 // This implementation
@@ -77,29 +74,31 @@
 {
     // server must be stopped between tests otherwise is will cause the creation of 2 servers
     // which will fail
-    [self.currentServer stop];
+    [currentServer stop];
     [super tearDown];
 }
 
-/*
-- (void)testSingleClient{
-    // This is an example of a functional test case.
+// NOTE: This test will fail if data was not transferred within 10 seconds.
+- (void)test_singleClient
+{
     [NSThread detachNewThreadSelector:@selector(startAnotherClientThread) toTarget:self withObject:nil];
-    server * newServer = [[server alloc] init];
-    newServer.numberOfEchos = 2;
-    self.currentServer = newServer;
+    currentServer = [[Server alloc] init];
+    currentServer.numberOfEchos = 2;
     
-    if ( [newServer start:@"songroom"] ) {
-        NSLog(@"Started server on port %zu.", (size_t) [newServer port]);
-        [[NSRunLoop currentRunLoop] run];
-    } else {
+    // Set server run loop to terminate after 10 seconds
+    NSDate *loopEndDate = [NSDate dateWithTimeInterval:10 sinceDate:[NSDate date]];
+    
+    if ([currentServer start:@"songroom"])
+    {
+        NSLog(@"Started server on port %zu.", (size_t) [currentServer port]);
+        // [[NSRunLoop currentRunLoop] run];
+        [[NSRunLoop currentRunLoop] runUntilDate:loopEndDate];
+    }
+    else
+    {
         NSLog(@"Error starting server");
     }
-
-
-   
-    XCTAssert([_otherClient.response isEqualToString:@"single client\r\n"], @"bytes not transfered successfully");
+    XCTAssert([otherClient.response isEqualToString:@"single client\r\n"], @"bytes not transferred successfully");
 }
-*/
 
 @end
