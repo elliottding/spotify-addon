@@ -39,8 +39,6 @@
 - (void)serverThread
 {
     currentServer = [[Server alloc] init];
-    currentServer.numberOfEchos = 2;
-    
     if ([currentServer start:@"songroom"])
     {
         NSLog(@"Started server on port %zu.", (size_t) [currentServer port]);
@@ -83,7 +81,6 @@
 {
     [NSThread detachNewThreadSelector:@selector(startAnotherClientThread) toTarget:self withObject:nil];
     currentServer = [[Server alloc] init];
-    currentServer.numberOfEchos = 2;
     
     // Set server run loop to terminate after 10 seconds
     NSDate *loopEndDate = [NSDate dateWithTimeInterval:10 sinceDate:[NSDate date]];
