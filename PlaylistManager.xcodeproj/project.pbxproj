@@ -131,26 +131,10 @@
 			children = (
 				4F47BAF71A12E09800660967 /* AppDelegate.h */,
 				4F47BAF81A12E09800660967 /* AppDelegate.m */,
-				4F47BC291A1529EE00660967 /* Client.h */,
-				4F47BC2A1A1529EE00660967 /* Client.m */,
-				4F47BC2B1A1529EE00660967 /* Server.h */,
-				4F47BC2C1A1529EE00660967 /* Server.m */,
-				4F47BC2D1A1529EE00660967 /* ServerConnection.h */,
-				4F47BC2E1A1529EE00660967 /* ServerConnection.m */,
-				4F47BB191A12E0DC00660967 /* Song.h */,
-				4F47BB1A1A12E0DC00660967 /* Song.m */,
-				4F47BB1B1A12E0DC00660967 /* SongQueue.h */,
-				4F47BB1C1A12E0DC00660967 /* SongQueue.m */,
-				4F47BB1D1A12E0DC00660967 /* SongRoom.h */,
-				4F47BB1E1A12E0DC00660967 /* SongRoom.m */,
-				4F47BB1F1A12E0DC00660967 /* UnsortedSongQueue.h */,
-				4F47BB201A12E0DC00660967 /* UnsortedSongQueue.m */,
-				4F47BB211A12E0DC00660967 /* User.h */,
-				4F47BB221A12E0DC00660967 /* User.m */,
-				4F47BB231A12E0DC00660967 /* VoteBox.h */,
-				4F47BB241A12E0DC00660967 /* VoteBox.m */,
 				4F47BAFA1A12E09800660967 /* ViewController.h */,
 				4F47BAFB1A12E09800660967 /* ViewController.m */,
+				4FAA9B4F1A152FE20060F704 /* Models */,
+				4FAA9B4E1A152FCA0060F704 /* Server */,
 				4F47BAFD1A12E09800660967 /* Main.storyboard */,
 				4F47BB001A12E09800660967 /* Images.xcassets */,
 				4F47BB021A12E09800660967 /* LaunchScreen.xib */,
@@ -189,6 +173,38 @@
 				4F47BB0E1A12E09800660967 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FAA9B4E1A152FCA0060F704 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				4F47BC291A1529EE00660967 /* Client.h */,
+				4F47BC2A1A1529EE00660967 /* Client.m */,
+				4F47BC2B1A1529EE00660967 /* Server.h */,
+				4F47BC2C1A1529EE00660967 /* Server.m */,
+				4F47BC2D1A1529EE00660967 /* ServerConnection.h */,
+				4F47BC2E1A1529EE00660967 /* ServerConnection.m */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		4FAA9B4F1A152FE20060F704 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F47BB191A12E0DC00660967 /* Song.h */,
+				4F47BB1A1A12E0DC00660967 /* Song.m */,
+				4F47BB1B1A12E0DC00660967 /* SongQueue.h */,
+				4F47BB1C1A12E0DC00660967 /* SongQueue.m */,
+				4F47BB1D1A12E0DC00660967 /* SongRoom.h */,
+				4F47BB1E1A12E0DC00660967 /* SongRoom.m */,
+				4F47BB1F1A12E0DC00660967 /* UnsortedSongQueue.h */,
+				4F47BB201A12E0DC00660967 /* UnsortedSongQueue.m */,
+				4F47BB211A12E0DC00660967 /* User.h */,
+				4F47BB221A12E0DC00660967 /* User.m */,
+				4F47BB231A12E0DC00660967 /* VoteBox.h */,
+				4F47BB241A12E0DC00660967 /* VoteBox.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		5223534B1A142FD4008782E6 /* Frameworks */ = {
