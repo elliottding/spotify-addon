@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Zachary Jenkins. All rights reserved.
 //
 
-#import "client.h"
+#import "Client.h"
 
 
 @interface NSNetService (QNetworkAdditions)
@@ -49,8 +49,9 @@
     readStream = NULL;
     writeStream = NULL;
     
-    if ( (inputStreamPtr != NULL) || (outputStreamPtr != NULL) ) {
-        CFNetServiceRef     netService;
+    if ( (inputStreamPtr != NULL) || (outputStreamPtr != NULL) )
+    {
+        CFNetServiceRef netService;
         
         netService = CFNetServiceCreate(
                                         NULL,
@@ -59,7 +60,8 @@
                                         (__bridge CFStringRef) [self name],
                                         0
                                         );
-        if (netService != NULL) {
+        if (netService != NULL)
+        {
             CFStreamCreatePairWithSocketToNetService(
                                                      NULL,
                                                      netService,
@@ -92,7 +94,7 @@
 #pragma mark -
 //#pragma mark EchoClientAppDelegate class
 
-@interface client () <NSNetServiceBrowserDelegate, NSStreamDelegate>
+@interface Client () <NSNetServiceBrowserDelegate, NSStreamDelegate>
 
 
 -(void) serverStuff;
@@ -121,7 +123,7 @@
 
 @end
 
-@implementation client
+@implementation Client
 
 //@synthesize responseField = _responseField;
 @synthesize services = _serviceList;
@@ -134,7 +136,7 @@
 
 -(void) serverStuff
 {
-    server * newServer = [[server alloc] init];
+    Server * newServer = [[Server alloc] init];
     if ( [newServer start:@"songroom"] ) {
         NSLog(@"Started server on port %zu.", (size_t) [newServer port]);
         [[NSRunLoop currentRunLoop] run];
@@ -222,7 +224,7 @@
     }
     //[NSThread sleepForTimeInterval:2.5];
     NSLog(@"opened stream.. successfully?");
-    [self outputText:self.Message];
+    [self outputText:self.message];
 }
 
 - (void)closeStreams {

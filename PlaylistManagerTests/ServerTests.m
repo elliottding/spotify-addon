@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "client.h"
-#import "server.h"
-#import "serverConnection.h"
+#import "Client.h"
+#import "Server.h"
+#import "ServerConnection.h"
 
 @interface ServerTests : XCTestCase
-//hold the server so it can be broken down between tests
-@property (nonatomic) server* currentServer;
-@property (nonatomic, strong) client* otherClient;
 
--(void)serverThread;
+// hold the server so it can be broken down between tests
+@property (nonatomic) Server* currentServer;
+
+@property (nonatomic, strong) Client* otherClient;
+
+- (void)serverThread;
 
 @end
 
@@ -34,52 +36,53 @@
 
 @implementation ServerTests
 
--(void) serverThread
+- (void)serverThread
 {
-    server * newServer = [[server alloc] init];
+    Server * newServer = [[Server alloc] init];
     newServer.numberOfEchos = 2;
     self.currentServer = newServer;
     
-    if ( [newServer start:@"songroom"] ) {
+    if ( [newServer start:@"songroom"] )
+    {
         NSLog(@"Started server on port %zu.", (size_t) [newServer port]);
         [[NSRunLoop currentRunLoop] run];
-    } else {
+    }
+    else
+    {
         NSLog(@"Error starting server");
     }
 }
 
-- (void)startAnotherClientThread{
-    client *newClient= [[client alloc] init];
-    newClient.Message = @"single client\r\n";
+- (void)startAnotherClientThread
+{
+    Client *newClient= [[Client alloc] init];
+    newClient.message = @"single client\r\n";
     newClient.connectTo = @"songroom";// the name of our server thread
     self.otherClient = newClient;
     [newClient startBrowser];
     
 }
 
-
-
-//This implementation
-- (void)setUp {
+// This implementation
+- (void)setUp
+{
     [super setUp];
     // we start a 2nd thread to manage the server. The thread here will act as a client and send
     // a string to the server and expect a response
     //[NSThread detachNewThreadSelector:@selector(serverThread) toTarget:self withObject:nil];
     // [NSThread detachNewThreadSelector:@selector(startAnotherClientThread) toTarget:self withObject:nil];
-
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    
+- (void)tearDown
+{
     // server must be stopped between tests otherwise is will cause the creation of 2 servers
     // which will fail
     [self.currentServer stop];
     [super tearDown];
 }
 
-/*- (void)testSingleClient{
+/*
+- (void)testSingleClient{
     // This is an example of a functional test case.
     [NSThread detachNewThreadSelector:@selector(startAnotherClientThread) toTarget:self withObject:nil];
     server * newServer = [[server alloc] init];
@@ -97,13 +100,6 @@
    
     XCTAssert([_otherClient.response isEqualToString:@"single client\r\n"], @"bytes not transfered successfully");
 }
- */
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
+*/
 
 @end

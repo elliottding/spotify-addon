@@ -6,29 +6,33 @@
 //  Copyright (c) 2014 Zachary Jenkins. All rights reserved.
 //
 
-#import "serverConnection.h"
+#import "ServerConnection.h"
 
-NSString * ConnectionDidCloseNotification = @"ConnectionDidCloseNotification";
+NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotification";
 
-@interface serverConnection () <NSStreamDelegate>
+@interface ServerConnection () <NSStreamDelegate>
+
 @end
 
-@implementation serverConnection
+@implementation ServerConnection
 
 @synthesize inputStream  = _inputStream;
+
 @synthesize outputStream = _outputStream;
 
-- (id)initWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
+- (instancetype)initWithInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
 {
     self = [super init];
-    if (self != nil) {
+    if (self != nil)
+    {
         self->_inputStream = inputStream;
         self->_outputStream = outputStream;
     }
     return self;
 }
 
-- (BOOL)open {
+- (BOOL)open
+{
     [self.inputStream  setDelegate:self];
     [self.outputStream setDelegate:self];
     [self.inputStream  scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -38,31 +42,39 @@ NSString * ConnectionDidCloseNotification = @"ConnectionDidCloseNotification";
     return YES;
 }
 
-- (void)close {
+- (void)close
+{
     [self.inputStream  setDelegate:nil];
     [self.outputStream setDelegate:nil];
     [self.inputStream  close];
     [self.outputStream close];
     [self.inputStream  removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [self.outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [(NSNotificationCenter *)[NSNotificationCenter defaultCenter] postNotificationName:ConnectionDidCloseNotification object:self];
+    [(NSNotificationCenter *)[NSNotificationCenter defaultCenter] postNotificationName:ConnectionDidCloseNotification
+                                                                                object:self];
 }
 
-- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)streamEvent {
+- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)streamEvent
+{
     NSLog(@"server stream event");
     assert(aStream == self.inputStream || aStream == self.outputStream);
 #pragma unused(aStream)
     
-    switch(streamEvent) {
-        case NSStreamEventHasBytesAvailable: {
+    switch (streamEvent)
+    {
+        case NSStreamEventHasBytesAvailable:
+        {
             uint8_t buffer[2048];
             NSInteger actuallyRead = [self.inputStream read:(uint8_t *)buffer maxLength:sizeof(buffer)];
-            if (actuallyRead > 0) {
+            if (actuallyRead > 0)
+            {
                 NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
-                if(_myServer.numberOfEchos <= (++_myServer.currentEchos)){
+                if (_myServer.numberOfEchos <= (++_myServer.currentEchos))
+                {
                     [self.myServer stop];
                 }
-                if (actuallyWritten != actuallyRead) {
+                if (actuallyWritten != actuallyRead)
+                {
                     // -write:maxLength: may return -1 to indicate an error or a non-negative
                     // value less than maxLength to indicate a 'short write'.  In the case of an
                     // error we just shut down the connection.  The short write case is more
@@ -71,26 +83,31 @@ NSString * ConnectionDidCloseNotification = @"ConnectionDidCloseNotification";
                     // buffer to fill up, thus causing our socket send buffer to fill up.  Again, our
                     // response to this situation is that we simply drop the connection.
                     [self close];
-                } else {
+                }
+                else
+                {
                     NSLog(@"Echoed %zd bytes.", (ssize_t) actuallyWritten);
                 }
-            } else {
+            }
+            else
+            {
                 // A non-positive value from -read:maxLength: indicates either end of file (0) or
                 // an error (-1).  In either case we just wait for the corresponding stream event
                 // to come through.
             }
         } break;
         case NSStreamEventEndEncountered:
-        case NSStreamEventErrorOccurred: {
+        case NSStreamEventErrorOccurred:
+        {
             [self close];
         } break;
         case NSStreamEventHasSpaceAvailable:
         case NSStreamEventOpenCompleted:
-        default: {
+        default:
+        {
             // do nothing
         } break;
     }
 }
-
 
 @end
