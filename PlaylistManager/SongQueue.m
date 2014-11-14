@@ -51,8 +51,12 @@ NSString *ObservePropertyName = @"voteScore";
 // Add a song to the SongQueue, preserving vote score sort ordering.
 - (void)addSong:(Song *)song
 {
+    if ([_preferredQueue containsSong:song] || [self containsSong:song])
+    {
+        return;
+    }
     // Check for the default case first, to avoid unnecessary index-searching
-    if (song.voteScore == 0)
+    else if (song.voteScore == 0)
     {
         // Append song to the end of the songs array
         [self appendSong:song];
