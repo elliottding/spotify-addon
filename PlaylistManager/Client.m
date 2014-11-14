@@ -155,7 +155,7 @@
    // [self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 
     
-    [self.serviceBrowser searchForServicesOfType:@"_cocoaecho._tcp." inDomain:@""];
+    [self.serviceBrowser searchForServicesOfType:@"_PlayLister._tcp." inDomain:@""];
     [[NSRunLoop currentRunLoop] run];
     //[self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 
