@@ -44,6 +44,7 @@
     [self setVoteScore:voteScore forUsername:user.username];
 }
 
+// voteScore will be restricted to +1 or -1 when voting through the user interface
 - (void)setVoteScore:(int)voteScore forUsername:(NSString *)username
 {
     if (username == nil)
