@@ -190,7 +190,7 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     // Name will be what the client sees the service advertised as. Must be set before published
     
     self.netService = [[NSNetService alloc] initWithDomain:@"local."
-                                                      type:@"_cocoaecho._tcp."
+                                                      type:@"_PlayLister._tcp."
                                                       name: @"songroom"
                                                       port:(int) self.port];
     [self.netService publishWithOptions:0];

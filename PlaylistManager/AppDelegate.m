@@ -55,6 +55,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                  NSLog(@"*** Auth error: %@", error);
                  return;
              }
+             NSLog(@"Login Successful");
              
              // Call the -playUsingSession: method to play a track
              [self playUsingSession:session];

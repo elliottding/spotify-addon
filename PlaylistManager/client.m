@@ -91,8 +91,6 @@
 
 @end
 
-#pragma mark -
-//#pragma mark EchoClientAppDelegate class
 
 @interface Client () <NSNetServiceBrowserDelegate, NSStreamDelegate>
 
@@ -100,10 +98,6 @@
 -(void) serverStuff;
 
 // stuff for IB
-
-//@property (nonatomic, assign, readwrite) IBOutlet NSTextField * responseField;
-
-//- (IBAction)requestTextFieldReturnAction:(id)sender;
 
 // stuff for bindings
 
@@ -155,7 +149,7 @@
    // [self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 
     
-    [self.serviceBrowser searchForServicesOfType:@"_cocoaecho._tcp." inDomain:@""];
+    [self.serviceBrowser searchForServicesOfType:@"_PlayLister._tcp." inDomain:@""];
     [[NSRunLoop currentRunLoop] run];
     //[self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 
@@ -222,13 +216,11 @@
         [self.inputStream  open];
         [self.outputStream open];
     }
-    //[NSThread sleepForTimeInterval:2.5];
-    NSLog(@"opened stream.. successfully?");
     [self outputText:self.message];
 }
 
 - (void)closeStreams {
-    NSLog(@"Client: closeed my stream");
+    NSLog(@"Client: closed stream");
     [self.inputStream  setDelegate:nil];
     [self.outputStream setDelegate:nil];
     [self.inputStream  close];
@@ -262,10 +254,8 @@
 {
     self.inputBuffer = [[NSMutableData alloc] init];
     self.outputBuffer = [[NSMutableData alloc] init];
-    NSLog(@"output Text call");
     NSData * dataToSend = [text dataUsingEncoding:NSUTF8StringEncoding];
-    //if (self.outputBuffer != nil) {
-        NSLog(@"output buffer !Nil Text call");
+    if (self.outputBuffer != nil) {
 
         BOOL wasEmpty = ([self.outputBuffer length] == 0);
         NSLog(@"%d", wasEmpty);
@@ -273,7 +263,7 @@
         if (wasEmpty) {
             [self startOutput];
         }
-    //}
+    }
 }
 
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)streamEvent {
@@ -301,7 +291,7 @@
             NSInteger actuallyRead = [self.inputStream read:buffer maxLength:sizeof(buffer)];
             NSLog(@"Client: server sending stuff: %ld bytes", (long)actuallyRead);
             if (actuallyRead > 0) {
-                [self.inputBuffer appendBytes:buffer length: 15];//(NSUInteger)actuallyRead];
+                [self.inputBuffer appendBytes:buffer length: (NSUInteger)actuallyRead];
                 // If the input buffer ends with CR LF, show it to the user.
                 if ([self.inputBuffer length] >= 2 && memcmp((const char *) [self.inputBuffer bytes] + [self.inputBuffer length] - 2, "\r\n", 2) == 0) {
                     NSString *string = [[NSString alloc] initWithData:self.inputBuffer encoding:NSUTF8StringEncoding];
@@ -328,22 +318,5 @@
             break;
     }
 }
-
-#pragma mark -
-#pragma mark User interface action methods
-
-- (IBAction)requestTextFieldReturnAction:(id)sender {
-    [self outputText:[NSString stringWithFormat:@"%@\r\n", [sender stringValue]]];
-}
-
-//- (IBAction)serviceTableClickedAction:(id)sender {
-//    NSTableView * table = (NSTableView *) sender;
-//    NSInteger selectedRow = [table selectedRow];
-//    
-//    if (selectedRow >= 0) {
-//        NSNetService * selectedService = [self.services objectAtIndex:(NSUInteger) selectedRow];
-//        [self openStreamsToNetService:selectedService];
-//    }
-//}
 
 @end
