@@ -39,6 +39,9 @@
 }
 
 /*
+ 
+All of these functionalities have been moved to other classes
+ 
 - (void) testInitWithUsername{
     XCTAssertEqualObjects(testUser1.name, @"testName1", @"User failed to initialize");
 }
