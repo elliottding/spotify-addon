@@ -58,6 +58,12 @@
     [q addSong:song2];
     XCTAssertEqualObjects(song1, q.nextSong, @"nextSong should be first added song in the event of a vote tie");
     
+    /*
+    This functionality will be implemented in the UI
+    [q addSong:song1];
+    XCTAssertEqual(2, [q count], @"songs may not be duplicated in queue");
+    */
+     
     [song3.voteBox setVoteScore:1 forUser:user1];
     [q addSong:song3];
     XCTAssertEqualObjects(song3, q.nextSong, @"nextSong should be song with highest vote score");
