@@ -147,7 +147,7 @@
     XCTAssertEqual(1, [queue1 getIndexOfSong:song3], @"song3 index incorrect");
     XCTAssertEqual(-1, [queue1 getIndexOfSong:song1], @"song1 is not in queue; should return -1");
     
-    /*
+    /* This test is irrelevant to the app itself, where songs will be deleted through the UI
     [queue1 removeSongAtIndex:4];
     XCTAssertEqual(2, queue1.count, @"song count incorrect; should have remained unchanged");
     XCTAssertEqual(0, [queue1 getIndexOfSong:song2], @"song2 index incorrect");
