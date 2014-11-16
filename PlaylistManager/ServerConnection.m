@@ -1,5 +1,5 @@
 //
-//  serverConnection.m
+//  ServerConnection.m
 //  ClientServer
 //
 //  Created by Zachary Jenkins on 11/12/14.
@@ -69,6 +69,10 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
             if (actuallyRead > 0)
             {
                 NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
+                if (_myServer.numberOfEchos <= (++_myServer.currentEchos))
+                {
+                    [self.myServer stop];
+                }
                 if (actuallyWritten != actuallyRead)
                 {
                     // -write:maxLength: may return -1 to indicate an error or a non-negative

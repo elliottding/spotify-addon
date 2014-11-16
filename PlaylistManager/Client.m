@@ -1,5 +1,5 @@
 //
-//  client.m
+//  Client.m
 //  ClientServer
 //
 //  Created by Zachary Jenkins on 11/9/14.
@@ -91,8 +91,6 @@
 
 @end
 
-#pragma mark -
-//#pragma mark EchoClientAppDelegate class
 
 @interface Client () <NSNetServiceBrowserDelegate, NSStreamDelegate>
 
@@ -100,10 +98,6 @@
 -(void) serverStuff;
 
 // stuff for IB
-
-//@property (nonatomic, assign, readwrite) IBOutlet NSTextField * responseField;
-
-//- (IBAction)requestTextFieldReturnAction:(id)sender;
 
 // stuff for bindings
 
@@ -226,7 +220,7 @@
 }
 
 - (void)closeStreams {
-    NSLog(@"Client: closeed my stream");
+    NSLog(@"Client: closed stream");
     [self.inputStream  setDelegate:nil];
     [self.outputStream setDelegate:nil];
     [self.inputStream  close];
@@ -241,7 +235,7 @@
 
 - (void)startOutput
 {
-    NSLog(@"Client:sending buffer");
+    NSLog(@"sending buffer");
     assert([self.outputBuffer length] != 0);
     
     NSInteger actuallyWritten = [self.outputStream write:[self.outputBuffer bytes] maxLength:[self.outputBuffer length]];
@@ -297,7 +291,7 @@
             NSInteger actuallyRead = [self.inputStream read:buffer maxLength:sizeof(buffer)];
             NSLog(@"Client: server sending stuff: %ld bytes", (long)actuallyRead);
             if (actuallyRead > 0) {
-                [self.inputBuffer appendBytes:buffer length:(NSUInteger)actuallyRead];
+                [self.inputBuffer appendBytes:buffer length: (NSUInteger)actuallyRead];
                 // If the input buffer ends with CR LF, show it to the user.
                 if ([self.inputBuffer length] >= 2 && memcmp((const char *) [self.inputBuffer bytes] + [self.inputBuffer length] - 2, "\r\n", 2) == 0) {
                     NSString *string = [[NSString alloc] initWithData:self.inputBuffer encoding:NSUTF8StringEncoding];
@@ -305,6 +299,7 @@
                     if (string == nil) {
                         NSLog(@"response not UTF-8");
                     } else {
+                        NSLog(@"actually proccessed stuff successfully");
                         NSLog(@"%@", string);
                     }
                     [self.inputBuffer setLength:0];

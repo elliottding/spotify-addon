@@ -127,6 +127,7 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     assert(_ipv4socket == NULL && _ipv6socket == NULL);       // don't call -start twice!
     
     self.name = name;
+    self.currentEchos = 0;
     
     CFSocketContext socketCtxt = {0, (__bridge void *) self, NULL, NULL, NULL};
     _ipv4socket = CFSocketCreate(kCFAllocatorDefault, AF_INET,  SOCK_STREAM, 0, kCFSocketAcceptCallBack, &EchoServerAcceptCallBack, &socketCtxt);
@@ -189,7 +190,7 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     // Name will be what the client sees the service advertised as. Must be set before published
     
     self.netService = [[NSNetService alloc] initWithDomain:@"local."
-                                                      type:@"_cocoaecho._tcp."
+                                                      type:@"_PlayLister._tcp."
                                                       name: @"songroom"
                                                       port:(int) self.port];
     [self.netService publishWithOptions:0];
