@@ -20,6 +20,10 @@
 // The song queue.
 @property (nonatomic, strong) SongQueue *songQueue;
 
+// The history queue of played songs.
+@property (nonatomic, strong) NSMutableArray *historyQueue;
+// When a song is played, it is removed from the songQueue and appended to the history Queue
+
 // Initializes a SongQueue with the specified name.
 - (instancetype)initWithName:(NSString *)name;
 
