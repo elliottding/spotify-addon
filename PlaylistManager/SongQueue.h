@@ -42,6 +42,6 @@
 
 // 11/18/14
 // Proceed to next song in response to NEWCS message from server
-- (void)nextSong;
+- (void)proceedToNextSong;
 
 @end
