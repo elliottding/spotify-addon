@@ -35,6 +35,8 @@
 		4FE36CDB1A1CEF3200D21E5C /* SearchSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */; };
 		4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD71A1CEF3200D21E5C /* SongView.m */; };
 		4FE36D1E1A1CF0E700D21E5C /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36D1D1A1CF0E600D21E5C /* ParserTests.m */; };
+		4FE36D211A1D142F00D21E5C /* SpotifyRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36D201A1D142F00D21E5C /* SpotifyRetriever.m */; };
+		4FE36D231A1D21E300D21E5C /* SpotifyRetrieverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36D221A1D21E300D21E5C /* SpotifyRetrieverTests.m */; };
 		5223534D1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		5223534E1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		522353501A14333B008782E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534F1A14333B008782E6 /* AVFoundation.framework */; };
@@ -99,6 +101,9 @@
 		4FE36CD61A1CEF3200D21E5C /* SongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongView.h; sourceTree = "<group>"; };
 		4FE36CD71A1CEF3200D21E5C /* SongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongView.m; sourceTree = "<group>"; };
 		4FE36D1D1A1CF0E600D21E5C /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
+		4FE36D1F1A1D142F00D21E5C /* SpotifyRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyRetriever.h; sourceTree = "<group>"; };
+		4FE36D201A1D142F00D21E5C /* SpotifyRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyRetriever.m; sourceTree = "<group>"; };
+		4FE36D221A1D21E300D21E5C /* SpotifyRetrieverTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyRetrieverTests.m; sourceTree = "<group>"; };
 		5223534C1A143007008782E6 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		5223534F1A14333B008782E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82A939DB1A1AFBFB00CB7E45 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
@@ -154,6 +159,8 @@
 				4F47BAFB1A12E09800660967 /* ViewController.m */,
 				82A939DB1A1AFBFB00CB7E45 /* Parser.h */,
 				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
+				4FE36D1F1A1D142F00D21E5C /* SpotifyRetriever.h */,
+				4FE36D201A1D142F00D21E5C /* SpotifyRetriever.m */,
 				4FE36D1C1A1CEF9500D21E5C /* Views */,
 				4FAA9B4F1A152FE20060F704 /* Models */,
 				4FAA9B4E1A152FCA0060F704 /* Server */,
@@ -178,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */,
+				4FE36D221A1D21E300D21E5C /* SpotifyRetrieverTests.m */,
 				4F47BB2B1A12E10000660967 /* SongQueueTests.m */,
 				4FE36D1D1A1CF0E600D21E5C /* ParserTests.m */,
 				4F47BB2C1A12E10000660967 /* SongRoomTests.m */,
@@ -361,6 +369,7 @@
 				82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */,
 				4F47BB251A12E0DC00660967 /* Song.m in Sources */,
 				4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */,
+				4FE36D211A1D142F00D21E5C /* SpotifyRetriever.m in Sources */,
 				4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */,
 				4F47BB281A12E0DC00660967 /* UnsortedSongQueue.m in Sources */,
 				4F47BAFC1A12E09800660967 /* ViewController.m in Sources */,
@@ -380,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F47BB351A12E10000660967 /* UserTests.m in Sources */,
+				4FE36D231A1D21E300D21E5C /* SpotifyRetrieverTests.m in Sources */,
 				4F47BB361A12E10000660967 /* VoteBoxTests.m in Sources */,
 				4F47BC281A1529DA00660967 /* ServerTests.m in Sources */,
 				4FE36CC51A1CEB4400D21E5C /* AdminMemberTests.m in Sources */,
