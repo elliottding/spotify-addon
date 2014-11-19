@@ -11,11 +11,13 @@
 #import "Parser.h"
 #import "User.h"
 #import "SongRoom.h"
+#import "SongQueue.h"
 #import "Song.h"
 
 @interface ParserTests : XCTestCase
 {
     SongRoom *r;
+    SongQueue *sq;
     User *user1;
     User *user2;
     Song *song1;
@@ -30,10 +32,14 @@
 {
     [super setUp];
     r = [[SongRoom alloc] initWithName:@"songroom"];
+    r.songQueue = [[SongQueue alloc] init];
     user1 = [[User alloc] initWithUsername:@"user1"];
     user2 = [[User alloc] initWithUsername:@"user2"];
     song1 = [[Song alloc] initWithTrackID:123 andTrack:nil];
     song2 = [[Song alloc] initWithTrackID:456 andTrack:nil];
+    [r registerUser:user1];
+    [r.songQueue addSong:song1];
+    [r.songQueue addSong:song2];
 }
 
 - (void)tearDown
@@ -70,11 +76,6 @@
 {
     NSString *statusString = [Parser makeSongRoomStatusString:r];
     XCTAssertEqualObjects(@"UPSR:user1:SONGS:song1,0:song2,0", statusString, @"Parser failed to create status message");
-    // SET THESE PROPERTIES IN TEST SONGROOM
-    //
-    //
-    //
-    //
 }
 
 - (void)test_makePlayNextString
@@ -111,15 +112,17 @@
     XCTAssertEqualObjects(d4, [Parser readString:@"SIGNIN:user2"], @"Failed to parse signin message");
     
     // test upsr protocol
-    // NEED TO SET TEST DICTIONARY
-    //
-    //
-    //
-    //
     NSMutableDictionary *d5 = [[NSMutableDictionary alloc] init];
+    NSMutableArray *users = [[NSMutableArray alloc] init];
+    [users addObject:@"user1"];
+    [users addObject:@"user2"];
+    NSMutableDictionary *songs = [[NSMutableDictionary alloc] init];
+    [songs setObject:@0 forKey: @"song1"];
+    [songs setObject:@1 forKey: @"song2"];
     [d5 setObject:@"UPSR" forKey:@"type"];
-    // [d5 setObject: forKey:@"      "];
-    XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:user1:user2:SONGS:song1,0:song2,0"], @"Failed to parse upsr message");
+    [d5 setObject:users forKey: @"users"];
+    [d5 setObject:songs forKey: @"songs"];
+    XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:user1:user2:SONGS:song1,0:song2,1"], @"Failed to parse upsr message");
     
     // test newcs protocol
     NSMutableDictionary *d6 = [[NSMutableDictionary alloc] init];
