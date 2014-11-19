@@ -10,7 +10,9 @@
 #import "Server.h"
 #import "ServerConnection.h"
 
-@interface Client : NSObject
+#import "User.h"
+
+@interface Client : User
 
 // will connect to this string when discovered only for testing connecting to a service
 // from services will be implemented seperately
