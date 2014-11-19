@@ -27,7 +27,7 @@
 			<string>com.example</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>CS22001-app-login</string>
+				<string>spotifyiossdkexample</string>
 			</array>
 		</dict>
 	</array>

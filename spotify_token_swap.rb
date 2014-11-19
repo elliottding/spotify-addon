@@ -45,7 +45,7 @@ sleep(2)
 CLIENT_ID = "3168ef4060a84063a872200bf82dad3a"
 
 CLIENT_SECRET = "123db5e2a1a14eb2a24a897e42e077b0"
-CLIENT_CALLBACK_URL = "cs22001-app-login://callback"
+CLIENT_CALLBACK_URL = "spotifyiossdkexample://"
 
 AUTH_HEADER = "Basic " + Base64.strict_encode64(CLIENT_ID + ":" + CLIENT_SECRET)
 SPOTIFY_ACCOUNTS_ENDPOINT = URI.parse("https://accounts.spotify.com")
