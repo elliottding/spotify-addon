@@ -10,7 +10,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Server : NSObject
+#import "User.h"
+
+@interface Server : User
 
 // initiated in -start chooses an arbitrary port that can be successfully opened
 @property (nonatomic, assign, readonly ) NSUInteger port;
