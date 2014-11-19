@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import <Spotify/Spotify.h>
-
 #import "SongRoom.h"
 
 @interface User : NSObject
@@ -24,8 +22,6 @@
 // while still allowing SongRoom to set its value.
 // If this property is modified, then the User is automatically unregistered from the previous SongRoom.
 @property (nonatomic, weak) SongRoom *songRoom;
-
-@property (nonatomic, strong) SPTSession *session;
 
 // Initializes a User with the given username.
 - (instancetype)initWithUsername:(NSString *)username;

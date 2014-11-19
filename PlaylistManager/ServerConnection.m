@@ -13,11 +13,6 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
 
 @interface ServerConnection () <NSStreamDelegate>
 
-// this method should send a buffer to the client
-
-- (BOOL) sendBytes:(NSString *) bytesToSend;
-
-
 @end
 
 @implementation ServerConnection
@@ -75,6 +70,10 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
             if (actuallyRead > 0)
             {
                 NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
+                if (_myServer.numberOfEchos <= (++_myServer.currentEchos))
+                {
+                    [self.myServer stop];
+                }
                 if (actuallyWritten != actuallyRead)
                 {
                     // -write:maxLength: may return -1 to indicate an error or a non-negative

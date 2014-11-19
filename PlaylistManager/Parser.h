@@ -18,10 +18,10 @@
 + (NSString *)makeQueueString:(NSString *)songURI; // "QUEUE:[SONGURI]"
 + (NSString *)makeUpdateString; // "UPDATE"
 + (NSString *)makeSigninString:(NSString *)username; // "SIGNIN:USERNAME"
-+ (NSString *)makeSRStatusString:(SongRoom *)sr; //
++ (NSJSONSerialization *)makeSRStatusString:(SongRoom *)sr; //
 + (NSString *)makePlayNextString; // "NEWCS"
 
-+ (NSMutableDictionary *)readString:(NSString *)protocolString;
++ (void)readString:(NSString *)protocolString;
 //subclass into user and admin parsers?
 
 
