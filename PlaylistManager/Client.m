@@ -106,6 +106,7 @@
 
 // private properties
 
+@property (nonatomic, strong, readwrite) NSMutableArray *services;
 @property (nonatomic, strong, readwrite) NSNetServiceBrowser *  serviceBrowser;
 @property (nonatomic, strong, readwrite) NSInputStream *        inputStream;
 @property (nonatomic, strong, readwrite) NSOutputStream *       outputStream;
@@ -143,17 +144,17 @@
 
 
 - (void)startBrowser {
-        
+    
     self.serviceBrowser = [[NSNetServiceBrowser alloc] init];
     self.services = [[NSMutableArray alloc] init];
     [self.serviceBrowser setDelegate:self];
-   // [self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-
+    // [self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    
     
     [self.serviceBrowser searchForServicesOfType:@"_PlayLister._tcp." inDomain:@""];
     [[NSRunLoop currentRunLoop] run];
     //[self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-
+    
 }
 
 
@@ -163,7 +164,7 @@
 
 -(void)netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser{
     NSLog(@"started browsing");
-
+    
 }
 
 // We broadcast the willChangeValueForKey: and didChangeValueForKey: for the NSTableView binding to work.
@@ -171,7 +172,7 @@
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
 #pragma unused(moreComing)
 #pragma unused(aNetServiceBrowser)
-
+    
     NSLog(@"found service:%@", aNetService.name);
     if (![self.services containsObject:aNetService]) {
         [self willChangeValueForKey:@"services"];
@@ -181,7 +182,7 @@
     if([aNetService.name isEqualToString: self.connectTo]){
         [self openStreamsToNetService:aNetService];
         [self.serviceBrowser removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-
+        
     }
     
 }
@@ -190,7 +191,7 @@
 #pragma unused(aNetServiceBrowser)
 #pragma unused(moreComing)
     NSLog(@"removed service: %@", aNetService.name);
-
+    
     if ([self.services containsObject:aNetService]) {
         [self willChangeValueForKey:@"services"];
         [self.services removeObject:aNetService];
@@ -241,7 +242,7 @@
     
     NSInteger actuallyWritten = [self.outputStream write:[self.outputBuffer bytes] maxLength:[self.outputBuffer length]];
     if (actuallyWritten > 0) {
-      //  [self.outputBuffer replaceBytesInRange:NSMakeRange(0, (NSUInteger) actuallyWritten) withBytes:NULL length:0];
+        //  [self.outputBuffer replaceBytesInRange:NSMakeRange(0, (NSUInteger) actuallyWritten) withBytes:NULL length:0];
         // If we didn't write all the bytes we'll continue writing them in response to the next
         // has-space-available event.
     } else {
@@ -257,7 +258,7 @@
     self.outputBuffer = [[NSMutableData alloc] init];
     NSData * dataToSend = [text dataUsingEncoding:NSUTF8StringEncoding];
     if (self.outputBuffer != nil) {
-
+        
         BOOL wasEmpty = ([self.outputBuffer length] == 0);
         NSLog(@"%d", wasEmpty);
         [self.outputBuffer appendData:dataToSend];
@@ -277,11 +278,11 @@
             // process of opening.
             NSLog(@"Client: opened stream successful");
             //if (aStream == self.inputStream) {
-                self.inputBuffer = [[NSMutableData alloc] init];
-           // } else {
-                self.outputBuffer = [[NSMutableData alloc] init];
-              //  }
-       } break;
+            self.inputBuffer = [[NSMutableData alloc] init];
+            // } else {
+            self.outputBuffer = [[NSMutableData alloc] init];
+            //  }
+        } break;
         case NSStreamEventHasSpaceAvailable: {
             if ([self.outputBuffer length] != 0) {
                 [self startOutput];

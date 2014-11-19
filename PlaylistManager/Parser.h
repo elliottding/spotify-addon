@@ -6,19 +6,17 @@
 //  Copyright (c) 2014 Elliott Ding. All rights reserved.
 //
 
-#ifndef PlaylistManager_Parser_h
-#define PlaylistManager_Parser_h
+#import <Foundation/Foundation.h>
 
-
-#endif
+#import "SongRoom.h"
 
 @interface Parser : NSObject
 
-+ (NSString *)makeVoteString:(NSString *)uname updown:(int)updown song:(NSString *)songURI; // "VOTE:1"
++ (NSString *)makeVoteString:(NSString *)username updown:(int)updown songURI:(NSString *)songURI; // "VOTE:1"
 + (NSString *)makeQueueString:(NSString *)songURI; // "QUEUE:[SONGURI]"
 + (NSString *)makeUpdateString; // "UPDATE"
 + (NSString *)makeSigninString:(NSString *)username; // "SIGNIN:USERNAME"
-+ (NSString *)makeSRStatusString:(SongRoom *)sr; //
++ (NSString *)makeSongRoomStatusString:(SongRoom *)songRoom; //
 + (NSString *)makePlayNextString; // "NEWCS"
 
 + (NSMutableDictionary *)readString:(NSString *)protocolString;
@@ -27,14 +25,13 @@
 
 
 /*
-- (void)transmitProtocol:(NSString *)outMessage;
-
-
-String begins with
-1 - upsr
-2 - newcs
-3 - inituser
+ - (void)transmitProtocol:(NSString *)outMessage;
+ String begins with
+ 1 - upsr
+ 2 - newcs
+ 3 - inituser
  */
+
 - (void)receiveProtocol:(NSString *)inMessage;
 
 @end

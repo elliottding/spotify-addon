@@ -29,14 +29,16 @@
 		4F47BC2F1A1529EE00660967 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2A1A1529EE00660967 /* Client.m */; };
 		4F47BC301A1529EE00660967 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2C1A1529EE00660967 /* Server.m */; };
 		4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2E1A1529EE00660967 /* ServerConnection.m */; };
-		4F6882581A1C093900E4E248 /* SongViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6882571A1C093900E4E248 /* SongViewTests.m */; };
-		4F68825B1A1C0A5800E4E248 /* SearchSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F68825A1A1C0A5800E4E248 /* SearchSongView.m */; };
-		4F68825E1A1C0A9300E4E248 /* SongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F68825D1A1C0A9300E4E248 /* SongView.m */; };
+		4FE36CC51A1CEB4400D21E5C /* AdminMemberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */; };
+		4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD01A1CEF3200D21E5C /* Admin.m */; };
+		4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD21A1CEF3200D21E5C /* Member.m */; };
+		4FE36CDB1A1CEF3200D21E5C /* SearchSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */; };
+		4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD71A1CEF3200D21E5C /* SongView.m */; };
+		4FE36D1E1A1CF0E700D21E5C /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36D1D1A1CF0E600D21E5C /* ParserTests.m */; };
 		5223534D1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		5223534E1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		522353501A14333B008782E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534F1A14333B008782E6 /* AVFoundation.framework */; };
 		82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A939DC1A1AFC1000CB7E45 /* Parser.m */; };
-		82A939E11A1BFAC400CB7E45 /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A939E01A1BFAC400CB7E45 /* ParserTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,16 +89,20 @@
 		4F47BC2C1A1529EE00660967 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
 		4F47BC2D1A1529EE00660967 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		4F47BC2E1A1529EE00660967 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
-		4F6882571A1C093900E4E248 /* SongViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongViewTests.m; sourceTree = "<group>"; };
-		4F6882591A1C0A5800E4E248 /* SearchSongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSongView.h; sourceTree = "<group>"; };
-		4F68825A1A1C0A5800E4E248 /* SearchSongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSongView.m; sourceTree = "<group>"; };
-		4F68825C1A1C0A9300E4E248 /* SongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongView.h; sourceTree = "<group>"; };
-		4F68825D1A1C0A9300E4E248 /* SongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongView.m; sourceTree = "<group>"; };
+		4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMemberTests.m; sourceTree = "<group>"; };
+		4FE36CCF1A1CEF3200D21E5C /* Admin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Admin.h; sourceTree = "<group>"; };
+		4FE36CD01A1CEF3200D21E5C /* Admin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Admin.m; sourceTree = "<group>"; };
+		4FE36CD11A1CEF3200D21E5C /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
+		4FE36CD21A1CEF3200D21E5C /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
+		4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSongView.h; sourceTree = "<group>"; };
+		4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSongView.m; sourceTree = "<group>"; };
+		4FE36CD61A1CEF3200D21E5C /* SongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongView.h; sourceTree = "<group>"; };
+		4FE36CD71A1CEF3200D21E5C /* SongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongView.m; sourceTree = "<group>"; };
+		4FE36D1D1A1CF0E600D21E5C /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
 		5223534C1A143007008782E6 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		5223534F1A14333B008782E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82A939DB1A1AFBFB00CB7E45 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		82A939DC1A1AFC1000CB7E45 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
-		82A939E01A1BFAC400CB7E45 /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +152,9 @@
 				4F47BAF81A12E09800660967 /* AppDelegate.m */,
 				4F47BAFA1A12E09800660967 /* ViewController.h */,
 				4F47BAFB1A12E09800660967 /* ViewController.m */,
-				4F68825F1A1C0AD400E4E248 /* Views */,
+				82A939DB1A1AFBFB00CB7E45 /* Parser.h */,
+				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
+				4FE36D1C1A1CEF9500D21E5C /* Views */,
 				4FAA9B4F1A152FE20060F704 /* Models */,
 				4FAA9B4E1A152FCA0060F704 /* Server */,
 				4F47BAFD1A12E09800660967 /* Main.storyboard */,
@@ -169,15 +177,15 @@
 		4F47BB0C1A12E09800660967 /* PlaylistManagerTests */ = {
 			isa = PBXGroup;
 			children = (
-				82A939E01A1BFAC400CB7E45 /* ParserTests.m */,
+				4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */,
 				4F47BB2B1A12E10000660967 /* SongQueueTests.m */,
+				4FE36D1D1A1CF0E600D21E5C /* ParserTests.m */,
 				4F47BB2C1A12E10000660967 /* SongRoomTests.m */,
 				4F47BC271A1529DA00660967 /* ServerTests.m */,
 				4F47BB2D1A12E10000660967 /* SongTests.m */,
 				4F47BB2E1A12E10000660967 /* UnsortedSongQueueTests.m */,
 				4F47BB2F1A12E10000660967 /* UserTests.m */,
 				4F47BB301A12E10000660967 /* VoteBoxTests.m */,
-				4F6882561A1C08FB00E4E248 /* Views */,
 				4F47BB0D1A12E09800660967 /* Supporting Files */,
 			);
 			path = PlaylistManagerTests;
@@ -191,32 +199,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4F6882561A1C08FB00E4E248 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4F6882571A1C093900E4E248 /* SongViewTests.m */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		4F68825F1A1C0AD400E4E248 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4F68825C1A1C0A9300E4E248 /* SongView.h */,
-				4F68825D1A1C0A9300E4E248 /* SongView.m */,
-				4F6882591A1C0A5800E4E248 /* SearchSongView.h */,
-				4F68825A1A1C0A5800E4E248 /* SearchSongView.m */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		4FAA9B4E1A152FCA0060F704 /* Server */ = {
 			isa = PBXGroup;
 			children = (
 				4F47BC291A1529EE00660967 /* Client.h */,
 				4F47BC2A1A1529EE00660967 /* Client.m */,
-				82A939DB1A1AFBFB00CB7E45 /* Parser.h */,
-				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
 				4F47BC2B1A1529EE00660967 /* Server.h */,
 				4F47BC2C1A1529EE00660967 /* Server.m */,
 				4F47BC2D1A1529EE00660967 /* ServerConnection.h */,
@@ -228,6 +215,10 @@
 		4FAA9B4F1A152FE20060F704 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4FE36CCF1A1CEF3200D21E5C /* Admin.h */,
+				4FE36CD01A1CEF3200D21E5C /* Admin.m */,
+				4FE36CD11A1CEF3200D21E5C /* Member.h */,
+				4FE36CD21A1CEF3200D21E5C /* Member.m */,
 				4F47BB191A12E0DC00660967 /* Song.h */,
 				4F47BB1A1A12E0DC00660967 /* Song.m */,
 				4F47BB1B1A12E0DC00660967 /* SongQueue.h */,
@@ -242,6 +233,17 @@
 				4F47BB241A12E0DC00660967 /* VoteBox.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		4FE36D1C1A1CEF9500D21E5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */,
+				4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */,
+				4FE36CD61A1CEF3200D21E5C /* SongView.h */,
+				4FE36CD71A1CEF3200D21E5C /* SongView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		5223534B1A142FD4008782E6 /* Frameworks */ = {
@@ -356,21 +358,20 @@
 				4F47BB291A12E0DC00660967 /* User.m in Sources */,
 				4F47BB261A12E0DC00660967 /* SongQueue.m in Sources */,
 				4F47BB2A1A12E0DC00660967 /* VoteBox.m in Sources */,
-<<<<<<< HEAD
 				82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */,
-=======
-				4F68825B1A1C0A5800E4E248 /* SearchSongView.m in Sources */,
->>>>>>> b07493282f39c4a00e9be4187101fcb8f28880c2
 				4F47BB251A12E0DC00660967 /* Song.m in Sources */,
 				4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */,
+				4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */,
 				4F47BB281A12E0DC00660967 /* UnsortedSongQueue.m in Sources */,
 				4F47BAFC1A12E09800660967 /* ViewController.m in Sources */,
 				4F47BB271A12E0DC00660967 /* SongRoom.m in Sources */,
+				4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */,
+				4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */,
 				4F47BC301A1529EE00660967 /* Server.m in Sources */,
 				4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */,
 				4F47BC2F1A1529EE00660967 /* Client.m in Sources */,
 				4F47BAF61A12E09800660967 /* main.m in Sources */,
-				4F68825E1A1C0A9300E4E248 /* SongView.m in Sources */,
+				4FE36CDB1A1CEF3200D21E5C /* SearchSongView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,15 +379,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82A939E11A1BFAC400CB7E45 /* ParserTests.m in Sources */,
 				4F47BB351A12E10000660967 /* UserTests.m in Sources */,
 				4F47BB361A12E10000660967 /* VoteBoxTests.m in Sources */,
 				4F47BC281A1529DA00660967 /* ServerTests.m in Sources */,
+				4FE36CC51A1CEB4400D21E5C /* AdminMemberTests.m in Sources */,
 				4F47BB311A12E10000660967 /* SongQueueTests.m in Sources */,
 				4F47BB331A12E10000660967 /* SongTests.m in Sources */,
 				4F47BB341A12E10000660967 /* UnsortedSongQueueTests.m in Sources */,
+				4FE36D1E1A1CF0E700D21E5C /* ParserTests.m in Sources */,
 				4F47BB321A12E10000660967 /* SongRoomTests.m in Sources */,
-				4F6882581A1C093900E4E248 /* SongViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
