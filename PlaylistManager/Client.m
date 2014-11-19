@@ -106,6 +106,7 @@
 
 // private properties
 
+@property (nonatomic, strong, readwrite) NSMutableArray *services;
 @property (nonatomic, strong, readwrite) NSNetServiceBrowser *  serviceBrowser;
 @property (nonatomic, strong, readwrite) NSInputStream *        inputStream;
 @property (nonatomic, strong, readwrite) NSOutputStream *       outputStream;
