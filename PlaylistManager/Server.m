@@ -78,7 +78,6 @@
         
         ServerConnection * connection = [[ServerConnection alloc] initWithInputStream:(__bridge NSInputStream *)readStream outputStream:(__bridge NSOutputStream *)writeStream];
         [self.connections addObject:connection];
-        connection.myServer = self;
         [connection open];
         [(NSNotificationCenter *)[NSNotificationCenter defaultCenter] addObserver:self
                                                                          selector:@selector(ConnectionDidCloseNotification:)

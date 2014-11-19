@@ -103,7 +103,6 @@
 
 // stuff for bindings
 
-@property (nonatomic, strong, readwrite) NSMutableArray *       services;           // of NSNetService
 
 // private properties
 
