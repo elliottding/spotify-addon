@@ -173,6 +173,7 @@
 				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
 				4FE36D1F1A1D142F00D21E5C /* SpotifyRetriever.h */,
 				4FE36D201A1D142F00D21E5C /* SpotifyRetriever.m */,
+				4FE36D241A1D43FC00D21E5C /* Controllers */,
 				4FE36D1C1A1CEF9500D21E5C /* Views */,
 				4FAA9B4F1A152FE20060F704 /* Models */,
 				4FAA9B4E1A152FCA0060F704 /* Server */,
@@ -258,20 +259,27 @@
 		4FE36D1C1A1CEF9500D21E5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */,
+				4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */,
+				4FE36CD61A1CEF3200D21E5C /* SongView.h */,
+				4FE36CD71A1CEF3200D21E5C /* SongView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4FE36D241A1D43FC00D21E5C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B7F3B341A1D252100123649 /* PlaylistViewController.h */,
+				3B7F3B351A1D252100123649 /* PlaylistViewController.m */,
 				3B7F3B2B1A1D24CD00123649 /* FindSongroomViewController.h */,
 				3B7F3B2C1A1D24CD00123649 /* FindSongroomViewController.m */,
 				3B7F3B2D1A1D24CD00123649 /* GuestListViewController.h */,
 				3B7F3B2E1A1D24CD00123649 /* GuestListViewController.m */,
 				3B7F3B2F1A1D24CD00123649 /* HistoryViewController.h */,
 				3B7F3B301A1D24CD00123649 /* HistoryViewController.m */,
-				4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */,
-				4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */,
-				4FE36CD61A1CEF3200D21E5C /* SongView.h */,
-				4FE36CD71A1CEF3200D21E5C /* SongView.m */,
-				3B7F3B341A1D252100123649 /* PlaylistViewController.h */,
-				3B7F3B351A1D252100123649 /* PlaylistViewController.m */,
 			);
-			name = Views;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		5223534B1A142FD4008782E6 /* Frameworks */ = {
