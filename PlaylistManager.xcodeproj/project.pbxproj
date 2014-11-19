@@ -11,6 +11,7 @@
 		3B7F3B321A1D24CD00123649 /* GuestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B2E1A1D24CD00123649 /* GuestListViewController.m */; };
 		3B7F3B331A1D24CD00123649 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B301A1D24CD00123649 /* HistoryViewController.m */; };
 		3B7F3B361A1D252100123649 /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B351A1D252100123649 /* PlaylistViewController.m */; };
+		3B7F3B391A1D4F1200123649 /* SelectPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */; };
 		4F47BAF61A12E09800660967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF51A12E09800660967 /* main.m */; };
 		4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF81A12E09800660967 /* AppDelegate.m */; };
 		4F47BAFC1A12E09800660967 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAFB1A12E09800660967 /* ViewController.m */; };
@@ -66,6 +67,8 @@
 		3B7F3B301A1D24CD00123649 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		3B7F3B341A1D252100123649 /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
 		3B7F3B351A1D252100123649 /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
+		3B7F3B371A1D4F1200123649 /* SelectPlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlaylistTableViewController.h; sourceTree = "<group>"; };
+		3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlaylistTableViewController.m; sourceTree = "<group>"; };
 		4F47BAF01A12E09800660967 /* PlaylistManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaylistManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F47BAF41A12E09800660967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F47BAF51A12E09800660967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				3B7F3B2E1A1D24CD00123649 /* GuestListViewController.m */,
 				3B7F3B2F1A1D24CD00123649 /* HistoryViewController.h */,
 				3B7F3B301A1D24CD00123649 /* HistoryViewController.m */,
+				3B7F3B371A1D4F1200123649 /* SelectPlaylistTableViewController.h */,
+				3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B7F3B391A1D4F1200123649 /* SelectPlaylistTableViewController.m in Sources */,
 				4F47BB291A12E0DC00660967 /* User.m in Sources */,
 				4F47BB261A12E0DC00660967 /* SongQueue.m in Sources */,
 				3B7F3B361A1D252100123649 /* PlaylistViewController.m in Sources */,
