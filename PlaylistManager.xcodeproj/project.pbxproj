@@ -32,6 +32,8 @@
 		5223534D1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		5223534E1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		522353501A14333B008782E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534F1A14333B008782E6 /* AVFoundation.framework */; };
+		82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A939DC1A1AFC1000CB7E45 /* Parser.m */; };
+		82A939E11A1BFAC400CB7E45 /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A939E01A1BFAC400CB7E45 /* ParserTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,9 @@
 		4F47BC2E1A1529EE00660967 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		5223534C1A143007008782E6 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		5223534F1A14333B008782E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		82A939DB1A1AFBFB00CB7E45 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		82A939DC1A1AFC1000CB7E45 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		82A939E01A1BFAC400CB7E45 /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +160,7 @@
 		4F47BB0C1A12E09800660967 /* PlaylistManagerTests */ = {
 			isa = PBXGroup;
 			children = (
+				82A939E01A1BFAC400CB7E45 /* ParserTests.m */,
 				4F47BB2B1A12E10000660967 /* SongQueueTests.m */,
 				4F47BB2C1A12E10000660967 /* SongRoomTests.m */,
 				4F47BC271A1529DA00660967 /* ServerTests.m */,
@@ -180,6 +186,8 @@
 			children = (
 				4F47BC291A1529EE00660967 /* Client.h */,
 				4F47BC2A1A1529EE00660967 /* Client.m */,
+				82A939DB1A1AFBFB00CB7E45 /* Parser.h */,
+				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
 				4F47BC2B1A1529EE00660967 /* Server.h */,
 				4F47BC2C1A1529EE00660967 /* Server.m */,
 				4F47BC2D1A1529EE00660967 /* ServerConnection.h */,
@@ -319,6 +327,7 @@
 				4F47BB291A12E0DC00660967 /* User.m in Sources */,
 				4F47BB261A12E0DC00660967 /* SongQueue.m in Sources */,
 				4F47BB2A1A12E0DC00660967 /* VoteBox.m in Sources */,
+				82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */,
 				4F47BB251A12E0DC00660967 /* Song.m in Sources */,
 				4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */,
 				4F47BB281A12E0DC00660967 /* UnsortedSongQueue.m in Sources */,
@@ -335,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A939E11A1BFAC400CB7E45 /* ParserTests.m in Sources */,
 				4F47BB351A12E10000660967 /* UserTests.m in Sources */,
 				4F47BB361A12E10000660967 /* VoteBoxTests.m in Sources */,
 				4F47BC281A1529DA00660967 /* ServerTests.m in Sources */,

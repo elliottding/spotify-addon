@@ -37,4 +37,7 @@
 // and completely unnecessary.
 - (void)recalculateTotalScore;
 
+// Generate a string representation of a user vote (called by
+- (NSString *)makeVoteString:(U
+
 @end

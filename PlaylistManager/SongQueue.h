@@ -40,4 +40,8 @@
 // Removes the top priority Song from the queue.
 - (void)removeTopSong;
 
+// 11/18/14
+// Proceed to next song in response to NEWCS message from server
+- (void)nextSong;
+
 @end
