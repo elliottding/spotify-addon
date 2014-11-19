@@ -20,16 +20,45 @@
 + (NSString *)makePlayNextString; // "NEWCS"
 
 + (NSMutableDictionary *)readString:(NSString *)protocolString;
-//subclass into user and admin parsers?
 
+/* For each protocol string, readString returns the following NSMutableDictionary:
+ 1. VOTE 
+ {
+    "type" : @"VOTE"
+    "user" : (NSString)
+    "updown" : (int)
+    "songURI" : (NSString)
+ }
 
-
-/*
- - (void)transmitProtocol:(NSString *)outMessage;
- String begins with
- 1 - upsr
- 2 - newcs
- 3 - inituser
+ 2. QUEUE
+ {
+    "type" : @"QUEUE"
+    "songURI" : (NSString)
+ }
+ 
+ 3. UPDATE
+ {
+    "type" : @"UPDATE"
+ }
+ 
+ 4. SIGNIN
+ {
+    "type" : @"SIGNIN"
+    "username" : (NSString)
+ }
+ 
+ 5. UPSR
+ {
+    "type" : @"UPSR"
+    "users" : (NSMutableArray)
+    "songs" : (NSMutableDictionary)
+ }
+ 
+ 6. NEWCS
+ {
+    "type" : @"NEWCS"
+ }
+ 
  */
 
 - (void)receiveProtocol:(NSString *)inMessage;
