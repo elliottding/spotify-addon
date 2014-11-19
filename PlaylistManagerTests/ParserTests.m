@@ -26,7 +26,6 @@
 
 @implementation ParserTests
 
-/*
 - (void)setUp
 {
     [super setUp];
@@ -45,7 +44,7 @@
 
 - (void)test_makeVoteString
 {
-    NSString * voteString = [Parser makeVoteString:@"user" updown:1 songURI:@"song1"];
+    NSString *voteString = [Parser makeVoteString:@"user" updown:1 songURI:@"song1"];
     XCTAssertEqualObjects(@"VOTE:user:1:song1", voteString, @"Parser failed to create vote message");
 }
 
@@ -69,7 +68,7 @@
 
 - (void)test_makeSRStatusString
 {
-    NSJSONSerialization * statusString = [Parser makeSRStatusString:r];
+    NSString *statusString = [Parser makeSongRoomStatusString:r];
     XCTAssertEqualObjects(@"UPSR:user1:SONGS:song1,0:song2,0", statusString, @"Parser failed to create status message");
     // SET THESE PROPERTIES IN TEST SONGROOM
     //
@@ -87,26 +86,26 @@
 - (void)test_readString
 {
     // test vote protocol
-    NSMutableDictionary * d1 = [[NSDictionary alloc] init];
+    NSMutableDictionary *d1 = [[NSMutableDictionary alloc] init];
     [d1 setObject:@"VOTE" forKey:@"type"];
     [d1 setObject:@"user1" forKey:@"user"];
-    [d1 setObject:1 forKey:@"updown"];
+    [d1 setObject:@1 forKey:@"updown"];
     [d1 setObject:@"song1" forKey:@"songURI"];
     XCTAssertEqualObjects(d1, [Parser readString:@"VOTE:user1:1:song1"], @"Failed to parse vote message");
     
     // test queue protocol
-    NSMutableDictionary * d2 = [[NSDictionary alloc] init];
+    NSMutableDictionary *d2 = [[NSMutableDictionary alloc] init];
     [d2 setObject:@"QUEUE" forKey:@"type"];
     [d2 setObject:@"song2" forKey:@"songURI"];
     XCTAssertEqualObjects(d2, [Parser readString:@"QUEUE:song2"], @"Failed to parse queue message");
     
     // test update protocol
-    NSMutableDictionary * d3 = [[NSDictionary alloc] init];
+    NSMutableDictionary *d3 = [[NSMutableDictionary alloc] init];
     [d3 setObject:@"UPDATE" forKey:@"type"];
     XCTAssertEqualObjects(d3, [Parser readString:@"UPDATE"], @"Failed to parse update message");
     
     // test signin protocol
-    NSMutableDictionary * d4 = [[NSDictionary alloc] init];
+    NSMutableDictionary *d4 = [[NSMutableDictionary alloc] init];
     [d4 setObject:@"SIGNIN" forKey:@"type"];
     [d4 setObject:@"user2" forKey:@"username"];
     XCTAssertEqualObjects(d4, [Parser readString:@"SIGNIN:user2"], @"Failed to parse signin message");
@@ -117,16 +116,14 @@
     //
     //
     //
-    NSMutableDictionary * d5 = [[dictionary alloc] init];
-    [d5 setObject:@"UPSR" forkey:@"type"];
-    [d5 setObject: forkey:@"      "];
+    NSMutableDictionary *d5 = [[NSMutableDictionary alloc] init];
+    [d5 setObject:@"UPSR" forKey:@"type"];
+    // [d5 setObject: forKey:@"      "];
     XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:user1:user2:SONGS:song1,0:song2,0"], @"Failed to parse upsr message");
     
     // test newcs protocol
-    NSMutableDictionary * d6 = [[dictionary alloc] init];
-    [d4 setObject:@"NEWCS" forkey:@"type"];
+    NSMutableDictionary *d6 = [[NSMutableDictionary alloc] init];
+    [d4 setObject:@"NEWCS" forKey:@"type"];
     XCTAssertEqualObjects(d4, [Parser readString:@"NEWCS"], @"Failed to parse newcs message");
-    
 }
-*/
 @end

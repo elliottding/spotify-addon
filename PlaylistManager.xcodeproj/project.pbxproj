@@ -32,7 +32,6 @@
 		4FE36CC51A1CEB4400D21E5C /* AdminMemberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */; };
 		4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD01A1CEF3200D21E5C /* Admin.m */; };
 		4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD21A1CEF3200D21E5C /* Member.m */; };
-		4FE36CDA1A1CEF3200D21E5C /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD31A1CEF3200D21E5C /* ParserTests.m */; };
 		4FE36CDB1A1CEF3200D21E5C /* SearchSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */; };
 		4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD71A1CEF3200D21E5C /* SongView.m */; };
 		4FE36D1E1A1CF0E700D21E5C /* ParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36D1D1A1CF0E600D21E5C /* ParserTests.m */; };
@@ -95,7 +94,6 @@
 		4FE36CD01A1CEF3200D21E5C /* Admin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Admin.m; sourceTree = "<group>"; };
 		4FE36CD11A1CEF3200D21E5C /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
 		4FE36CD21A1CEF3200D21E5C /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
-		4FE36CD31A1CEF3200D21E5C /* ParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserTests.m; sourceTree = "<group>"; };
 		4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSongView.h; sourceTree = "<group>"; };
 		4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSongView.m; sourceTree = "<group>"; };
 		4FE36CD61A1CEF3200D21E5C /* SongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongView.h; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 				4FE36CD01A1CEF3200D21E5C /* Admin.m */,
 				4FE36CD11A1CEF3200D21E5C /* Member.h */,
 				4FE36CD21A1CEF3200D21E5C /* Member.m */,
-				4FE36CD31A1CEF3200D21E5C /* ParserTests.m */,
 				4F47BB191A12E0DC00660967 /* Song.h */,
 				4F47BB1A1A12E0DC00660967 /* Song.m */,
 				4F47BB1B1A12E0DC00660967 /* SongQueue.h */,
@@ -371,7 +368,6 @@
 				4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */,
 				4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */,
 				4F47BC301A1529EE00660967 /* Server.m in Sources */,
-				4FE36CDA1A1CEF3200D21E5C /* ParserTests.m in Sources */,
 				4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */,
 				4F47BC2F1A1529EE00660967 /* Client.m in Sources */,
 				4F47BAF61A12E09800660967 /* main.m in Sources */,
