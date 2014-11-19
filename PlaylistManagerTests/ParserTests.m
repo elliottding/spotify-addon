@@ -80,7 +80,7 @@
 
 - (void)test_readString
 {
-    
+    NSMutableDictionary ;
     // Test if strings can be parsed to call other methods
     /* TODO:
      1. Vote message creates a vote
