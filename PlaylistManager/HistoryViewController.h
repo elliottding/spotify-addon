@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface HistoryViewController : UIViewController
+
+@property User* user; //user -> songroom -> history
 
 @end
