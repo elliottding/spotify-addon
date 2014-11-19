@@ -22,6 +22,11 @@
 
 // this is designed to test the methods in memember and admin since they rely on a connection between
 // each other we will test them together
+// We only test the public methods of both of these classes because the private methods so closely
+// linked with the public that it would be impractial to try to seperate these
+// Keep in mind when looking at these tests that we currently plan for the member class to absorb
+// the client class and just implent all of that in the background and we plan for the admin to
+// hold a server and use that to carry out all of the operations
 
 @implementation AdminMemberTests
 
@@ -58,7 +63,7 @@
 - (void)testMemberBrowse{
     [testAdmin startServer:@"Browser Find Test"];
     [testMember startBrowser];
-    [NSThread sleepForTimeInterval: 1.0];
+    [NSThread sleepForTimeInterval: 2.0];
     BOOL serverFound = false;
     for(NSNetService *it in testMember.services){
         if([it.name isEqualToString: @"Browser Find Test"]){
@@ -69,19 +74,53 @@
 }
 
 - (void)testMemberConnectToService{
-    [testAdmin startServer:@"Browser Find Test"];
+    [testAdmin startServer:@"ConnectionTest"];
     testMember = [[Member alloc] init];
     [testMember startBrowser];
-    [NSThread sleepForTimeInterval: 1.0];
-    BOOL serverFound = false;
+    [NSThread sleepForTimeInterval: 2.0];
     for(NSNetService *it in testMember.services){
-        if([it.name isEqualToString: @"Browser Find Test"]){
-            serverFound = true;
+        if([it.name isEqualToString: @"ConnectionTest"]){
+            [testMember openStreamsToNetService: it];
         }
     }
-
-    
+    [NSThread sleepForTimeInterval: 4.0];
+    XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
+    XCTAssert([testAdmin.songRoom containsUsername:@"test user"], @"User was not added to the songroom");
+    XCTAssert([testMember.songRoom containsUsername:@"test user"], @"Did not add user to Songroom before sending back");
 }
+
+// These tests cannot be written until we have a better idea of what we will be using to queue songs
+// at the moment we think it will be spotify URIs which we need to have a functional spotify frame work
+// to find
+// aditionally the vote for song and update song rely on creating song objects that rely on info from spotify
+// We will not have this info until 
+/*
+- (void)testQueueSong{
+    [testAdmin startServer:@"ConnectionTest"];
+    testMember = [[Member alloc] init];
+    [testMember startBrowser];
+    [NSThread sleepForTimeInterval: 2.0];
+    for(NSNetService *it in testMember.services){
+        if([it.name isEqualToString: @"ConnectionTest"]){
+            [testMember openStreamsToNetService: it];
+        }
+    }
+    [NSThread sleepForTimeInterval: 4.0];
+    [testMember QueueSong:
+    XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
+    XCTAssert([testMember.songRoom containsUsername:@"test user"], @"Did not add user to Songroom before sending back");
+}
+ 
+ 
+ -testVoteSong{
+ 
+ }
+ 
+ -tetsUpdateCurrentSongPlaying{
+ }
+*/
+
+
 
 
 
