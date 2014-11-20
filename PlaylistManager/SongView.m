@@ -8,13 +8,15 @@
 
 #import "SongView.h"
 
+#import "SpotifyRetriever.h"
+
 @interface SongView ()
 
-@property (nonatomic, strong) UILabel *songNameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *songNameLabel;
 
-@property (nonatomic, strong) UILabel *artistNameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *artistNameLabel;
 
-@property (nonatomic, strong) UIImageView *songImage;
+@property (nonatomic, strong) IBOutlet UIImageView *songImage;
 
 @end
 
@@ -27,6 +29,7 @@
     {
         self.song = nil;
         
+        /*
         UILabel *songNameLabel = [[UILabel alloc] initWithFrame:self.bounds];
         songNameLabel.text = @"Loading...";
         [self addSubview:songNameLabel];
@@ -38,6 +41,7 @@
         [self addSubview:artistNameLabel];
         self.artistNameLabel = artistNameLabel;
         self.backgroundColor = [UIColor blueColor];
+        */
     }
     return self;
 }
@@ -61,9 +65,26 @@
     if (song != nil)
     {
         self.songNameLabel.text = song.track.name;
+        SPTPartialArtist *artist = song.track.artists[0];
+        self.artistNameLabel.text = artist.name;
         [self setSongImageWithSPTImage:song.track.album.smallestCover];
     }
     // [self setNeedsDisplay];
+}
+
+- (void)loadTrackWithIdentifier:(NSString *)identifier
+{
+    [[SpotifyRetriever instance] requestTrack:identifier callback:^(NSError *error, SPTTrack *track)
+     {
+         if (error != nil)
+         {
+             NSLog(@"*** error: %@", error);
+             return;
+         }
+         
+         Song *song = [[Song alloc] initWithTrack:track];
+         self.song = song;
+     }];
 }
 
 - (void)setSongImageWithSPTImage:(SPTImage *)sptImage

@@ -20,52 +20,16 @@
 
 - (void)loadView
 {
-    
-    // self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
-    // self.view.backgroundColor = [UIColor blueColor];
-    // NSLog(@"loading view");
-    self.view = [[SongView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
-    /*
-    [[SpotifyRetriever instance] requestTestTrack:^(NSError *error, SPTTrack *track)
-    {
-        if (error != nil)
-        {
-            NSLog(@"*** error: %@", error);
-            return;
-        }
-
-        if (self.view == nil)
-        {
-            NSLog(@"initializing view");
-            Song *song = [[Song alloc] initWithTrack:track];
-            CGRect frame = [UIScreen mainScreen].applicationFrame;
-            
-            self.view = [[SongView alloc] initWithSong:song frame:frame];
-            self.view.backgroundColor = [UIColor blueColor];
-        }
-    }];
-    */
+    UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"SongView" owner:self options:nil] objectAtIndex:0];
+    self.view = view;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     NSLog(@"view loaded");
-    [[SpotifyRetriever instance] requestTestTrack:^(NSError *error, SPTTrack *track)
-     {
-         if (error != nil)
-         {
-             NSLog(@"*** error: %@", error);
-             return;
-         }
-         
-         if (self.view != nil)
-         {
-             SongView *songView = (SongView *)self.view;
-             Song *song = [[Song alloc] initWithTrack:track];
-             songView.song = song;
-         }
-     }];
+    SongView *songView = (SongView *)self.view;
+    [songView loadTrackWithIdentifier:@"0DiWol3AO6WpXZgp0goxAV"];
 }
 
 - (void)didReceiveMemoryWarning

@@ -16,4 +16,6 @@
 
 - (instancetype)initWithSong:(Song *)song frame:(CGRect)frame;
 
+- (void)loadTrackWithIdentifier:(NSString *)identifier;
+
 @end
