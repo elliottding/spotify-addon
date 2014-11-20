@@ -22,26 +22,13 @@
 
 @implementation SongView
 
+/*
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
         self.song = nil;
-        
-        /*
-        UILabel *songNameLabel = [[UILabel alloc] initWithFrame:self.bounds];
-        songNameLabel.text = @"Loading...";
-        [self addSubview:songNameLabel];
-        self.songNameLabel = songNameLabel;
-        self.backgroundColor = [UIColor blueColor];
-        
-        UILabel *artistNameLabel = [[UILabel alloc] initWithFrame:self.bounds];
-        artistNameLabel.text = @"Loading...";
-        [self addSubview:artistNameLabel];
-        self.artistNameLabel = artistNameLabel;
-        self.backgroundColor = [UIColor blueColor];
-        */
     }
     return self;
 }
@@ -58,6 +45,7 @@
     }
     return self;
 }
+ */
 
 - (void)setSong:(Song *)song
 {
