@@ -28,4 +28,6 @@
 // Initializes a new Song with the specified track ID.
 - (instancetype)initWithTrackID:(int)trackID andTrack:(SPTTrack *)track;
 
+- (instancetype)initWithTrack:(SPTTrack *)track;
+
 @end

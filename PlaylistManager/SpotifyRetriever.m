@@ -90,6 +90,27 @@
     [SPTRequest requestItemAtURI:uri withSession:self.session callback:callback];
 }
 
+- (void)requestTrack:(NSString *)identifier callback:(RequestTrackCallback)callback
+{
+    NSURL *uri = [[self class] spotifyURIFromIdentifier:identifier withTypeString:@"track"];
+    [SPTRequest requestItemAtURI:uri withSession:self.session callback:callback];
+}
+
+- (void)requestTestTrack:(RequestTrackCallback)callback
+{
+    [self requestTrack:@"0DiWol3AO6WpXZgp0goxAV" callback:callback];
+}
+
+- (void)trackSearchByString:(NSString *)searchString callback:(SearchCallback)callback
+{
+    NSString *query = [NSString stringWithFormat:@"q=%@&type=album", searchString];
+    [SPTRequest performSearchWithQuery:query
+                             queryType:SPTQueryTypeTrack
+                                offset:0
+                               session:self.session
+                              callback:callback];
+}
+
 - (SPTAlbum *)albumWithIdentifier:(NSString *)identifier
 {
     NSURL *uri = [[self class] spotifyURIFromIdentifier:identifier withTypeString:@"album"];

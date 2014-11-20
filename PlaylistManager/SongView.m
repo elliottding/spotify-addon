@@ -10,9 +10,23 @@
 
 @implementation SongView
 
+- (instancetype)initWithSong:(Song *)song frame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        NSLog(@"init");
+        self.song = song;
+    }
+    return self;
+}
+
 - (void)drawRect:(CGRect)rect
 {
-    
+    NSLog(@"drawing");
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.bounds];
+    [[UIColor redColor] setFill];
+    [path fill];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

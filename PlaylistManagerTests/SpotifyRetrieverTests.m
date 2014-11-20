@@ -18,7 +18,7 @@
 
 @implementation SpotifyRetrieverTests
 
-- (void)test_albumWithIdentifier
+- (void)test_requestAlbum
 {
     RequestAlbumCallback callback = ^(NSError *error, SPTAlbum *album)
     {
@@ -27,6 +27,30 @@
     };
     
     [[SpotifyRetriever instance] requestAlbum:@"4L1HDyfdGIkACuygktO7T7" callback:callback];
+}
+
+- (void)test_requestTrack
+{
+    RequestTrackCallback callback = ^(NSError *error, SPTTrack *track)
+    {
+        XCTAssertNotNil(track, @"No track was retrieved.");
+        XCTAssertEqualObjects(@"One More Time", track.name, @"Retrieved track name does not match actual album name");
+    };
+    
+    [[SpotifyRetriever instance] requestTrack:@"0DiWol3AO6WpXZgp0goxAV" callback:callback];
+}
+
+- (void)test_trackSearchByString
+{
+    NSString *trackName = @"One More Time";
+    SearchCallback callback = ^(NSError *error, SPTListPage *listPage)
+    {
+        XCTAssertNotNil(listPage, @"Returned list was nil");
+        SPTTrack *firstTrack = listPage.items[0];
+        XCTAssertEqualObjects(trackName, firstTrack.name, @"Search did not return correct items");
+    };
+    
+    [[SpotifyRetriever instance] trackSearchByString:trackName callback:callback];
 }
 
 @end

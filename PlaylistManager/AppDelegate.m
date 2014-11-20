@@ -4,7 +4,10 @@
 
 // Import Spotify API header file
 #import <Spotify/Spotify.h>
+
 #import "AppDelegate.h"
+
+#import "ViewController.h"
 
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
@@ -19,24 +22,13 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application
-didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    void (^requestCallback) (NSError *, SPTAlbum *);
-    requestCallback = ^(NSError *error, SPTAlbum *album)
-    {
-        NSLog(@"Album: %@", album);
-        if (error != nil)
-        {
-            NSLog(@"*** URI request error: %@", error);
-            return;
-        }
-    };
-    /*
-    [SPTRequest requestItemAtURI:[NSURL URLWithString:@"spotify:album:4L1HDyfdGIkACuygktO7T7"]
-                     withSession:nil
-                        callback:requestCallback];
-    */
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    NSLog(@"setting view controller");
+    self.window.rootViewController = [[ViewController alloc] init];
+    self.window.backgroundColor = [UIColor clearColor];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

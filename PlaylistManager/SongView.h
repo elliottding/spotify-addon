@@ -14,6 +14,6 @@
 
 @property (nonatomic, strong) Song *song;
 
-- (instancetype)initWithSong:(Song *)song;
+- (instancetype)initWithSong:(Song *)song frame:(CGRect)frame;
 
 @end
