@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FindSongroomViewController : UIViewController
+@interface FindSongroomViewController : UIViewController {
+    
+    __weak IBOutlet UITableView *playlistTable;
+}
+
 
 @end

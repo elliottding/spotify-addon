@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface PlaylistViewController : UIViewController
+
+@property User* user; //user has attribute songroom
 
 @end

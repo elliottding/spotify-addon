@@ -1,5 +1,5 @@
 //
-//  HistoryViewController.h
+//  SelectPlaylistTableViewController.h
 //  PlaylistManager
 //
 //  Created by Joshua Stevens-Stein on 11/19/14.
@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
 
-@interface HistoryViewController : UIViewController
-
-@property User* user; //user -> songroom -> history
+@interface SelectPlaylistTableViewController : UITableViewController
 
 @end
