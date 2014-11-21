@@ -11,8 +11,6 @@
 
 @interface Admin : User
 
-@property (nonatomic) BOOL serverIsRunning;
-
 
 // the name argument will set the name property
 // to publish the server with the device name just input the
@@ -21,6 +19,11 @@
 
 // stops the server
 - (void)stopServer;
+
+// checks the server to see if its running
+// originally designed to be a variable but that can't react to server changes as easily
+- (BOOL) serverIsRunning;
+
 
 
 // When a song changes envoke this method with the new song and the change

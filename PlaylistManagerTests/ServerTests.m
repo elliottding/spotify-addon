@@ -36,7 +36,7 @@
 
 @implementation ServerTests
 
-- (void)serverThread
+/*- (void)serverThread
 {
     currentServer = [[Server alloc] init];
     if ([currentServer start:@"songroom"])
@@ -97,5 +97,5 @@
     }
     XCTAssert([otherClient.response isEqualToString:@"single client\r\n"], @"bytes not transferred successfully");
 }
-
+*/
 @end

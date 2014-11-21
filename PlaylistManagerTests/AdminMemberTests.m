@@ -47,17 +47,25 @@
     
 }
 
+//NOTE: tests my fail due to concurrency. That is the other thread has not been given enough time to complete
+// its assigned task. before assuming coding error increase the amount of time the current thread sleeps while
+// the operation occurs in the other thread/threads
+
 - (void)testAdminServerStart {
-    // This is an example of a functional test case.
     [testAdmin startServer:@"start test"];
-    XCTAssert(testAdmin.serverIsRunning, @"Server did not start properly");
+    [NSThread sleepForTimeInterval:1.0];// give time for other thread to start the server
+    XCTAssert([testAdmin serverIsRunning], @"Server did not start properly");
 }
 
 - (void)testAdminServerStop {
     // This is an example of a functional test case.
     [testAdmin startServer:@"stop test"];
+    [NSThread sleepForTimeInterval:1.0];
+    XCTAssert([testAdmin serverIsRunning], @"Server not running can't be stopped");
     [testAdmin stopServer];
-    XCTAssertFalse(testAdmin.serverIsRunning, @"Server did not stop properly");
+    [NSThread sleepForTimeInterval:1.0];
+
+    XCTAssertFalse([testAdmin serverIsRunning], @"Server did not stop properly");
 }
 
 - (void)testMemberBrowse{
