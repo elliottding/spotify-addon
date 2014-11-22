@@ -61,6 +61,5 @@
  
  */
 
-- (void)receiveProtocol:(NSString *)inMessage;
 
 @end

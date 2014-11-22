@@ -89,7 +89,7 @@
     // test vote protocol
     NSMutableDictionary *d1 = [[NSMutableDictionary alloc] init];
     [d1 setObject:@"VOTE" forKey:@"type"];
-    [d1 setObject:@"user1" forKey:@"user"];
+    [d1 setObject:@"user1" forKey:@"username"];
     [d1 setObject:@1 forKey:@"updown"];
     [d1 setObject:@"song1" forKey:@"songURI"];
     XCTAssertEqualObjects(d1, [Parser readString:@"VOTE:user1:1:song1"], @"Failed to parse vote message");
@@ -126,7 +126,7 @@
     
     // test newcs protocol
     NSMutableDictionary *d6 = [[NSMutableDictionary alloc] init];
-    [d4 setObject:@"NEWCS" forKey:@"type"];
-    XCTAssertEqualObjects(d4, [Parser readString:@"NEWCS"], @"Failed to parse newcs message");
+    [d6 setObject:@"NEWCS" forKey:@"type"];
+    XCTAssertEqualObjects(d6, [Parser readString:@"NEWCS"], @"Failed to parse newcs message");
 }
 @end
