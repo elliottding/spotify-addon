@@ -9,6 +9,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface Server : NSObject
 
@@ -19,20 +20,15 @@
 // should match the songroom name property
 @property (nonatomic) NSString *name;
 
-// This property determines how many times the server should echo back
-// before exiting
-// this is important for testing to stop the servers loop otherwise the code will never reach the tests
-// for non testing purposes this should either be removed (along with associated code)
-// or set to an unreachable number
-@property int numberOfEchos;
+// this is simply held so it may be passed to server connections
+@property (nonatomic, weak) User *host;
 
-// set to zero when server starts incremented each echo
-@property int currentEchos;
+@property (nonatomic) BOOL running;
 
 // the name argument will set the name property
 // to publish the server with the device name just input the
 // empty string here
-- (BOOL)start:(NSString *)name;
+- (BOOL)startWithName:(NSString *)name WithHost:(User *)host;
 
 - (void)stop;
 

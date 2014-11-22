@@ -129,7 +129,7 @@
 @synthesize outputStream = _outputStream;
 @synthesize inputBuffer  = _inputBuffer;
 @synthesize outputBuffer = _outputBuffer;
-
+/*
 -(void) serverStuff
 {
     Server * newServer = [[Server alloc] init];
@@ -140,7 +140,7 @@
         NSLog(@"Error starting server");
     }
 }
-
+*/
 
 
 - (void)startBrowser {
