@@ -551,6 +551,10 @@
     
 }
 -(void)connect{
+    [NSThread detachNewThreadSelector:@selector(connectThread) toTarget:self withObject:nil];
+}
+
+-(void)connectThread{
     for(NSNetService *it in self.services){
         if([it.name isEqualToString: self.connectTo]){
             [self openStreamsToNetService: it];

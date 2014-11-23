@@ -58,7 +58,7 @@
      }*/
     testMember.connectTo = @"songroom";
     [testMember connect];
-    
+    NSLog(@"thread exited");
 }
 
 //NOTE: tests my fail due to concurrency. That is the other thread has not been given enough time to complete
@@ -97,9 +97,13 @@
 
 - (void)testMemberConnectToService{
     [testAdmin startServer:@"songroom"];
-    [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
-    
-    [NSThread sleepForTimeInterval: 15.0];
+   // [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
+    testMember = [[Member alloc] init];
+    [testMember startBrowser];
+    [NSThread sleepForTimeInterval: 2.0];
+    testMember.connectTo = @"songroom";
+    [testMember connect];
+    [NSThread sleepForTimeInterval: 5.0];
     
     XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
     XCTAssert([testAdmin.songRoom containsUsername:@"test user"], @"User was not added to the songroom");
