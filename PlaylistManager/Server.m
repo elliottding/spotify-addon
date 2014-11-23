@@ -54,6 +54,7 @@
     [self stop];
 }
 
+// use this to remove the user associated with the connection
 - (void)ConnectionDidCloseNotification:(NSNotification *)note
 {
     ServerConnection *connection = [note object];
@@ -114,12 +115,12 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
 #pragma unused(type)
 #pragma unused(address)
     
-    Server *echoServer = (__bridge Server *)info;
-    assert(socket == echoServer->_ipv4socket || socket == echoServer->_ipv6socket);
+    Server *songroomServer = (__bridge Server *)info;
+    assert(socket == songroomServer->_ipv4socket || socket == songroomServer->_ipv6socket);
 #pragma unused(socket)
     
     // For an accept callback, the data parameter is a pointer to a CFSocketNativeHandle.
-    [echoServer acceptConnection:*(CFSocketNativeHandle *)data];
+    [songroomServer acceptConnection:*(CFSocketNativeHandle *)data];
 }
 
 // this is a wrapper function to start the server
@@ -127,9 +128,8 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     self.name = name;
     self.host = host;
     [NSThread detachNewThreadSelector:@selector(start) toTarget:self withObject:nil];
+    
     return true;
-    
-    
     
 }
 

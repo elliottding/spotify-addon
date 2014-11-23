@@ -58,9 +58,6 @@
      }*/
     testMember.connectTo = @"songroom";
     [testMember connect];
-    [NSThread sleepForTimeInterval: 1.0];
-    [testMember outputText:@"blah blah\r\n"];
-    NSLog(@"sent blah..");
     
 }
 
@@ -101,10 +98,9 @@
 - (void)testMemberConnectToService{
     [testAdmin startServer:@"songroom"];
     [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
-    [NSThread sleepForTimeInterval: 15.0];
-    //[testAdmin outputText:@"test send"]
     
     [NSThread sleepForTimeInterval: 15.0];
+    
     XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
     XCTAssert([testAdmin.songRoom containsUsername:@"test user"], @"User was not added to the songroom");
     XCTAssert([testMember.songRoom containsUsername:@"test user"], @"Did not add user to Songroom before sending back");

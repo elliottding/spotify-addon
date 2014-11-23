@@ -617,7 +617,6 @@
 
 - (void)startOutput
 {
-    NSLog(@"sending buffer");
     assert([self.outputBuffer length] != 0);
     
     NSInteger actuallyWritten = [self.outputStream write:[self.outputBuffer bytes] maxLength:[self.outputBuffer length]];
@@ -638,7 +637,6 @@
     if (self.outputBuffer != nil) {
         
         BOOL wasEmpty = ([self.outputBuffer length] == 0);
-        NSLog(@"%d", wasEmpty);
         [self.outputBuffer appendData:dataToSend];
         if (wasEmpty) {
             [self startOutput];
@@ -673,12 +671,11 @@
             if (actuallyRead > 0) {
                 [self.inputBuffer appendBytes:buffer length: (NSUInteger)actuallyRead];
                 // If the input buffer ends with CR LF, show it to the user.
-                if ([self.inputBuffer length] >= 2 && memcmp((const char *) [self.inputBuffer bytes] + [self.inputBuffer length] - 2, "\r\n", 2) == 0) {
+                if ([self.inputBuffer length] >= 2){// && memcmp((const char *) [self.inputBuffer bytes] + [self.inputBuffer length] - 2, "\r\n", 2) == 0) {
                     NSString *string = [[NSString alloc] initWithData:self.inputBuffer encoding:NSUTF8StringEncoding];
                     if (string == nil) {
                         NSLog(@"response not UTF-8");
                     } else {
-                        NSLog(@"actually proccessed stuff successfully");
                         NSLog(@"%@", string);
                     }
                     [self.inputBuffer setLength:0];
