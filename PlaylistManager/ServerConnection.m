@@ -13,6 +13,9 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
 
 @interface ServerConnection () <NSStreamDelegate>
 
+
+@property (nonatomic, strong, readwrite) NSMutableData *        inputBuffer;
+@property (nonatomic, strong, readwrite) NSMutableData *        outputBuffer;
 // this method should send a buffer to the client
 
 - (BOOL) sendBytes:(NSString *) bytesToSend;
@@ -45,6 +48,8 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
     [self.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [self.inputStream  open];
     [self.outputStream open];
+    self.inputBuffer = [[NSMutableData alloc] init];
+    self.outputBuffer = [[NSMutableData alloc] init];
     return YES;
 }
 
@@ -60,9 +65,42 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
                                                                                 object:self];
 }
 
+- (void)startOutput
+{
+    NSLog(@"server: sending buffer");
+    assert([self.outputBuffer length] != 0);
+    
+    NSInteger actuallyWritten = [self.outputStream write:[self.outputBuffer bytes] maxLength:[self.outputBuffer length]];
+    if (actuallyWritten > 0) {
+        //  [self.outputBuffer replaceBytesInRange:NSMakeRange(0, (NSUInteger) actuallyWritten) withBytes:NULL length:0];
+        // If we didn't write all the bytes we'll continue writing them in response to the next
+        // has-space-available event.
+    } else {
+        // A non-positive result from -write:maxLength: indicates a failure of some form; in this
+        // simple app we respond by simply closing down our connection.
+        //[self closeStreams];
+    }
+}
+
+- (void)outputText:(NSString *)text
+{
+    NSLog(@"server sending string: %@", text);
+    NSData * dataToSend = [text dataUsingEncoding:NSUTF8StringEncoding];
+    if (self.outputBuffer != nil) {
+        
+        BOOL wasEmpty = ([self.outputBuffer length] == 0);
+        //NSLog(@"%d", wasEmpty);
+        [self.outputBuffer appendData:dataToSend];
+        if (wasEmpty) {
+            NSLog(@"starting output");
+            [self startOutput];
+        }
+    }
+}
+
+
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)streamEvent
 {
-    NSLog(@"server stream event");
     assert(aStream == self.inputStream || aStream == self.outputStream);
 #pragma unused(aStream)
     
@@ -70,12 +108,20 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
     {
         case NSStreamEventHasBytesAvailable:
         {
+            NSLog(@"server stream event Bytes available");
+
             uint8_t buffer[2048];
             NSInteger actuallyRead = [self.inputStream read:(uint8_t *)buffer maxLength:sizeof(buffer)];
+            
+
             if (actuallyRead > 0)
             {
-                NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
-                if (actuallyWritten != actuallyRead)
+                [self.inputBuffer appendBytes:buffer length: (NSUInteger)actuallyRead];
+                NSString *string = [[NSString alloc] initWithData:self.inputBuffer encoding:NSUTF8StringEncoding];
+                [self outputText: string];
+
+               // NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
+              /*  if (actuallyWritten != actuallyRead)
                 {
                     // -write:maxLength: may return -1 to indicate an error or a non-negative
                     // value less than maxLength to indicate a 'short write'.  In the case of an
@@ -88,8 +134,10 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
                 }
                 else
                 {
+                    [NSThread sleepForTimeInterval:1.0];
+                    //[self outputText:@"client recieved echo \r\n"];
                     NSLog(@"Echoed %zd bytes.", (ssize_t) actuallyWritten);
-                }
+                } */
             }
             else
             {
@@ -99,11 +147,17 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
             }
         } break;
         case NSStreamEventEndEncountered:
+            NSLog(@"server stream event event end");
+
         case NSStreamEventErrorOccurred:
         {
+            NSLog(@"server stream event error");
+
             [self close];
         } break;
         case NSStreamEventHasSpaceAvailable:
+            NSLog(@"space available");
+
         case NSStreamEventOpenCompleted:
         default:
         {
