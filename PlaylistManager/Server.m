@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Zachary Jenkins. All rights reserved.
 //
 // THIS SHOULD BE YOUR WORKING COPY
-
 #import "Server.h"
 
 #import "ServerConnection.h"
@@ -77,6 +76,7 @@
         CFWriteStreamSetProperty(writeStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
         
         ServerConnection * connection = [[ServerConnection alloc] initWithInputStream:(__bridge NSInputStream *)readStream outputStream:(__bridge NSOutputStream *)writeStream];
+        connection.Host = self.host;
         [self.connections addObject:connection];
         [connection open];
         [(NSNotificationCenter *)[NSNotificationCenter defaultCenter] addObserver:self
@@ -121,15 +121,16 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     // For an accept callback, the data parameter is a pointer to a CFSocketNativeHandle.
     [echoServer acceptConnection:*(CFSocketNativeHandle *)data];
 }
+
 // this is a wrapper function to start the server
 - (BOOL)startWithName:(NSString *)name WithHost:(User *)host{
     self.name = name;
     self.host = host;
     [NSThread detachNewThreadSelector:@selector(start) toTarget:self withObject:nil];
     return true;
-
     
-
+    
+    
 }
 
 
@@ -205,7 +206,7 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     [self.netService publishWithOptions:0];
     //
     self.running = true;
-
+    
     [[NSRunLoop currentRunLoop] run];
     return YES;
 }

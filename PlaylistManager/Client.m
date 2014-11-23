@@ -7,7 +7,6 @@
 //
 // THIS SHOULD BE YOUR WORKING COPY
 
-
 #import "Client.h"
 
 
@@ -106,7 +105,7 @@
 
 // private properties
 
-@property (nonatomic, strong, readwrite) NSMutableArray *services;
+
 @property (nonatomic, strong, readwrite) NSNetServiceBrowser *  serviceBrowser;
 @property (nonatomic, strong, readwrite) NSInputStream *        inputStream;
 @property (nonatomic, strong, readwrite) NSOutputStream *       outputStream;
@@ -130,30 +129,34 @@
 @synthesize inputBuffer  = _inputBuffer;
 @synthesize outputBuffer = _outputBuffer;
 /*
--(void) serverStuff
-{
-    Server * newServer = [[Server alloc] init];
-    if ( [newServer start:@"songroom"] ) {
-        NSLog(@"Started server on port %zu.", (size_t) [newServer port]);
-        [[NSRunLoop currentRunLoop] run];
-    } else {
-        NSLog(@"Error starting server");
-    }
-}
-*/
+ -(void) serverStuff
+ {
+ Server * newServer = [[Server alloc] init];
+ if ( [newServer start:@"songroom"] ) {
+ NSLog(@"Started server on port %zu.", (size_t) [newServer port]);
+ [[NSRunLoop currentRunLoop] run];
+ } else {
+ NSLog(@"Error starting server");
+ }
+ }
+ */
 
-
-- (void)startBrowser {
-    
+- (void) browserThread {
     self.serviceBrowser = [[NSNetServiceBrowser alloc] init];
     self.services = [[NSMutableArray alloc] init];
     [self.serviceBrowser setDelegate:self];
     // [self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     
     
-    [self.serviceBrowser searchForServicesOfType:@"_PlayLister._tcp." inDomain:@""];
+    [self.serviceBrowser searchForServicesOfType:@"_PlayLister._tcp." inDomain:@"local."];
+    [self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [[NSRunLoop currentRunLoop] run];
-    //[self.serviceBrowser scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    
+    
+}
+
+- (void)startBrowser {
+    [NSThread detachNewThreadSelector:@selector(browserThread) toTarget:self withObject:nil];
     
 }
 
@@ -179,10 +182,21 @@
         [self.services addObject:aNetService];
         [self didChangeValueForKey:@"services"];
     }
-    if([aNetService.name isEqualToString: self.connectTo]){
-        [self openStreamsToNetService:aNetService];
-        [self.serviceBrowser removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-        
+    /*if([aNetService.name isEqualToString: self.connectTo]){
+     [self openStreamsToNetService:aNetService];
+     [self.serviceBrowser removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+     
+     }*/
+    
+}
+-(void)connect{
+    for(NSNetService *it in self.services){
+        if([it.name isEqualToString: @"songroom"]){
+            [self openStreamsToNetService: it];
+            [[NSRunLoop currentRunLoop] run];
+            
+        }
+        //[self.serviceBrowser removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     }
     
 }
@@ -207,6 +221,7 @@
     NSOutputStream * ostream;
     
     [self closeStreams];
+    // [self.serviceBrowser removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     
     if ([netService qNetworkAdditions_getInputStream:&istream outputStream:&ostream]) {
         self.inputStream = istream;
@@ -217,8 +232,12 @@
         [self.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [self.inputStream  open];
         [self.outputStream open];
+        self.inputBuffer = [[NSMutableData alloc] init];
+        self.outputBuffer = [[NSMutableData alloc] init];
+        //[[NSRunLoop currentRunLoop] run];
     }
-    [self outputText:self.message];
+    [self outputText: self.message];
+    
 }
 
 - (void)closeStreams {
@@ -254,8 +273,6 @@
 
 - (void)outputText:(NSString *)text
 {
-    self.inputBuffer = [[NSMutableData alloc] init];
-    self.outputBuffer = [[NSMutableData alloc] init];
     NSData * dataToSend = [text dataUsingEncoding:NSUTF8StringEncoding];
     if (self.outputBuffer != nil) {
         

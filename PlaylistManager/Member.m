@@ -711,6 +711,7 @@
 -(void)QueueSong:(NSString *)songURI{
     NSString *queueRequest = [Parser makeQueueString:songURI];
     [self outputText:queueRequest];
+}
 
 
 

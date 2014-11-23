@@ -5,7 +5,6 @@
 //  Created by Zachary Jenkins on 11/18/14.
 //  Copyright (c) 2014 Elliott Ding. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "Admin.h"
@@ -47,6 +46,24 @@
     
 }
 
+-(void)memberThread{
+    testMember = [[Member alloc] init];
+    [testMember startBrowser];
+    [NSThread sleepForTimeInterval: 2.0];
+    /*for(NSNetService *it in testMember.services){
+     if([it.name isEqualToString: @"ConnectionTest"]){
+     [testMember openStreamsToNetService: it];
+     [[NSRunLoop currentRunLoop] run];
+     }
+     }*/
+    testMember.connectTo = @"songroom";
+    [testMember connect];
+    [NSThread sleepForTimeInterval: 1.0];
+    [testMember outputText:@"blah blah\r\n"];
+    NSLog(@"sent blah..");
+    
+}
+
 //NOTE: tests my fail due to concurrency. That is the other thread has not been given enough time to complete
 // its assigned task. before assuming coding error increase the amount of time the current thread sleeps while
 // the operation occurs in the other thread/threads
@@ -64,7 +81,7 @@
     XCTAssert([testAdmin serverIsRunning], @"Server not running can't be stopped");
     [testAdmin stopServer];
     [NSThread sleepForTimeInterval:1.0];
-
+    
     XCTAssertFalse([testAdmin serverIsRunning], @"Server did not stop properly");
 }
 
@@ -82,16 +99,12 @@
 }
 
 - (void)testMemberConnectToService{
-    [testAdmin startServer:@"ConnectionTest"];
-    testMember = [[Member alloc] init];
-    [testMember startBrowser];
-    [NSThread sleepForTimeInterval: 2.0];
-    for(NSNetService *it in testMember.services){
-        if([it.name isEqualToString: @"ConnectionTest"]){
-            [testMember openStreamsToNetService: it];
-        }
-    }
-    [NSThread sleepForTimeInterval: 4.0];
+    [testAdmin startServer:@"songroom"];
+    [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
+    [NSThread sleepForTimeInterval: 15.0];
+    //[testAdmin outputText:@"test send"]
+    
+    [NSThread sleepForTimeInterval: 15.0];
     XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
     XCTAssert([testAdmin.songRoom containsUsername:@"test user"], @"User was not added to the songroom");
     XCTAssert([testMember.songRoom containsUsername:@"test user"], @"Did not add user to Songroom before sending back");
