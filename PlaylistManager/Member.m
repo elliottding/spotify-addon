@@ -558,6 +558,7 @@
     for(NSNetService *it in self.services){
         if([it.name isEqualToString: self.connectTo]){
             [self openStreamsToNetService: it];
+            NSDate *loopEndDate = [NSDate dateWithTimeInterval:99 sinceDate:[NSDate date]];
             [[NSRunLoop currentRunLoop] run];
             
         }
@@ -601,7 +602,9 @@
         self.outputBuffer = [[NSMutableData alloc] init];
         //[[NSRunLoop currentRunLoop] run];
     }
+    [NSThread sleepForTimeInterval:1.0];
     [self outputText: @"single client\r\n"];
+    
     
 }
 
@@ -621,6 +624,7 @@
 
 - (void)startOutput
 {
+    NSLog(@"start output called");
     assert([self.outputBuffer length] != 0);
     
     NSInteger actuallyWritten = [self.outputStream write:[self.outputBuffer bytes] maxLength:[self.outputBuffer length]];
@@ -637,6 +641,7 @@
 
 - (void)outputText:(NSString *)text
 {
+    NSLog(@"called output text");
     NSData * dataToSend = [text dataUsingEncoding:NSUTF8StringEncoding];
     if (self.outputBuffer != nil) {
         
@@ -702,8 +707,9 @@
 // we will verify server side that the vote is legitimate
 -(void) Vote:(NSString *)songURI withDirection:(int)upDown
 {
-    NSString *vote = [Parser makeVoteString:self.username updown:upDown songURI: songURI];
+    NSString *vote = [Parser makeVoteString: self.username updown:upDown songURI: songURI];
     [self outputText:vote];
+   // [[[NSRunLoop currentRunLoop] cancelPerformSelector: @selector(Vote) target:self argument:nil];
 }
 // Either queue should include the username or vote should not
 // this should be consistant. also, it can be inferred by the server so
@@ -712,6 +718,7 @@
 -(void)QueueSong:(NSString *)songURI{
     NSString *queueRequest = [Parser makeQueueString:songURI];
     [self outputText:queueRequest];
+    [[NSRunLoop currentRunLoop] performSelector: @selector(startOutput) withObject:self afterDelay:0];
 }
 
 

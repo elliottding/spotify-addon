@@ -21,6 +21,7 @@
     self.songroomServer = [[Server alloc] init];
     [self.songroomServer startWithName:name WithHost: self];
     NSLog(@"Admin started server");
+    //[[NSRunLoop currentRunLoop] run];
     return true;
 }
 
