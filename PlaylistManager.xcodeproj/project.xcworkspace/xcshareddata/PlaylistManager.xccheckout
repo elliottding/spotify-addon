@@ -10,14 +10,14 @@
 	<string>PlaylistManager</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3dcb58ca-8e3f-1d64-44b6-ce57b7db7bff++505</key>
+		<key>1D38816510551B9B58D988014857479E41B5008A</key>
 		<string>https://github.com/elliottding/spotify-addon.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>PlaylistManager.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3dcb58ca-8e3f-1d64-44b6-ce57b7db7bff++505</key>
+		<key>1D38816510551B9B58D988014857479E41B5008A</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3dcb58ca-8e3f-1d64-44b6-ce57b7db7bff++505</string>
+	<string>1D38816510551B9B58D988014857479E41B5008A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3dcb58ca-8e3f-1d64-44b6-ce57b7db7bff++505</string>
+			<string>1D38816510551B9B58D988014857479E41B5008A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>spotify-addon</string>
 		</dict>
