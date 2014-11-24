@@ -47,7 +47,6 @@
 }
 
 -(void)memberThread{
-    testMember = [[Member alloc] init];
     [testMember startBrowser];
     [NSThread sleepForTimeInterval: 2.0];
     /*for(NSNetService *it in testMember.services){
@@ -98,12 +97,15 @@
 - (void)testMemberConnectToService{
     [testAdmin startServer:@"songroom"];
    // [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
-    testMember = [[Member alloc] init];
     [testMember startBrowser];
     [NSThread sleepForTimeInterval: 2.0];
     testMember.connectTo = @"songroom";
     [testMember connect];
-    [NSThread sleepForTimeInterval: 5.0];
+    [NSThread sleepForTimeInterval:2.0];
+   // [testMember Vote:@"really cool song" withDirection:-1];
+  //  [NSThread sleepForTimeInterval:2.0];
+    //[testMember QueueSong:@"my favorite song"];
+    [NSThread sleepForTimeInterval: 50.0];
     
     XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
     XCTAssert([testAdmin.songRoom containsUsername:@"test user"], @"User was not added to the songroom");

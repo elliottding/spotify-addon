@@ -128,7 +128,8 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     self.name = name;
     self.host = host;
     [NSThread detachNewThreadSelector:@selector(start) toTarget:self withObject:nil];
-    
+    //[self start];
+    //[[NSRunLoop currentRunLoop] run];
     return true;
     
 }
@@ -206,7 +207,6 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     [self.netService publishWithOptions:0];
     //
     self.running = true;
-    
     [[NSRunLoop currentRunLoop] run];
     return YES;
 }

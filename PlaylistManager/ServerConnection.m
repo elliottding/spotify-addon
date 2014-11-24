@@ -118,10 +118,13 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
             {
                 [self.inputBuffer appendBytes:buffer length: (NSUInteger)actuallyRead];
                 NSString *string = [[NSString alloc] initWithData:self.inputBuffer encoding:NSUTF8StringEncoding];
-                [self outputText: string];
+                //[self outputText: string];
+                NSLog(@"writing");
 
-               // NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
-              /*  if (actuallyWritten != actuallyRead)
+                NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
+                NSLog(@"wrote");
+
+                if (actuallyWritten != actuallyRead)
                 {
                     // -write:maxLength: may return -1 to indicate an error or a non-negative
                     // value less than maxLength to indicate a 'short write'.  In the case of an
@@ -130,6 +133,8 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
                     // isn't reading the data that we send back to it, thus causing its socket receive
                     // buffer to fill up, thus causing our socket send buffer to fill up.  Again, our
                     // response to this situation is that we simply drop the connection.
+                    NSLog(@"short write");
+
                     [self close];
                 }
                 else
@@ -137,7 +142,7 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
                     [NSThread sleepForTimeInterval:1.0];
                     //[self outputText:@"client recieved echo \r\n"];
                     NSLog(@"Echoed %zd bytes.", (ssize_t) actuallyWritten);
-                } */
+                } 
             }
             else
             {
