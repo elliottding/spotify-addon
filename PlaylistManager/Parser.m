@@ -43,24 +43,22 @@
 + (NSString *)makeSongRoomStatusString:(SongRoom *)songRoom
 {
     NSString * statusString = @"UPSR:";
-    NSLog(@"%@", statusString);
-    NSLog(@"%@", statusString);
+    //users added to string by keys
     for (id key in songRoom.userDictionary){
         statusString = [statusString stringByAppendingString:key];
-        NSLog(@"hi");
         statusString = [statusString stringByAppendingString:@":"];
     }
-    NSLog(@"hi");
     statusString = [statusString stringByAppendingString:@"SONGS:"];
+    //add songs to string in order, starting with preferred songs
     for (Song *song in songRoom.songQueue.preferredQueue.songs){
         statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%d,%d:", song.trackID, song.voteScore]];
     }
+    //then add regular songs to string
     for (Song *song in songRoom.songQueue.songs){
         statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%d,%d:", song.trackID, song.voteScore]];
     }
-    NSLog(@"hill");
+    //remove trailing ':'
     statusString = [statusString substringToIndex:[statusString length] - 1];
-    NSLog(@"%@", statusString);
     return statusString;
 }
 
