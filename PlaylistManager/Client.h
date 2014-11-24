@@ -28,11 +28,16 @@
 // the client will store server responses here for comparison
 @property (nonatomic) NSString *response;
 
+@property (nonatomic, strong, readwrite) NSOutputStream *       outputStream;
+
 - (void)startBrowser;
 
 - (void)openStreamsToNetService:(NSNetService *)netService;
 
 -(void)connect;
+
+- (void) outputText:(NSString *)text;
+
 
 
 

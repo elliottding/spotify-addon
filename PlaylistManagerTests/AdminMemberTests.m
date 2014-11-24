@@ -96,16 +96,28 @@
 
 - (void)testMemberConnectToService{
     [testAdmin startServer:@"songroom"];
-   // [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
+    // [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
     [testMember startBrowser];
     [NSThread sleepForTimeInterval: 2.0];
     testMember.connectTo = @"songroom";
     [testMember connect];
     [NSThread sleepForTimeInterval:2.0];
-   // [testMember Vote:@"really cool song" withDirection:-1];
-  //  [NSThread sleepForTimeInterval:2.0];
-    //[testMember QueueSong:@"my favorite song"];
-    [NSThread sleepForTimeInterval: 50.0];
+    // NEED TO HAVE THESE SEPERATED BY some interval or queue will be recieved together
+    [testMember Vote:@"really cool song" withDirection:-1];
+    [NSThread sleepForTimeInterval:0.01];
+    [testMember QueueSong:@"awesome song"];
+    
+    [NSThread sleepForTimeInterval:0.01];
+    
+    [testMember Vote:@"good song" withDirection:-1];
+    //  [NSThread sleepForTimeInterval:2.0];
+    // [testMember outputText:@"my favorite song\r\n"];
+    // [testMember outputText:@"my less favorite song\r\n"];
+    
+    while(1){
+        
+    }
+    //[NSThread sleepForTimeInterval: 20.0];
     
     XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
     XCTAssert([testAdmin.songRoom containsUsername:@"test user"], @"User was not added to the songroom");
@@ -142,11 +154,6 @@
  -tetsUpdateCurrentSongPlaying{
  }
  */
-
-
-
-
-
 
 
 - (void)testPerformanceExample {
