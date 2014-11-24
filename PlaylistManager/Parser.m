@@ -10,6 +10,7 @@
 #import "SongRoom.h"
 #import "SongQueue.h"
 #import "UnsortedSongQueue.h"
+#import "Song.h"
 
 @implementation Parser
 
@@ -42,10 +43,24 @@
 + (NSString *)makeSongRoomStatusString:(SongRoom *)songRoom
 {
     NSString * statusString = @"UPSR:";
-    for (int i = 0; i < /*[songRoom.songQueue.preferredQueue.songs count]*/ 10; i++){
-        
+    NSLog(@"%@", statusString);
+    NSLog(@"%@", statusString);
+    for (id key in songRoom.userDictionary){
+        statusString = [statusString stringByAppendingString:key];
+        NSLog(@"hi");
+        statusString = [statusString stringByAppendingString:@":"];
     }
-    
+    NSLog(@"hi");
+    statusString = [statusString stringByAppendingString:@"SONGS:"];
+    for (Song *song in songRoom.songQueue.preferredQueue.songs){
+        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%d,%d:", song.trackID, song.voteScore]];
+    }
+    for (Song *song in songRoom.songQueue.songs){
+        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%d,%d:", song.trackID, song.voteScore]];
+    }
+    NSLog(@"hill");
+    statusString = [statusString substringToIndex:[statusString length] - 1];
+    NSLog(@"%@", statusString);
     return statusString;
 }
 
@@ -99,8 +114,6 @@
         
     }
     
-    
-
     return voteDict;
 }
 

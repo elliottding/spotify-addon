@@ -75,7 +75,7 @@
 - (void)test_makeSRStatusString
 {
     NSString *statusString = [Parser makeSongRoomStatusString:r];
-    XCTAssertEqualObjects(@"UPSR:user1:SONGS:song1,0:song2,0", statusString, @"Parser failed to create status message");
+    XCTAssertEqualObjects(@"UPSR:user1:SONGS:123,0:456,0", statusString, @"Parser failed to create status message");
 }
 
 - (void)test_makePlayNextString
@@ -113,16 +113,21 @@
     
     // test upsr protocol
     NSMutableDictionary *d5 = [[NSMutableDictionary alloc] init];
+    [d5 setObject:@"UPSR" forKey:@"type"];
     NSMutableArray *users = [[NSMutableArray alloc] init];
+    NSMutableDictionary *songs = [[NSMutableDictionary alloc] init];
+    [d5 setObject:users forKey:@"users"];
+    [d5 setObject:songs forKey:@"songs"];
+        //test empty songroom
+    XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:SONGS"], @"Failed to parse upsr message for empty songroom");
     [users addObject:@"user1"];
     [users addObject:@"user2"];
-    NSMutableDictionary *songs = [[NSMutableDictionary alloc] init];
-    [songs setObject:@0 forKey: @"song1"];
-    [songs setObject:@1 forKey: @"song2"];
-    [d5 setObject:@"UPSR" forKey:@"type"];
+    [songs setObject:@0 forKey: @"123"];
+    [songs setObject:@1 forKey: @"456"];
     [d5 setObject:users forKey: @"users"];
     [d5 setObject:songs forKey: @"songs"];
-    XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:user1:user2:SONGS:song1,0:song2,1"], @"Failed to parse upsr message");
+        //test songroom with users and songs
+    XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:user1:user2:SONGS:123,0:456,1"], @"Failed to parse upsr message for active songroom");
     
     // test newcs protocol
     NSMutableDictionary *d6 = [[NSMutableDictionary alloc] init];

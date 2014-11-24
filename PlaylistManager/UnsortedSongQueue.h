@@ -12,6 +12,8 @@
 
 @interface UnsortedSongQueue : NSObject
 
+@property (nonatomic, strong) NSMutableArray *songs;
+
 // The next Song to be played from this queue.
 @property (nonatomic, strong, readonly) Song *nextSong;
 

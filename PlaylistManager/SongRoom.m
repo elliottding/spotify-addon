@@ -11,14 +11,13 @@
 #import "SongQueue.h"
 
 #import "User.h"
-
+/*
 @interface SongRoom ()
 
-// Dictionary of username-User key-value pairs.
-@property (nonatomic, strong) NSMutableDictionary *userDictionary;
+users has been made public
 
 @end
-
+*/
 @implementation SongRoom
 
 - (instancetype)initWithName:(NSString *)name
