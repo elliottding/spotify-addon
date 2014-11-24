@@ -5,7 +5,6 @@
 //  Created by Zachary Jenkins on 11/18/14.
 //  Copyright (c) 2014 Elliott Ding. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "Admin.h"
@@ -47,17 +46,39 @@
     
 }
 
+-(void)memberThread{
+    [testMember startBrowser];
+    [NSThread sleepForTimeInterval: 2.0];
+    /*for(NSNetService *it in testMember.services){
+     if([it.name isEqualToString: @"ConnectionTest"]){
+     [testMember openStreamsToNetService: it];
+     [[NSRunLoop currentRunLoop] run];
+     }
+     }*/
+    testMember.connectTo = @"songroom";
+    [testMember connect];
+    NSLog(@"thread exited");
+}
+
+//NOTE: tests my fail due to concurrency. That is the other thread has not been given enough time to complete
+// its assigned task. before assuming coding error increase the amount of time the current thread sleeps while
+// the operation occurs in the other thread/threads
+
 - (void)testAdminServerStart {
-    // This is an example of a functional test case.
     [testAdmin startServer:@"start test"];
-    XCTAssert(testAdmin.serverIsRunning, @"Server did not start properly");
+    [NSThread sleepForTimeInterval:1.0];// give time for other thread to start the server
+    XCTAssert([testAdmin serverIsRunning], @"Server did not start properly");
 }
 
 - (void)testAdminServerStop {
     // This is an example of a functional test case.
     [testAdmin startServer:@"stop test"];
+    [NSThread sleepForTimeInterval:1.0];
+    XCTAssert([testAdmin serverIsRunning], @"Server not running can't be stopped");
     [testAdmin stopServer];
-    XCTAssertFalse(testAdmin.serverIsRunning, @"Server did not stop properly");
+    [NSThread sleepForTimeInterval:1.0];
+    
+    XCTAssertFalse([testAdmin serverIsRunning], @"Server did not stop properly");
 }
 
 - (void)testMemberBrowse{
@@ -74,16 +95,30 @@
 }
 
 - (void)testMemberConnectToService{
-    [testAdmin startServer:@"ConnectionTest"];
-    testMember = [[Member alloc] init];
+    [testAdmin startServer:@"songroom"];
+    // [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
     [testMember startBrowser];
     [NSThread sleepForTimeInterval: 2.0];
-    for(NSNetService *it in testMember.services){
-        if([it.name isEqualToString: @"ConnectionTest"]){
-            [testMember openStreamsToNetService: it];
-        }
+    testMember.connectTo = @"songroom";
+    [testMember connect];
+    [NSThread sleepForTimeInterval:2.0];
+    // NEED TO HAVE THESE SEPERATED BY some interval or queue will be recieved together
+    [testMember Vote:@"really cool song" withDirection:-1];
+    [NSThread sleepForTimeInterval:0.5];
+    [testMember QueueSong:@"awesome song"];
+    
+    [NSThread sleepForTimeInterval:0.5];
+    
+    [testMember Vote:@"good song" withDirection:-1];
+    //  [NSThread sleepForTimeInterval:2.0];
+    // [testMember outputText:@"my favorite song\r\n"];
+    // [testMember outputText:@"my less favorite song\r\n"];
+    
+    while(1){
+        
     }
-    [NSThread sleepForTimeInterval: 4.0];
+    //[NSThread sleepForTimeInterval: 20.0];
+    
     XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
     XCTAssert([testAdmin.songRoom containsUsername:@"test user"], @"User was not added to the songroom");
     XCTAssert([testMember.songRoom containsUsername:@"test user"], @"Did not add user to Songroom before sending back");
@@ -119,11 +154,6 @@
  -tetsUpdateCurrentSongPlaying{
  }
  */
-
-
-
-
-
 
 
 - (void)testPerformanceExample {

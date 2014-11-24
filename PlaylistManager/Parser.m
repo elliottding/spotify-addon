@@ -7,59 +7,112 @@
 //
 
 #import "Parser.h"
+#import "SongRoom.h"
+#import "SongQueue.h"
+#import "UnsortedSongQueue.h"
+#import "Song.h"
 
 @implementation Parser
-/*
-// this is for users/members of songroom
-- (void)clientTransmitProtocol:(int)type{
+
++ (NSString *)makeVoteString:(NSString *)username updown:(int)updown songURI:(NSString *)songURI
+{
+    NSString * voteString = [username stringByAppendingString:[NSString stringWithFormat:@":%d:",updown]];
+    voteString = [voteString stringByAppendingString:songURI];
+    voteString = [@"VOTE:" stringByAppendingString:voteString];
+    return voteString;
+}
+
++ (NSString *)makeQueueString:(NSString *)songURI
+{
+    NSString * queueString = [@"QUEUE:" stringByAppendingString:songURI];
+    return queueString;
+}
+
++ (NSString *)makeUpdateString
+{
+    NSString * updateString = @"UPDATE";
+    return updateString;
+}
+
++ (NSString *)makeSigninString:(NSString *)username
+{
+    NSString * signinString = [@"SIGNIN:" stringByAppendingString:username];
+    return signinString;
+}
+
++ (NSString *)makeSongRoomStatusString:(SongRoom *)songRoom
+{
+    NSString * statusString = @"UPSR:";
+    //users added to string by keys
+    for (id key in songRoom.userDictionary){
+        statusString = [statusString stringByAppendingString:key];
+        statusString = [statusString stringByAppendingString:@":"];
+    }
+    statusString = [statusString stringByAppendingString:@"SONGS:"];
+    //add songs to string in order, starting with preferred songs
+    for (Song *song in songRoom.songQueue.preferredQueue.songs){
+        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%d,%d:", song.trackID, song.voteScore]];
+    }
+    //then add regular songs to string
+    for (Song *song in songRoom.songQueue.songs){
+        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%d,%d:", song.trackID, song.voteScore]];
+    }
+    //remove trailing ':'
+    statusString = [statusString substringToIndex:[statusString length] - 1];
+    return statusString;
+}
+
++ (NSString *)makePlayNextString
+{
+    NSString * nextString = @"NEWCS";
+    return nextString;
+}
+
++ (NSMutableDictionary *)readString:(NSString *)protocolString
+{
+    NSMutableDictionary * voteDict = [[NSMutableDictionary alloc] init];
+    NSArray * splitString = [protocolString componentsSeparatedByString:@":"];
     
-    switch (type){
-        case 1: sendVoteString; //send string "1 %v %s" where v is 1/0 (updown) and s is a song ID
-        case 2: sendQueueString; //send string "2 %u" where u is a songURI
-        case 3: sendUpdateString; //send string "3"
-        case 4: sendSignString; //send string "4 %n" where n is a username
-            
-    }
-
-}
-
-// this is for users/members of songroom
-- (void)clientReceiveProtocol:(NSString *)string{
-    char type = [string characterAtIndex:0];
-    switch (type){
-        case '1': readStatusString; changeSRStatus;
-            //rest of string contains update info; change local sr accordingly
-        case '2': readCurrString; changeCurrSong;//change current song and update local sr accordingly
-        //case '3': ; ??
-    }
-}
-
-// this is for users/members of songroom
-- (void)serverTransmitProtocol:(int)type{
+    if ([[splitString objectAtIndex:0] isEqualToString:@"VOTE"]){
+        [voteDict setObject:@"VOTE" forKey:@"type"];
+        [voteDict setObject:[splitString objectAtIndex:1] forKey:@"username"];
+        [voteDict setObject:@([[splitString objectAtIndex:2] integerValue]) forKey:@"updown"];
+        [voteDict setObject:[splitString objectAtIndex:3] forKey:@"songURI"];
+        
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"QUEUE"]){
+        [voteDict setObject:@"QUEUE" forKey:@"type"];
+        [voteDict setObject:[splitString objectAtIndex:1] forKey:@"songURI"];
     
-    switch (type){
-        case 1: createStatusString; sendStatusString;
-            //create and send string "1 %s" where s describes the current status of the songroom
-        case 2: sendCurrString; //create and send string "2 %s" where s is the new song playing
-        //case 3: ; ??
-            
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"UPDATE"]){
+        [voteDict setObject:@"UPDATE" forKey:@"type"];
+        
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"SIGNIN"]){
+        [voteDict setObject:@"SIGNIN" forKey:@"type"];
+        [voteDict setObject:[splitString objectAtIndex:1] forKey:@"username"];
+        
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"UPSR"]){
+        NSUInteger len = [splitString count];
+        [voteDict setObject:@"UPSR" forKey:@"type"];
+        NSMutableArray *users = [[NSMutableArray alloc] init];
+        NSMutableDictionary *songs = [[NSMutableDictionary alloc] init];
+        int i = 1;
+        while (![[splitString objectAtIndex:i] isEqualToString:@"SONGS"]){
+            [users setObject:[splitString objectAtIndex:i] atIndexedSubscript:(i - 1)];
+            ++i;
+        }
+        [voteDict setObject:users forKey:@"users"];
+        while (++i < len){
+            NSArray * splitSong = [[splitString objectAtIndex:i] componentsSeparatedByString:@","];
+            [songs setObject:@([[splitSong objectAtIndex:1] integerValue]) forKey:[splitSong objectAtIndex:0]];
+        }
+        [voteDict setObject:songs forKey:@"songs"];
+        
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"NEWCS"]){
+        [voteDict setObject:@"NEWCS" forKey:@"type"];
+        
     }
     
+    return voteDict;
 }
 
-// this is for users/members of songroom
-- (void)serverReceiveProtocol:(NSString *)string{
-    char type = [string characterAtIndex:0];
-    switch (type){
-        case '1': readVoteString; createStatusString; sendStatusString;
-            //rest of string contains up/down and trackid; update votes
-        case '2': readQueueString; addSong
-            //add song referenced by songURI to queue
-        case '3': readUpdateString; createStatusString; sendStatusString;
-            //create string with server sr info and send back to user
-        case '4': readSignString; addUser; createStatusString; sendStatusString;
-            //add username to sr and send sr info back to user
-    }
-}
-*/
 @end

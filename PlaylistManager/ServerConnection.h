@@ -28,7 +28,7 @@ extern NSString *const ConnectionDidCloseNotification;
 // This will be the username associated with the stream
 @property (nonatomic, strong) NSString * username;
 
-@property (nonatomic, weak) User *Host;
+@property (nonatomic, weak) User *host;
 
 // connection methods
 - (BOOL)open;
@@ -57,6 +57,10 @@ extern NSString *const ConnectionDidCloseNotification;
 
 // songroom can be taked from host property
 - (void) updateSongRoom;
+
+// SHOULD ONLY BE CALLED EXTERNALLY FOR TESTING PURPOSES
+- (void)outputText:(NSString *)text;
+
 
 
 @end

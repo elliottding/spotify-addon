@@ -23,6 +23,14 @@
 
 @property (nonatomic, strong) NSMutableArray *  services;
 
+// set this property to the name of the songroom you want to connect to then call the connect method
+@property (nonatomic, strong) NSString *connectTo;
+
+// Calling this method will search for a service with the name of the connectTo property
+// and open a stream to it.
+-(void)connect;
+
+
 // this will start the search for services (it might mate sense to just
 // overwrite the init and have this start automatically)
 - (void)startBrowser;
@@ -35,9 +43,15 @@
 // either send a vote or queue a song this send the information to the
 // server
 
--(void)Vote:(int)songID;
+-(void)Vote:(NSString *)songURI withDirection:(int) upDown;
+
+-(void) disconnectFromRoom;
 
 -(void) QueueSong:(NSString *) songURI;
+- (void) outputText:(NSString *)text;
+
+
+
 
 
 @end

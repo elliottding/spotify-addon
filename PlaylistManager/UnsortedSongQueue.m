@@ -7,13 +7,13 @@
 //
 
 #import "UnsortedSongQueue.h"
-
+/*
 @interface UnsortedSongQueue ()
 
-@property (nonatomic, strong) NSMutableArray *songs;
+songs has been made public
 
 @end
-
+*/
 @implementation UnsortedSongQueue
 
 - (instancetype)init

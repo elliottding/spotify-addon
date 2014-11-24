@@ -14,6 +14,9 @@
 
 @interface SongRoom : NSObject
 
+// Dictionary of username-User key-value pairs.
+@property (nonatomic, strong) NSMutableDictionary *userDictionary;
+
 // The name of the SongRoom.
 @property (nonatomic, strong) NSString *name;
 

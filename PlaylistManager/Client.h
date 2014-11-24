@@ -12,6 +12,8 @@
 
 @interface Client : NSObject
 
+@property (nonatomic, strong) NSMutableArray *  services;
+
 // will connect to this string when discovered only for testing connecting to a service
 // from services will be implemented seperately
 // To use this is must be set before browing begins
@@ -26,6 +28,20 @@
 // the client will store server responses here for comparison
 @property (nonatomic) NSString *response;
 
+@property (nonatomic, strong, readwrite) NSOutputStream *       outputStream;
+
+@property (nonatomic) int available;
+
+
 - (void)startBrowser;
+
+- (void)openStreamsToNetService:(NSNetService *)netService;
+
+-(void)connect;
+
+- (void) outputText:(NSString *)text;
+
+
+
 
 @end

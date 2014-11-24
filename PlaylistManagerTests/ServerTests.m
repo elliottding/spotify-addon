@@ -12,11 +12,21 @@
 #import "Server.h"
 #import "ServerConnection.h"
 
+#import <UIKit/UIKit.h>
+#import <XCTest/XCTest.h>
+#import "Client.h"
+#import "Server.h"
+#import "ServerConnection.h"
+#import "User.h"
+#import "Admin.h"
+
 @interface ServerTests : XCTestCase
 {
     // hold the server so it can be broken down between tests
     Server *currentServer;
     Client *otherClient;
+    User *testuser;
+    Admin *testAdmin;
 }
 
 - (void)serverThread;
@@ -39,7 +49,7 @@
 - (void)serverThread
 {
     currentServer = [[Server alloc] init];
-    if ([currentServer start:@"songroom"])
+    if ([currentServer startWithName:@"songroom" WithHost:testuser])
     {
         NSLog(@"Started server on port %zu.", (size_t) [currentServer port]);
         [[NSRunLoop currentRunLoop] run];
@@ -56,6 +66,20 @@
     otherClient.message = @"single client\r\n";
     otherClient.connectTo = @"songroom"; // the name of our server thread
     [otherClient startBrowser];
+    [NSThread sleepForTimeInterval:2.0];
+    [otherClient connect];
+    /*
+     for(NSNetService *it in otherClient.services){
+     if([it.name isEqualToString: @"songroom"]){
+     [otherClient openStreamsToNetService: it];
+     // [[NSRunLoop currentRunLoop] run];
+     
+     }
+     }
+     */
+    NSLog(@"probably shouldn't be here");
+    [NSThread sleepForTimeInterval: 5.0];
+    
 }
 
 // This implementation
@@ -66,6 +90,8 @@
     // a string to the server and expect a response
     //[NSThread detachNewThreadSelector:@selector(serverThread) toTarget:self withObject:nil];
     // [NSThread detachNewThreadSelector:@selector(startAnotherClientThread) toTarget:self withObject:nil];
+    testAdmin = [[Admin alloc] initWithUsername:@"test admin"];
+    
 }
 
 - (void)tearDown
@@ -80,21 +106,25 @@
 - (void)test_singleClient
 {
     [NSThread detachNewThreadSelector:@selector(startAnotherClientThread) toTarget:self withObject:nil];
-    currentServer = [[Server alloc] init];
-    
-    // Set server run loop to terminate after 10 seconds
-    NSDate *loopEndDate = [NSDate dateWithTimeInterval:10 sinceDate:[NSDate date]];
-    
-    if ([currentServer start:@"songroom"])
-    {
-        NSLog(@"Started server on port %zu.", (size_t) [currentServer port]);
-        // [[NSRunLoop currentRunLoop] run];
-        [[NSRunLoop currentRunLoop] runUntilDate:loopEndDate];
-    }
-    else
-    {
-        NSLog(@"Error starting server");
-    }
+    /*
+     currentServer = [[Server alloc] init];
+     
+     // Set server run loop to terminate after 10 seconds
+     NSDate *loopEndDate = [NSDate dateWithTimeInterval:10 sinceDate:[NSDate date]];
+     
+     if ([currentServer startWithName:@"songroom" WithHost:testuser])
+     {
+     NSLog(@"Started server on port %zu.", (size_t) [currentServer port]);
+     // [[NSRunLoop currentRunLoop] run];
+     [[NSRunLoop currentRunLoop] runUntilDate:loopEndDate];
+     }
+     else
+     {
+     NSLog(@"Error starting server");
+     }
+     */
+    [testAdmin startServer:@"songroom"];
+    [NSThread sleepForTimeInterval:8.0];
     XCTAssert([otherClient.response isEqualToString:@"single client\r\n"], @"bytes not transferred successfully");
 }
 

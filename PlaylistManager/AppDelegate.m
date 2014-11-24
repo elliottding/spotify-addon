@@ -9,6 +9,8 @@
 
 #import "ViewController.h"
 
+#import "Admin.h"
+
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
 static NSString * const kCallbackURL = @"spotifyiossdkexample://"; // @"CS22001-app-login://callback";
@@ -24,6 +26,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[ViewController alloc] init];
     [self.window makeKeyAndVisible];

@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Zachary Jenkins. All rights reserved.
 //
 // THIS SHOULD BE YOUR WORKING COPY
-
 #import "Server.h"
 
 #import "ServerConnection.h"
@@ -55,6 +54,7 @@
     [self stop];
 }
 
+// use this to remove the user associated with the connection
 - (void)ConnectionDidCloseNotification:(NSNotification *)note
 {
     ServerConnection *connection = [note object];
@@ -77,6 +77,7 @@
         CFWriteStreamSetProperty(writeStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
         
         ServerConnection * connection = [[ServerConnection alloc] initWithInputStream:(__bridge NSInputStream *)readStream outputStream:(__bridge NSOutputStream *)writeStream];
+        connection.Host = self.host;
         [self.connections addObject:connection];
         [connection open];
         [(NSNotificationCenter *)[NSNotificationCenter defaultCenter] addObserver:self
@@ -114,20 +115,30 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
 #pragma unused(type)
 #pragma unused(address)
     
-    Server *echoServer = (__bridge Server *)info;
-    assert(socket == echoServer->_ipv4socket || socket == echoServer->_ipv6socket);
+    Server *songroomServer = (__bridge Server *)info;
+    assert(socket == songroomServer->_ipv4socket || socket == songroomServer->_ipv6socket);
 #pragma unused(socket)
     
     // For an accept callback, the data parameter is a pointer to a CFSocketNativeHandle.
-    [echoServer acceptConnection:*(CFSocketNativeHandle *)data];
+    [songroomServer acceptConnection:*(CFSocketNativeHandle *)data];
 }
 
-- (BOOL)start:(NSString *)name
+// this is a wrapper function to start the server
+- (BOOL)startWithName:(NSString *)name WithHost:(User *)host{
+    self.name = name;
+    self.host = host;
+    [NSThread detachNewThreadSelector:@selector(start) toTarget:self withObject:nil];
+    //[self start];
+    //[[NSRunLoop currentRunLoop] run];
+    return true;
+    
+}
+
+
+- (BOOL)start
 {
     assert(_ipv4socket == NULL && _ipv6socket == NULL);       // don't call -start twice!
     
-    self.name = name;
-    self.currentEchos = 0;
     
     CFSocketContext socketCtxt = {0, (__bridge void *) self, NULL, NULL, NULL};
     _ipv4socket = CFSocketCreate(kCFAllocatorDefault, AF_INET,  SOCK_STREAM, 0, kCFSocketAcceptCallBack, &EchoServerAcceptCallBack, &socketCtxt);
@@ -191,15 +202,18 @@ static void EchoServerAcceptCallBack(CFSocketRef socket,
     
     self.netService = [[NSNetService alloc] initWithDomain:@"local."
                                                       type:@"_PlayLister._tcp."
-                                                      name: @"songroom"
+                                                      name: self.name
                                                       port:(int) self.port];
     [self.netService publishWithOptions:0];
     //
+    self.running = true;
+    [[NSRunLoop currentRunLoop] run];
     return YES;
 }
 
 - (void)stop
 {
+    self.running = false;
     NSLog(@"stopped server");
     [self.netService stop];
     self.netService = nil;
