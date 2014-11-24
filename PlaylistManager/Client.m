@@ -197,8 +197,11 @@
     for(NSNetService *it in self.services){
         if([it.name isEqualToString: self.connectTo]){
             [self openStreamsToNetService: it];
-            NSDate *loopEndDate = [NSDate dateWithTimeInterval:99 sinceDate:[NSDate date]];
+          //  NSDate *loopEndDate = [NSDate dateWithTimeInterval:99 sinceDate:[NSDate date]];
             [[NSRunLoop currentRunLoop] run];
+            //while(1){
+                
+            //}
             
         }
         //[self.serviceBrowser removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -239,6 +242,7 @@
         [self.outputStream open];
         self.inputBuffer = [[NSMutableData alloc] init];
         self.outputBuffer = [[NSMutableData alloc] init];
+        self.available =0;
         //[[NSRunLoop currentRunLoop] run];
     }
     [NSThread sleepForTimeInterval:1.0];
@@ -293,6 +297,13 @@
     }
 }
 
+-(void) postToNSNotificationCenter:(NSString *) string{
+    NSDictionary* userInfo = @{@"string": string};
+
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:@"MemberNotification" object:self userInfo:userInfo];
+}
+
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)streamEvent {
     assert(aStream == self.inputStream || aStream == self.outputStream);
     switch(streamEvent) {
@@ -325,7 +336,10 @@
                     if (string == nil) {
                         NSLog(@"response not UTF-8");
                     } else {
-                        NSLog(@"%@", string);
+                       // [NSThread detachNewThreadSelector:@selector(postToNSNotificationCenter:) toTarget:(self) withObject:string];
+                        _message = string;
+                        _available = 1;
+                       // NSLog(@"%@", string);
                     }
                     [self.inputBuffer setLength:0];
                 }

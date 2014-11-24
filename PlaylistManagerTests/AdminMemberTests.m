@@ -104,10 +104,10 @@
     [NSThread sleepForTimeInterval:2.0];
     // NEED TO HAVE THESE SEPERATED BY some interval or queue will be recieved together
     [testMember Vote:@"really cool song" withDirection:-1];
-    [NSThread sleepForTimeInterval:0.01];
+    [NSThread sleepForTimeInterval:0.5];
     [testMember QueueSong:@"awesome song"];
     
-    [NSThread sleepForTimeInterval:0.01];
+    [NSThread sleepForTimeInterval:0.5];
     
     [testMember Vote:@"good song" withDirection:-1];
     //  [NSThread sleepForTimeInterval:2.0];

@@ -126,7 +126,6 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
                 
                 //NSLog(@"writing");
                 NSDictionary* userInfo = @{@"string": string};
-                
                 NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
                 [nc postNotificationName:@"TestNotification" object:self userInfo:userInfo];
                 

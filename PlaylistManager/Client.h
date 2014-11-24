@@ -30,6 +30,9 @@
 
 @property (nonatomic, strong, readwrite) NSOutputStream *       outputStream;
 
+@property (nonatomic) int available;
+
+
 - (void)startBrowser;
 
 - (void)openStreamsToNetService:(NSNetService *)netService;
