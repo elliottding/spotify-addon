@@ -113,41 +113,49 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
     {
         case NSStreamEventHasBytesAvailable:
         {
+            
             NSLog(@"server stream event Bytes available");
-
+            
             uint8_t buffer[2048];
             NSInteger actuallyRead = [self.inputStream read:(uint8_t *)buffer maxLength:sizeof(buffer)];
             
-
+            
             if (actuallyRead > 0)
             {
                 [self.inputBuffer appendBytes:buffer length: (NSUInteger)actuallyRead];
                 NSString *string = [[NSString alloc] initWithData:self.inputBuffer encoding:NSUTF8StringEncoding];
-                //[self outputText: string];
-                NSLog(@"writing");
-
-                NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
-                NSLog(@"wrote");
-
-                if (actuallyWritten != actuallyRead)
-                {
-                    // -write:maxLength: may return -1 to indicate an error or a non-negative
-                    // value less than maxLength to indicate a 'short write'.  In the case of an
-                    // error we just shut down the connection.  The short write case is more
-                    // interesting.  A short write means that the client has sent us data to echo but
-                    // isn't reading the data that we send back to it, thus causing its socket receive
-                    // buffer to fill up, thus causing our socket send buffer to fill up.  Again, our
-                    // response to this situation is that we simply drop the connection.
-                    NSLog(@"short write");
-
-                    [self close];
-                }
-                else
-                {
-                    [NSThread sleepForTimeInterval:1.0];
-                    //[self outputText:@"client recieved echo \r\n"];
-                    NSLog(@"Echoed %zd bytes.", (ssize_t) actuallyWritten);
-                } 
+                [self.inputBuffer setLength: 0];
+                
+                // [self outputText: string];
+                // CFRunLoopStop(CFRunLoopGetCurrent());
+                
+                //NSLog(@"writing");
+                NSDictionary* userInfo = @{@"string": string};
+                NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+                [nc postNotificationName:@"TestNotification" object:self userInfo:userInfo];
+                
+                //NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
+                /* NSLog(@"wrote");
+                 
+                 if (actuallyWritten != actuallyRead)
+                 {
+                 // -write:maxLength: may return -1 to indicate an error or a non-negative
+                 // value less than maxLength to indicate a 'short write'.  In the case of an
+                 // error we just shut down the connection.  The short write case is more
+                 // interesting.  A short write means that the client has sent us data to echo but
+                 // isn't reading the data that we send back to it, thus causing its socket receive
+                 // buffer to fill up, thus causing our socket send buffer to fill up.  Again, our
+                 // response to this situation is that we simply drop the connection.
+                 NSLog(@"short write");
+                 
+                 [self close];
+                 }
+                 else
+                 {
+                 [NSThread sleepForTimeInterval:1.0];
+                 //[self outputText:@"client recieved echo \r\n"];
+                 NSLog(@"Echoed %zd bytes.", (ssize_t) actuallyWritten);
+                 } */
             }
             else
             {
@@ -158,16 +166,16 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
         } break;
         case NSStreamEventEndEncountered:
             NSLog(@"server stream event event end");
-
+            
         case NSStreamEventErrorOccurred:
         {
             NSLog(@"server stream event error");
-
+            
             [self close];
         } break;
         case NSStreamEventHasSpaceAvailable:
             NSLog(@"space available");
-
+            
         case NSStreamEventOpenCompleted:
         default:
         {
