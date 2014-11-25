@@ -8,6 +8,9 @@
 
 #import "Admin.h"
 #import "Server.h"
+#import "Parser.h"
+#import "User.h"
+#import "Song.h"
 #include "ServerConnection.h"
 
 @interface Admin ()
@@ -70,9 +73,35 @@
     NSDictionary* userInfo = notification.userInfo;
     NSString* string = userInfo[@"string"];
     [self outputText:string toConnection:notification.object];
+    [self executeDict:[Parser readString:string]];
     NSLog(@"Admin recieved: %@", string);
     
 }
+
+// THIS FUNCTION DOESN'T WORK YET B/C songRoom is not recognized as a field of admin
+-(void)executeDict:(NSMutableDictionary *)dict{
+    if ([[dict objectForKey:@"type"] isEqualToString:@"VOTE"]){
+        if ([self.songRoom.songQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
+            //vote for that song
+        } else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
+            //vote for that song
+        }
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
+       //retrieve song by trackID
+        Song* song = [dict objectForKey:@"songURI"];// get song by
+        [self.songRoom.songQueue addSong:song];
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"UPDATE"]){
+        [Parser makeSongRoomStatusString:self.songRoom];
+        //is songRoom accessible?
+        //send string
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"SIGNIN"]){
+        //make a user object?
+        User *user = [[User alloc] initWithUsername:[dict objectForKey:@"username"]];
+        [self.songRoom registerUser:user];
+    }
+
+}
+
 
 -(void)stopServer{
     [self.songroomServer stop];

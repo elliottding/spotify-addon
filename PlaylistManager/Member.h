@@ -43,12 +43,15 @@
 // either send a vote or queue a song this send the information to the
 // server
 
+
+
 -(void)Vote:(NSString *)songURI withDirection:(int) upDown;
 
 -(void) disconnectFromRoom;
 
 -(void) QueueSong:(NSString *) songURI;
 - (void) outputText:(NSString *)text;
+
 
 
 

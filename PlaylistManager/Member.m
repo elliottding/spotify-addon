@@ -9,6 +9,7 @@
 #import "Member.h"
 #import "Parser.h"
 #import "Client.h"
+#import "User.h"
 
 
 @interface Member()
@@ -46,6 +47,7 @@
         if(_connection.available){
             _connection.available = 0;
             NSLog(_connection.message);
+            [self executeDict:[Parser readString:_connection.message]];
             _connection.message = nil;
         }
         
@@ -92,6 +94,29 @@
     self.outputBuffer = [[NSMutableData alloc] init];
     [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
     
+}
+
+-(void)executeDict:(NSMutableDictionary *)dict
+{
+    if ([[dict objectForKey:@"type"] isEqualToString:@"UPSR"]){
+        for (NSString * user in [dict objectForKey:@"users"]){
+            
+
+        }
+        for (id key in [dict objectForKey:@"songs"]){
+            if ([_songRoom.songQueue getIndexOfSong:key] >= 0){
+                
+            } else if (_host.songRoom.preferredSongQueue.getIndexOfSong >= 0){
+                
+            }
+        }
+        
+        //update song room
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
+        //error because songRoom is readonly?
+        //new song by removing top song?
+        [_songRoom.songQueue removeTopSong];
+    }
 }
 
 

@@ -30,4 +30,6 @@
 // Initializes a User with the given username.
 - (instancetype)initWithUsername:(NSString *)username;
 
+-(void)executeDict:(NSMutableDictionary *)dict;
+
 @end

@@ -8,6 +8,11 @@
 // THIS SHOULD BE YOUR WORKING COPY
 
 #import "ServerConnection.h"
+#import "User.h"
+#import "SongRoom.h"
+#import "SongQueue.h"
+#import "Song.h"
+#import "VoteBox.h"
 
 NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotification";
 
@@ -177,6 +182,21 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
             // do nothing
         } break;
     }
+}
+
+
+//TODO
+- (void) userDidDisconnect{}
+
+- (void) RecievedVote:(NSData *) voteInfo{
+    User.songRoom.songQueue
+}
+
+- (User *) userRequestToJoin:(NSData *) infoToJoin{
+    User * user;
+    
+    
+    return user;
 }
 
 @end
