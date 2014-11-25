@@ -5,7 +5,7 @@
 //  Created by Elliott Ding on 11/11/14.
 //
 //
-
+#import "User.h"
 #import "VoteBox.h"
 
 @interface VoteBox ()

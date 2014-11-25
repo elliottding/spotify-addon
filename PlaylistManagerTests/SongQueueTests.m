@@ -36,9 +36,11 @@
     song2 = [[Song alloc] initWithTrackID:2 andTrack:nil];
     song3 = [[Song alloc] initWithTrackID:3 andTrack:nil];
     song4 = [[Song alloc] initWithTrackID:4 andTrack:nil];
+    /*
     user1 = [[User alloc] initWithUsername:@"user1"];
     user2 = [[User alloc] initWithUsername:@"user2"];
     user3 = [[User alloc] initWithUsername:@"user3"];
+     */
 }
 
 - (void)tearDown

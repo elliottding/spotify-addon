@@ -184,19 +184,4 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
     }
 }
 
-
-//TODO
-- (void) userDidDisconnect{}
-
-- (void) RecievedVote:(NSData *) voteInfo{
-    User.songRoom.songQueue
-}
-
-- (User *) userRequestToJoin:(NSData *) infoToJoin{
-    User * user;
-    
-    
-    return user;
-}
-
 @end
