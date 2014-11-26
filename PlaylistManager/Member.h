@@ -36,10 +36,6 @@
 // overwrite the init and have this start automatically)
 - (void)startBrowser;
 
-// Once the user decides what room to join send the NSNetServiece object
-// from the services array to this method and it will create the connection
-- (void)openStreamsToNetService:(NSNetService *)netService;
-
 // These are the methods that should be called when a user wants to
 // either send a vote or queue a song this send the information to the
 // server
@@ -49,9 +45,9 @@
 
 -(void)Vote:(NSString *)songURI withDirection:(int) upDown;
 
--(void) disconnectFromRoom;
-
 -(void) QueueSong:(NSString *) songURI;
+
+// for testing purposes only
 - (void) outputText:(NSString *)text;
 
 

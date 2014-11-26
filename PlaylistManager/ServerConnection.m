@@ -23,9 +23,6 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
 @property (nonatomic, strong, readwrite) NSMutableData *        outputBuffer;
 // this method should send a buffer to the client
 
-- (BOOL) sendBytes:(NSString *) bytesToSend;
-
-
 @end
 
 @implementation ServerConnection
