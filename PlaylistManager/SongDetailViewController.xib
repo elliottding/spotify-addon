@@ -24,6 +24,9 @@
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="165" y="242" width="70" height="30"/>
                     </variation>
+                    <connections>
+                        <action selector="playSongButtonAction" destination="-1" eventType="touchUpInside" id="eFp-Yb-TTj"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3x-7X-gnE">
                     <rect key="frame" x="227" y="280" width="146" height="30"/>
@@ -33,6 +36,9 @@
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="127" y="280" width="146" height="30"/>
                     </variation>
+                    <connections>
+                        <action selector="removeFromQueueButtonAction" destination="-1" eventType="touchUpInside" id="W3c-VM-N9H"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABZ-Fr-hSN">
                     <rect key="frame" x="273" y="318" width="55" height="30"/>
