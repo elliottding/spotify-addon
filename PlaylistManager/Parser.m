@@ -24,7 +24,7 @@
 
 + (NSString *)makeQueueString:(NSString *)songURI
 {
-    NSString * queueString = [@"QUEUE:" stringByAppendingString:songURI];
+    NSString *queueString = [@"QUEUE:" stringByAppendingString:songURI];
     return queueString;
 }
 

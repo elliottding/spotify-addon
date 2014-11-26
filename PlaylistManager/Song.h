@@ -23,7 +23,7 @@
 @property (nonatomic, strong, readonly) VoteBox *voteBox;
 
 // The sum total of all votes in the vote box registered to this Song.
-@property (nonatomic, readonly) int voteScore;
+@property (nonatomic) int voteScore;
 
 // Initializes a new Song with the specified track ID.
 - (instancetype)initWithTrackID:(int)trackID andTrack:(SPTTrack *)track;

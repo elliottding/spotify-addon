@@ -25,7 +25,7 @@
  1. VOTE 
  {
     "type" : @"VOTE"
-    "user" : (NSString)
+    "username" : (NSString)
     "updown" : (int)
     "songURI" : (NSString)
  }

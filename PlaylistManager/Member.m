@@ -10,7 +10,7 @@
 #import "Parser.h"
 #import "Client.h"
 #import "User.h"
-
+#import "SpotifyRetriever.h"
 
 @interface Member()
 
@@ -101,21 +101,40 @@
 {
     if ([[dict objectForKey:@"type"] isEqualToString:@"UPSR"]){
         for (NSString * user in [dict objectForKey:@"users"]){
-            
-
+            User *userobj = [[User alloc] initWithUsername:user];
+            //add user to dictionary of users if not in users
+            [self.songRoom registerUser:userobj]; //registerUser overwrites previous values?
         }
+        for (id key in self.songRoom.userDictionary){
+            if (![[dict objectForKey:@"users"] objectForKey:key]){
+                [self.songRoom unregisterUsername:key];
+            }
+            //if user is not in list of users sent by server, then remove
+        }
+        SongQueue *newQ = [[SongQueue alloc] init];
+        __block Song *newsong;
         for (id key in [dict objectForKey:@"songs"]){
-            if ([self.songRoom.songQueue getIndexOfSong:key] >= 0){
-                
-            } //else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong >= 0]){
-                // Not sure what you're trying to do here
-            //}
+            
+            [[SpotifyRetriever instance] requestTrack:key callback:^(NSError *error, SPTTrack *track)
+             {
+                 if (error != nil)
+                 {
+                     NSLog(@"*** error: %@", error);
+                     return;
+                 }
+                 
+                 newsong = [[Song alloc] initWithTrack:track];
+                 
+             }];
+            //SPTTrack * track;
+            // Song *newsong = [[Song alloc] initWithTrack:track];
+            newsong.voteScore = [[[dict objectForKey:@"songs"] objectForKey:key] intValue];
+            //this might cause an error, i'm not sure if this number is actually stored as an int in dict
+            [newQ appendSong:newsong];
         }
-        
-        //update song room
+        self.songRoom.songQueue = newQ;
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
-        //error because songRoom is readonly?
-        //new song by removing top song?
+        //new song by removing top song
         [self.songRoom.songQueue removeTopSong];
     }
 }

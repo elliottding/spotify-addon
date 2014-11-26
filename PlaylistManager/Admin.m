@@ -78,32 +78,30 @@
     
 }
 
-// THIS FUNCTION DOESN'T WORK YET B/C songRoom is not recognized as a field of admin
 -(void)executeDict:(NSMutableDictionary *)dict FromSender: (ServerConnection *) connection{
     if ([[dict objectForKey:@"type"] isEqualToString:@"VOTE"]){
-        if ([self.songRoom.songQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
-            //vote for that song
+        int i;
+        if ((i = [self.songRoom.songQueue getIndexOfSong:[dict objectForKey:@"songURI"]]) >= 0){
+            VoteBox *vb = [[self.songRoom.songQueue.songs objectAtIndex:i] voteBox];
+            [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
         } else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
-            //vote for that song
+            VoteBox *vb = [[self.songRoom.songQueue.preferredQueue.songs objectAtIndex:i] voteBox];
+            [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
         }
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
-       //retrieve song by trackID
-        Song* song = [dict objectForKey:@"songURI"];// get song by
+        Song *song = [[Song alloc] initWithTrack:nil]; // get the correct SPTTrack
         [self.songRoom.songQueue addSong:song];
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"UPDATE"]){
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
-        //is songRoom accessible?
-        //send string
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"SIGNIN"]){
-        //make a user object?
         User *user = [[User alloc] initWithUsername:[dict objectForKey:@"username"]];
         [self.songRoom registerUser:user];
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
         
     }
-
+    
 }
 
 
