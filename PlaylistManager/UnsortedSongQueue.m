@@ -8,12 +8,12 @@
 
 #import "UnsortedSongQueue.h"
 /*
-@interface UnsortedSongQueue ()
-
-songs has been made public
-
-@end
-*/
+ @interface UnsortedSongQueue ()
+ 
+ songs has been made public
+ 
+ @end
+ */
 @implementation UnsortedSongQueue
 
 - (instancetype)init
@@ -110,5 +110,18 @@ songs has been made public
     [self removeSongAtIndex:index1];
     [self insertSong:song atIndex:index2];
 }
+
+- (int)getIndexOfURI:(NSString *) trackURI{
+    for (int i = 0; i < self.songs.count; i++)
+    {
+        Song * current = self.songs[i];
+        if ([current.identifier isEqualToString: trackURI])
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 
 @end

@@ -1,26 +1,25 @@
 //
-//  HistoryViewController.m
+//  RoomViewController.m
 //  PlaylistManager
 //
-//  Created by Joshua Stevens-Stein on 11/19/14.
+//  Created by Elliott Ding on 11/26/14.
 //  Copyright (c) 2014 Elliott Ding. All rights reserved.
 //
 
-#import "HistoryViewController.h"
+#import "RoomViewController.h"
 
-@interface HistoryViewController ()
+@interface RoomViewController ()
 
 @end
 
-@implementation HistoryViewController
+@implementation RoomViewController
 
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

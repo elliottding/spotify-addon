@@ -8,6 +8,8 @@
 
 #import "Song.h"
 
+#import "SpotifyRetriever.h"
+
 NSString * const ObserveValueKeypath = @"totalScore";
 
 @interface Song ()
@@ -19,6 +21,20 @@ NSString * const ObserveValueKeypath = @"totalScore";
 @end
 
 @implementation Song
+
+- (instancetype)initWithIdentifier:(NSString *)identifier
+{
+    self = [super init];
+    if (self)
+    {
+        self.voteBox = [[VoteBox alloc] init];
+        [self.voteBox addObserver:self forKeyPath:ObserveValueKeypath options:0 context:nil];
+        self.voteScore = 0;
+        self.identifier = identifier;
+        [self loadTrackWithIdentifier:self.identifier];
+    }
+    return self;
+}
 
 - (instancetype)initWithTrackID:(int)trackID andTrack:(SPTTrack *)track
 {
@@ -45,6 +61,33 @@ NSString * const ObserveValueKeypath = @"totalScore";
         self.track = track;
     }
     return self;
+}
+
+- (void)setDelegate:(id<SongDelegate>)delegate
+{
+    if (delegate != self.delegate)
+    {
+        // if track has already loaded, immediately send a trackDidLoad message
+        if (self.track != nil)
+        {
+            [delegate trackDidLoad];
+        }
+        _delegate = delegate;
+    }
+}
+
+- (void)loadTrackWithIdentifier:(NSString *)identifier
+{
+    [[SpotifyRetriever instance] requestTrack:identifier callback:^(NSError *error, SPTTrack *track)
+     {
+         if (error != nil)
+         {
+             NSLog(@"*** error: %@", error);
+             return;
+         }
+         self.track = track;
+         [self.delegate trackDidLoad];
+     }];
 }
 
 - (void)dealloc

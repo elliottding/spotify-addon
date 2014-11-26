@@ -51,11 +51,11 @@
     statusString = [statusString stringByAppendingString:@"SONGS:"];
     //add songs to string in order, starting with preferred songs
     for (Song *song in songRoom.songQueue.preferredQueue.songs){
-        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%d,%d:", song.trackID, song.voteScore]];
+        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%@,%d:", song.identifier, song.voteScore]];
     }
     //then add regular songs to string
     for (Song *song in songRoom.songQueue.songs){
-        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%d,%d:", song.trackID, song.voteScore]];
+        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%@,%d:", song.identifier, song.voteScore]];
     }
     //remove trailing ':'
     statusString = [statusString substringToIndex:[statusString length] - 1];
