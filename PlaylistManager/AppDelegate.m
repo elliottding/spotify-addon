@@ -12,6 +12,7 @@
 #import "PlaylistNavigationController.h"
 
 #import "SpotifyRetriever.h"
+#import "TabBarController.h"
 
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
@@ -50,7 +51,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[PlaylistNavigationController alloc] initWithSongQueue:songQueue];
+    self.window.rootViewController = [[TabBarController alloc] initWithSongQueue:songQueue];
     [self.window makeKeyAndVisible];
     return YES;
 }

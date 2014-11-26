@@ -51,6 +51,8 @@
 		4FE36D231A1D21E300D21E5C /* SpotifyRetrieverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36D221A1D21E300D21E5C /* SpotifyRetrieverTests.m */; };
 		4FE36D271A1D645A00D21E5C /* SongRoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36D261A1D645A00D21E5C /* SongRoomView.m */; };
 		4FE36D621A1E701100D21E5C /* SongView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE36D611A1E701100D21E5C /* SongView.xib */; };
+		4FF5539A1A266A5A0062B600 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF553991A266A5A0062B600 /* TabBarController.m */; };
+		4FF5539D1A266C740062B600 /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5539C1A266C740062B600 /* RoomViewController.m */; };
 		5223534D1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		5223534E1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		522353501A14333B008782E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534F1A14333B008782E6 /* AVFoundation.framework */; };
@@ -144,6 +146,10 @@
 		4FE36D251A1D645A00D21E5C /* SongRoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongRoomView.h; sourceTree = "<group>"; };
 		4FE36D261A1D645A00D21E5C /* SongRoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongRoomView.m; sourceTree = "<group>"; };
 		4FE36D611A1E701100D21E5C /* SongView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongView.xib; sourceTree = "<group>"; };
+		4FF553981A266A5A0062B600 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		4FF553991A266A5A0062B600 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		4FF5539B1A266C740062B600 /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
+		4FF5539C1A266C740062B600 /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
 		5223534C1A143007008782E6 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		5223534F1A14333B008782E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82A939DB1A1AFBFB00CB7E45 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
@@ -199,6 +205,8 @@
 				4F47BAFB1A12E09800660967 /* ViewController.m */,
 				4FD4AB141A2633A900D91D54 /* PlaylistNavigationController.h */,
 				4FD4AB151A2633A900D91D54 /* PlaylistNavigationController.m */,
+				4FF553981A266A5A0062B600 /* TabBarController.h */,
+				4FF553991A266A5A0062B600 /* TabBarController.m */,
 				82A939DB1A1AFBFB00CB7E45 /* Parser.h */,
 				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
 				4FE36D1F1A1D142F00D21E5C /* SpotifyRetriever.h */,
@@ -324,6 +332,8 @@
 				3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */,
 				4FD4AB171A26390800D91D54 /* SearchViewController.h */,
 				4FD4AB181A26390800D91D54 /* SearchViewController.m */,
+				4FF5539B1A266C740062B600 /* RoomViewController.h */,
+				4FF5539C1A266C740062B600 /* RoomViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -450,8 +460,10 @@
 				4F47BB251A12E0DC00660967 /* Song.m in Sources */,
 				4FD4AB1C1A263D1B00D91D54 /* SongSearchView.m in Sources */,
 				4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */,
+				4FF5539D1A266C740062B600 /* RoomViewController.m in Sources */,
 				4FE36D211A1D142F00D21E5C /* SpotifyRetriever.m in Sources */,
 				4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */,
+				4FF5539A1A266A5A0062B600 /* TabBarController.m in Sources */,
 				4F0D1A191A257D3300BE4412 /* PlaylistTableViewController.m in Sources */,
 				4F47BB281A12E0DC00660967 /* UnsortedSongQueue.m in Sources */,
 				4FD4AB161A2633A900D91D54 /* PlaylistNavigationController.m in Sources */,
