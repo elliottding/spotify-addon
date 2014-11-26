@@ -31,6 +31,7 @@
                                              selector:@selector(receiveTestNotification:)
                                                  name:@"MemberNotification"
                                                object:nil];
+    [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
     
 }
 
@@ -93,7 +94,6 @@
     [_connection startBrowser];
     self.services = _connection.services;
     self.outputBuffer = [[NSMutableData alloc] init];
-    [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
     
 }
 
@@ -149,6 +149,9 @@
 -(void)QueueSong:(NSString *)songURI{
     NSString *queueRequest = [Parser makeQueueString:songURI];
     [self outputText:queueRequest];
+}
+-(NSMutableArray *) currentServices{
+    return _connection.services;
 }
 
 @end
