@@ -11,11 +11,14 @@
 #import "PlaylistTableViewController.h"
 #import "SelectPlaylistTableViewController.h"
 #import "SpotifyRetriever.h"
+#import "Member.h"
 
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
 static NSString * const kCallbackURL = @"spotifyiossdkexample://"; // @"CS22001-app-login://callback";
 static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
+
+
 
 @interface AppDelegate ()
 
@@ -59,9 +62,11 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         NSLog(@"Auth success");
         [self playUsingSession:session];
         [SpotifyRetriever instance].session = session;
+        /*
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = [[SelectPlaylistTableViewController alloc] init];
         [self.window makeKeyAndVisible];
+         */
         
     };
     
