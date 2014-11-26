@@ -9,10 +9,8 @@
 #import "SongQueue.h"
 
 #import "PlaylistTableViewController.h"
-#import "NavigationController.h"
 #import "SelectPlaylistTableViewController.h"
 #import "SpotifyRetriever.h"
-#import "TabBarController.h"
 
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
@@ -31,9 +29,6 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 {
     // Set up a song queue for testing
     [self loginToSpotifyWithApplication:application];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[SelectPlaylistTableViewController alloc] init];
-    [self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -64,6 +59,10 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         NSLog(@"Auth success");
         [self playUsingSession:session];
         [SpotifyRetriever instance].session = session;
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = [[SelectPlaylistTableViewController alloc] init];
+        [self.window makeKeyAndVisible];
+        
     };
     
     // Call the token swap service to get a logged in session
