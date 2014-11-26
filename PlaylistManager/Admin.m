@@ -104,6 +104,7 @@
          }]; */
         NSLog(@"Spotify URI: %@", newsong.identifier);
         [self.songRoom.songQueue addSong:newsong];
+        NSLog(@"Next song is: %@", self.songRoom.songQueue.nextSong.identifier);
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"UPDATE"]){

@@ -34,6 +34,7 @@
     testAdmin = [[Admin alloc] initWithUsername:@"test admin"];
     testMember = [[Member alloc] initWithUsername:@"test user"];
     testSongRoom = [[SongRoom alloc] initWithName:@"test songroom"];
+    testAdmin.songRoom = testSongRoom;
 }
 
 - (void)tearDown {
@@ -97,11 +98,11 @@
 }
 
 - (void)testMemberConnectToService{
-    [testAdmin startServer:@"songroom"];
+    [testAdmin startServer:@"test songroom"];
     // [NSThread detachNewThreadSelector:@selector(memberThread) toTarget:self withObject:nil];
     [testMember startBrowser];
     [NSThread sleepForTimeInterval: 2.0];
-    testMember.connectTo = @"songroom";
+    testMember.connectTo = @"test songroom";
     [testMember connect];
     [NSThread sleepForTimeInterval:2.0];
     // NEED TO HAVE THESE SEPERATED BY some interval or queue will be recieved together
@@ -112,7 +113,7 @@
     [NSThread sleepForTimeInterval:0.5];
     
     //[testMember Vote:@"good song" withDirection:-1];
-    [NSThread sleepForTimeInterval:10.0];
+    [NSThread sleepForTimeInterval:2.0];
     // [testMember outputText:@"my favorite song\r\n"];
     // [testMember outputText:@"my less favorite song\r\n"];
     
