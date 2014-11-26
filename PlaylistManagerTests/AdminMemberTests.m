@@ -158,7 +158,7 @@
     [NSThread sleepForTimeInterval: 2.0];
     testMember.connectTo = @"VoteTest";
     [testMember connect];
-    [NSThread sleepForTimeInterval: 4.0];
+    [NSThread sleepForTimeInterval: 2.0];
     [testMember QueueSong:@"7dS5EaCoMnN7DzlpT6aRn2"];
     [NSThread sleepForTimeInterval: 1.0];
     [testMember Vote:@"7dS5EaCoMnN7DzlpT6aRn2" withDirection:-1];

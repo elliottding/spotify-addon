@@ -52,7 +52,7 @@
             [self executeDict:[Parser readString:_connection.message]];
             _connection.message = nil;
             _connection.available = 0;
-
+            
         }
         
     }
@@ -67,12 +67,11 @@
     NSInteger actuallyWritten = [_connection.outputStream write:[self.outputBuffer bytes] maxLength:[self.outputBuffer length]];
     if (actuallyWritten > 0) {
         //  [self.outputBuffer replaceBytesInRange:NSMakeRange(0, (NSUInteger) actuallyWritten) withBytes:NULL length:0];
-        [self.outputBuffer setLength:0];
-        // If we didn't write all the bytes we'll continue writing them in response to the next
-        // has-space-available event.
+        [self.outputBuffer setLength:0]; // purge buffer after writing
+        
     } else {
-        // A non-positive result from -write:maxLength: indicates a failure of some form; in this
-        // simple app we respond by simply closing down our connection.
+        // A non-positive result from -write:maxLength: indicates a failure of some form
+        
     }
 }
 
@@ -110,32 +109,11 @@
             [self.songRoom registerUser:userobj]; //registerUser overwrites previous values?
             [self.songRoom containsUsername:@"test user"];
         }
-        /*
-        for (id key in self.songRoom.userDictionary){
-            if (![[dict objectForKey:@"users"] objectForKey:key]){
-                [self.songRoom unregisterUsername:key];
-            }
-            //if user is not in list of users sent by server, then remove
-        }*/
+        
         SongQueue *newQ = [[SongQueue alloc] init];
         for (id key in [dict objectForKey:@"songs"]){
-            
-            /*[[SpotifyRetriever instance] requestTrack:key callback:^(NSError *error, SPTTrack *track)
-             {
-                 if (error != nil)
-                 {
-                     NSLog(@"*** error: %@", error);
-                     return;
-                 }
-                 
-                 newsong = [[Song alloc] initWithTrack:track];
-                 
-             }];*/
-            //SPTTrack * track;
-            
-             Song *newsong = [[Song alloc] initWithIdentifier:key];
+            Song *newsong = [[Song alloc] initWithIdentifier:key];
             newsong.voteScore = [[[dict objectForKey:@"songs"] objectForKey:key] intValue];
-            //this might cause an error, i'm not sure if this number is actually stored as an int in dict
             [newQ appendSong:newsong];
         }
         self.songRoom.songQueue = newQ;
