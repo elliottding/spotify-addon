@@ -8,11 +8,16 @@
 
 #import "NavigationController.h"
 #import "PlaylistTableViewController.h"
+#import "SearchViewController.h"
 #import "SongQueue.h"
 
 @interface NavigationController ()
 
 @property (nonatomic, strong) SongQueue *songQueue;
+
+@property (nonatomic, strong) PlaylistTableViewController *playlistViewController;
+
+@property (nonatomic, strong) SearchViewController *searchViewController;
 
 @end
 
@@ -26,6 +31,7 @@
         PlaylistTableViewController *ptvc = [[PlaylistTableViewController alloc]
                                              initWithSongQueue:songQueue];
         [self pushViewController:ptvc animated:NO];
+        self.playlistViewController = ptvc;
         self.songQueue = songQueue;
     }
     return self;
@@ -41,6 +47,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)pushSearchViewController
+{
+    [self pushViewController:self.searchViewController animated:YES];
 }
 
 /*

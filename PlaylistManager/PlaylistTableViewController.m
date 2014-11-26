@@ -12,6 +12,8 @@
 
 #import "PlaylistTableView.h"
 
+#import "NavigationController.h"
+
 #import "SongView.h"
 
 @interface PlaylistTableViewController ()
@@ -26,8 +28,22 @@
     if (self)
     {
         self.songQueue = songQueue;
+        [self setupAddButton];
     }
     return self;
+}
+
+- (void)setupAddButton
+{
+    NavigationController *nav = (NavigationController *)self.navigationController;
+    UIBarButtonItem *addButton;
+    addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                              target:nav
+                                                              action:@selector(pushSearchViewController)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    
+    // TODO: The below doesn't work, not sure why
+    // [self setToolbarItems:@[addButton] animated:NO];
 }
 
 - (void)reloadView
@@ -50,22 +66,8 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     // Register the cell class for a reuse identifier
     [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:@"SongCell"];
-    
-    /*
-    NSMutableArray *trackIdentifiers = [[NSMutableArray alloc] init];
-    NSString *tid = @"0DiWol3AO6WpXZgp0goxAV";
-    [trackIdentifiers addObject:@[tid, tid, tid]];
-    [trackIdentifiers addObject:@[tid, tid, tid, tid]];
-    self.trackIdentifiers = trackIdentifiers;
-    */
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,7 +81,6 @@
 // Two sections: first for preferred queue, second for regular queue
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 2;
 }
 
@@ -94,14 +95,10 @@
         return self.songQueue.songs.count;
     }
     return 0;
-    
-    // NSArray *sectionTrackIdentifiers = self.trackIdentifiers[section];
-    // return sectionTrackIdentifiers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"indexPath: %ld", indexPath.section);
     static NSString *reuseIdentifier = @"SongCell";
     SongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
                                                               forIndexPath:indexPath];

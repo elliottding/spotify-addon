@@ -14,4 +14,6 @@
 
 - (instancetype)initWithSongQueue:(SongQueue *)songQueue;
 
+- (void)pushSearchViewController;
+
 @end

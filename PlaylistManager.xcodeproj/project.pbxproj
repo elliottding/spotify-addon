@@ -39,6 +39,7 @@
 		4F47BC301A1529EE00660967 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2C1A1529EE00660967 /* Server.m */; };
 		4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2E1A1529EE00660967 /* ServerConnection.m */; };
 		4FD4AB161A2633A900D91D54 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4AB151A2633A900D91D54 /* NavigationController.m */; };
+		4FD4AB191A26390800D91D54 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4AB181A26390800D91D54 /* SearchViewController.m */; };
 		4FE36CC51A1CEB4400D21E5C /* AdminMemberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */; };
 		4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD01A1CEF3200D21E5C /* Admin.m */; };
 		4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD21A1CEF3200D21E5C /* Member.m */; };
@@ -122,6 +123,8 @@
 		4F47BC2E1A1529EE00660967 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		4FD4AB141A2633A900D91D54 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		4FD4AB151A2633A900D91D54 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		4FD4AB171A26390800D91D54 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		4FD4AB181A26390800D91D54 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMemberTests.m; sourceTree = "<group>"; };
 		4FE36CCF1A1CEF3200D21E5C /* Admin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Admin.h; sourceTree = "<group>"; };
 		4FE36CD01A1CEF3200D21E5C /* Admin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Admin.m; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				3B7F3B301A1D24CD00123649 /* HistoryViewController.m */,
 				3B7F3B371A1D4F1200123649 /* SelectPlaylistTableViewController.h */,
 				3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */,
+				4FD4AB171A26390800D91D54 /* SearchViewController.h */,
+				4FD4AB181A26390800D91D54 /* SearchViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				4F47BB291A12E0DC00660967 /* User.m in Sources */,
 				4F47BB261A12E0DC00660967 /* SongQueue.m in Sources */,
 				3B7F3B361A1D252100123649 /* PlaylistViewController.m in Sources */,
+				4FD4AB191A26390800D91D54 /* SearchViewController.m in Sources */,
 				4F47BB2A1A12E0DC00660967 /* VoteBox.m in Sources */,
 				3B7F3B331A1D24CD00123649 /* HistoryViewController.m in Sources */,
 				82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */,
