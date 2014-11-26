@@ -12,7 +12,7 @@ NSString * const ObserveValueKeypath = @"totalScore";
 
 @interface Song ()
 
-@property (nonatomic, readwrite) int voteScore;
+//@property (nonatomic, readwrite) int voteScore;
 
 @property (nonatomic, strong, readwrite) VoteBox *voteBox;
 

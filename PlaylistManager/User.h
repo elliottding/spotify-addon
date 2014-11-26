@@ -23,7 +23,7 @@
 // because SongRoom needs to modify this. Need to come up with some way of qualifying this as readonly
 // while still allowing SongRoom to set its value.
 // If this property is modified, then the User is automatically unregistered from the previous SongRoom.
-@property (nonatomic, strong) SongRoom *songRoom;
+@property (nonatomic, weak) SongRoom *songRoom;
 
 @property (nonatomic, strong) SPTSession *session;
 
