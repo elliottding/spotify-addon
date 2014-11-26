@@ -132,7 +132,8 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
                 //NSLog(@"writing");
                 NSDictionary* userInfo = @{@"string": string};
                 NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-                [nc postNotificationName:@"TestNotification" object:self userInfo:userInfo];
+                
+                [nc postNotificationName: @"TestNotification" object:self userInfo:userInfo];
                 
                 //NSInteger actuallyWritten = [self.outputStream write:buffer maxLength:(NSUInteger)actuallyRead];
                 /* NSLog(@"wrote");

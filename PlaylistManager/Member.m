@@ -45,10 +45,11 @@
 -(void) manageInput{
     while (1) {
         if(_connection.available){
-            _connection.available = 0;
             NSLog(_connection.message);
             [self executeDict:[Parser readString:_connection.message]];
             _connection.message = nil;
+            _connection.available = 0;
+
         }
         
     }
