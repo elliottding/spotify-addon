@@ -32,6 +32,8 @@
                                                  name:@"MemberNotification"
                                                object:nil];
     [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
+    [NSThread sleepForTimeInterval:1.0];
+    [self outputText:[Parser makeSigninString:self.username]];
     
 }
 

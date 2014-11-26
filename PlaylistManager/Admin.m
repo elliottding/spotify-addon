@@ -12,6 +12,7 @@
 #import "User.h"
 #import "Song.h"
 #include "ServerConnection.h"
+#import "SpotifyRetriever.h"
 
 @interface Admin ()
 
@@ -72,9 +73,9 @@
 -(void)receiveTestNotification:(NSNotification *) notification{
     NSDictionary* userInfo = notification.userInfo;
     NSString* string = userInfo[@"string"];
-    [self outputText:string toConnection:notification.object];
-    //[self executeDict:[Parser readString:string]];
     NSLog(@"Admin recieved: %@", string);
+    //[self outputText:string toConnection:notification.object];
+    [self executeDict:[Parser readString:string] FromSender:notification.object];
     
 }
 
@@ -89,8 +90,22 @@
             [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
         }
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
-        Song *song = [[Song alloc] initWithTrack:nil]; // get the correct SPTTrack
-        [self.songRoom.songQueue addSong:song];
+        __block Song * newsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"songURI"]];
+        /*[[SpotifyRetriever instance] requestTrack:[dict objectForKey:@"songURI"] callback:^(NSError *error, SPTTrack *track)
+         {
+             if (error != nil)
+             {
+                 NSLog(@"*** error: %@", error);
+                 return;
+             }
+             
+             newsong = [[Song alloc] initWithTrack:track];
+             
+         }]; */
+        NSLog(@"Spotify URI: %@", newsong.identifier);
+        [self.songRoom.songQueue addSong:newsong];
+        NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
+        [self outputText:songRoomString toConnection: connection];
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"UPDATE"]){
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];

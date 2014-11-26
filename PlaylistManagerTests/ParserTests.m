@@ -35,8 +35,10 @@
     r.songQueue = [[SongQueue alloc] init];
     user1 = [[User alloc] initWithUsername:@"user1"];
     user2 = [[User alloc] initWithUsername:@"user2"];
-    song1 = [[Song alloc] initWithTrackID:123 andTrack:nil];
-    song2 = [[Song alloc] initWithTrackID:456 andTrack:nil];
+    //song1 = [[Song alloc] initWithTrackID:123 andTrack:nil];
+    //song2 = [[Song alloc] initWithTrackID:456 andTrack:nil];
+    song1 = [[Song alloc] initWithIdentifier:@"7dS5EaCoMnN7DzlpT6aRn2"];
+    song2 = [[Song alloc] initWithIdentifier:@"1aKsg5b9sOngINaQXbB0P7"];
     [r registerUser:user1];
     [r.songQueue addSong:song1];
     [r.songQueue addSong:song2];
@@ -75,7 +77,7 @@
 - (void)test_makeSRStatusString
 {
     NSString *statusString = [Parser makeSongRoomStatusString:r];
-    XCTAssertEqualObjects(@"UPSR:user1:SONGS:123,0:456,0", statusString, @"Parser failed to create status message");
+    XCTAssertEqualObjects(@"UPSR:user1:SONGS:7dS5EaCoMnN7DzlpT6aRn2,0:1aKsg5b9sOngINaQXbB0P7,0", statusString, @"Parser failed to create status message");
 }
 
 - (void)test_makePlayNextString
@@ -122,12 +124,12 @@
     XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:SONGS"], @"Failed to parse upsr message for empty songroom");
     [users addObject:@"user1"];
     [users addObject:@"user2"];
-    [songs setObject:@0 forKey: @"123"];
-    [songs setObject:@1 forKey: @"456"];
+    [songs setObject:@0 forKey: @"7dS5EaCoMnN7DzlpT6aRn2"];
+    [songs setObject:@1 forKey: @"1aKsg5b9sOngINaQXbB0P7"];
     [d5 setObject:users forKey: @"users"];
     [d5 setObject:songs forKey: @"songs"];
         //test songroom with users and songs
-    XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:user1:user2:SONGS:123,0:456,1"], @"Failed to parse upsr message for active songroom");
+    XCTAssertEqualObjects(d5, [Parser readString:@"UPSR:user1:user2:SONGS:7dS5EaCoMnN7DzlpT6aRn2,0:1aKsg5b9sOngINaQXbB0P7,1"], @"Failed to parse upsr message for active songroom");
     
     // test newcs protocol
     NSMutableDictionary *d6 = [[NSMutableDictionary alloc] init];
