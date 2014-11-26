@@ -128,7 +128,7 @@
              }];
             //SPTTrack * track;
             // Song *newsong = [[Song alloc] initWithTrack:track];
-            newsong.voteScore = [[dict objectForKey:@"songs"] objectForKey:key];
+            newsong.voteScore = [[[dict objectForKey:@"songs"] objectForKey:key] intValue];
             //this might cause an error, i'm not sure if this number is actually stored as an int in dict
             [newQ appendSong:newsong];
         }

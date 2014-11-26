@@ -83,10 +83,10 @@
         int i;
         if ((i = [self.songRoom.songQueue getIndexOfSong:[dict objectForKey:@"songURI"]]) >= 0){
             VoteBox *vb = [[self.songRoom.songQueue.songs objectAtIndex:i] voteBox];
-            [vb setVoteScore:[dict objectForKey:@"updown"] forUsername:[dict objectForKey:@"username"]];
+            [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
         } else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
             VoteBox *vb = [[self.songRoom.songQueue.preferredQueue.songs objectAtIndex:i] voteBox];
-            [vb setVoteScore:[dict objectForKey:@"updown"] forUsername:[dict objectForKey:@"username"]];
+            [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
         }
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
         Song *song = [[Song alloc] initWithTrack:nil]; // get the correct SPTTrack
