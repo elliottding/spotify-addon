@@ -271,11 +271,11 @@
     assert([self.outputBuffer length] != 0);
     
     NSInteger actuallyWritten = [self.outputStream write:[self.outputBuffer bytes] maxLength:[self.outputBuffer length]];
-    CFRunLoopStop(CFRunLoopGetCurrent());
     if (actuallyWritten > 0) {
         //  [self.outputBuffer replaceBytesInRange:NSMakeRange(0, (NSUInteger) actuallyWritten) withBytes:NULL length:0];
         // If we didn't write all the bytes we'll continue writing them in response to the next
         // has-space-available event.
+        [self.outputBuffer setLength: 0];
     } else {
         // A non-positive result from -write:maxLength: indicates a failure of some form; in this
         // simple app we respond by simply closing down our connection.

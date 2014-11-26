@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SongQueue.h"
 
-@class SongQueue;
+//@class SongQueue;
 
 @class User;
 

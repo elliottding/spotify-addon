@@ -184,6 +184,7 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
     }
 }
 
+<<<<<<< HEAD
 
 //TODO
 - (void) userDidDisconnect{}
@@ -197,4 +198,6 @@ NSString *const ConnectionDidCloseNotification = @"ConnectionDidCloseNotificatio
     return user;
 }
 
+=======
+>>>>>>> 0fe3dca0816abbba7862514e78a5b6ab902cfd77
 @end

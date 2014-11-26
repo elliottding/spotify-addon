@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "User.h"
+//#import "User.h"
+@class User;
 
 @interface VoteBox : NSObject
 
