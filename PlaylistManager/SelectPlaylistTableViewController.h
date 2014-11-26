@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectPlaylistTableViewController : UITableViewController
+@interface SelectPlaylistTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+
+- (void) reloadView;
 
 @end

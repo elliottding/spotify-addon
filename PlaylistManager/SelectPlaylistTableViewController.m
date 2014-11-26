@@ -17,9 +17,12 @@
 
 @implementation SelectPlaylistTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadUserPlaylists];
+    [self.tableView reloadData];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -57,6 +60,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"cellforRowIndexPath");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playlistListCell" forIndexPath:indexPath];
     SPTPartialPlaylist* p = [self.userPlaylists objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ - %lud tracks]", [p name], [p trackCount]];
