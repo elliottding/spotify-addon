@@ -73,13 +73,13 @@
     NSDictionary* userInfo = notification.userInfo;
     NSString* string = userInfo[@"string"];
     [self outputText:string toConnection:notification.object];
-    [self executeDict:[Parser readString:string]];
+    //[self executeDict:[Parser readString:string]];
     NSLog(@"Admin recieved: %@", string);
     
 }
 
 // THIS FUNCTION DOESN'T WORK YET B/C songRoom is not recognized as a field of admin
--(void)executeDict:(NSMutableDictionary *)dict{
+-(void)executeDict:(NSMutableDictionary *)dict FromSender: (ServerConnection *) connection{
     if ([[dict objectForKey:@"type"] isEqualToString:@"VOTE"]){
         if ([self.songRoom.songQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
             //vote for that song
@@ -91,13 +91,17 @@
         Song* song = [dict objectForKey:@"songURI"];// get song by
         [self.songRoom.songQueue addSong:song];
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"UPDATE"]){
-        [Parser makeSongRoomStatusString:self.songRoom];
+        NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
+        [self outputText:songRoomString toConnection: connection];
         //is songRoom accessible?
         //send string
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"SIGNIN"]){
         //make a user object?
         User *user = [[User alloc] initWithUsername:[dict objectForKey:@"username"]];
         [self.songRoom registerUser:user];
+        NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
+        [self outputText:songRoomString toConnection: connection];
+        
     }
 
 }
