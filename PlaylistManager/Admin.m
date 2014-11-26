@@ -34,7 +34,6 @@
                                                  name:@"TestNotification"
                                                object:nil];
     _outputBuffer = [[NSMutableData alloc] init];
-    //[[NSRunLoop currentRunLoop] run];
     return true;
 }
 
@@ -74,7 +73,6 @@
     NSDictionary* userInfo = notification.userInfo;
     NSString* string = userInfo[@"string"];
     NSLog(@"Admin recieved: %@", string);
-    //[self outputText:string toConnection:notification.object];
     [self executeDict:[Parser readString:string] FromSender:notification.object];
     
 }
@@ -93,18 +91,7 @@
         [self outputText:songRoomString toConnection: connection];
         
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
-        __block Song * newsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"songURI"]];
-        /*[[SpotifyRetriever instance] requestTrack:[dict objectForKey:@"songURI"] callback:^(NSError *error, SPTTrack *track)
-         {
-         if (error != nil)
-         {
-         NSLog(@"*** error: %@", error);
-         return;
-         }
-         
-         newsong = [[Song alloc] initWithTrack:track];
-         
-         }]; */
+        Song * newsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"songURI"]];
         NSLog(@"Spotify URI: %@", newsong.identifier);
         [self.songRoom.songQueue addSong:newsong];
         NSLog(@"Next song is: %@", self.songRoom.songQueue.nextSong.identifier);

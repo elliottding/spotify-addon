@@ -149,6 +149,21 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Song *selectedSong;
+    if (indexPath.section == 0)
+    {
+        selectedSong = self.songQueue.preferredQueue.songs[indexPath.item];
+    }
+    else if (indexPath.section == 1)
+    {
+        selectedSong = self.songQueue.songs[indexPath.item];
+    }
+    PlaylistNavigationController *pnc = (PlaylistNavigationController *)self.navigationController;
+    [pnc pushSongDetailViewControllerWithSong:selectedSong];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

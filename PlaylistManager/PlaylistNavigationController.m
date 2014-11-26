@@ -9,6 +9,7 @@
 #import "PlaylistNavigationController.h"
 #import "PlaylistTableViewController.h"
 #import "SearchViewController.h"
+#import "SongDetailViewController.h"
 #import "SongQueue.h"
 
 @interface PlaylistNavigationController ()
@@ -16,6 +17,8 @@
 @property (nonatomic, strong) PlaylistTableViewController *playlistViewController;
 
 @property (nonatomic, strong) SearchViewController *searchViewController;
+
+@property (nonatomic, strong) SongDetailViewController *songDetailViewController;
 
 @end
 
@@ -34,6 +37,10 @@
         // Set up SearchViewController
         SearchViewController *svc = [[SearchViewController alloc] init];
         self.searchViewController = svc;
+        
+        // Set up SongDetailViewController
+        SongDetailViewController *sdvc = [[SongDetailViewController alloc] init];
+        self.songDetailViewController = sdvc;
         
         [self pushViewController:ptvc animated:NO];
         self.songQueue = songQueue;
@@ -56,6 +63,12 @@
 - (void)pushSearchViewController
 {
     [self pushViewController:self.searchViewController animated:YES];
+}
+
+- (void)pushSongDetailViewControllerWithSong:(Song *)song
+{
+    self.songDetailViewController.song = song;
+    [self pushViewController:self.songDetailViewController animated:YES];
 }
 
 /*

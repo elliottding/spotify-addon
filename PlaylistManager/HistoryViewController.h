@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 
-@interface HistoryViewController : UIViewController
+@interface HistoryViewController : UITableViewController
 
-@property User* user; //user -> songroom -> history
+- (instancetype)initWithHistoryQueue:(NSArray *)historyQueue;
 
 @end
