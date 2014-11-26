@@ -48,7 +48,7 @@
 -(void) manageInput{
     while (1) {
         if(_connection.available){
-            NSLog(_connection.message);
+            NSLog(@"%@", _connection.message);
             [self executeDict:[Parser readString:_connection.message]];
             _connection.message = nil;
             _connection.available = 0;
@@ -144,7 +144,6 @@
         [self.songRoom.songQueue removeTopSong];
     }
 }
-
 
 -(void) Vote:(NSString *)songURI withDirection:(int)upDown
 {

@@ -29,6 +29,6 @@
 // When a song changes envoke this method with the new song and the change
 // will be pushed to all of the server connections
 
-- (void) updateCurrentlyPlaying: (Song *) newSong;
+// - (void) updateCurrentlyPlaying: (Song *) newSong;
 
 @end

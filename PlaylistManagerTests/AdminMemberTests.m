@@ -143,7 +143,7 @@
     testMember.connectTo = @"QueueTest";
     [testMember connect];
     
-    [NSThread sleepForTimeInterval: 4.0];
+    [NSThread sleepForTimeInterval: 2.0];
     [testMember QueueSong:@"7dS5EaCoMnN7DzlpT6aRn2"];
     [NSThread sleepForTimeInterval: 1.0];
     XCTAssert(([testAdmin.songRoom.songQueue getIndexOfURI:@"7dS5EaCoMnN7DzlpT6aRn2"] >= 0), @"song not queued on Admin");
