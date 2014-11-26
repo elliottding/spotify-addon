@@ -17,6 +17,7 @@
 
 @implementation SelectPlaylistTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadUserPlaylists];
@@ -29,6 +30,7 @@
 
 -(void) loadUserPlaylists {
     [SPTRequest playlistsForUserInSession:[SpotifyRetriever instance].session callback:^(NSError *error, id playlists) {
+        NSLog(@"HERE\n");
         if (error != nil){
             NSLog(@"*** URI request error: %@", error);
             return;
