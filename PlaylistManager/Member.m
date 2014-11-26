@@ -32,6 +32,8 @@
                                                  name:@"MemberNotification"
                                                object:nil];
     [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
+    [NSThread sleepForTimeInterval:1.0];
+    [self outputText:[Parser makeSigninString:self.username]];
     
 }
 
@@ -100,22 +102,25 @@
 -(void)executeDict:(NSMutableDictionary *)dict
 {
     if ([[dict objectForKey:@"type"] isEqualToString:@"UPSR"]){
+        self.songRoom = [[SongRoom alloc] initWithName:_connectTo];
         for (NSString * user in [dict objectForKey:@"users"]){
             User *userobj = [[User alloc] initWithUsername:user];
+            NSLog(@"regisering user: %@", user);
             //add user to dictionary of users if not in users
             [self.songRoom registerUser:userobj]; //registerUser overwrites previous values?
+            [self.songRoom containsUsername:@"test user"];
         }
+        /*
         for (id key in self.songRoom.userDictionary){
             if (![[dict objectForKey:@"users"] objectForKey:key]){
                 [self.songRoom unregisterUsername:key];
             }
             //if user is not in list of users sent by server, then remove
-        }
+        }*/
         SongQueue *newQ = [[SongQueue alloc] init];
-        __block Song *newsong;
         for (id key in [dict objectForKey:@"songs"]){
             
-            [[SpotifyRetriever instance] requestTrack:key callback:^(NSError *error, SPTTrack *track)
+            /*[[SpotifyRetriever instance] requestTrack:key callback:^(NSError *error, SPTTrack *track)
              {
                  if (error != nil)
                  {
@@ -125,9 +130,10 @@
                  
                  newsong = [[Song alloc] initWithTrack:track];
                  
-             }];
+             }];*/
             //SPTTrack * track;
-            // Song *newsong = [[Song alloc] initWithTrack:track];
+            
+             Song *newsong = [[Song alloc] initWithIdentifier:key];
             newsong.voteScore = [[[dict objectForKey:@"songs"] objectForKey:key] intValue];
             //this might cause an error, i'm not sure if this number is actually stored as an int in dict
             [newQ appendSong:newsong];
