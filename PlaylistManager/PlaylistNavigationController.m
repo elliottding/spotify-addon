@@ -6,14 +6,12 @@
 //  Copyright (c) 2014 Elliott Ding. All rights reserved.
 //
 
-#import "NavigationController.h"
+#import "PlaylistNavigationController.h"
 #import "PlaylistTableViewController.h"
 #import "SearchViewController.h"
 #import "SongQueue.h"
 
-@interface NavigationController ()
-
-@property (nonatomic, strong) SongQueue *songQueue;
+@interface PlaylistNavigationController ()
 
 @property (nonatomic, strong) PlaylistTableViewController *playlistViewController;
 
@@ -21,7 +19,7 @@
 
 @end
 
-@implementation NavigationController
+@implementation PlaylistNavigationController
 
 - (instancetype)initWithSongQueue:(SongQueue *)songQueue
 {

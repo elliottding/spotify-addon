@@ -10,7 +10,9 @@
 
 @class SongQueue;
 
-@interface NavigationController : UINavigationController
+@interface PlaylistNavigationController : UINavigationController
+
+@property (nonatomic, strong) SongQueue *songQueue;
 
 - (instancetype)initWithSongQueue:(SongQueue *)songQueue;
 

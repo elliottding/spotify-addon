@@ -16,6 +16,10 @@
 
 #import "Song.h"
 
+#import "PlaylistNavigationController.h"
+
+#import "SongRoom.h"
+
 @interface SearchViewController ()  <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -176,7 +180,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    PlaylistNavigationController *nav = (PlaylistNavigationController *)self.navigationController;
     
+    // Add song to song queue
+    Song *selectedSong = self.searchResults[indexPath.item];
+    [nav.songQueue addSong:selectedSong];
+    
+    // Pop this view controller
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

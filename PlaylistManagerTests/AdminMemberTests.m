@@ -113,11 +113,11 @@
     // NEED TO HAVE THESE SEPERATED BY some interval or queue will be recieved together
     //[testMember Vote:@"really cool song" withDirection:-1];
     [NSThread sleepForTimeInterval:0.5];
-    [testMember QueueSong:@"7dS5EaCoMnN7DzlpT6aRn2"];
+    //  [testMember QueueSong:@"7dS5EaCoMnN7DzlpT6aRn2"];
     
     [NSThread sleepForTimeInterval:0.5];
     
-    [testMember Vote:@"7dS5EaCoMnN7DzlpT6aRn2" withDirection:-1];
+    //  [testMember Vote:@"7dS5EaCoMnN7DzlpT6aRn2" withDirection:-1];
     [NSThread sleepForTimeInterval:4.0];
     // [testMember outputText:@"my favorite song\r\n"];
     // [testMember outputText:@"my less favorite song\r\n"];
@@ -135,28 +135,50 @@
 // to find
 // aditionally the vote for song and update song rely on creating song objects that rely on info from spotify
 // We will not have this info until
+
+- (void)testQueueSong{
+    [testAdmin startServer:@"QueueTest"];
+    [testMember startBrowser];
+    [NSThread sleepForTimeInterval: 2.0];
+    testMember.connectTo = @"QueueTest";
+    [testMember connect];
+    
+    [NSThread sleepForTimeInterval: 2.0];
+    [testMember QueueSong:@"7dS5EaCoMnN7DzlpT6aRn2"];
+    [NSThread sleepForTimeInterval: 1.0];
+    XCTAssert(([testAdmin.songRoom.songQueue getIndexOfURI:@"7dS5EaCoMnN7DzlpT6aRn2"] >= 0), @"song not queued on Admin");
+    XCTAssert(([testMember.songRoom.songQueue getIndexOfURI:@"7dS5EaCoMnN7DzlpT6aRn2"] >= 0), @"songroom not queued on members");
+    
+}
+
+
+- (void)testVoteSong{
+    [testAdmin startServer:@"VoteTest"];
+    [testMember startBrowser];
+    [NSThread sleepForTimeInterval: 2.0];
+    testMember.connectTo = @"VoteTest";
+    [testMember connect];
+    [NSThread sleepForTimeInterval: 4.0];
+    [testMember QueueSong:@"7dS5EaCoMnN7DzlpT6aRn2"];
+    [NSThread sleepForTimeInterval: 1.0];
+    [testMember Vote:@"7dS5EaCoMnN7DzlpT6aRn2" withDirection:-1];
+    [NSThread sleepForTimeInterval: 1.0];
+    // seeing if the vote was registered for the admin
+    XCTAssert(([testAdmin.songRoom.songQueue getIndexOfURI:@"7dS5EaCoMnN7DzlpT6aRn2"] >= 0), @"song not queued on Admin");
+    int index =[testAdmin.songRoom.songQueue getIndexOfURI:@"7dS5EaCoMnN7DzlpT6aRn2"];
+    Song *adminSong= testAdmin.songRoom.songQueue.songs[index];
+    XCTAssert((adminSong.voteScore == -1), @"Vote not registered on host");
+    // seeing if the vote was registered
+    XCTAssert(([testMember.songRoom.songQueue getIndexOfURI:@"7dS5EaCoMnN7DzlpT6aRn2"] >= 0), @"song not queued on Admin");
+    index =[testMember.songRoom.songQueue getIndexOfURI:@"7dS5EaCoMnN7DzlpT6aRn2"];
+    Song *memberSong= testMember.songRoom.songQueue.songs[index];
+    XCTAssert((memberSong.voteScore == -1), @"vote not transmitted back to user");
+    
+    
+    
+}
+
 /*
- - (void)testQueueSong{
- [testAdmin startServer:@"ConnectionTest"];
- testMember = [[Member alloc] init];
- [testMember startBrowser];
- [NSThread sleepForTimeInterval: 2.0];
- for(NSNetService *it in testMember.services){
- if([it.name isEqualToString: @"ConnectionTest"]){
- [testMember openStreamsToNetService: it];
- }
- }
- [NSThread sleepForTimeInterval: 4.0];
- [testMember QueueSong:
- XCTAssert([testMember.songRoom.name isEqualToString:@"test songroom"], @"songroom not sent over correctly");
- XCTAssert([testMember.songRoom containsUsername:@"test user"], @"Did not add user to Songroom before sending back");
- }
- 
- 
- -testVoteSong{
- 
- }
- 
  -tetsUpdateCurrentSongPlaying{
  }
  */

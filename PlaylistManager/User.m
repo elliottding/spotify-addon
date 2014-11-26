@@ -20,4 +20,8 @@
     return self;
 }
 
+-(void)executeDict:(NSMutableDictionary *)dict{
+    NSAssert(NO, @"Subclasses need to overwrite this method");
+}
+
 @end

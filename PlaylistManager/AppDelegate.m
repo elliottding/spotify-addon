@@ -12,6 +12,7 @@
 #import "NavigationController.h"
 #import "SelectPlaylistTableViewController.h"
 #import "SpotifyRetriever.h"
+#import "TabBarController.h"
 
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
