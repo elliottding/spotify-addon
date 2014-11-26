@@ -8,18 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class SongRoom;
+
 @class SongQueue;
 
 @class Song;
 
 @interface PlaylistNavigationController : UINavigationController
 
+@property (nonatomic, strong) SongRoom *songRoom;
+
 @property (nonatomic, strong) SongQueue *songQueue;
 
-- (instancetype)initWithSongQueue:(SongQueue *)songQueue;
+- (instancetype)initWithSongRoom:(SongRoom *)songRoom;
 
 - (void)pushSearchViewController;
 
 - (void)pushSongDetailViewControllerWithSong:(Song *)song;
+
+- (void)reloadPlaylistTableView;
 
 @end

@@ -26,7 +26,7 @@
     if (self)
     {
         self.songRoom = songRoom;
-        self.pnc = [[PlaylistNavigationController alloc] initWithSongQueue:songRoom.songQueue];
+        self.pnc = [[PlaylistNavigationController alloc] initWithSongRoom:songRoom];
         self.hnc = [[HistoryViewController alloc] initWithHistoryQueue:songRoom.historyQueue];
         self.rnc = [[RoomViewController alloc] init];
         

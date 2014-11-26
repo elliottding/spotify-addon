@@ -100,6 +100,12 @@ users has been made public
     }
 }
 
+- (void)playSong:(Song *)song
+{
+    [self.songQueue removeSongFromEitherQueue:song];
+    [self.historyQueue insertObject:song atIndex:0];
+}
+
 - (void)playNextSong
 {
     [self.historyQueue insertObject:self.songQueue.nextSong atIndex:0];

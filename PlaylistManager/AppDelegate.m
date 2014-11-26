@@ -55,6 +55,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[TabBarController alloc] initWithSongRoom:songRoom];
     [self.window makeKeyAndVisible];
+    // [self loginToSpotifyWithApplication:application];
     return YES;
 }
 
