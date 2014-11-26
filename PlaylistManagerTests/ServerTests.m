@@ -5,7 +5,7 @@
 //  Created by Zachary Jenkins on 11/12/14.
 //  Copyright (c) 2014 Elliott Ding. All rights reserved.
 //
-
+/*
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "Client.h"
@@ -77,6 +77,7 @@
      }
      }
      */
+/*
     NSLog(@"probably shouldn't be here");
     [NSThread sleepForTimeInterval: 5.0];
     
@@ -122,10 +123,11 @@
      {
      NSLog(@"Error starting server");
      }
-     */
+     *//*
     [testAdmin startServer:@"songroom"];
     [NSThread sleepForTimeInterval:8.0];
     XCTAssert([otherClient.response isEqualToString:@"single client\r\n"], @"bytes not transferred successfully");
 }
 
 @end
+*/
