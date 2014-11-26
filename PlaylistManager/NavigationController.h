@@ -12,6 +12,8 @@
 
 @interface NavigationController : UINavigationController
 
+@property (nonatomic, strong) SongQueue *songQueue;
+
 - (instancetype)initWithSongQueue:(SongQueue *)songQueue;
 
 - (void)pushSearchViewController;

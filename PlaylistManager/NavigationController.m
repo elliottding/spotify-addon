@@ -13,8 +13,6 @@
 
 @interface NavigationController ()
 
-@property (nonatomic, strong) SongQueue *songQueue;
-
 @property (nonatomic, strong) PlaylistTableViewController *playlistViewController;
 
 @property (nonatomic, strong) SearchViewController *searchViewController;
