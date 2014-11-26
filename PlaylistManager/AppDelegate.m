@@ -28,16 +28,6 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[SpotifyRetriever instance] trackSearchByString:@"one more time"
-                                           callback:^(NSError *error, SPTListPage *listPage)
-    {
-        if (error != nil)
-        {
-            NSLog(@"error");
-        }
-        NSLog(@"count = %lu", listPage.items.count);
-    }];
-    
     // Set up a song queue for testing
     NSArray *trackIdentifiers = @[@"7dS5EaCoMnN7DzlpT6aRn2",
                                   @"1aKsg5b9sOngINaQXbB0P7",
