@@ -38,6 +38,7 @@
 		4F47BC2F1A1529EE00660967 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2A1A1529EE00660967 /* Client.m */; };
 		4F47BC301A1529EE00660967 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2C1A1529EE00660967 /* Server.m */; };
 		4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2E1A1529EE00660967 /* ServerConnection.m */; };
+		4FD4AB161A2633A900D91D54 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4AB151A2633A900D91D54 /* NavigationController.m */; };
 		4FE36CC51A1CEB4400D21E5C /* AdminMemberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */; };
 		4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD01A1CEF3200D21E5C /* Admin.m */; };
 		4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD21A1CEF3200D21E5C /* Member.m */; };
@@ -119,6 +120,8 @@
 		4F47BC2C1A1529EE00660967 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
 		4F47BC2D1A1529EE00660967 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		4F47BC2E1A1529EE00660967 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
+		4FD4AB141A2633A900D91D54 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		4FD4AB151A2633A900D91D54 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMemberTests.m; sourceTree = "<group>"; };
 		4FE36CCF1A1CEF3200D21E5C /* Admin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Admin.h; sourceTree = "<group>"; };
 		4FE36CD01A1CEF3200D21E5C /* Admin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Admin.m; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				4F47BAF81A12E09800660967 /* AppDelegate.m */,
 				4F47BAFA1A12E09800660967 /* ViewController.h */,
 				4F47BAFB1A12E09800660967 /* ViewController.m */,
+				4FD4AB141A2633A900D91D54 /* NavigationController.h */,
+				4FD4AB151A2633A900D91D54 /* NavigationController.m */,
 				82A939DB1A1AFBFB00CB7E45 /* Parser.h */,
 				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
 				4FE36D1F1A1D142F00D21E5C /* SpotifyRetriever.h */,
@@ -437,6 +442,7 @@
 				4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */,
 				4F0D1A191A257D3300BE4412 /* PlaylistTableViewController.m in Sources */,
 				4F47BB281A12E0DC00660967 /* UnsortedSongQueue.m in Sources */,
+				4FD4AB161A2633A900D91D54 /* NavigationController.m in Sources */,
 				4F47BAFC1A12E09800660967 /* ViewController.m in Sources */,
 				4F0D1A181A257D3300BE4412 /* PlaylistTableView.m in Sources */,
 				4F47BB271A12E0DC00660967 /* SongRoom.m in Sources */,

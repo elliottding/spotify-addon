@@ -47,7 +47,7 @@
 
 - (void)trackDidLoad
 {
-    self.textLabel.text = self.song.track.name;
+    self.textLabel.text = [NSString stringWithFormat:@"%@ - Votes:%d", self.song.track.name, self.song.voteScore];
 }
 
 - (void)setSong:(Song *)song

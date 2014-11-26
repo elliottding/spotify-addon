@@ -18,4 +18,7 @@
 
 - (instancetype)initWithSongQueue:(SongQueue *)songQueue;
 
+// Reloads all cells in the table view.
+- (void)reloadView;
+
 @end

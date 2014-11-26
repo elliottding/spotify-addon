@@ -2,12 +2,14 @@
 // Created by Spotify on 04/09/14.
 // Copyright (c) 2014 Spotify. All rights reserved.
 
-// Import Spotify API header file
 #import <Spotify/Spotify.h>
 #import "AppDelegate.h"
+
 #import "Admin.h"
-#import "PlaylistTableViewController.h"
 #import "SongQueue.h"
+
+#import "PlaylistTableViewController.h"
+#import "NavigationController.h"
 
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
@@ -46,7 +48,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[PlaylistTableViewController alloc] initWithSongQueue:songQueue];
+    self.window.rootViewController = [[NavigationController alloc] initWithSongQueue:songQueue];
     [self.window makeKeyAndVisible];
     return YES;
 }

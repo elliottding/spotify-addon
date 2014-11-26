@@ -30,6 +30,11 @@
     return self;
 }
 
+- (void)reloadView
+{
+    [self.tableView reloadData];
+}
+
 - (void)loadView
 {
     CGRect tableViewFrame = [[UIScreen mainScreen] applicationFrame];
@@ -49,10 +54,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    // UITableView *tableView = (UITableView *)self.view;
-    // tableView.delegate = self;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // Register the cell class for a reuse identifier
     [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:@"SongCell"];
@@ -64,7 +66,6 @@
     [trackIdentifiers addObject:@[tid, tid, tid, tid]];
     self.trackIdentifiers = trackIdentifiers;
     */
-    // [(PlaylistTableView *)self.view reloadData];
 }
 
 - (void)didReceiveMemoryWarning
