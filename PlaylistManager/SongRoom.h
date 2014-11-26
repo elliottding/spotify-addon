@@ -52,6 +52,8 @@
 // Returns nil if none found.
 - (User *)userWithUsername:(NSString *)username;
 
+- (void)playSong:(Song *)song;
+
 - (void)playNextSong;
 
 @end

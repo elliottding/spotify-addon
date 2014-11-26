@@ -108,6 +108,16 @@ NSString *ObservePropertyName = @"voteScore";
     [song addObserver:self forKeyPath:ObservePropertyName options:0 context:nil];
 }
 
+- (void)removeSongFromEitherQueue:(Song *)song
+{
+    if ([self.preferredQueue containsSong:song])
+    {
+        [self.preferredQueue removeSong:song];
+        return;
+    }
+    [self removeSong:song];
+}
+
 - (void)removeSong:(Song *)song
 {
     NSUInteger index = [self getIndexOfSong:song];

@@ -37,6 +37,8 @@
 // Removes the Song at the specified index from the regular queue.
 - (void)removeSongAtIndex:(NSUInteger)index;
 
+- (void)removeSongFromEitherQueue:(Song *)song;
+
 // Removes the top priority Song from the queue.
 - (void)removeTopSong;
 

@@ -9,6 +9,8 @@
 #import "PlaylistNavigationController.h"
 #import "PlaylistTableViewController.h"
 #import "SearchViewController.h"
+#import "SongDetailViewController.h"
+#import "SongRoom.h"
 #import "SongQueue.h"
 
 @interface PlaylistNavigationController ()
@@ -17,28 +19,39 @@
 
 @property (nonatomic, strong) SearchViewController *searchViewController;
 
+@property (nonatomic, strong) SongDetailViewController *songDetailViewController;
+
 @end
 
 @implementation PlaylistNavigationController
 
-- (instancetype)initWithSongQueue:(SongQueue *)songQueue
+- (instancetype)initWithSongRoom:(SongRoom *)songRoom
 {
     self = [super init];
     if (self)
     {
         // Set up PlaylistViewController
         PlaylistTableViewController *ptvc = [[PlaylistTableViewController alloc]
-                                             initWithSongQueue:songQueue];
+                                             initWithSongQueue:songRoom.songQueue];
         self.playlistViewController = ptvc;
         
         // Set up SearchViewController
         SearchViewController *svc = [[SearchViewController alloc] init];
         self.searchViewController = svc;
         
+        // Set up SongDetailViewController
+        SongDetailViewController *sdvc = [[SongDetailViewController alloc] init];
+        self.songDetailViewController = sdvc;
+        
         [self pushViewController:ptvc animated:NO];
-        self.songQueue = songQueue;
+        self.songRoom = songRoom;
     }
     return self;
+}
+
+- (SongQueue *)songQueue
+{
+    return self.songRoom.songQueue;
 }
 
 - (void)viewDidLoad
@@ -56,6 +69,17 @@
 - (void)pushSearchViewController
 {
     [self pushViewController:self.searchViewController animated:YES];
+}
+
+- (void)pushSongDetailViewControllerWithSong:(Song *)song
+{
+    self.songDetailViewController.song = song;
+    [self pushViewController:self.songDetailViewController animated:YES];
+}
+
+- (void)reloadPlaylistTableView
+{
+    [self.playlistViewController reloadView];
 }
 
 /*
