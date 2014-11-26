@@ -31,6 +31,7 @@
                                              selector:@selector(receiveTestNotification:)
                                                  name:@"MemberNotification"
                                                object:nil];
+    [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
     
 }
 
@@ -45,10 +46,11 @@
 -(void) manageInput{
     while (1) {
         if(_connection.available){
-            _connection.available = 0;
             NSLog(_connection.message);
             [self executeDict:[Parser readString:_connection.message]];
             _connection.message = nil;
+            _connection.available = 0;
+
         }
         
     }
@@ -92,7 +94,6 @@
     [_connection startBrowser];
     self.services = _connection.services;
     self.outputBuffer = [[NSMutableData alloc] init];
-    [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
     
 }
 
@@ -104,18 +105,18 @@
 
         }
         for (id key in [dict objectForKey:@"songs"]){
-            if ([_songRoom.songQueue getIndexOfSong:key] >= 0){
+            if ([self.songRoom.songQueue getIndexOfSong:key] >= 0){
                 
-            } else if (_host.songRoom.preferredSongQueue.getIndexOfSong >= 0){
-                
-            }
+            } //else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong >= 0]){
+                // Not sure what you're trying to do here
+            //}
         }
         
         //update song room
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
         //error because songRoom is readonly?
         //new song by removing top song?
-        [_songRoom.songQueue removeTopSong];
+        [self.songRoom.songQueue removeTopSong];
     }
 }
 
@@ -129,6 +130,9 @@
 -(void)QueueSong:(NSString *)songURI{
     NSString *queueRequest = [Parser makeQueueString:songURI];
     [self outputText:queueRequest];
+}
+-(NSMutableArray *) currentServices{
+    return _connection.services;
 }
 
 @end

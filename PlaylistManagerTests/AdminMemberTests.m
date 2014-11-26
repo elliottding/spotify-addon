@@ -84,9 +84,11 @@
 - (void)testMemberBrowse{
     [testAdmin startServer:@"Browser Find Test"];
     [testMember startBrowser];
-    [NSThread sleepForTimeInterval: 2.0];
+    [NSThread sleepForTimeInterval: 3.0];
     BOOL serverFound = false;
-    for(NSNetService *it in testMember.services){
+    NSMutableArray *services = [testMember currentServices];
+    for(NSNetService *it in services){
+        NSLog(@"%@", it.name);
         if([it.name isEqualToString: @"Browser Find Test"]){
             serverFound = true;
         }

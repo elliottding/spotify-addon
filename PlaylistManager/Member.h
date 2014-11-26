@@ -20,8 +20,9 @@
 
 // This will hold all of the available songrooms as NSNetService objects
 // once the browser is started
+// THIS IS OUTDDATED USE CURRENT SERVICES
 
-@property (nonatomic, strong) NSMutableArray *  services;
+@property (nonatomic, weak) NSMutableArray *  services;
 
 // set this property to the name of the songroom you want to connect to then call the connect method
 @property (nonatomic, strong) NSString *connectTo;
@@ -44,6 +45,7 @@
 // server
 
 
+-(NSMutableArray *) currentServices;
 
 -(void)Vote:(NSString *)songURI withDirection:(int) upDown;
 
