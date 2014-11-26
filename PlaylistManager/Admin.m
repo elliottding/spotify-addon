@@ -77,6 +77,7 @@
     
 }
 
+
 // THIS FUNCTION DOESN'T WORK YET B/C songRoom is not recognized as a field of admin
 -(void)executeDict:(NSMutableDictionary *)dict{
     if ([[dict objectForKey:@"type"] isEqualToString:@"VOTE"]){
@@ -88,7 +89,7 @@
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
        //retrieve song by trackID
         Song* song = /*getsong by trackid w/ [dict objectForKey:@"songURI"]*/;
-        [_Songroom.songQueue addSong:song];
+        [_songRoom.songQueue addSong:song];
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"UPDATE"]){
         [Parser makeSongRoomStatusString:_songRoom];
         //is songRoom accessible?

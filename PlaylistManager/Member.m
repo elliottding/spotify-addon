@@ -95,19 +95,22 @@
     [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
     
 }
-
+/*
 -(void)executeDict:(NSMutableDictionary *)dict
 {
     if ([[dict objectForKey:@"type"] isEqualToString:@"UPSR"]){
         for (NSString * user in [dict objectForKey:@"users"]){
-            
-
+            //add user to dictionary of users if not in users
+            [songRoom registerUser:user]; //this would be the place to make a stripped down user list
+        }
+        for (id key in _songRoom.userDictionary){
+            //if user is not in list of users sent by server, then remove
         }
         for (id key in [dict objectForKey:@"songs"]){
             if ([_songRoom.songQueue getIndexOfSong:key] >= 0){
-                
+                //
             } else if (_host.songRoom.preferredSongQueue.getIndexOfSong >= 0){
-                
+                //
             }
         }
         
@@ -118,7 +121,7 @@
         [_songRoom.songQueue removeTopSong];
     }
 }
-
+*/
 
 -(void) Vote:(NSString *)songURI withDirection:(int)upDown
 {
