@@ -16,7 +16,7 @@
 
 #import "Song.h"
 
-#import "NavigationController.h"
+#import "PlaylistNavigationController.h"
 
 #import "SongRoom.h"
 
@@ -181,7 +181,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NavigationController *nav = (NavigationController *)self.navigationController;
+    PlaylistNavigationController *nav = (PlaylistNavigationController *)self.navigationController;
     
     // Add song to song queue
     Song *selectedSong = self.searchResults[indexPath.item];

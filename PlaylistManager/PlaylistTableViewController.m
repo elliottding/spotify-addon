@@ -12,7 +12,7 @@
 
 #import "PlaylistTableView.h"
 
-#import "NavigationController.h"
+#import "PlaylistNavigationController.h"
 
 #import "SongView.h"
 
@@ -36,7 +36,7 @@
 
 - (void)setupAddButton
 {
-    NavigationController *nav = (NavigationController *)self.navigationController;
+    PlaylistNavigationController *nav = (PlaylistNavigationController *)self.navigationController;
     UIBarButtonItem *addButton;
     addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                               target:nav

@@ -9,7 +9,7 @@
 #import "SongQueue.h"
 
 #import "PlaylistTableViewController.h"
-#import "NavigationController.h"
+#import "PlaylistNavigationController.h"
 
 #import "SpotifyRetriever.h"
 
@@ -50,7 +50,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[NavigationController alloc] initWithSongQueue:songQueue];
+    self.window.rootViewController = [[PlaylistNavigationController alloc] initWithSongQueue:songQueue];
     [self.window makeKeyAndVisible];
     return YES;
 }
