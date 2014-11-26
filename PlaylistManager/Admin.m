@@ -82,26 +82,22 @@
 // THIS FUNCTION DOESN'T WORK YET B/C songRoom is not recognized as a field of admin
 -(void)executeDict:(NSMutableDictionary *)dict{
     if ([[dict objectForKey:@"type"] isEqualToString:@"VOTE"]){
-        if ([self.songRoom.songQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
-            //vote for that song
+        int i;
+        if ((i =[self.songRoom.songQueue getIndexOfSong:[dict objectForKey:@"songURI"]]) >= 0){
+            [self.songRoom.songQueue.songs[i].voteBox setVoteScore:[dict objectForKey:@"updown"] forUsername:[dict objectForKey:@"username"]];
         } else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
+            self.songRoom.songQueue.preferredQueue.songs[i].voteBox;
             //vote for that song
         }
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
-       //retrieve song by trackID
-<<<<<<< HEAD
-        Song* song = /*getsong by trackid w/ [dict objectForKey:@"songURI"]*/;
-        [_songRoom.songQueue addSong:song];
-=======
-        Song* song = [dict objectForKey:@"songURI"];// get song by
-        [self.songRoom.songQueue addSong:song];
->>>>>>> 0fe3dca0816abbba7862514e78a5b6ab902cfd77
+        Song *song;//retrieve song by trackID
+        if (![self.songRoom.songQueue containsSong:song]){
+            [self.songRoom.songQueue addSong:song];
+        }
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"UPDATE"]){
         [Parser makeSongRoomStatusString:self.songRoom];
-        //is songRoom accessible?
         //send string
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"SIGNIN"]){
-        //make a user object?
         User *user = [[User alloc] initWithUsername:[dict objectForKey:@"username"]];
         [self.songRoom registerUser:user];
     }

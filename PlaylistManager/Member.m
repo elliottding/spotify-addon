@@ -95,31 +95,23 @@
     [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
     
 }
-/*
+
 -(void)executeDict:(NSMutableDictionary *)dict
 {
     if ([[dict objectForKey:@"type"] isEqualToString:@"UPSR"]){
         for (NSString * user in [dict objectForKey:@"users"]){
             //add user to dictionary of users if not in users
-            [songRoom registerUser:user]; //this would be the place to make a stripped down user list
+            [self.songRoom registerUser:user]; //this would be the place to make a stripped down user list
         }
-        for (id key in _songRoom.userDictionary){
+        for (id key in self.songRoom.userDictionary){
             //if user is not in list of users sent by server, then remove
         }
         for (id key in [dict objectForKey:@"songs"]){
-<<<<<<< HEAD
-            if ([_songRoom.songQueue getIndexOfSong:key] >= 0){
+            if ([self.songRoom.songQueue getIndexOfSong:key] >= 0){
                 //
-            } else if (_host.songRoom.preferredSongQueue.getIndexOfSong >= 0){
+            } else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong:key] >= 0){
                 //
             }
-=======
-            if ([self.songRoom.songQueue getIndexOfSong:key] >= 0){
-                
-            } //else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong >= 0]){
-                // Not sure what you're trying to do here
-            //}
->>>>>>> 0fe3dca0816abbba7862514e78a5b6ab902cfd77
         }
         
         //update song room
@@ -129,7 +121,7 @@
         [self.songRoom.songQueue removeTopSong];
     }
 }
-*/
+
 
 -(void) Vote:(NSString *)songURI withDirection:(int)upDown
 {
