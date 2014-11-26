@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Member.h"
 
 @interface FindSongroomViewController : UIViewController {
     
     __weak IBOutlet UITableView *playlistTable;
 }
 
+@property Member* member;
 
 @end

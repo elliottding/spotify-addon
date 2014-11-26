@@ -10,19 +10,31 @@
 
 @interface FindSongroomViewController ()
 
+@property NSMutableArray* currServ;
+
 @end
 
 @implementation FindSongroomViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    self.member = [[Member alloc] initWithUsername:@"test"];
+    [self.member startBrowser];
+
     // Do any additional setup after loading the view.
+}
+- (void)reloadView
+{
+    self.currServ = [self.member currentServices];
+    //[self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
@@ -44,14 +56,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10; //*** placeholder, var needs to find available songrooms;
+    return [self.currServ count]; //*** placeholder, var needs to find available songrooms;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
-    cell.textLabel.text = @"";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songroomCell" forIndexPath:indexPath];
+    NSNetService* service = [self.currServ objectAtIndex:indexPath.row];
+    cell.textLabel.text = service.name;
     return cell;
 }
 
