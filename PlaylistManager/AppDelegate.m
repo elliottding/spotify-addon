@@ -10,7 +10,7 @@
 
 #import "PlaylistTableViewController.h"
 #import "NavigationController.h"
-
+#import "SelectPlaylistTableViewController.h"
 #import "SpotifyRetriever.h"
 
 // Constants
@@ -29,28 +29,9 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Set up a song queue for testing
-    NSArray *trackIdentifiers = @[@"7dS5EaCoMnN7DzlpT6aRn2",
-                                  @"1aKsg5b9sOngINaQXbB0P7",
-                                  @"2woCw59DHRIb1vcyQ2a7Ca",
-                                  @"4O594chXfv4lHvneDP0Ud0",
-                                  @"7pJgjBf82BrUQ3z7HdQvW1",
-                                  @"2Bs4jQEGMycglOfWPBqrVG",
-                                  @"18AJRdgUoO9EYn11N7xzaT",
-                                  @"7IHOIqZUUInxjVkko181PB"];
-    SongQueue *songQueue = [[SongQueue alloc] init];
-    for (int i = 0; i < 3; i++)
-    {
-        Song *song = [[Song alloc] initWithIdentifier:trackIdentifiers[i]];
-        [songQueue.preferredQueue appendSong:song];
-    }
-    for (int i = 3; i < trackIdentifiers.count; i++)
-    {
-        Song *song = [[Song alloc] initWithIdentifier:trackIdentifiers[i]];
-        [songQueue addSong:song];
-    }
-    
+    [self loginToSpotifyWithApplication:application];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[NavigationController alloc] initWithSongQueue:songQueue];
+    self.window.rootViewController = [[SelectPlaylistTableViewController alloc] init];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -81,6 +62,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         }
         NSLog(@"Auth success");
         [self playUsingSession:session];
+        [SpotifyRetriever instance].session = session;
     };
     
     // Call the token swap service to get a logged in session
