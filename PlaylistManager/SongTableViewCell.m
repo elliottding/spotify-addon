@@ -12,7 +12,7 @@
 
 #import "SpotifyRetriever.h"
 
-@interface SongTableViewCell () <SongDelegate>
+@interface SongTableViewCell ()
 
 @end
 
@@ -47,34 +47,58 @@
 
 - (void)trackDidLoad
 {
-    self.textLabel.text = [NSString stringWithFormat:@"%@ - Votes:%d", self.song.track.name, self.song.voteScore];
+    NSString *text = [NSString stringWithFormat:@"%@ : %d", self.song.track.name, self.song.voteScore];
+    self.textLabel.text = text;
 }
 
 - (void)setSong:(Song *)song
 {
-    _song = song;
-    if (song != nil)
+    if (song == self.song)
     {
-        song.delegate = self;
-        /*
-        self.songNameLabel.text = song.track.name;
-        SPTPartialArtist *artist = song.track.artists[0];
-        self.artistNameLabel.text = artist.name;
-        [self setSongImageWithSPTImage:song.track.album.smallestCover];
-        */
+        return;
     }
-    // self.backgroundColor = [UIColor greenColor];
-    // [self setNeedsDisplay];
+    [self unobserveSong:self.song];
+    [self observeSong:song];
+    _song = song;
+    [self updateTextLabel];
 }
 
-/*
-- (void)setSongImageWithSPTImage:(SPTImage *)sptImage
+- (void)observeSong:(Song *)song
 {
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL:sptImage.imageURL];
-    UIImage *image = [UIImage imageWithData:imageData];
-    self.songImage = [[UIImageView alloc] initWithImage:image];
-    [self addSubview:self.songImage];
+    [song addObserver:self forKeyPath:@"track" options:0 context:nil];
+    [song addObserver:self forKeyPath:@"voteScore" options:0 context:nil];
 }
-*/
+
+- (void)unobserveSong:(Song *)song
+{
+    [song removeObserver:self forKeyPath:@"track"];
+    [song removeObserver:self forKeyPath:@"voteScore"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if (object != self.song)
+    {
+        return;
+    }
+    if ([keyPath isEqualToString:@"track"] || [keyPath isEqualToString:@"voteScore"])
+    {
+        [self updateTextLabel];
+    }
+}
+
+- (void)updateTextLabel
+{
+    NSString *text = [NSString stringWithFormat:@"%@ - %d", self.song.track.name, self.song.voteScore];
+    self.textLabel.text = text;
+}
+
+- (void)dealloc
+{
+    [self unobserveSong:self.song];
+}
 
 @end

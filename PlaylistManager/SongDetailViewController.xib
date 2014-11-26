@@ -48,6 +48,9 @@
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="173" y="318" width="55" height="30"/>
                     </variation>
+                    <connections>
+                        <action selector="voteUpButtonAction" destination="-1" eventType="touchUpInside" id="xEB-qh-FPG"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5V-ZY-jqy">
                     <rect key="frame" x="263" y="356" width="75" height="30"/>
@@ -57,6 +60,9 @@
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="163" y="356" width="75" height="30"/>
                     </variation>
+                    <connections>
+                        <action selector="voteDownButtonAction" destination="-1" eventType="touchUpInside" id="pzq-Gl-Pfh"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-0K-vle">
                     <rect key="frame" x="255" y="213" width="91" height="21"/>

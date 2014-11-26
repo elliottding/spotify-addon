@@ -60,8 +60,22 @@
 - (IBAction)removeFromQueueButtonAction
 {
     [self.playlistNavigationController.songQueue removeSongFromEitherQueue:self.song];
-    [self.playlistNavigationController reloadPlaylistTableView];
     [self.playlistNavigationController popViewControllerAnimated:YES];
+    [self.playlistNavigationController reloadPlaylistTableView];
+}
+
+- (IBAction)voteUpButtonAction
+{
+    self.song.voteScore += 1;
+    [self.playlistNavigationController popViewControllerAnimated:YES];
+    [self.playlistNavigationController reloadPlaylistTableView];
+}
+
+- (IBAction)voteDownButtonAction
+{
+    self.song.voteScore -= 1;
+    [self.playlistNavigationController popViewControllerAnimated:YES];
+    [self.playlistNavigationController reloadPlaylistTableView];
 }
 
 /*
