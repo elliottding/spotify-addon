@@ -8,13 +8,41 @@
 
 #import "PlaylistTableViewController.h"
 
+#import "SongTableViewCell.h"
+
+#import "PlaylistTableView.h"
+
+#import "SongView.h"
+
 @interface PlaylistTableViewController ()
 
 @end
 
 @implementation PlaylistTableViewController
 
-- (void)viewDidLoad {
+- (instancetype)initWithSongQueue:(SongQueue *)songQueue
+{
+    self = [super init];
+    if (self)
+    {
+        self.songQueue = songQueue;
+    }
+    return self;
+}
+
+- (void)loadView
+{
+    CGRect tableViewFrame = [[UIScreen mainScreen] applicationFrame];
+    PlaylistTableView *ptv = [[PlaylistTableView alloc] initWithFrame:tableViewFrame
+                                                                style:UITableViewStylePlain];
+    ptv.delegate = self;
+    ptv.dataSource = self;
+    [ptv reloadData];
+    self.view = ptv;
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -22,6 +50,19 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // UITableView *tableView = (UITableView *)self.view;
+    // tableView.delegate = self;
+    
+    // Register the cell class for a reuse identifier
+    [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:@"SongCell"];
+    
+    NSMutableArray *trackIdentifiers = [[NSMutableArray alloc] init];
+    NSString *tid = @"0DiWol3AO6WpXZgp0goxAV";
+    [trackIdentifiers addObject:@[tid, tid, tid]];
+    [trackIdentifiers addObject:@[tid, tid, tid, tid]];
+    self.trackIdentifiers = trackIdentifiers;
+    // [(PlaylistTableView *)self.view reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -32,29 +73,81 @@
 
 #pragma mark - Table view data source
 
+// Two sections: first for preferred queue, second for regular queue
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
+    /*
+    if (section == 0)
+    {
+        return self.songQueue.preferredQueue.songs.count;
+    }
+    else if (section == 1)
+    {
+        return self.songQueue.songs.count;
+    }
     return 0;
+    */
+    NSArray *sectionTrackIdentifiers = self.trackIdentifiers[section];
+    return sectionTrackIdentifiers.count;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"indexPath: %ld", indexPath.section);
+    static NSString *reuseIdentifier = @"SongCell";
+    SongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
+                                                              forIndexPath:indexPath];
     
-    // Configure the cell...
+    // Initialize a new cell if one was not dequeued
+    if (cell == nil)
+    {
+        cell = [[SongTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                        reuseIdentifier:reuseIdentifier];
+    }
     
+    // Set the song of the cell
+    /*
+    Song *song;
+    if (indexPath.section == 0)
+    {
+        song = self.songQueue.preferredQueue.songs[indexPath.row];
+    }
+    else if (indexPath.section == 1)
+    {
+        song = self.songQueue.songs[indexPath.row];
+    }
+    else
+    {
+        [NSException raise:@"Index error" format:@"indexPath section %ld is invalid", indexPath.section];
+    }
+    */
+
+    NSArray *sectionTrackIdentifiers = self.trackIdentifiers[indexPath.section];
+    NSString *trackIdentifier = sectionTrackIdentifiers[indexPath.row];
+    
+    //SongView *songView = [[SongView alloc] initWithSong:song frame:];
+    //[cell.contentView addSubview:songView];
+    [cell loadTrackWithIdentifier:trackIdentifier];
     return cell;
 }
-*/
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return @"Preferred Queue";
+    }
+    else
+    {
+        return @"Regular Queue";
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.

@@ -10,8 +10,10 @@
 
 #import "SongRoom.h"
 
-@interface PlaylistTableViewController : UITableViewController
+@interface PlaylistTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) SongQueue *songQueue;
+
+@property (nonatomic, strong) NSMutableArray *trackIdentifiers;
 
 @end

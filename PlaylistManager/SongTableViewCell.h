@@ -12,6 +12,8 @@
 
 @interface SongTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) Song* song;
+@property (nonatomic, strong) Song *song;
+
+- (void)loadTrackWithIdentifier:(NSString *)identifier;
 
 @end

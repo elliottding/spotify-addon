@@ -38,6 +38,7 @@
          Song *song = [[Song alloc] initWithTrack:track];
          self.song = song;
      }];
+    NSLog(@"loading track");
 }
 
 - (void)setSong:(Song *)song
