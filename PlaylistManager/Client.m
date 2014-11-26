@@ -181,13 +181,20 @@
         [self.services addObject:aNetService];
         [self didChangeValueForKey:@"services"];
     }
-    /*if([aNetService.name isEqualToString: self.connectTo]){
-     [self openStreamsToNetService:aNetService];
-     [self.serviceBrowser removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    if([aNetService.name isEqualToString: self.connectTo]){
+        [self openStreamsToNetService:aNetService];
+     //[self.serviceBrowser removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
      
-     }*/
+     }
     
 }
+
+
+- (void)netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)netServiceBrowser{
+    NSLog(@"Stopped browsing");
+}
+
+
 -(void)connect{
     [NSThread detachNewThreadSelector:@selector(connectThread) toTarget:self withObject:nil];
     //[self connectThread];
