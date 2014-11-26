@@ -47,6 +47,7 @@
     {
         XCTAssertNotNil(listPage, @"Returned list was nil");
         SPTTrack *firstTrack = listPage.items[0];
+        XCTFail();
         XCTAssertEqualObjects(trackName, firstTrack.name, @"Search did not return correct items");
     };
     

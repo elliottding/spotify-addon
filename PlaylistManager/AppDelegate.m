@@ -11,6 +11,8 @@
 #import "PlaylistTableViewController.h"
 #import "NavigationController.h"
 
+#import "SpotifyRetriever.h"
+
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
 static NSString * const kCallbackURL = @"spotifyiossdkexample://"; // @"CS22001-app-login://callback";
@@ -26,6 +28,16 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[SpotifyRetriever instance] trackSearchByString:@"one more time"
+                                           callback:^(NSError *error, SPTListPage *listPage)
+    {
+        if (error != nil)
+        {
+            NSLog(@"error");
+        }
+        NSLog(@"count = %lu", listPage.items.count);
+    }];
+    
     // Set up a song queue for testing
     NSArray *trackIdentifiers = @[@"7dS5EaCoMnN7DzlpT6aRn2",
                                   @"1aKsg5b9sOngINaQXbB0P7",

@@ -28,10 +28,16 @@
     self = [super init];
     if (self)
     {
+        // Set up PlaylistViewController
         PlaylistTableViewController *ptvc = [[PlaylistTableViewController alloc]
                                              initWithSongQueue:songQueue];
-        [self pushViewController:ptvc animated:NO];
         self.playlistViewController = ptvc;
+        
+        // Set up SearchViewController
+        SearchViewController *svc = [[SearchViewController alloc] init];
+        self.searchViewController = svc;
+        
+        [self pushViewController:ptvc animated:NO];
         self.songQueue = songQueue;
     }
     return self;

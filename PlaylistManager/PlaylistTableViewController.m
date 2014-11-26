@@ -29,6 +29,7 @@
     {
         self.songQueue = songQueue;
         [self setupAddButton];
+        self.title = @"Playlist";
     }
     return self;
 }

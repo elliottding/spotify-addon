@@ -1,5 +1,5 @@
 //
-//  SearchViewController.h
+//  SongSearchView.h
 //  PlaylistManager
 //
 //  Created by Elliott Ding on 11/26/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SongSearchView : UIView
 
 @end

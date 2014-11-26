@@ -103,7 +103,9 @@
 
 - (void)trackSearchByString:(NSString *)searchString callback:(SearchCallback)callback
 {
-    NSString *query = [NSString stringWithFormat:@"q=%@&type=album", searchString];
+    searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    // NSString *query = [NSString stringWithFormat:@"q=%@&type=track", searchString];
+    NSString *query = [NSString stringWithFormat:@"%@", searchString];
     [SPTRequest performSearchWithQuery:query
                              queryType:SPTQueryTypeTrack
                                 offset:0
