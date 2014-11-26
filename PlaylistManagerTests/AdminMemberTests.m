@@ -19,6 +19,11 @@
 }
 @end
 
+// RUN TESTS INDEPENDENTLY
+// BECAUSE ALL OF THE TESTS START A NEW SERVER THERE CAN BE PROBLEMS
+// ASSOCIATED WITH THREADS NOT CLEARING IF THE TESTS QUICKLY ENOUGH
+// IF TESTS ARE RUN BACK TO BACK
+
 // this is designed to test the methods in memember and admin since they rely on a connection between
 // each other we will test them together
 // We only test the public methods of both of these classes because the private methods so closely
@@ -112,8 +117,8 @@
     
     [NSThread sleepForTimeInterval:0.5];
     
-    //[testMember Vote:@"good song" withDirection:-1];
-    [NSThread sleepForTimeInterval:2.0];
+    [testMember Vote:@"7dS5EaCoMnN7DzlpT6aRn2" withDirection:-1];
+    [NSThread sleepForTimeInterval:4.0];
     // [testMember outputText:@"my favorite song\r\n"];
     // [testMember outputText:@"my less favorite song\r\n"];
     

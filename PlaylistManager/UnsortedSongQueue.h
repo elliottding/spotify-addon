@@ -51,4 +51,10 @@
 // For subscripting support.
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
 
+// added 11-26 used to get the index of a song via the track uri
+- (int)getIndexOfURI:(NSString *) trackURI;
+
+
+
+
 @end

@@ -82,25 +82,28 @@
 -(void)executeDict:(NSMutableDictionary *)dict FromSender: (ServerConnection *) connection{
     if ([[dict objectForKey:@"type"] isEqualToString:@"VOTE"]){
         int i;
-        if ((i = [self.songRoom.songQueue getIndexOfSong:[dict objectForKey:@"songURI"]]) >= 0){
+        if ((i = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]]) >= 0){
             VoteBox *vb = [[self.songRoom.songQueue.songs objectAtIndex:i] voteBox];
             [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
-        } else if ([self.songRoom.songQueue.preferredQueue getIndexOfSong:[dict objectForKey:@"songURI"]] >= 0){
+        } else if ([self.songRoom.songQueue.preferredQueue getIndexOfURI:[dict objectForKey:@"songURI"]] >= 0){
             VoteBox *vb = [[self.songRoom.songQueue.preferredQueue.songs objectAtIndex:i] voteBox];
             [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
         }
+        NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
+        [self outputText:songRoomString toConnection: connection];
+        
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
         __block Song * newsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"songURI"]];
         /*[[SpotifyRetriever instance] requestTrack:[dict objectForKey:@"songURI"] callback:^(NSError *error, SPTTrack *track)
          {
-             if (error != nil)
-             {
-                 NSLog(@"*** error: %@", error);
-                 return;
-             }
-             
-             newsong = [[Song alloc] initWithTrack:track];
-             
+         if (error != nil)
+         {
+         NSLog(@"*** error: %@", error);
+         return;
+         }
+         
+         newsong = [[Song alloc] initWithTrack:track];
+         
          }]; */
         NSLog(@"Spotify URI: %@", newsong.identifier);
         [self.songRoom.songQueue addSong:newsong];
