@@ -20,13 +20,13 @@
 
 @implementation TabBarController
 
-- (instancetype)initWithSongQueue:(SongQueue *)songQueue
+- (instancetype)initWithSongRoom:(SongRoom *)songRoom
 {
     self = [super init];
     if (self)
     {
-        self.songQueue = songQueue;
-        self.pnc = [[PlaylistNavigationController alloc] initWithSongQueue:songQueue];
+        self.songRoom = songRoom;
+        self.pnc = [[PlaylistNavigationController alloc] initWithSongQueue:songRoom.songQueue];
         self.hnc = [[HistoryViewController alloc] init];
         self.rnc = [[RoomViewController alloc] init];
         

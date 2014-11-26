@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class SongQueue;
+@class SongRoom;
 
 @class PlaylistNavigationController;
 
@@ -18,7 +18,7 @@
 
 @interface TabBarController : UITabBarController
 
-@property (nonatomic, strong) SongQueue *songQueue;
+@property (nonatomic, strong) SongRoom *songRoom;
 
 @property (nonatomic, strong) PlaylistNavigationController *pnc;
 
@@ -26,6 +26,6 @@
 
 @property (nonatomic, strong) RoomViewController *rnc;
 
-- (instancetype)initWithSongQueue:(SongQueue *)songQueue;
+- (instancetype)initWithSongRoom:(SongRoom *)songRoom;
 
 @end

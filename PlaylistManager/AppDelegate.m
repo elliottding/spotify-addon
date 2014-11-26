@@ -49,9 +49,11 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         Song *song = [[Song alloc] initWithIdentifier:trackIdentifiers[i]];
         [songQueue addSong:song];
     }
+    SongRoom *songRoom = [[SongRoom alloc] init];
+    songRoom.songQueue = songQueue;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[TabBarController alloc] initWithSongQueue:songQueue];
+    self.window.rootViewController = [[TabBarController alloc] initWithSongRoom:songRoom];
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -19,7 +19,8 @@
     self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
