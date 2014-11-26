@@ -13,6 +13,9 @@
 		3B7F3B361A1D252100123649 /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B351A1D252100123649 /* PlaylistViewController.m */; };
 		3B7F3B391A1D4F1200123649 /* SelectPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */; };
 		3BC42C0C1A22DCF200880769 /* PlaylistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC42C0B1A22DCF200880769 /* PlaylistView.xib */; };
+		4F0D1A181A257D3300BE4412 /* PlaylistTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0D1A131A257D3300BE4412 /* PlaylistTableView.m */; };
+		4F0D1A191A257D3300BE4412 /* PlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0D1A151A257D3300BE4412 /* PlaylistTableViewController.m */; };
+		4F0D1A1A1A257D3300BE4412 /* SongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */; };
 		4F47BAF61A12E09800660967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF51A12E09800660967 /* main.m */; };
 		4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF81A12E09800660967 /* AppDelegate.m */; };
 		4F47BAFC1A12E09800660967 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAFB1A12E09800660967 /* ViewController.m */; };
@@ -73,6 +76,12 @@
 		3B7F3B371A1D4F1200123649 /* SelectPlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlaylistTableViewController.h; sourceTree = "<group>"; };
 		3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlaylistTableViewController.m; sourceTree = "<group>"; };
 		3BC42C0B1A22DCF200880769 /* PlaylistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistView.xib; sourceTree = "<group>"; };
+		4F0D1A121A257D3300BE4412 /* PlaylistTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableView.h; sourceTree = "<group>"; };
+		4F0D1A131A257D3300BE4412 /* PlaylistTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableView.m; sourceTree = "<group>"; };
+		4F0D1A141A257D3300BE4412 /* PlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistTableViewController.h; sourceTree = "<group>"; };
+		4F0D1A151A257D3300BE4412 /* PlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewController.m; sourceTree = "<group>"; };
+		4F0D1A161A257D3300BE4412 /* SongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewCell.h; sourceTree = "<group>"; };
+		4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewCell.m; sourceTree = "<group>"; };
 		4F47BAF01A12E09800660967 /* PlaylistManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaylistManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F47BAF41A12E09800660967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F47BAF51A12E09800660967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -269,6 +278,10 @@
 		4FE36D1C1A1CEF9500D21E5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4F0D1A121A257D3300BE4412 /* PlaylistTableView.h */,
+				4F0D1A131A257D3300BE4412 /* PlaylistTableView.m */,
+				4F0D1A161A257D3300BE4412 /* SongTableViewCell.h */,
+				4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */,
 				4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */,
 				4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */,
 				4FE36CD61A1CEF3200D21E5C /* SongView.h */,
@@ -286,6 +299,8 @@
 			children = (
 				3B7F3B341A1D252100123649 /* PlaylistViewController.h */,
 				3B7F3B351A1D252100123649 /* PlaylistViewController.m */,
+				4F0D1A141A257D3300BE4412 /* PlaylistTableViewController.h */,
+				4F0D1A151A257D3300BE4412 /* PlaylistTableViewController.m */,
 				3B7F3B2B1A1D24CD00123649 /* FindSongroomViewController.h */,
 				3B7F3B2C1A1D24CD00123649 /* FindSongroomViewController.m */,
 				3B7F3B2D1A1D24CD00123649 /* GuestListViewController.h */,
@@ -420,13 +435,16 @@
 				4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */,
 				4FE36D211A1D142F00D21E5C /* SpotifyRetriever.m in Sources */,
 				4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */,
+				4F0D1A191A257D3300BE4412 /* PlaylistTableViewController.m in Sources */,
 				4F47BB281A12E0DC00660967 /* UnsortedSongQueue.m in Sources */,
 				4F47BAFC1A12E09800660967 /* ViewController.m in Sources */,
+				4F0D1A181A257D3300BE4412 /* PlaylistTableView.m in Sources */,
 				4F47BB271A12E0DC00660967 /* SongRoom.m in Sources */,
 				4FE36D271A1D645A00D21E5C /* SongRoomView.m in Sources */,
 				4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */,
 				4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */,
 				4F47BC301A1529EE00660967 /* Server.m in Sources */,
+				4F0D1A1A1A257D3300BE4412 /* SongTableViewCell.m in Sources */,
 				3B7F3B321A1D24CD00123649 /* GuestListViewController.m in Sources */,
 				4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */,
 				4F47BC2F1A1529EE00660967 /* Client.m in Sources */,
