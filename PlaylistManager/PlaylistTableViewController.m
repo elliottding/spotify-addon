@@ -57,11 +57,13 @@
     // Register the cell class for a reuse identifier
     [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:@"SongCell"];
     
+    /*
     NSMutableArray *trackIdentifiers = [[NSMutableArray alloc] init];
     NSString *tid = @"0DiWol3AO6WpXZgp0goxAV";
     [trackIdentifiers addObject:@[tid, tid, tid]];
     [trackIdentifiers addObject:@[tid, tid, tid, tid]];
     self.trackIdentifiers = trackIdentifiers;
+    */
     // [(PlaylistTableView *)self.view reloadData];
 }
 
@@ -82,7 +84,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    /*
     if (section == 0)
     {
         return self.songQueue.preferredQueue.songs.count;
@@ -92,9 +93,9 @@
         return self.songQueue.songs.count;
     }
     return 0;
-    */
-    NSArray *sectionTrackIdentifiers = self.trackIdentifiers[section];
-    return sectionTrackIdentifiers.count;
+    
+    // NSArray *sectionTrackIdentifiers = self.trackIdentifiers[section];
+    // return sectionTrackIdentifiers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,7 +113,6 @@
     }
     
     // Set the song of the cell
-    /*
     Song *song;
     if (indexPath.section == 0)
     {
@@ -126,14 +126,15 @@
     {
         [NSException raise:@"Index error" format:@"indexPath section %ld is invalid", indexPath.section];
     }
-    */
 
-    NSArray *sectionTrackIdentifiers = self.trackIdentifiers[indexPath.section];
-    NSString *trackIdentifier = sectionTrackIdentifiers[indexPath.row];
+    // NSArray *sectionTrackIdentifiers = self.trackIdentifiers[indexPath.section];
+    // NSString *trackIdentifier = sectionTrackIdentifiers[indexPath.row];
     
     //SongView *songView = [[SongView alloc] initWithSong:song frame:];
     //[cell.contentView addSubview:songView];
-    [cell loadTrackWithIdentifier:trackIdentifier];
+    // [cell loadTrackWithIdentifier:trackIdentifier];
+    
+    cell.song = song;
     return cell;
 }
 

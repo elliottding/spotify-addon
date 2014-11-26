@@ -12,6 +12,10 @@
 
 #import "SpotifyRetriever.h"
 
+@interface SongTableViewCell () <SongDelegate>
+
+@end
+
 @implementation SongTableViewCell
 
 - (void)awakeFromNib
@@ -41,12 +45,17 @@
     NSLog(@"loading track");
 }
 
+- (void)trackDidLoad
+{
+    self.textLabel.text = self.song.track.name;
+}
+
 - (void)setSong:(Song *)song
 {
     _song = song;
     if (song != nil)
     {
-        self.textLabel.text = song.track.name;
+        song.delegate = self;
         /*
         self.songNameLabel.text = song.track.name;
         SPTPartialArtist *artist = song.track.artists[0];

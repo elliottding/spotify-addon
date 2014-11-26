@@ -16,4 +16,6 @@
 
 @property (nonatomic, strong) NSMutableArray *trackIdentifiers;
 
+- (instancetype)initWithSongQueue:(SongQueue *)songQueue;
+
 @end

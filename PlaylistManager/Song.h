@@ -11,10 +11,20 @@
 
 #import "VoteBox.h"
 
+@protocol SongDelegate <NSObject>
+
+- (void)trackDidLoad;
+
+@end
+
 @interface Song : NSObject
 
 // Unique identifier.
 @property (nonatomic) int trackID;
+
+@property (nonatomic, strong) NSString *identifier;
+
+@property (nonatomic, weak) id <SongDelegate> delegate;
 
 // The corresponding Spotify track.
 @property (nonatomic, strong) SPTTrack *track;
@@ -29,5 +39,7 @@
 - (instancetype)initWithTrackID:(int)trackID andTrack:(SPTTrack *)track;
 
 - (instancetype)initWithTrack:(SPTTrack *)track;
+
+- (instancetype)initWithIdentifier:(NSString *)identifier;
 
 @end
