@@ -36,7 +36,6 @@
 		4F47BC301A1529EE00660967 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2C1A1529EE00660967 /* Server.m */; };
 		4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BC2E1A1529EE00660967 /* ServerConnection.m */; };
 		4FE36CC51A1CEB4400D21E5C /* AdminMemberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */; };
-		4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD01A1CEF3200D21E5C /* Admin.m */; };
 		4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD21A1CEF3200D21E5C /* Member.m */; };
 		4FE36CDB1A1CEF3200D21E5C /* SearchSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */; };
 		4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36CD71A1CEF3200D21E5C /* SongView.m */; };
@@ -48,6 +47,7 @@
 		5223534D1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		5223534E1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
 		522353501A14333B008782E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534F1A14333B008782E6 /* AVFoundation.framework */; };
+		828AA1481A256E53004C2868 /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = 828AA1471A256E53004C2868 /* Admin.m */; };
 		82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A939DC1A1AFC1000CB7E45 /* Parser.m */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +112,6 @@
 		4F47BC2E1A1529EE00660967 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		4FE36CC41A1CEB4400D21E5C /* AdminMemberTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMemberTests.m; sourceTree = "<group>"; };
 		4FE36CCF1A1CEF3200D21E5C /* Admin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Admin.h; sourceTree = "<group>"; };
-		4FE36CD01A1CEF3200D21E5C /* Admin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Admin.m; sourceTree = "<group>"; };
 		4FE36CD11A1CEF3200D21E5C /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
 		4FE36CD21A1CEF3200D21E5C /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
 		4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSongView.h; sourceTree = "<group>"; };
@@ -128,6 +127,7 @@
 		4FE36D611A1E701100D21E5C /* SongView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongView.xib; sourceTree = "<group>"; };
 		5223534C1A143007008782E6 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
 		5223534F1A14333B008782E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		828AA1471A256E53004C2868 /* Admin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Admin.m; sourceTree = "<group>"; };
 		82A939DB1A1AFBFB00CB7E45 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		82A939DC1A1AFC1000CB7E45 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -247,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				4FE36CCF1A1CEF3200D21E5C /* Admin.h */,
-				4FE36CD01A1CEF3200D21E5C /* Admin.m */,
+				828AA1471A256E53004C2868 /* Admin.m */,
 				4FE36CD11A1CEF3200D21E5C /* Member.h */,
 				4FE36CD21A1CEF3200D21E5C /* Member.m */,
 				4F47BB191A12E0DC00660967 /* Song.h */,
@@ -412,6 +412,7 @@
 				3B7F3B391A1D4F1200123649 /* SelectPlaylistTableViewController.m in Sources */,
 				4F47BB291A12E0DC00660967 /* User.m in Sources */,
 				4F47BB261A12E0DC00660967 /* SongQueue.m in Sources */,
+				828AA1481A256E53004C2868 /* Admin.m in Sources */,
 				3B7F3B361A1D252100123649 /* PlaylistViewController.m in Sources */,
 				4F47BB2A1A12E0DC00660967 /* VoteBox.m in Sources */,
 				3B7F3B331A1D24CD00123649 /* HistoryViewController.m in Sources */,
@@ -425,7 +426,6 @@
 				4F47BB271A12E0DC00660967 /* SongRoom.m in Sources */,
 				4FE36D271A1D645A00D21E5C /* SongRoomView.m in Sources */,
 				4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */,
-				4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */,
 				4F47BC301A1529EE00660967 /* Server.m in Sources */,
 				3B7F3B321A1D24CD00123649 /* GuestListViewController.m in Sources */,
 				4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */,
