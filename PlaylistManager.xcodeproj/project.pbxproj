@@ -16,6 +16,8 @@
 		4F0D1A181A257D3300BE4412 /* PlaylistTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0D1A131A257D3300BE4412 /* PlaylistTableView.m */; };
 		4F0D1A191A257D3300BE4412 /* PlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0D1A151A257D3300BE4412 /* PlaylistTableViewController.m */; };
 		4F0D1A1A1A257D3300BE4412 /* SongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */; };
+		4F2945D11A26B1A1001B006A /* PlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2945CF1A26B1A1001B006A /* PlaybackViewController.m */; };
+		4F2945D21A26B1A1001B006A /* PlaybackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */; };
 		4F47BAF61A12E09800660967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF51A12E09800660967 /* main.m */; };
 		4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF81A12E09800660967 /* AppDelegate.m */; };
 		4F47BAFC1A12E09800660967 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAFB1A12E09800660967 /* ViewController.m */; };
@@ -89,6 +91,9 @@
 		4F0D1A151A257D3300BE4412 /* PlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistTableViewController.m; sourceTree = "<group>"; };
 		4F0D1A161A257D3300BE4412 /* SongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongTableViewCell.h; sourceTree = "<group>"; };
 		4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongTableViewCell.m; sourceTree = "<group>"; };
+		4F2945CE1A26B1A1001B006A /* PlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaybackViewController.h; sourceTree = "<group>"; };
+		4F2945CF1A26B1A1001B006A /* PlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaybackViewController.m; sourceTree = "<group>"; };
+		4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaybackViewController.xib; sourceTree = "<group>"; };
 		4F47BAF01A12E09800660967 /* PlaylistManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaylistManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F47BAF41A12E09800660967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F47BAF51A12E09800660967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -349,6 +354,9 @@
 				4FF553A31A267B650062B600 /* SongDetailViewController.h */,
 				4FF553A41A267B650062B600 /* SongDetailViewController.m */,
 				4FF553A51A267B650062B600 /* SongDetailViewController.xib */,
+				4F2945CE1A26B1A1001B006A /* PlaybackViewController.h */,
+				4F2945CF1A26B1A1001B006A /* PlaybackViewController.m */,
+				4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */,
 			);
 			name = "Playlist UI";
 			sourceTree = "<group>";
@@ -455,6 +463,7 @@
 				3BC42C0C1A22DCF200880769 /* PlaylistView.xib in Resources */,
 				4FF553A71A267B650062B600 /* SongDetailViewController.xib in Resources */,
 				4F47BB041A12E09800660967 /* LaunchScreen.xib in Resources */,
+				4F2945D21A26B1A1001B006A /* PlaybackViewController.xib in Resources */,
 				4F47BB011A12E09800660967 /* Images.xcassets in Resources */,
 				4FE36D621A1E701100D21E5C /* SongView.xib in Resources */,
 			);
@@ -507,6 +516,7 @@
 				4F47BAF61A12E09800660967 /* main.m in Sources */,
 				4FE36CDB1A1CEF3200D21E5C /* SearchSongView.m in Sources */,
 				3B7F3B311A1D24CD00123649 /* FindSongroomViewController.m in Sources */,
+				4F2945D11A26B1A1001B006A /* PlaybackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

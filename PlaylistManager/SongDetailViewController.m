@@ -53,7 +53,8 @@
 - (IBAction)playSongButtonAction
 {
     [self.playlistNavigationController.songRoom playSong:self.song];
-    [self.playlistNavigationController popViewControllerAnimated:YES];
+    // [self.playlistNavigationController popViewControllerAnimated:NO];
+    [self.playlistNavigationController pushPlaybackViewControllerWithSong:self.song];
     [self.playlistNavigationController reloadPlaylistTableView];
 }
 

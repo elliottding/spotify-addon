@@ -11,13 +11,13 @@
 #import "SongQueue.h"
 
 #import "User.h"
-/*
+
+#import "SpotifyRetriever.h"
+
 @interface SongRoom ()
 
-users has been made public
-
 @end
-*/
+
 @implementation SongRoom
 
 - (instancetype)initWithName:(NSString *)name

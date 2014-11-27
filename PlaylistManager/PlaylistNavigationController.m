@@ -10,6 +10,7 @@
 #import "PlaylistTableViewController.h"
 #import "SearchViewController.h"
 #import "SongDetailViewController.h"
+#import "PlaybackViewController.h"
 #import "SongRoom.h"
 #import "SongQueue.h"
 
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) SearchViewController *searchViewController;
 
 @property (nonatomic, strong) SongDetailViewController *songDetailViewController;
+
+@property (nonatomic, strong) PlaybackViewController *playbackViewController;
 
 @end
 
@@ -42,6 +45,10 @@
         // Set up SongDetailViewController
         SongDetailViewController *sdvc = [[SongDetailViewController alloc] init];
         self.songDetailViewController = sdvc;
+        
+        // Set up PlaybackViewController
+        PlaybackViewController *pbvc = [[PlaybackViewController alloc] init];
+        self.playbackViewController = pbvc;
         
         [self pushViewController:ptvc animated:NO];
         self.songRoom = songRoom;
@@ -75,6 +82,13 @@
 {
     self.songDetailViewController.song = song;
     [self pushViewController:self.songDetailViewController animated:YES];
+}
+
+- (void)pushPlaybackViewControllerWithSong:(Song *)song
+{
+    [self.playbackViewController playSong:song];
+    [self popToRootViewControllerAnimated:NO];
+    [self pushViewController:self.playbackViewController animated:YES];
 }
 
 - (void)reloadPlaylistTableView

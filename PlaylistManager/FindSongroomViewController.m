@@ -8,9 +8,9 @@
 
 #import "FindSongroomViewController.h"
 
-@interface FindSongroomViewController ()
+@interface FindSongroomViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property NSMutableArray* currServ;
+@property NSMutableArray *currentServices;
 
 @end
 
@@ -28,7 +28,7 @@
 }
 - (void)reloadView
 {
-    self.currServ = [self.member currentServices];
+    self.currentServices = [self.member currentServices];
     [playlistTable reloadData];
 }
 
@@ -58,16 +58,23 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.currServ count]; //*** placeholder, var needs to find available songrooms;
+    return [self.currentServices count]; //*** placeholder, var needs to find available songrooms;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songroomCell" forIndexPath:indexPath];
-    NSNetService* service = [self.currServ objectAtIndex:indexPath.row];
+    NSNetService *service = [self.currentServices objectAtIndex:indexPath.row];
     cell.textLabel.text = service.name;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSNetService *selectedService = self.currentServices[indexPath.row];
+    self.member.connectTo = selectedService.name;
+    [self.member connect];
 }
 
 @end
