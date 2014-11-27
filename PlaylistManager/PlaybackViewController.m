@@ -45,15 +45,17 @@
         self.streamer = [SPTAudioStreamingController new];
         [self.streamer addObserver:self forKeyPath:@"currentTrackMetadata" options:0 context:nil];
     }
+    
     if (!self.streamer.loggedIn)
     {
-        [self.streamer loginWithSession:[SpotifyRetriever instance].session callback:^(NSError *error) {
-            if (error != nil)
-            {
-                NSLog(@"*** SPTAudioStreamingController login error: %@", error);
-                return;
-            }
-        }];
+        [self.streamer loginWithSession:[SpotifyRetriever instance].session callback:^(NSError *error)
+         {
+             if (error != nil)
+             {
+                 NSLog(@"*** SPTAudioStreamingController login error: %@", error);
+                 return;
+             }
+         }];
     }
 }
 
@@ -70,20 +72,13 @@
              return;
          }
          NSLog(@"Now playing: %@", song.track.name);
+         
          // Set volume slider to reflect true playback volume
          [self.volumeSlider setValue:self.streamer.volume animated:YES];
      }];
 }
 
-/*
-- (void)setSong:(Song *)song
-{
-    self.songNameLabel.text = song.track.name;
-    self.artistNameLabel.text =
-    _song = song;
-}
-*/
-
+// Observe changes in currently playing track metadata
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -91,12 +86,13 @@
 {
     if (object == self.streamer && [keyPath isEqualToString:@"currentTrackMetadata"])
     {
-        NSDictionary *currentTrackMetadata = self.streamer.currentTrackMetadata;
-        self.songNameLabel.text = [currentTrackMetadata objectForKey:SPTAudioStreamingMetadataTrackName];
-        self.artistNameLabel.text = [currentTrackMetadata objectForKey:SPTAudioStreamingMetadataArtistName];
+        NSDictionary *trackMetadata = self.streamer.currentTrackMetadata;
+        self.songNameLabel.text = [trackMetadata objectForKey:SPTAudioStreamingMetadataTrackName];
+        self.artistNameLabel.text = [trackMetadata objectForKey:SPTAudioStreamingMetadataArtistName];
     }
 }
 
+// Handle Play/Pause button tap
 - (IBAction)playPauseButtonAction
 {
     // Avoid retain cycle in callback
@@ -105,29 +101,30 @@
     if (self.streamer.isPlaying)
     {
         [self.streamer setIsPlaying:NO callback:^(NSError *error)
-        {
-            if (error != nil)
-            {
-                NSLog(@"Playback pause error: %@", error);
-                return;
-            }
-            weakSelf.playPauseButton.titleLabel.text = @"Play";
-        }];
+         {
+             if (error != nil)
+             {
+                 NSLog(@"Playback pause error: %@", error);
+                 return;
+             }
+             weakSelf.playPauseButton.titleLabel.text = @"Play";
+         }];
     }
     else
     {
         [self.streamer setIsPlaying:YES callback:^(NSError *error)
-        {
-            if (error != nil)
-            {
-                NSLog(@"Playback resume error: %@", error);
-                return;
-            }
-            weakSelf.playPauseButton.titleLabel.text = @"Pause";
-        }];
+         {
+             if (error != nil)
+             {
+                 NSLog(@"Playback resume error: %@", error);
+                 return;
+             }
+             weakSelf.playPauseButton.titleLabel.text = @"Pause";
+         }];
     }
 }
 
+// Handle volume slider change
 - (IBAction)volumeSliderChangeAction
 {
     // Avoid retain cycle in callback
@@ -135,14 +132,14 @@
     
     float sliderValue = self.volumeSlider.value;
     [self.streamer setVolume:sliderValue callback:^(NSError *error)
-    {
-        if (error != nil)
-        {
-            NSLog(@"Volume error: %@", error);
-            return;
-        }
-        NSLog(@"Volume set to %f; slider at %f", weakSelf.streamer.volume, sliderValue);
-    }];
+     {
+         if (error != nil)
+         {
+             NSLog(@"Volume error: %@", error);
+             return;
+         }
+         NSLog(@"Volume set to %f; slider at %f", weakSelf.streamer.volume, sliderValue);
+     }];
 }
 
 @end

@@ -26,7 +26,6 @@
     [playlistTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"songroomCell"];
     [NSThread sleepForTimeInterval:5];
     [self reloadView];
-    // Do any additional setup after loading the view.
 }
 
 - (void)reloadView
@@ -35,20 +34,13 @@
     [playlistTable reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     // TODO: Possible race condition here
     // return self.currentServices.count; //*** placeholder, var needs to find available songrooms;
     return [[Member instance] currentServices].count;
