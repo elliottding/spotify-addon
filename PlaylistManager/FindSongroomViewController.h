@@ -14,6 +14,4 @@
     __weak IBOutlet UITableView *playlistTable;
 }
 
-@property Member* member;
-
 @end

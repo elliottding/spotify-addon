@@ -54,9 +54,13 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     SongRoom *songRoom = [[SongRoom alloc] initWithName:@"Test Room"];
     songRoom.songQueue = songQueue;
     
-    _testAdmin = [[Admin alloc] initWithUsername:@"test admin"];
-    [_testAdmin startServer:@"Test Room"];
-    _testAdmin.songRoom = songRoom;
+    self.testAdmin = [[Admin alloc] initWithUsername:@"Test Admin"];
+    [self.testAdmin startServer:@"Test Room"];
+    self.testAdmin.songRoom = songRoom;
+    
+    // Set up test member
+    [[Member instance] startBrowser];
+    [Member instance].username = @"Test User";
     
     [self loginToSpotifyWithApplication:application];
 

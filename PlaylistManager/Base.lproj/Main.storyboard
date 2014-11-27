@@ -55,6 +55,7 @@
                                     <rect key="frame" x="-84" y="473" width="568" height="119"/>
                                 </variation>
                                 <connections>
+                                    <action selector="makeNewSongRoomButtonAction" destination="vXZ-lx-hvc" eventType="touchUpInside" id="A2F-S5-Zzj"/>
                                     <segue destination="9WV-sB-Lcu" kind="modal" id="E9G-2E-Fz9"/>
                                 </connections>
                             </button>

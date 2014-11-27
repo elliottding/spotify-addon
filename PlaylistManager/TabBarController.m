@@ -12,7 +12,7 @@
 
 #import "PlaylistNavigationController.h"
 #import "HistoryViewController.h"
-#import "RoomViewController.h"
+#import "RoomNavigationController.h"
 
 @interface TabBarController () <UITabBarControllerDelegate>
 
@@ -28,7 +28,7 @@
         self.songRoom = songRoom;
         self.pnc = [[PlaylistNavigationController alloc] initWithSongRoom:songRoom];
         self.hnc = [[HistoryViewController alloc] initWithSongRoom:songRoom];
-        self.rnc = [[RoomViewController alloc] init];
+        self.rnc = [[RoomNavigationController alloc] initWithSongRoom:songRoom];
         
         [self setViewControllers:@[self.pnc, self.hnc, self.rnc] animated:NO];
         self.delegate = self;

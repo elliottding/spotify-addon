@@ -18,6 +18,7 @@
 		4F0D1A1A1A257D3300BE4412 /* SongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */; };
 		4F2945D11A26B1A1001B006A /* PlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2945CF1A26B1A1001B006A /* PlaybackViewController.m */; };
 		4F2945D21A26B1A1001B006A /* PlaybackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */; };
+		4F2945D51A26CA52001B006A /* GuestListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2945D41A26CA52001B006A /* GuestListTableViewController.m */; };
 		4F47BAF61A12E09800660967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF51A12E09800660967 /* main.m */; };
 		4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF81A12E09800660967 /* AppDelegate.m */; };
 		4F47BAFC1A12E09800660967 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAFB1A12E09800660967 /* ViewController.m */; };
@@ -54,7 +55,7 @@
 		4FE36D271A1D645A00D21E5C /* SongRoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE36D261A1D645A00D21E5C /* SongRoomView.m */; };
 		4FE36D621A1E701100D21E5C /* SongView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE36D611A1E701100D21E5C /* SongView.xib */; };
 		4FF5539A1A266A5A0062B600 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF553991A266A5A0062B600 /* TabBarController.m */; };
-		4FF5539D1A266C740062B600 /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5539C1A266C740062B600 /* RoomViewController.m */; };
+		4FF5539D1A266C740062B600 /* RoomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5539C1A266C740062B600 /* RoomNavigationController.m */; };
 		4FF553A61A267B650062B600 /* SongDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF553A41A267B650062B600 /* SongDetailViewController.m */; };
 		4FF553A71A267B650062B600 /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF553A51A267B650062B600 /* SongDetailViewController.xib */; };
 		5223534D1A143007008782E6 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534C1A143007008782E6 /* Spotify.framework */; };
@@ -94,6 +95,8 @@
 		4F2945CE1A26B1A1001B006A /* PlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaybackViewController.h; sourceTree = "<group>"; };
 		4F2945CF1A26B1A1001B006A /* PlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaybackViewController.m; sourceTree = "<group>"; };
 		4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaybackViewController.xib; sourceTree = "<group>"; };
+		4F2945D31A26CA52001B006A /* GuestListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuestListTableViewController.h; sourceTree = "<group>"; };
+		4F2945D41A26CA52001B006A /* GuestListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuestListTableViewController.m; sourceTree = "<group>"; };
 		4F47BAF01A12E09800660967 /* PlaylistManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaylistManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F47BAF41A12E09800660967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F47BAF51A12E09800660967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -155,8 +158,8 @@
 		4FE36D611A1E701100D21E5C /* SongView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongView.xib; sourceTree = "<group>"; };
 		4FF553981A266A5A0062B600 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		4FF553991A266A5A0062B600 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
-		4FF5539B1A266C740062B600 /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
-		4FF5539C1A266C740062B600 /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
+		4FF5539B1A266C740062B600 /* RoomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomNavigationController.h; sourceTree = "<group>"; };
+		4FF5539C1A266C740062B600 /* RoomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomNavigationController.m; sourceTree = "<group>"; };
 		4FF553A31A267B650062B600 /* SongDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDetailViewController.h; sourceTree = "<group>"; };
 		4FF553A41A267B650062B600 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDetailViewController.m; sourceTree = "<group>"; };
 		4FF553A51A267B650062B600 /* SongDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
@@ -332,8 +335,10 @@
 				3B7F3B2E1A1D24CD00123649 /* GuestListViewController.m */,
 				3B7F3B371A1D4F1200123649 /* SelectPlaylistTableViewController.h */,
 				3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */,
-				4FF5539B1A266C740062B600 /* RoomViewController.h */,
-				4FF5539C1A266C740062B600 /* RoomViewController.m */,
+				4FF5539B1A266C740062B600 /* RoomNavigationController.h */,
+				4FF5539C1A266C740062B600 /* RoomNavigationController.m */,
+				4F2945D31A26CA52001B006A /* GuestListTableViewController.h */,
+				4F2945D41A26CA52001B006A /* GuestListTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -495,7 +500,7 @@
 				4F47BB251A12E0DC00660967 /* Song.m in Sources */,
 				4FD4AB1C1A263D1B00D91D54 /* SongSearchView.m in Sources */,
 				4F47BC311A1529EE00660967 /* ServerConnection.m in Sources */,
-				4FF5539D1A266C740062B600 /* RoomViewController.m in Sources */,
+				4FF5539D1A266C740062B600 /* RoomNavigationController.m in Sources */,
 				4FE36D211A1D142F00D21E5C /* SpotifyRetriever.m in Sources */,
 				4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */,
 				4FF5539A1A266A5A0062B600 /* TabBarController.m in Sources */,
@@ -509,6 +514,7 @@
 				4FE36CDC1A1CEF3200D21E5C /* SongView.m in Sources */,
 				4FE36CD81A1CEF3200D21E5C /* Admin.m in Sources */,
 				4F47BC301A1529EE00660967 /* Server.m in Sources */,
+				4F2945D51A26CA52001B006A /* GuestListTableViewController.m in Sources */,
 				4F0D1A1A1A257D3300BE4412 /* SongTableViewCell.m in Sources */,
 				3B7F3B321A1D24CD00123649 /* GuestListViewController.m in Sources */,
 				4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */,
