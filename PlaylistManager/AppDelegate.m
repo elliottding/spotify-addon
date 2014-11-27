@@ -19,8 +19,6 @@ static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
 static NSString * const kCallbackURL = @"spotifyiossdkexample://"; // @"CS22001-app-login://callback";
 static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
-/*username: jstevensstein@gmail.com, password: spotify-addon*/
-
 @interface AppDelegate ()
 
 @property (nonatomic, strong, readwrite) SPTAudioStreamingController *audioStreamingController;
