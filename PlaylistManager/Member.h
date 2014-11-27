@@ -47,6 +47,9 @@
 
 -(void) QueueSong:(NSString *) songURI;
 
+-(void) updateSongRoom;
+
+
 // for testing purposes only
 - (void) outputText:(NSString *)text;
 
