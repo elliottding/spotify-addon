@@ -28,6 +28,8 @@
 
 - (void)pushPlaybackViewControllerWithSong:(Song *)song;
 
+- (void)pushPlaybackViewController;
+
 - (void)reloadPlaylistTableView;
 
 @end

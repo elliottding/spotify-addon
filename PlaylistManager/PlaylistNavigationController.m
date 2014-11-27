@@ -78,6 +78,11 @@
     [self pushViewController:self.searchViewController animated:YES];
 }
 
+- (void)pushPlaybackViewController
+{
+    [self pushViewController:self.playbackViewController animated:YES];
+}
+
 - (void)pushSongDetailViewControllerWithSong:(Song *)song
 {
     self.songDetailViewController.song = song;
@@ -87,7 +92,7 @@
 - (void)pushPlaybackViewControllerWithSong:(Song *)song
 {
     [self.playbackViewController playSong:song];
-    [self popToRootViewControllerAnimated:NO];
+    //[self popToRootViewControllerAnimated:NO];
     [self pushViewController:self.playbackViewController animated:YES];
 }
 

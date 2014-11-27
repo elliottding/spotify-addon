@@ -16,16 +16,24 @@
 
 @property (nonatomic) IBOutlet UILabel *songNameLabel;
 
+@property (nonatomic) IBOutlet UILabel *artistNameLabel;
+
 @property (nonatomic) IBOutlet UIButton *playPauseButton;
 
 @end
 
 @implementation PlaybackViewController
 
+- (void)dealloc
+{
+    [self.streamer removeObserver:self forKeyPath:@"currentTrackMetadata"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"Now Playing";
+    // self.song = self.song;
     // self.streamer = [SPTAudioStreamingController new];
 }
 
@@ -34,6 +42,7 @@
     if (self.streamer == nil)
     {
         self.streamer = [SPTAudioStreamingController new];
+        [self.streamer addObserver:self forKeyPath:@"currentTrackMetadata" options:0 context:nil];
     }
     if (!self.streamer.loggedIn)
     {
@@ -63,21 +72,55 @@
      }];
 }
 
+/*
 - (void)setSong:(Song *)song
 {
     self.songNameLabel.text = song.track.name;
+    self.artistNameLabel.text =
     _song = song;
 }
+*/
 
-- (void)didReceiveMemoryWarning
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (object == self.streamer && [keyPath isEqualToString:@"currentTrackMetadata"])
+    {
+        NSDictionary *currentTrackMetadata = self.streamer.currentTrackMetadata;
+        self.songNameLabel.text = [currentTrackMetadata objectForKey:SPTAudioStreamingMetadataTrackName];
+        self.artistNameLabel.text = [currentTrackMetadata objectForKey:SPTAudioStreamingMetadataArtistName];
+    }
 }
 
 - (IBAction)playPauseButtonAction
 {
-    self.playPauseButton.titleLabel.text = @"Pause";
+    __unsafe_unretained typeof(self) weakSelf = self;
+    if (self.streamer.isPlaying)
+    {
+        [self.streamer setIsPlaying:NO callback:^(NSError *error)
+        {
+            if (error != nil)
+            {
+                NSLog(@"Playback pause error: %@", error);
+                return;
+            }
+            weakSelf.playPauseButton.titleLabel.text = @"Play";
+        }];
+    }
+    else
+    {
+        [self.streamer setIsPlaying:YES callback:^(NSError *error)
+        {
+            if (error != nil)
+            {
+                NSLog(@"Playback resume error: %@", error);
+                return;
+            }
+            weakSelf.playPauseButton.titleLabel.text = @"Pause";
+        }];
+    }
 }
 
 @end

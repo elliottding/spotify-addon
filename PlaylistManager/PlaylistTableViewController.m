@@ -29,9 +29,16 @@
     {
         self.songQueue = songQueue;
         [self setupAddButton];
+        [self setupNowPlayingButton];
         self.title = @"Playlist";
     }
     return self;
+}
+
+- (void)setupNowPlayingButton
+{
+    UIBarButtonItem *nowPlayingButton = [[UIBarButtonItem alloc] initWithTitle:@"Now Playing" style:UIBarButtonItemStylePlain target:self.navigationController action:@selector(pushPlaybackViewController)];
+    self.navigationItem.leftBarButtonItem = nowPlayingButton;
 }
 
 - (void)setupAddButton

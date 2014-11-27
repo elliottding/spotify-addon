@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaybackViewController">
             <connections>
+                <outlet property="artistNameLabel" destination="G3C-Ng-CQp" id="uYR-Pf-4B1"/>
+                <outlet property="playPauseButton" destination="3eG-RA-Z7m" id="S8O-tm-Jvl"/>
                 <outlet property="songNameLabel" destination="iza-H0-UPX" id="mcn-wQ-iAw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,6 +26,9 @@
                     <variation key="widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="179" y="285" width="43" height="30"/>
                     </variation>
+                    <connections>
+                        <action selector="playPauseButtonAction" destination="-1" eventType="touchUpInside" id="G3G-Zq-zxW"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iza-H0-UPX">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -34,18 +39,29 @@
                         <rect key="frame" x="8" y="256" width="384" height="21"/>
                     </variation>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3C-Ng-CQp">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="8" y="227" width="384" height="21"/>
+                    </variation>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="3eG-RA-Z7m"/>
                     <exclude reference="iza-H0-UPX"/>
+                    <exclude reference="G3C-Ng-CQp"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
                     <include reference="3eG-RA-Z7m"/>
                     <include reference="iza-H0-UPX"/>
+                    <include reference="G3C-Ng-CQp"/>
                 </mask>
             </variation>
         </view>
