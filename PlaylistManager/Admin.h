@@ -11,6 +11,7 @@
 
 @interface Admin : User
 
++ (instancetype)instance;
 
 // the name argument will set the name property
 // to publish the server with the device name just input the

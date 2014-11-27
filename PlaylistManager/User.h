@@ -16,7 +16,7 @@
 
 // String representing the username of this User.
 // NOTE: Usernames MUST be unique.
-@property (nonatomic, strong, readonly) NSString *username;
+@property (nonatomic, strong) NSString *username;
 
 // The SongRoom containing this User.
 // NOTE: Do not set this property; treat as readonly. However, the readonly qualifier can't be used here

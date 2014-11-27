@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RoomViewController : UIViewController
+@class SongRoom;
+
+@interface RoomNavigationController : UINavigationController
+
+- (instancetype)initWithSongRoom:(SongRoom *)songRoom;
 
 @end

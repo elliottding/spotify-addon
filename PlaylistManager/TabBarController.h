@@ -14,7 +14,7 @@
 
 @class HistoryViewController;
 
-@class RoomViewController;
+@class RoomNavigationController;
 
 @interface TabBarController : UITabBarController
 
@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) HistoryViewController *hnc;
 
-@property (nonatomic, strong) RoomViewController *rnc;
+@property (nonatomic, strong) RoomNavigationController *rnc;
 
 - (instancetype)initWithSongRoom:(SongRoom *)songRoom;
 

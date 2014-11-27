@@ -52,20 +52,6 @@
     
 }
 
--(void)memberThread{
-    [testMember startBrowser];
-    [NSThread sleepForTimeInterval: 2.0];
-    /*for(NSNetService *it in testMember.services){
-     if([it.name isEqualToString: @"ConnectionTest"]){
-     [testMember openStreamsToNetService: it];
-     [[NSRunLoop currentRunLoop] run];
-     }
-     }*/
-    testMember.connectTo = @"songroom";
-    [testMember connect];
-    NSLog(@"thread exited");
-}
-
 //NOTE: tests my fail due to concurrency. That is the other thread has not been given enough time to complete
 // its assigned task. before assuming coding error increase the amount of time the current thread sleeps while
 // the operation occurs in the other thread/threads

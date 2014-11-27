@@ -29,9 +29,16 @@
     {
         self.songQueue = songQueue;
         [self setupAddButton];
+        [self setupNowPlayingButton];
         self.title = @"Playlist";
     }
     return self;
+}
+
+- (void)setupNowPlayingButton
+{
+    UIBarButtonItem *nowPlayingButton = [[UIBarButtonItem alloc] initWithTitle:@"Now Playing" style:UIBarButtonItemStylePlain target:self.navigationController action:@selector(pushPlaybackViewController)];
+    self.navigationItem.leftBarButtonItem = nowPlayingButton;
 }
 
 - (void)setupAddButton
@@ -154,11 +161,11 @@
     Song *selectedSong;
     if (indexPath.section == 0)
     {
-        selectedSong = self.songQueue.preferredQueue.songs[indexPath.item];
+        selectedSong = self.songQueue.preferredQueue.songs[indexPath.row];
     }
     else if (indexPath.section == 1)
     {
-        selectedSong = self.songQueue.songs[indexPath.item];
+        selectedSong = self.songQueue.songs[indexPath.row];
     }
     PlaylistNavigationController *pnc = (PlaylistNavigationController *)self.navigationController;
     [pnc pushSongDetailViewControllerWithSong:selectedSong];

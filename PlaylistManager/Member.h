@@ -27,6 +27,8 @@
 // set this property to the name of the songroom you want to connect to then call the connect method
 @property (nonatomic, strong) NSString *connectTo;
 
++ (instancetype)instance;
+
 // Calling this method will search for a service with the name of the connectTo property
 // and open a stream to it.
 -(void)connect;
@@ -46,6 +48,9 @@
 -(void)Vote:(NSString *)songURI withDirection:(int) upDown;
 
 -(void) QueueSong:(NSString *) songURI;
+
+-(void) updateSongRoom;
+
 
 // for testing purposes only
 - (void) outputText:(NSString *)text;

@@ -12,9 +12,9 @@
 
 #import "PlaylistNavigationController.h"
 #import "HistoryViewController.h"
-#import "RoomViewController.h"
+#import "RoomNavigationController.h"
 
-@interface TabBarController ()
+@interface TabBarController () <UITabBarControllerDelegate>
 
 @end
 
@@ -27,10 +27,11 @@
     {
         self.songRoom = songRoom;
         self.pnc = [[PlaylistNavigationController alloc] initWithSongRoom:songRoom];
-        self.hnc = [[HistoryViewController alloc] initWithHistoryQueue:songRoom.historyQueue];
-        self.rnc = [[RoomViewController alloc] init];
+        self.hnc = [[HistoryViewController alloc] initWithSongRoom:songRoom];
+        self.rnc = [[RoomNavigationController alloc] initWithSongRoom:songRoom];
         
         [self setViewControllers:@[self.pnc, self.hnc, self.rnc] animated:NO];
+        self.delegate = self;
     }
     return self;
 }
@@ -44,6 +45,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController
+ didSelectViewController:(UIViewController *)viewController
+{
+    if (viewController == self.hnc)
+    {
+        [self.hnc.tableView reloadData];
+    }
 }
 
 /*

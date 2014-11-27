@@ -25,6 +25,19 @@
 
 @implementation Admin
 
++ (instancetype)instance
+{
+    static Admin *singleInstance = nil;
+    static dispatch_once_t onceToken;
+    
+    // Ensure that singleInstance is initialized only once across all threads
+    dispatch_once(&onceToken, ^
+                  {
+                      singleInstance = [[self alloc] init];
+                  });
+    return singleInstance;
+}
+
 -(BOOL)startServer:(NSString *)name{
     self.songroomServer = [[Server alloc] init];
     [self.songroomServer startWithName:name WithHost: self];

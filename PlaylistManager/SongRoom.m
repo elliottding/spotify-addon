@@ -11,13 +11,13 @@
 #import "SongQueue.h"
 
 #import "User.h"
-/*
+
+#import "SpotifyRetriever.h"
+
 @interface SongRoom ()
 
-users has been made public
-
 @end
-*/
+
 @implementation SongRoom
 
 - (instancetype)initWithName:(NSString *)name
@@ -28,6 +28,7 @@ users has been made public
         self.name = name;
         self.userDictionary = [[NSMutableDictionary alloc] init];
         self.songQueue = [[SongQueue alloc] init];
+        self.historyQueue = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -102,8 +103,8 @@ users has been made public
 
 - (void)playSong:(Song *)song
 {
-    [self.songQueue removeSongFromEitherQueue:song];
     [self.historyQueue insertObject:song atIndex:0];
+    [self.songQueue removeSongFromEitherQueue:song];
 }
 
 - (void)playNextSong

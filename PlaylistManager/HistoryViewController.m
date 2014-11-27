@@ -18,12 +18,12 @@
 
 @implementation HistoryViewController
 
-- (instancetype)initWithHistoryQueue:(NSArray *)historyQueue
+- (instancetype)initWithSongRoom:(SongRoom *)songRoom
 {
     self = [super init];
     if (self)
     {
-        self.historyQueue = historyQueue;
+        self.songRoom = songRoom;
         self.title = @"Playlist History";
     }
     return self;
@@ -65,7 +65,7 @@
 {
     if (section == 0)
     {
-        return self.historyQueue.count;
+        return self.songRoom.historyQueue.count;
     }
     return 0;
 }
@@ -87,7 +87,7 @@
     Song *song;
     if (indexPath.section == 0)
     {
-        song = self.historyQueue[indexPath.item];
+        song = self.songRoom.historyQueue[indexPath.row];
     }
     else
     {
@@ -97,25 +97,5 @@
     cell.song = song;
     return cell;
 }
-
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0)
-    {
-        return @"Preferred Queue";
-    }
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

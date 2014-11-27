@@ -8,9 +8,12 @@
 #import "Admin.h"
 #import "SongQueue.h"
 
-#import "PlaylistTableViewController.h"
+#import "TabBarController.h"
 #import "SelectPlaylistTableViewController.h"
 #import "SpotifyRetriever.h"
+
+#import "Member.h"
+#import "Admin.h"
 
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
@@ -20,6 +23,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 @interface AppDelegate ()
 
 @property (nonatomic, strong, readwrite) SPTAudioStreamingController *audioStreamingController;
+@property (nonatomic, strong) Admin *testAdmin;
 
 @end
 
@@ -27,8 +31,42 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Set up a song queue for testing
+    // Set up test song room
+    NSArray *trackIdentifiers = @[@"7dS5EaCoMnN7DzlpT6aRn2",
+                                  @"1aKsg5b9sOngINaQXbB0P7",
+                                  @"2woCw59DHRIb1vcyQ2a7Ca",
+                                  @"4O594chXfv4lHvneDP0Ud0",
+                                  @"7pJgjBf82BrUQ3z7HdQvW1",
+                                  @"2Bs4jQEGMycglOfWPBqrVG",
+                                  @"18AJRdgUoO9EYn11N7xzaT",
+                                  @"7IHOIqZUUInxjVkko181PB"];
+    SongQueue *songQueue = [[SongQueue alloc] init];
+    for (int i = 0; i < 3; i++)
+    {
+        Song *song = [[Song alloc] initWithIdentifier:trackIdentifiers[i]];
+        [songQueue.preferredQueue appendSong:song];
+    }
+    for (int i = 3; i < trackIdentifiers.count; i++)
+    {
+        Song *song = [[Song alloc] initWithIdentifier:trackIdentifiers[i]];
+        [songQueue addSong:song];
+    }
+    SongRoom *songRoom = [[SongRoom alloc] initWithName:@"Test Room"];
+    songRoom.songQueue = songQueue;
+    
+    self.testAdmin = [[Admin alloc] initWithUsername:@"Test Admin"];
+    [self.testAdmin startServer:@"Test Room"];
+    self.testAdmin.songRoom = songRoom;
+    
+    // Set up test member
+    [[Member instance] startBrowser];
+    [Member instance].username = @"Test User";
+    
     [self loginToSpotifyWithApplication:application];
+
+    // self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // self.window.rootViewController = [[TabBarController alloc] initWithSongRoom:songRoom];
+    // [self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -59,9 +97,11 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         NSLog(@"Auth success");
         [self playUsingSession:session];
         [SpotifyRetriever instance].session = session;
+        /*
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = [[SelectPlaylistTableViewController alloc] init];
         [self.window makeKeyAndVisible];
+         */
         
     };
     

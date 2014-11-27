@@ -15,16 +15,28 @@
 @interface Member()
 
 @property (nonatomic, strong) Client *connection;
-@property (nonatomic, strong) NSMutableData *outputBuffer;
 
+@property (nonatomic, strong) NSMutableData *outputBuffer;
 
 @end
 
 @implementation Member
 
-
--(void) connect{
++ (instancetype)instance
+{
+    static Member *singleInstance = nil;
+    static dispatch_once_t onceToken;
     
+    // Ensure that singleInstance is initialized only once across all threads
+    dispatch_once(&onceToken, ^
+                  {
+                      singleInstance = [[self alloc] init];
+                  });
+    return singleInstance;
+}
+
+- (void)connect
+{
     _connection.connectTo = self.connectTo;
     [_connection connect];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -34,10 +46,9 @@
     [NSThread detachNewThreadSelector:@selector(manageInput) toTarget:(self) withObject:nil];
     [NSThread sleepForTimeInterval:1.0];
     [self outputText:[Parser makeSigninString:self.username]];
-    
 }
 
--(void)receiveTestNotification:(NSNotification *) notification{
+- (void)receiveTestNotification:(NSNotification *) notification{
     NSDictionary* userInfo = notification.userInfo;
     NSString* string = userInfo[@"string"];
     [self outputText:string];
@@ -45,7 +56,7 @@
     
 }
 
--(void) manageInput{
+- (void)manageInput{
     while (1) {
         if(_connection.available){
             NSLog(@"%@", _connection.message);
@@ -136,6 +147,13 @@
 -(NSMutableArray *) currentServices{
     return _connection.services;
 }
+
+-(void) updateSongRoom{
+    NSString * upRequest = [Parser makeUpdateString];
+    [self outputText:upRequest];
+    
+}
+
 
 @end
 

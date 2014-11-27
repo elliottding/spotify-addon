@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
+
+#import "SongRoom.h"
 
 @interface HistoryViewController : UITableViewController
 
+@property (nonatomic, strong) SongRoom *songRoom;
+
 - (instancetype)initWithHistoryQueue:(NSArray *)historyQueue;
+
+- (instancetype)initWithSongRoom:(SongRoom *)songRoom;
 
 @end
