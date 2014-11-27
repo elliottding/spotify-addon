@@ -51,6 +51,11 @@
                BlueprintName = "PlaylistManagerTests"
                ReferencedContainer = "container:PlaylistManager.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "AdminMemberTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

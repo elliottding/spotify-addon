@@ -193,6 +193,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F2945D91A26E877001B006A /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				3B7F3B2D1A1D24CD00123649 /* GuestListViewController.h */,
+				3B7F3B2E1A1D24CD00123649 /* GuestListViewController.m */,
+				3BC42C0B1A22DCF200880769 /* PlaylistView.xib */,
+				3B7F3B341A1D252100123649 /* PlaylistViewController.h */,
+				3B7F3B351A1D252100123649 /* PlaylistViewController.m */,
+				4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */,
+				4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */,
+				3B7F3B371A1D4F1200123649 /* SelectPlaylistTableViewController.h */,
+				3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */,
+				4FE36D251A1D645A00D21E5C /* SongRoomView.h */,
+				4FE36D261A1D645A00D21E5C /* SongRoomView.m */,
+				4FD4AB1A1A263D1B00D91D54 /* SongSearchView.h */,
+				4FD4AB1B1A263D1B00D91D54 /* SongSearchView.m */,
+				4FE36CD61A1CEF3200D21E5C /* SongView.h */,
+				4FE36CD71A1CEF3200D21E5C /* SongView.m */,
+				4FE36D611A1E701100D21E5C /* SongView.xib */,
+				4F47BAFA1A12E09800660967 /* ViewController.h */,
+				4F47BAFB1A12E09800660967 /* ViewController.m */,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
 		4F47BAE71A12E09800660967 = {
 			isa = PBXGroup;
 			children = (
@@ -217,20 +242,13 @@
 			children = (
 				4F47BAF71A12E09800660967 /* AppDelegate.h */,
 				4F47BAF81A12E09800660967 /* AppDelegate.m */,
-				4F47BAFA1A12E09800660967 /* ViewController.h */,
-				4F47BAFB1A12E09800660967 /* ViewController.m */,
-				4FF553981A266A5A0062B600 /* TabBarController.h */,
-				4FF553991A266A5A0062B600 /* TabBarController.m */,
-				82A939DB1A1AFBFB00CB7E45 /* Parser.h */,
-				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
 				4FE36D1F1A1D142F00D21E5C /* SpotifyRetriever.h */,
 				4FE36D201A1D142F00D21E5C /* SpotifyRetriever.m */,
-				4FF5539F1A2676410062B600 /* History UI */,
-				4FF5539E1A2675EA0062B600 /* Playlist UI */,
 				4FE36D241A1D43FC00D21E5C /* Controllers */,
 				4FE36D1C1A1CEF9500D21E5C /* Views */,
 				4FAA9B4F1A152FE20060F704 /* Models */,
 				4FAA9B4E1A152FCA0060F704 /* Server */,
+				4F2945D91A26E877001B006A /* Unused */,
 				4F47BAFD1A12E09800660967 /* Main.storyboard */,
 				4F47BB001A12E09800660967 /* Images.xcassets */,
 				4F47BB021A12E09800660967 /* LaunchScreen.xib */,
@@ -279,6 +297,8 @@
 			children = (
 				4F47BC291A1529EE00660967 /* Client.h */,
 				4F47BC2A1A1529EE00660967 /* Client.m */,
+				82A939DB1A1AFBFB00CB7E45 /* Parser.h */,
+				82A939DC1A1AFC1000CB7E45 /* Parser.m */,
 				4F47BC2B1A1529EE00660967 /* Server.h */,
 				4F47BC2C1A1529EE00660967 /* Server.m */,
 				4F47BC2D1A1529EE00660967 /* ServerConnection.h */,
@@ -313,16 +333,10 @@
 		4FE36D1C1A1CEF9500D21E5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4FD4AB1A1A263D1B00D91D54 /* SongSearchView.h */,
-				4FD4AB1B1A263D1B00D91D54 /* SongSearchView.m */,
-				4FE36CD41A1CEF3200D21E5C /* SearchSongView.h */,
-				4FE36CD51A1CEF3200D21E5C /* SearchSongView.m */,
-				4FE36CD61A1CEF3200D21E5C /* SongView.h */,
-				4FE36CD71A1CEF3200D21E5C /* SongView.m */,
-				4FE36D611A1E701100D21E5C /* SongView.xib */,
-				4FE36D251A1D645A00D21E5C /* SongRoomView.h */,
-				4FE36D261A1D645A00D21E5C /* SongRoomView.m */,
-				3BC42C0B1A22DCF200880769 /* PlaylistView.xib */,
+				4F0D1A121A257D3300BE4412 /* PlaylistTableView.h */,
+				4F0D1A131A257D3300BE4412 /* PlaylistTableView.m */,
+				4F0D1A161A257D3300BE4412 /* SongTableViewCell.h */,
+				4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -330,54 +344,32 @@
 		4FE36D241A1D43FC00D21E5C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3B7F3B341A1D252100123649 /* PlaylistViewController.h */,
-				3B7F3B351A1D252100123649 /* PlaylistViewController.m */,
 				3B7F3B2B1A1D24CD00123649 /* FindSongroomViewController.h */,
 				3B7F3B2C1A1D24CD00123649 /* FindSongroomViewController.m */,
-				3B7F3B2D1A1D24CD00123649 /* GuestListViewController.h */,
-				3B7F3B2E1A1D24CD00123649 /* GuestListViewController.m */,
-				3B7F3B371A1D4F1200123649 /* SelectPlaylistTableViewController.h */,
-				3B7F3B381A1D4F1200123649 /* SelectPlaylistTableViewController.m */,
-				4FF5539B1A266C740062B600 /* RoomNavigationController.h */,
-				4FF5539C1A266C740062B600 /* RoomNavigationController.m */,
 				4F2945D31A26CA52001B006A /* GuestListTableViewController.h */,
 				4F2945D41A26CA52001B006A /* GuestListTableViewController.m */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		4FF5539E1A2675EA0062B600 /* Playlist UI */ = {
-			isa = PBXGroup;
-			children = (
-				4F0D1A141A257D3300BE4412 /* PlaylistTableViewController.h */,
-				4F0D1A151A257D3300BE4412 /* PlaylistTableViewController.m */,
-				4FD4AB141A2633A900D91D54 /* PlaylistNavigationController.h */,
-				4FD4AB151A2633A900D91D54 /* PlaylistNavigationController.m */,
-				4FD4AB171A26390800D91D54 /* SearchViewController.h */,
-				4FD4AB181A26390800D91D54 /* SearchViewController.m */,
-				4F0D1A121A257D3300BE4412 /* PlaylistTableView.h */,
-				4F0D1A131A257D3300BE4412 /* PlaylistTableView.m */,
-				4F0D1A161A257D3300BE4412 /* SongTableViewCell.h */,
-				4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */,
-				4FF553A31A267B650062B600 /* SongDetailViewController.h */,
-				4FF553A41A267B650062B600 /* SongDetailViewController.m */,
-				4FF553A51A267B650062B600 /* SongDetailViewController.xib */,
+				3B7F3B2F1A1D24CD00123649 /* HistoryViewController.h */,
+				3B7F3B301A1D24CD00123649 /* HistoryViewController.m */,
 				4F2945CE1A26B1A1001B006A /* PlaybackViewController.h */,
 				4F2945CF1A26B1A1001B006A /* PlaybackViewController.m */,
 				4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */,
+				4FD4AB141A2633A900D91D54 /* PlaylistNavigationController.h */,
+				4FD4AB151A2633A900D91D54 /* PlaylistNavigationController.m */,
+				4F0D1A141A257D3300BE4412 /* PlaylistTableViewController.h */,
+				4F0D1A151A257D3300BE4412 /* PlaylistTableViewController.m */,
 				4F2945D61A26D6F3001B006A /* RefreshTableViewController.h */,
 				4F2945D71A26D6F3001B006A /* RefreshTableViewController.m */,
+				4FF5539B1A266C740062B600 /* RoomNavigationController.h */,
+				4FF5539C1A266C740062B600 /* RoomNavigationController.m */,
+				4FD4AB171A26390800D91D54 /* SearchViewController.h */,
+				4FD4AB181A26390800D91D54 /* SearchViewController.m */,
+				4FF553A31A267B650062B600 /* SongDetailViewController.h */,
+				4FF553A41A267B650062B600 /* SongDetailViewController.m */,
+				4FF553A51A267B650062B600 /* SongDetailViewController.xib */,
+				4FF553981A266A5A0062B600 /* TabBarController.h */,
+				4FF553991A266A5A0062B600 /* TabBarController.m */,
 			);
-			name = "Playlist UI";
-			sourceTree = "<group>";
-		};
-		4FF5539F1A2676410062B600 /* History UI */ = {
-			isa = PBXGroup;
-			children = (
-				3B7F3B2F1A1D24CD00123649 /* HistoryViewController.h */,
-				3B7F3B301A1D24CD00123649 /* HistoryViewController.m */,
-			);
-			name = "History UI";
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		5223534B1A142FD4008782E6 /* Frameworks */ = {
