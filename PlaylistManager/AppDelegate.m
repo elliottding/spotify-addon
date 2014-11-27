@@ -13,6 +13,7 @@
 #import "SpotifyRetriever.h"
 
 #import "Member.h"
+#import "Admin.h"
 
 // Constants
 static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
@@ -30,6 +31,11 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Set up a song queue for testing
+    Admin *testAdmin = [[Admin alloc] initWithUsername:@"test admin"];
+    [testAdmin startServer:@"test server"];
+    [self loginToSpotifyWithApplication:application];
+    
+    /*
     NSArray *trackIdentifiers = @[@"7dS5EaCoMnN7DzlpT6aRn2",
                                   @"1aKsg5b9sOngINaQXbB0P7",
                                   @"2woCw59DHRIb1vcyQ2a7Ca",
@@ -57,6 +63,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     [self.window makeKeyAndVisible];
     
     // [self loginToSpotifyWithApplication:application];
+     */
     return YES;
 }
 
