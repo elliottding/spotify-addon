@@ -19,6 +19,7 @@
 		4F2945D11A26B1A1001B006A /* PlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2945CF1A26B1A1001B006A /* PlaybackViewController.m */; };
 		4F2945D21A26B1A1001B006A /* PlaybackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */; };
 		4F2945D51A26CA52001B006A /* GuestListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2945D41A26CA52001B006A /* GuestListTableViewController.m */; };
+		4F2945D81A26D6F3001B006A /* RefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2945D71A26D6F3001B006A /* RefreshTableViewController.m */; };
 		4F47BAF61A12E09800660967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF51A12E09800660967 /* main.m */; };
 		4F47BAF91A12E09800660967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAF81A12E09800660967 /* AppDelegate.m */; };
 		4F47BAFC1A12E09800660967 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAFB1A12E09800660967 /* ViewController.m */; };
@@ -97,6 +98,8 @@
 		4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaybackViewController.xib; sourceTree = "<group>"; };
 		4F2945D31A26CA52001B006A /* GuestListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuestListTableViewController.h; sourceTree = "<group>"; };
 		4F2945D41A26CA52001B006A /* GuestListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuestListTableViewController.m; sourceTree = "<group>"; };
+		4F2945D61A26D6F3001B006A /* RefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableViewController.h; sourceTree = "<group>"; };
+		4F2945D71A26D6F3001B006A /* RefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableViewController.m; sourceTree = "<group>"; };
 		4F47BAF01A12E09800660967 /* PlaylistManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaylistManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F47BAF41A12E09800660967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F47BAF51A12E09800660967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 				4F2945CE1A26B1A1001B006A /* PlaybackViewController.h */,
 				4F2945CF1A26B1A1001B006A /* PlaybackViewController.m */,
 				4F2945D01A26B1A1001B006A /* PlaybackViewController.xib */,
+				4F2945D61A26D6F3001B006A /* RefreshTableViewController.h */,
+				4F2945D71A26D6F3001B006A /* RefreshTableViewController.m */,
 			);
 			name = "Playlist UI";
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 				4FE36CD91A1CEF3200D21E5C /* Member.m in Sources */,
 				4FF5539A1A266A5A0062B600 /* TabBarController.m in Sources */,
 				4F0D1A191A257D3300BE4412 /* PlaylistTableViewController.m in Sources */,
+				4F2945D81A26D6F3001B006A /* RefreshTableViewController.m in Sources */,
 				4F47BB281A12E0DC00660967 /* UnsortedSongQueue.m in Sources */,
 				4FD4AB161A2633A900D91D54 /* PlaylistNavigationController.m in Sources */,
 				4F47BAFC1A12E09800660967 /* ViewController.m in Sources */,

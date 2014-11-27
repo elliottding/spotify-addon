@@ -20,6 +20,18 @@
     return self;
 }
 
+- (void)dealloc
+{
+    @try
+    {
+        [self.songRoom removeObserver:self forKeyPath:@"songRoom"];
+    }
+    @catch (NSException *exception)
+    {
+        // do nothing
+    }
+}
+
 -(void)executeDict:(NSMutableDictionary *)dict{
     NSAssert(NO, @"Subclasses need to overwrite this method");
 }

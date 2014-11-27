@@ -33,6 +33,7 @@
     return self;
 }
 
+/*
 - (void)dealloc
 {
     for (NSString *username in self.userDictionary)
@@ -40,6 +41,7 @@
         [self unregisterUsername:username];
     }
 }
+*/
 
 - (bool)containsUser:(User *)user
 {
@@ -55,13 +57,13 @@
 {
     user.songRoom = self;
     [self.userDictionary setObject:user forKey:user.username];
-    [user addObserver:self forKeyPath:@"songRoom" options:NSKeyValueObservingOptionNew context:nil];
+    // [user addObserver:self forKeyPath:@"songRoom" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 // Internal only; use unregisterUser: instead.
 - (void)removeUser:(User *)user
 {
-    [user removeObserver:self forKeyPath:@"songRoom"];
+    // [user removeObserver:self forKeyPath:@"songRoom"];
     [self.userDictionary removeObjectForKey:user.username];
 }
 
@@ -84,6 +86,7 @@
     return [self.userDictionary valueForKey:username];
 }
 
+/*
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -100,6 +103,7 @@
         [self removeUser:user];
     }
 }
+*/
 
 - (void)playSong:(Song *)song
 {

@@ -13,6 +13,7 @@
 #import "PlaybackViewController.h"
 #import "SongRoom.h"
 #import "SongQueue.h"
+#import "Member.h"
 
 @interface PlaylistNavigationController ()
 
@@ -56,8 +57,14 @@
     return self;
 }
 
+- (SongRoom *)songRoom
+{
+    return [Member instance].songRoom;
+}
+
 - (SongQueue *)songQueue
 {
+    // return self.songRoom.songQueue;
     return self.songRoom.songQueue;
 }
 
