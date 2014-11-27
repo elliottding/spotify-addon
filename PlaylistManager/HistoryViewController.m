@@ -18,6 +18,17 @@
 
 @implementation HistoryViewController
 
+- (instancetype)initWithSongRoom:(SongRoom *)songRoom
+{
+    self = [super init];
+    if (self)
+    {
+        self.songRoom = songRoom;
+        self.title = @"Playlist History";
+    }
+    return self;
+}
+
 - (instancetype)initWithHistoryQueue:(NSArray *)historyQueue
 {
     self = [super init];
@@ -65,7 +76,7 @@
 {
     if (section == 0)
     {
-        return self.historyQueue.count;
+        return self.songRoom.historyQueue.count;
     }
     return 0;
 }
@@ -87,7 +98,7 @@
     Song *song;
     if (indexPath.section == 0)
     {
-        song = self.historyQueue[indexPath.item];
+        song = self.songRoom.historyQueue[indexPath.row];
     }
     else
     {

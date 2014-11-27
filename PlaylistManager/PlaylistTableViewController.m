@@ -154,11 +154,11 @@
     Song *selectedSong;
     if (indexPath.section == 0)
     {
-        selectedSong = self.songQueue.preferredQueue.songs[indexPath.item];
+        selectedSong = self.songQueue.preferredQueue.songs[indexPath.row];
     }
     else if (indexPath.section == 1)
     {
-        selectedSong = self.songQueue.songs[indexPath.item];
+        selectedSong = self.songQueue.songs[indexPath.row];
     }
     PlaylistNavigationController *pnc = (PlaylistNavigationController *)self.navigationController;
     [pnc pushSongDetailViewControllerWithSong:selectedSong];
