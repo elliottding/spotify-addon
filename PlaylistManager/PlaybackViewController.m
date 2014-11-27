@@ -35,10 +35,9 @@
 {
     [super viewDidLoad];
     self.title = @"Now Playing";
-    // self.song = self.song;
-    // self.streamer = [SPTAudioStreamingController new];
 }
 
+// Ensure that the audio streamer is initialized and logged in.
 - (void)ensureLoggedIn
 {
     if (self.streamer == nil)
