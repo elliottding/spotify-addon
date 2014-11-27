@@ -20,6 +20,8 @@
 
 @property (nonatomic) IBOutlet UIButton *playPauseButton;
 
+@property (nonatomic) IBOutlet UISlider *volumeSlider;
+
 @end
 
 @implementation PlaybackViewController
@@ -69,6 +71,8 @@
              return;
          }
          NSLog(@"Now playing: %@", song.track.name);
+         // Set volume slider to reflect true playback volume
+         [self.volumeSlider setValue:self.streamer.volume animated:YES];
      }];
 }
 
@@ -96,7 +100,9 @@
 
 - (IBAction)playPauseButtonAction
 {
+    // Avoid retain cycle in callback
     __unsafe_unretained typeof(self) weakSelf = self;
+    
     if (self.streamer.isPlaying)
     {
         [self.streamer setIsPlaying:NO callback:^(NSError *error)
@@ -121,6 +127,23 @@
             weakSelf.playPauseButton.titleLabel.text = @"Pause";
         }];
     }
+}
+
+- (IBAction)volumeSliderChangeAction
+{
+    // Avoid retain cycle in callback
+    __unsafe_unretained typeof(self) weakSelf = self;
+    
+    float sliderValue = self.volumeSlider.value;
+    [self.streamer setVolume:sliderValue callback:^(NSError *error)
+    {
+        if (error != nil)
+        {
+            NSLog(@"Volume error: %@", error);
+            return;
+        }
+        NSLog(@"Volume set to %f; slider at %f", weakSelf.streamer.volume, sliderValue);
+    }];
 }
 
 @end
