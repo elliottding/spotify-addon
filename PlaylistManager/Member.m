@@ -137,6 +137,13 @@
     return _connection.services;
 }
 
+-(void) updateSongRoom{
+    NSString * upRequest = [Parser makeUpdateString];
+    [self outputText:upRequest];
+    
+}
+
+
 @end
 
 
