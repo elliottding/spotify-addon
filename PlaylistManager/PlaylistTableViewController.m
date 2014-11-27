@@ -16,6 +16,8 @@
 
 #import "SongView.h"
 
+#import "Member.h"
+
 @interface PlaylistTableViewController ()
 
 @end
@@ -27,12 +29,17 @@
     self = [super init];
     if (self)
     {
-        self.songQueue = songQueue;
+        // self.songQueue = songQueue;
         [self setupAddButton];
         [self setupNowPlayingButton];
         self.title = @"Playlist";
     }
     return self;
+}
+
+- (SongQueue *)songQueue
+{
+    return [Member instance].songRoom.songQueue;
 }
 
 - (void)setupNowPlayingButton

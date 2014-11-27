@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RefreshTableViewController.h"
+
 #import "SongRoom.h"
 
-@interface PlaylistTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface PlaylistTableViewController : RefreshTableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) SongQueue *songQueue;
 
