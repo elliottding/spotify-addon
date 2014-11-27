@@ -19,15 +19,17 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [playlistTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"songroomCell"];
     self.member = [[Member alloc] initWithUsername:@"test"];
     [self.member startBrowser];
-
+    [NSThread sleepForTimeInterval:5.0];
+    [self reloadView];
     // Do any additional setup after loading the view.
 }
 - (void)reloadView
 {
     self.currServ = [self.member currentServices];
-    //[self.tableView reloadData];
+    [playlistTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
