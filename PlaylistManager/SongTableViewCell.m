@@ -92,7 +92,7 @@
 
 - (void)updateTextLabel
 {
-    NSString *text = [NSString stringWithFormat:@"%@ - %d", self.song.track.name, self.song.voteScore];
+    NSString *text = [NSString stringWithFormat:@"%@ : %d", self.song.track.name, self.song.voteScore];
     self.textLabel.text = text;
 }
 

@@ -19,8 +19,6 @@ static NSString * const kClientId = @"3168ef4060a84063a872200bf82dad3a";
 static NSString * const kCallbackURL = @"spotifyiossdkexample://"; // @"CS22001-app-login://callback";
 static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
-/*username: jstevensstein@gmail.com, password: spotify-addon*/
-
 @interface AppDelegate ()
 
 @property (nonatomic, strong, readwrite) SPTAudioStreamingController *audioStreamingController;
@@ -51,7 +49,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         Song *song = [[Song alloc] initWithIdentifier:trackIdentifiers[i]];
         [songQueue addSong:song];
     }
-    SongRoom *songRoom = [[SongRoom alloc] init];
+    SongRoom *songRoom = [[SongRoom alloc] initWithName:@"Test Room"];
     songRoom.songQueue = songQueue;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

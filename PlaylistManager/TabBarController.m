@@ -27,7 +27,7 @@
     {
         self.songRoom = songRoom;
         self.pnc = [[PlaylistNavigationController alloc] initWithSongRoom:songRoom];
-        self.hnc = [[HistoryViewController alloc] initWithHistoryQueue:songRoom.historyQueue];
+        self.hnc = [[HistoryViewController alloc] initWithSongRoom:songRoom];
         self.rnc = [[RoomViewController alloc] init];
         
         [self setViewControllers:@[self.pnc, self.hnc, self.rnc] animated:NO];
@@ -52,7 +52,6 @@
 {
     if (viewController == self.hnc)
     {
-        NSLog(@"selected");
         [self.hnc.tableView reloadData];
     }
 }

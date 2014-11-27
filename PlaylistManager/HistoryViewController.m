@@ -29,17 +29,6 @@
     return self;
 }
 
-- (instancetype)initWithHistoryQueue:(NSArray *)historyQueue
-{
-    self = [super init];
-    if (self)
-    {
-        self.historyQueue = historyQueue;
-        self.title = @"Playlist History";
-    }
-    return self;
-}
-
 - (void)loadView
 {
     CGRect tableViewFrame = [[UIScreen mainScreen] applicationFrame];
@@ -108,25 +97,5 @@
     cell.song = song;
     return cell;
 }
-
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0)
-    {
-        return @"Preferred Queue";
-    }
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
