@@ -8,6 +8,8 @@
 
 #import "FindSongroomViewController.h"
 
+#import "TabBarController.h"
+
 @interface FindSongroomViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property NSMutableArray *currentServices;
@@ -75,6 +77,11 @@
     NSNetService *selectedService = self.currentServices[indexPath.row];
     self.member.connectTo = selectedService.name;
     [self.member connect];
+    [NSThread sleepForTimeInterval:2];
+    
+    SongRoom *songRoom = self.member.songRoom;
+    UIWindow *mainWindow = [UIApplication sharedApplication].windows.firstObject;
+    mainWindow.rootViewController = [[TabBarController alloc] initWithSongRoom:songRoom];
 }
 
 @end

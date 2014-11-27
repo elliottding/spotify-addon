@@ -53,15 +53,16 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     }
     SongRoom *songRoom = [[SongRoom alloc] initWithName:@"Test Room"];
     songRoom.songQueue = songQueue;
-    /* uncomment this to have a local test songroom
-     _testAdmin = [[Admin alloc] initWithUsername:@"test admin"];
-     [_testAdmin startServer:@"Test Room"];
-     _testAdmin.songRoom = songRoom;*/
+    
+    _testAdmin = [[Admin alloc] initWithUsername:@"test admin"];
+    [_testAdmin startServer:@"Test Room"];
+    _testAdmin.songRoom = songRoom;
+    
     [self loginToSpotifyWithApplication:application];
 
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[TabBarController alloc] initWithSongRoom:songRoom];
-    [self.window makeKeyAndVisible];
+    // self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // self.window.rootViewController = [[TabBarController alloc] initWithSongRoom:songRoom];
+    // [self.window makeKeyAndVisible];
     return YES;
 }
 
