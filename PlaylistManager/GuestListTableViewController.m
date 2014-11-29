@@ -24,7 +24,8 @@
     if (self)
     {
         self.songRoom = songRoom;
-        self.title = @"Guest List";
+        self.title = [NSString stringWithFormat:@"%@ Guest List", songRoom.name];
+        //self.title = @"%@: SongRoom Guest List", srname;
     }
     return self;
 }
