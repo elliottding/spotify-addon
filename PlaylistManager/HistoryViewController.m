@@ -48,14 +48,6 @@
     [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:@"SongCell"];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;

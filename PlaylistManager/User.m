@@ -20,6 +20,7 @@
     return self;
 }
 
+/*
 - (void)dealloc
 {
     @try
@@ -31,8 +32,10 @@
         // do nothing
     }
 }
+*/
 
--(void)executeDict:(NSMutableDictionary *)dict{
+- (void)executeDict:(NSMutableDictionary *)dict
+{
     NSAssert(NO, @"Subclasses need to overwrite this method");
 }
 

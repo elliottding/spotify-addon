@@ -11,6 +11,7 @@
                 <outlet property="playPauseButton" destination="3eG-RA-Z7m" id="S8O-tm-Jvl"/>
                 <outlet property="songNameLabel" destination="iza-H0-UPX" id="mcn-wQ-iAw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="volumeSlider" destination="cZc-ud-YkE" id="D1z-4j-KQU"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,18 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eG-RA-Z7m">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <state key="normal" title="Pause">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="179" y="285" width="43" height="30"/>
-                    </variation>
-                    <connections>
-                        <action selector="playPauseButtonAction" destination="-1" eventType="touchUpInside" id="G3G-Zq-zxW"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iza-H0-UPX">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -48,20 +37,54 @@
                         <rect key="frame" x="8" y="227" width="384" height="21"/>
                     </variation>
                 </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cZc-ud-YkE">
+                    <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="120" y="323" width="226" height="31"/>
+                    </variation>
+                    <connections>
+                        <action selector="volumeSliderChangeAction" destination="-1" eventType="valueChanged" id="20x-tI-rYZ"/>
+                    </connections>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCH-Bh-qUz">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="57" y="327" width="57" height="21"/>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eG-RA-Z7m">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <state key="normal" title="Pause">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="179" y="285" width="43" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="playPauseButtonAction" destination="-1" eventType="touchUpInside" id="G3G-Zq-zxW"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="3eG-RA-Z7m"/>
                     <exclude reference="iza-H0-UPX"/>
                     <exclude reference="G3C-Ng-CQp"/>
+                    <exclude reference="cZc-ud-YkE"/>
+                    <exclude reference="BCH-Bh-qUz"/>
+                    <exclude reference="3eG-RA-Z7m"/>
                 </mask>
             </variation>
             <variation key="widthClass=compact">
                 <mask key="subviews">
-                    <include reference="3eG-RA-Z7m"/>
                     <include reference="iza-H0-UPX"/>
                     <include reference="G3C-Ng-CQp"/>
+                    <include reference="cZc-ud-YkE"/>
+                    <include reference="BCH-Bh-qUz"/>
+                    <include reference="3eG-RA-Z7m"/>
                 </mask>
             </variation>
         </view>

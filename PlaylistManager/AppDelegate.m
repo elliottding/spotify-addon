@@ -62,11 +62,14 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     [[Member instance] startBrowser];
     [Member instance].username = @"Test User";
     
+    // Prompt for Spotify login
     [self loginToSpotifyWithApplication:application];
 
+    // Uncomment to bypass main storyboard loading
     // self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // self.window.rootViewController = [[TabBarController alloc] initWithSongRoom:songRoom];
     // [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -95,14 +98,9 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
             return;
         }
         NSLog(@"Auth success");
-        [self playUsingSession:session];
-        [SpotifyRetriever instance].session = session;
-        /*
-        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        self.window.rootViewController = [[SelectPlaylistTableViewController alloc] init];
-        [self.window makeKeyAndVisible];
-         */
         
+        // Set the SpotifyRetriever session to this session
+        [SpotifyRetriever instance].session = session;
     };
     
     // Call the token swap service to get a logged in session
@@ -123,48 +121,6 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     // Opening a URL in Safari close to application launch may trigger
     // an iOS bug, so we wait a bit before doing so.
     [application performSelector:@selector(openURL:) withObject:loginURL afterDelay:0.1];
-}
-
-- (void)playUsingSession:(SPTSession *)session
-{
-    // Create a new player if needed
-    if (self.audioStreamingController == nil)
-    {
-        self.audioStreamingController = [SPTAudioStreamingController new];
-    }
-    
-    void (^requestCallback) (NSError *, SPTAlbum *);
-    requestCallback = ^(NSError *error, SPTAlbum *album)
-    {
-        NSLog(@"Album: %@", album);
-        if (error != nil)
-        {
-            NSLog(@"*** URI request error: %@", error);
-            return;
-        }
-    };
-    
-    [SPTRequest requestItemAtURI:[NSURL URLWithString:@"spotify:album:4L1HDyfdGIkACuygktO7T7"]
-                     withSession:nil
-                        callback:requestCallback];
-    
-    /*
-    void (^loginCallback) (NSError *);
-    loginCallback = ^(NSError *error)
-    {
-        if (error != nil)
-        {
-            NSLog(@"*** Enabling playback got error: %@", error);
-            return;
-        }
-        
-        [SPTRequest requestItemAtURI:[NSURL URLWithString:@"spotify:album:4L1HDyfdGIkACuygktO7T7"]
-                         withSession:nil
-                            callback:requestCallback];
-    };
-    
-    [self.streamingController loginWithSession:session callback:loginCallback];
-    */
 }
 
 @end
