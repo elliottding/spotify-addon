@@ -145,7 +145,7 @@
     testMember.connectTo = @"VoteTest";
     [testMember connect];
     [NSThread sleepForTimeInterval: 2.0];
-    [testMember QueueSong:@"7dS5EaCoMnN7DzlpT6aRn2"];
+    [testMember QueueSong:@"spotify:track:7dS5EaCoMnN7DzlpT6aRn2"];
     [NSThread sleepForTimeInterval: 1.0];
     [testMember Vote:@"7dS5EaCoMnN7DzlpT6aRn2" withDirection:-1];
     [NSThread sleepForTimeInterval: 1.0];
