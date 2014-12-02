@@ -76,7 +76,7 @@
     [Admin instance].username = @"Test admin";
     [Admin instance].songRoom = songRoom;
     [[Admin instance] startServer:name];
-    [Member instance].connectTo = @"Foo";
+    [Member instance].connectTo = name;
     [NSThread sleepForTimeInterval:2];
     [[Member instance] connect];
     
