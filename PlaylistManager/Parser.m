@@ -82,6 +82,7 @@
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"QUEUE"]){
         [voteDict setObject:@"QUEUE" forKey:@"type"];
         [voteDict setObject:[splitString objectAtIndex:1] forKey:@"songURI"];
+        [voteDict setObject:[splitString objectAtIndex:3] forKey:@"track"];
     
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"UPDATE"]){
         [voteDict setObject:@"UPDATE" forKey:@"type"];

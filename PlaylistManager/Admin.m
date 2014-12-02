@@ -104,7 +104,8 @@
         [self outputText:songRoomString toConnection: connection];
         
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"QUEUE"]){
-        Song * newsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"songURI"]];
+        NSLog(@"QUEUE dict: %@", dict);
+        Song * newsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"track"]];
         NSLog(@"Spotify URI: %@", newsong.identifier);
         [self.songRoom.songQueue addSong:newsong];
         NSLog(@"Next song is: %@", self.songRoom.songQueue.nextSong.identifier);

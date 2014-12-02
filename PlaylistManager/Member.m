@@ -112,6 +112,8 @@
 -(void)executeDict:(NSMutableDictionary *)dict
 {
     if ([[dict objectForKey:@"type"] isEqualToString:@"UPSR"]){
+        NSLog(@"updating songroom");
+        self.songRoom = nil;
         self.songRoom = [[SongRoom alloc] initWithName:_connectTo];
         for (NSString * user in [dict objectForKey:@"users"]){
             User *userobj = [[User alloc] initWithUsername:user];
@@ -123,6 +125,7 @@
         
         SongQueue *newQ = [[SongQueue alloc] init];
         for (id key in [dict objectForKey:@"songs"]){
+            NSLog(@"Queing key: %@", key);
             Song *newsong = [[Song alloc] initWithIdentifier:key];
             newsong.voteScore = [[[dict objectForKey:@"songs"] objectForKey:key] intValue];
             [newQ appendSong:newsong];
