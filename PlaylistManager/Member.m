@@ -163,9 +163,13 @@
 -(void) updateSongRoom{
     NSString * upRequest = [Parser makeUpdateString];
     [self outputText:upRequest];
-    
 }
 
+- (void)RemoveSong:(NSString *)songURI
+{
+    NSString *remove = [Parser makeRemoveString:songURI];
+    [self outputText:remove];
+}
 
 @end
 

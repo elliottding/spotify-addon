@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RefreshTableViewController.h"
+
 @class SongRoom;
 
-@interface GuestListTableViewController : UITableViewController
+@interface GuestListTableViewController : RefreshTableViewController
 
 - (instancetype)initWithSongRoom:(SongRoom *)songRoom;
 

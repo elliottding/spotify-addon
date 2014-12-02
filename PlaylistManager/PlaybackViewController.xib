@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaybackViewController">
@@ -20,73 +19,70 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iza-H0-UPX">
-                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="20" y="222" width="560" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="27" id="QPx-Yo-F7e"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="8" y="256" width="384" height="21"/>
-                    </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3C-Ng-CQp">
-                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="20" y="183" width="560" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="EMi-LW-13n"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="8" y="227" width="384" height="21"/>
-                    </variation>
                 </label>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cZc-ud-YkE">
-                    <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="120" y="323" width="226" height="31"/>
-                    </variation>
+                    <rect key="frame" x="207" y="384" width="187" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="183" id="84k-ku-hlf"/>
+                    </constraints>
                     <connections>
                         <action selector="volumeSliderChangeAction" destination="-1" eventType="valueChanged" id="20x-tI-rYZ"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCH-Bh-qUz">
-                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCH-Bh-qUz">
+                    <rect key="frame" x="248" y="327" width="105" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="eO9-tS-Aio"/>
+                        <constraint firstAttribute="width" constant="105" id="n1w-gp-JmV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="57" y="327" width="57" height="21"/>
-                    </variation>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eG-RA-Z7m">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <rect key="frame" x="277" y="257" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="yrg-aj-w9l"/>
+                    </constraints>
                     <state key="normal" title="Pause">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="179" y="285" width="43" height="30"/>
-                    </variation>
                     <connections>
                         <action selector="playPauseButtonAction" destination="-1" eventType="touchUpInside" id="G3G-Zq-zxW"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="iza-H0-UPX"/>
-                    <exclude reference="G3C-Ng-CQp"/>
-                    <exclude reference="cZc-ud-YkE"/>
-                    <exclude reference="BCH-Bh-qUz"/>
-                    <exclude reference="3eG-RA-Z7m"/>
-                </mask>
-            </variation>
-            <variation key="widthClass=compact">
-                <mask key="subviews">
-                    <include reference="iza-H0-UPX"/>
-                    <include reference="G3C-Ng-CQp"/>
-                    <include reference="cZc-ud-YkE"/>
-                    <include reference="BCH-Bh-qUz"/>
-                    <include reference="3eG-RA-Z7m"/>
-                </mask>
-            </variation>
+            <constraints>
+                <constraint firstItem="BCH-Bh-qUz" firstAttribute="top" secondItem="3eG-RA-Z7m" secondAttribute="bottom" constant="40" id="6TH-Fp-ycX"/>
+                <constraint firstAttribute="trailing" secondItem="G3C-Ng-CQp" secondAttribute="trailing" constant="20" symbolic="YES" id="8U7-qq-Jbj"/>
+                <constraint firstItem="G3C-Ng-CQp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="9O6-21-jQb"/>
+                <constraint firstItem="iza-H0-UPX" firstAttribute="top" secondItem="G3C-Ng-CQp" secondAttribute="bottom" constant="8" symbolic="YES" id="Bxm-1u-OTe"/>
+                <constraint firstItem="G3C-Ng-CQp" firstAttribute="trailing" secondItem="iza-H0-UPX" secondAttribute="trailing" id="GHQ-OQ-TIU"/>
+                <constraint firstItem="cZc-ud-YkE" firstAttribute="top" secondItem="BCH-Bh-qUz" secondAttribute="bottom" constant="8" symbolic="YES" id="SyC-I6-BcN"/>
+                <constraint firstItem="BCH-Bh-qUz" firstAttribute="centerX" secondItem="3eG-RA-Z7m" secondAttribute="centerX" id="UWw-tl-gHF"/>
+                <constraint firstItem="G3C-Ng-CQp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="183" id="Xjo-h2-twI"/>
+                <constraint firstItem="3eG-RA-Z7m" firstAttribute="centerX" secondItem="iza-H0-UPX" secondAttribute="centerX" id="gnj-CT-hOs"/>
+                <constraint firstItem="cZc-ud-YkE" firstAttribute="centerX" secondItem="BCH-Bh-qUz" secondAttribute="centerX" id="qgs-jr-PVR"/>
+                <constraint firstItem="iza-H0-UPX" firstAttribute="leading" secondItem="G3C-Ng-CQp" secondAttribute="leading" id="suv-fR-N7g"/>
+                <constraint firstItem="3eG-RA-Z7m" firstAttribute="top" secondItem="iza-H0-UPX" secondAttribute="bottom" constant="8" symbolic="YES" id="weS-WH-rF0"/>
+            </constraints>
         </view>
     </objects>
 </document>

@@ -51,6 +51,8 @@
 
 -(void) QueueSong:(NSString *) songURI;
 
+-(void) RemoveSong:(NSString *) songURI;
+
 -(void) updateSongRoom;
 
 
