@@ -108,6 +108,11 @@
 - (void)playSong:(Song *)song
 {
     [self.historyQueue insertObject:song atIndex:0];
+    NSLog(@"ADDING %@ TO HISTORY QUEUE", song);
+    for (Song *historySong in self.historyQueue)
+    {
+        NSLog(@"%@ IS NOW IN THE HISTORY QUEUE", historySong);
+    }
     [self.songQueue removeSongFromEitherQueue:song];
 }
 

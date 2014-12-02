@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0Y-Ff-Vaa">
-                    <rect key="frame" x="265" y="242" width="70" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0Y-Ff-Vaa">
+                    <rect key="frame" x="20" y="242" width="560" height="30"/>
                     <state key="normal" title="Play Song">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -24,8 +24,8 @@
                         <action selector="playSongButtonAction" destination="-1" eventType="touchUpInside" id="eFp-Yb-TTj"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3x-7X-gnE">
-                    <rect key="frame" x="227" y="280" width="146" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3x-7X-gnE">
+                    <rect key="frame" x="20" y="280" width="560" height="30"/>
                     <state key="normal" title="Remove From Queue">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -33,8 +33,8 @@
                         <action selector="removeFromQueueButtonAction" destination="-1" eventType="touchUpInside" id="fSb-qU-z22"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABZ-Fr-hSN">
-                    <rect key="frame" x="273" y="318" width="55" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABZ-Fr-hSN">
+                    <rect key="frame" x="20" y="318" width="560" height="30"/>
                     <state key="normal" title="Vote Up">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -42,8 +42,8 @@
                         <action selector="voteUpButtonAction" destination="-1" eventType="touchUpInside" id="xEB-qh-FPG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5V-ZY-jqy">
-                    <rect key="frame" x="263" y="356" width="75" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5V-ZY-jqy">
+                    <rect key="frame" x="20" y="356" width="560" height="30"/>
                     <state key="normal" title="Vote Down">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -51,14 +51,31 @@
                         <action selector="voteDownButtonAction" destination="-1" eventType="touchUpInside" id="pzq-Gl-Pfh"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-0K-vle">
-                    <rect key="frame" x="255" y="213" width="91" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-0K-vle">
+                    <rect key="frame" x="20" y="213" width="560" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="q0Y-Ff-Vaa" firstAttribute="trailing" secondItem="A2p-0K-vle" secondAttribute="trailing" id="3eR-uk-qg3"/>
+                <constraint firstItem="l3x-7X-gnE" firstAttribute="trailing" secondItem="ABZ-Fr-hSN" secondAttribute="trailing" id="5rk-si-FiJ"/>
+                <constraint firstItem="l3x-7X-gnE" firstAttribute="leading" secondItem="q0Y-Ff-Vaa" secondAttribute="leading" id="Dh1-u2-m0J"/>
+                <constraint firstItem="ABZ-Fr-hSN" firstAttribute="trailing" secondItem="v5V-ZY-jqy" secondAttribute="trailing" id="G8h-FW-DpR"/>
+                <constraint firstItem="ABZ-Fr-hSN" firstAttribute="leading" secondItem="l3x-7X-gnE" secondAttribute="leading" id="Uab-C0-7Fb"/>
+                <constraint firstItem="A2p-0K-vle" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="enH-W8-ou3"/>
+                <constraint firstItem="q0Y-Ff-Vaa" firstAttribute="leading" secondItem="A2p-0K-vle" secondAttribute="leading" id="iBq-rU-bPP"/>
+                <constraint firstItem="A2p-0K-vle" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="213" id="il1-pA-Edd"/>
+                <constraint firstItem="v5V-ZY-jqy" firstAttribute="top" secondItem="ABZ-Fr-hSN" secondAttribute="bottom" constant="8" symbolic="YES" id="k66-vv-cfj"/>
+                <constraint firstItem="q0Y-Ff-Vaa" firstAttribute="top" secondItem="A2p-0K-vle" secondAttribute="bottom" constant="8" symbolic="YES" id="nYZ-NR-1GT"/>
+                <constraint firstItem="l3x-7X-gnE" firstAttribute="top" secondItem="q0Y-Ff-Vaa" secondAttribute="bottom" constant="8" symbolic="YES" id="noK-dy-Yvs"/>
+                <constraint firstAttribute="trailing" secondItem="A2p-0K-vle" secondAttribute="trailing" constant="20" symbolic="YES" id="q0T-0Q-Cfy"/>
+                <constraint firstItem="ABZ-Fr-hSN" firstAttribute="top" secondItem="l3x-7X-gnE" secondAttribute="bottom" constant="8" symbolic="YES" id="rmO-CC-Bng"/>
+                <constraint firstItem="l3x-7X-gnE" firstAttribute="trailing" secondItem="q0Y-Ff-Vaa" secondAttribute="trailing" id="wMe-nS-z3e"/>
+                <constraint firstItem="v5V-ZY-jqy" firstAttribute="leading" secondItem="ABZ-Fr-hSN" secondAttribute="leading" id="zWK-wa-9r3"/>
+            </constraints>
         </view>
     </objects>
 </document>
