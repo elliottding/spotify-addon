@@ -139,10 +139,12 @@
             [self.songRoom.historyQueue setObject:song atIndexedSubscript:i++];
         }
         self.flag = 1;
-    }
-    else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
         //new song by removing top song
         [self.songRoom.songQueue removeTopSong];
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"KICK"]){
+        //remove self from songroom
+        self.songRoom = nil;
     }
 }
 
