@@ -16,6 +16,8 @@
 
 #import "SongQueue.h"
 
+#import "Member.h"
+
 @interface SongDetailViewController ()
 
 @property (nonatomic, strong) IBOutlet UILabel *songNameLabel;
@@ -67,6 +69,8 @@
 
 - (IBAction)voteUpButtonAction
 {
+    [[Member instance] Vote:[self.song.track.uri absoluteString] withDirection:1];
+    [NSThread sleepForTimeInterval:2.0];
     self.song.voteScore += 1;
     [self.playlistNavigationController popViewControllerAnimated:YES];
     [self.playlistNavigationController reloadPlaylistTableView];
@@ -74,6 +78,8 @@
 
 - (IBAction)voteDownButtonAction
 {
+    [[Member instance] Vote:[self.song.track.uri absoluteString] withDirection:-1];
+    [NSThread sleepForTimeInterval:2.0];
     self.song.voteScore -= 1;
     [self.playlistNavigationController popViewControllerAnimated:YES];
     [self.playlistNavigationController reloadPlaylistTableView];
