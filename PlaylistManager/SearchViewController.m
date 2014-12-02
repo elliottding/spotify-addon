@@ -20,6 +20,8 @@
 
 #import "SongRoom.h"
 
+#import "Member.h"
+
 @interface SearchViewController ()  <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -181,11 +183,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    PlaylistNavigationController *nav = (PlaylistNavigationController *)self.navigationController;
+    //PlaylistNavigationController *nav = (PlaylistNavigationController *)self.navigationController;
     
     // Add song to song queue
     Song *selectedSong = self.searchResults[indexPath.item];
-    [nav.songQueue addSong:selectedSong];
+    [[Member instance] QueueSong:[selectedSong.track.uri absoluteString]];
+    [NSThread sleepForTimeInterval:2.0];
+    //[nav.songQueue addSong:selectedSong];
     
     // Pop this view controller
     [self.navigationController popViewControllerAnimated:YES];
