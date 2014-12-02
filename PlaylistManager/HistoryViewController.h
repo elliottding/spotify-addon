@@ -10,7 +10,9 @@
 
 #import "SongRoom.h"
 
-@interface HistoryViewController : UITableViewController
+#import "RefreshTableViewController.h"
+
+@interface HistoryViewController : RefreshTableViewController
 
 @property (nonatomic, strong) SongRoom *songRoom;
 

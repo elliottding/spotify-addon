@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Member.h"
 
+#import "RefreshTableViewController.h"
+
 @interface FindSongroomViewController : UIViewController {
     
     __weak IBOutlet UITableView *playlistTable;
