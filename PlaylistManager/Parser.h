@@ -12,11 +12,11 @@
 
 @interface Parser : NSObject
 
-+ (NSString *)makeVoteString:(NSString *)username updown:(int)updown songURI:(NSString *)songURI; // "VOTE:1"
++ (NSString *)makeVoteString:(NSString *)username updown:(int)updown songURI:(NSString *)songURI; // "VOTE:1:[SONGURI]"
 + (NSString *)makeQueueString:(NSString *)songURI; // "QUEUE:[SONGURI]"
 + (NSString *)makeUpdateString; // "UPDATE"
 + (NSString *)makeSigninString:(NSString *)username; // "SIGNIN:USERNAME"
-+ (NSString *)makeSignoutString:(NSString *)username;
++ (NSString *)makeSignoutString:(NSString *)username; // "SIGNOUT:USERNAME"
 + (NSString *)makeSongRoomStatusString:(SongRoom *)songRoom; //
 + (NSString *)makePlayNextString; // "NEWCS"
 + (NSString *)makeRemoveString:(NSString *)songURI; // "REMOVE:[SONGURI]"
