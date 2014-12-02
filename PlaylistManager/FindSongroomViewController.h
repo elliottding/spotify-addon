@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Member.h"
 
-#import "RefreshTableViewController.h"
-
-@interface FindSongroomViewController : UIViewController {
+@interface FindSongroomViewController : UIViewController <UITextFieldDelegate> {
     
     __weak IBOutlet UITableView *playlistTable;
 }
+
+- (IBAction)enteredSongroomName:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *songroomName;
 
 @end
