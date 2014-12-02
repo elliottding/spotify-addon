@@ -66,7 +66,6 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     */
     // Set up test member
     [[Member instance] startBrowser];
-    [Member instance].username = @"Test Adminn";
     
     // Prompt for Spotify login
     [self loginToSpotifyWithApplication:application];
@@ -107,6 +106,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         
         // Set the SpotifyRetriever session to this session
         [SpotifyRetriever instance].session = session;
+        [Member instance].username = session.canonicalUsername;
         NSLog(@"*(&(&*(&********************* session ID = %@", session);
     };
     
