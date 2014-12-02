@@ -24,6 +24,8 @@
 
 @property (nonatomic) IBOutlet UISlider *volumeSlider;
 
+@property (nonatomic) IBOutlet UIImageView *songArtImageView;
+
 @end
 
 @implementation PlaybackViewController
@@ -31,6 +33,22 @@
 - (void)dealloc
 {
     [self.streamer removeObserver:self forKeyPath:@"currentTrackMetadata"];
+}
+
+- (void)setSong:(Song *)song
+{
+    self.songNameLabel.text = song.track.name;
+    SPTPartialArtist *artist = song.track.artists[0];
+    self.artistNameLabel.text = artist.name;
+    
+    // Load song art image
+    
+    NSURL *songArtImageURL = song.track.album.largestCover.imageURL;
+    NSData *songArtImageData = [NSData dataWithContentsOfURL:songArtImageURL];
+    UIImage *songArtImage = [UIImage imageWithData:songArtImageData];
+    self.songArtImageView.image = songArtImage;
+    
+    _song = song;
 }
 
 - (void)viewDidLoad

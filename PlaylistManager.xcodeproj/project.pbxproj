@@ -62,6 +62,7 @@
 		522353501A14333B008782E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223534F1A14333B008782E6 /* AVFoundation.framework */; };
 		828AA1481A256E53004C2868 /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = 828AA1471A256E53004C2868 /* Admin.m */; };
 		82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A939DC1A1AFC1000CB7E45 /* Parser.m */; };
+		E666490E1A2E6D0A0092BD0B /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E666490D1A2E6D0A0092BD0B /* SearchViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		828AA1471A256E53004C2868 /* Admin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Admin.m; sourceTree = "<group>"; };
 		82A939DB1A1AFBFB00CB7E45 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		82A939DC1A1AFC1000CB7E45 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		E666490D1A2E6D0A0092BD0B /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +362,7 @@
 				4FF5539C1A266C740062B600 /* RoomNavigationController.m */,
 				4FD4AB171A26390800D91D54 /* SearchViewController.h */,
 				4FD4AB181A26390800D91D54 /* SearchViewController.m */,
+				E666490D1A2E6D0A0092BD0B /* SearchViewController.xib */,
 				4FF553A31A267B650062B600 /* SongDetailViewController.h */,
 				4FF553A41A267B650062B600 /* SongDetailViewController.m */,
 				4FF553A51A267B650062B600 /* SongDetailViewController.xib */,
@@ -464,6 +467,7 @@
 				4F2945D21A26B1A1001B006A /* PlaybackViewController.xib in Resources */,
 				4F47BB011A12E09800660967 /* Images.xcassets in Resources */,
 				4FE36D621A1E701100D21E5C /* SongView.xib in Resources */,
+				E666490E1A2E6D0A0092BD0B /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
