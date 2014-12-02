@@ -63,7 +63,8 @@
 
 - (IBAction)removeFromQueueButtonAction
 {
-    [self.playlistNavigationController.songQueue removeSongFromEitherQueue:self.song];
+    [[Member instance] RemoveSong: self.song.identifier];
+    [NSThread sleepForTimeInterval:2.0];
     [self.playlistNavigationController popViewControllerAnimated:YES];
     [self.playlistNavigationController reloadPlaylistTableView];
 }

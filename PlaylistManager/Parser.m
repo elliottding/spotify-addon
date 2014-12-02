@@ -75,6 +75,12 @@
     return nextString;
 }
 
++ (NSString *)makeRemoveString:(NSString *)songURI
+{
+    NSString *queueString = [@"REMOVE:" stringByAppendingString:songURI];
+    return queueString;
+}
+
 + (NSMutableDictionary *)readString:(NSString *)protocolString
 {
     NSMutableDictionary * voteDict = [[NSMutableDictionary alloc] init];
@@ -134,7 +140,10 @@
         [voteDict setObject:@"NEWCS" forKey:@"type"];
         
     }
-    
+    else if ([[splitString objectAtIndex:0] isEqualToString:@"REMOVE"]){
+        [voteDict setObject:@"REMOVE" forKey:@"type"];
+        [voteDict setObject:[splitString objectAtIndex:1] forKey:@"songURI"];
+    }
     return voteDict;
 }
 
