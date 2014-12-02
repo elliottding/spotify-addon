@@ -25,7 +25,6 @@
 		4F47BAFC1A12E09800660967 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BAFB1A12E09800660967 /* ViewController.m */; };
 		4F47BAFF1A12E09800660967 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F47BAFD1A12E09800660967 /* Main.storyboard */; };
 		4F47BB011A12E09800660967 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F47BB001A12E09800660967 /* Images.xcassets */; };
-		4F47BB041A12E09800660967 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F47BB021A12E09800660967 /* LaunchScreen.xib */; };
 		4F47BB251A12E0DC00660967 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BB1A1A12E0DC00660967 /* Song.m */; };
 		4F47BB261A12E0DC00660967 /* SongQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BB1C1A12E0DC00660967 /* SongQueue.m */; };
 		4F47BB271A12E0DC00660967 /* SongRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F47BB1E1A12E0DC00660967 /* SongRoom.m */; };
@@ -109,7 +108,6 @@
 		4F47BAFB1A12E09800660967 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4F47BAFE1A12E09800660967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F47BB001A12E09800660967 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4F47BB031A12E09800660967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4F47BB091A12E09800660967 /* PlaylistManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaylistManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F47BB0E1A12E09800660967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F47BB191A12E0DC00660967 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
@@ -251,7 +249,6 @@
 				4F2945D91A26E877001B006A /* Unused */,
 				4F47BAFD1A12E09800660967 /* Main.storyboard */,
 				4F47BB001A12E09800660967 /* Images.xcassets */,
-				4F47BB021A12E09800660967 /* LaunchScreen.xib */,
 				4F47BAF31A12E09800660967 /* Supporting Files */,
 			);
 			path = PlaylistManager;
@@ -464,7 +461,6 @@
 				4F47BAFF1A12E09800660967 /* Main.storyboard in Resources */,
 				3BC42C0C1A22DCF200880769 /* PlaylistView.xib in Resources */,
 				4FF553A71A267B650062B600 /* SongDetailViewController.xib in Resources */,
-				4F47BB041A12E09800660967 /* LaunchScreen.xib in Resources */,
 				4F2945D21A26B1A1001B006A /* PlaybackViewController.xib in Resources */,
 				4F47BB011A12E09800660967 /* Images.xcassets in Resources */,
 				4FE36D621A1E701100D21E5C /* SongView.xib in Resources */,
@@ -558,14 +554,6 @@
 				4F47BAFE1A12E09800660967 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4F47BB021A12E09800660967 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F47BB031A12E09800660967 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

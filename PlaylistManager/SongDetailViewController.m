@@ -36,6 +36,7 @@
 - (void)setSong:(Song *)song
 {
     _song = song;
+    NSLog(@"set song to %@", song.track.name);
     self.songNameLabel.text = song.track.name;
 }
 
@@ -69,18 +70,18 @@
 
 - (IBAction)voteUpButtonAction
 {
-    [[Member instance] Vote:[self.song.track.uri absoluteString] withDirection:1];
+    [[Member instance] Vote:self.song.identifier withDirection:1];
     [NSThread sleepForTimeInterval:2.0];
-    self.song.voteScore += 1;
+    //self.song.voteScore += 1;
     [self.playlistNavigationController popViewControllerAnimated:YES];
     [self.playlistNavigationController reloadPlaylistTableView];
 }
 
 - (IBAction)voteDownButtonAction
 {
-    [[Member instance] Vote:[self.song.track.uri absoluteString] withDirection:-1];
+    [[Member instance] Vote:self.song.identifier withDirection:-1];
     [NSThread sleepForTimeInterval:2.0];
-    self.song.voteScore -= 1;
+    //self.song.voteScore -= 1;
     [self.playlistNavigationController popViewControllerAnimated:YES];
     [self.playlistNavigationController reloadPlaylistTableView];
 }

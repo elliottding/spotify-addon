@@ -108,7 +108,9 @@
     if (object == self.streamer && [keyPath isEqualToString:@"currentTrackMetadata"])
     {
         NSDictionary *trackMetadata = self.streamer.currentTrackMetadata;
-        self.songNameLabel.text = [trackMetadata objectForKey:SPTAudioStreamingMetadataTrackName];
+        NSString *songNameText = [trackMetadata objectForKey:SPTAudioStreamingMetadataTrackName];
+        self.songNameLabel.text = songNameText;
+        NSLog(@"PlaybackViewController observed change %@", songNameText);
         self.artistNameLabel.text = [trackMetadata objectForKey:SPTAudioStreamingMetadataArtistName];
     }
 }
