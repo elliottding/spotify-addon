@@ -122,15 +122,24 @@
             [self.songRoom registerUser:userobj]; //registerUser overwrites previous values?
             [self.songRoom containsUsername:@"test user"];
         }
-        
         SongQueue *newQ = [[SongQueue alloc] init];
-        for (id key in [dict objectForKey:@"songs"]){
-            NSLog(@"Queing key: %@", key);
+        for (id key in [dict objectForKey:@"prefsongs"]){
+            NSLog(@"Queing key '%@' in preferred queue", key);
             Song *newsong = [[Song alloc] initWithIdentifier:key];
-            newsong.voteScore = [[[dict objectForKey:@"songs"] objectForKey:key] intValue];
+            newsong.voteScore = [[[dict objectForKey:@"prefsongs"] objectForKey:key] intValue];
+            [newQ.preferredQueue appendSong:newsong];
+        }
+        for (id key in [dict objectForKey:@"regsongs"]){
+            NSLog(@"Queing key '%@' in regular queue", key);
+            Song *newsong = [[Song alloc] initWithIdentifier:key];
+            newsong.voteScore = [[[dict objectForKey:@"regsongs"] objectForKey:key] intValue];
             [newQ appendSong:newsong];
         }
         self.songRoom.songQueue = newQ;
+        int i = 0;
+        for (Song *song in [dict objectForKey:@"history"]){
+            [self.songRoom.historyQueue setObject:song atIndexedSubscript:i++];
+        }
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
         //new song by removing top song
         [self.songRoom.songQueue removeTopSong];

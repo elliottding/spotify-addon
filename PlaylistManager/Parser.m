@@ -48,15 +48,22 @@
         statusString = [statusString stringByAppendingString:key];
         statusString = [statusString stringByAppendingString:@":"];
     }
-    statusString = [statusString stringByAppendingString:@"SONGS:"];
+    statusString = [statusString stringByAppendingString:@"PSONGS:"];
     //add songs to string in order, starting with preferred songs
     for (Song *song in songRoom.songQueue.preferredQueue.songs){
         statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%@,%d:", song.identifier, song.voteScore]];
     }
+    statusString = [statusString stringByAppendingString:@"RSONGS:"];
     //then add regular songs to string
     for (Song *song in songRoom.songQueue.songs){
         statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%@,%d:", song.identifier, song.voteScore]];
     }
+    statusString = [statusString stringByAppendingString:@"HIST:"];
+    //then add history queue
+    for (Song *song in songRoom.historyQueue){
+        statusString = [statusString stringByAppendingString:[NSString stringWithFormat:@"%@:", song.identifier]];
+    }
+    
     //remove trailing ':'
     statusString = [statusString substringToIndex:[statusString length] - 1];
     return statusString;
@@ -95,18 +102,33 @@
         NSUInteger len = [splitString count];
         [voteDict setObject:@"UPSR" forKey:@"type"];
         NSMutableArray *users = [[NSMutableArray alloc] init];
-        NSMutableDictionary *songs = [[NSMutableDictionary alloc] init];
-        int i = 1;
-        while (![[splitString objectAtIndex:i] isEqualToString:@"SONGS"]){
+        NSMutableDictionary *prefsongs = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *regsongs = [[NSMutableDictionary alloc] init];
+        NSMutableArray *history = [[NSMutableArray alloc] init];
+        int i = 0;
+        //set users array
+        while (![[splitString objectAtIndex:++i] isEqualToString:@"PSONGS"]){
             [users setObject:[splitString objectAtIndex:i] atIndexedSubscript:(i - 1)];
-            ++i;
         }
         [voteDict setObject:users forKey:@"users"];
-        while (++i < len){
+        //set preferred songs dictionary
+        while (![[splitString objectAtIndex:++i] isEqualToString:@"RSONGS"]){
             NSArray * splitSong = [[splitString objectAtIndex:i] componentsSeparatedByString:@","];
-            [songs setObject:@([[splitSong objectAtIndex:1] integerValue]) forKey:[splitSong objectAtIndex:0]];
+            [prefsongs setObject:@([[splitSong objectAtIndex:1] integerValue]) forKey:[splitSong objectAtIndex:0]];
         }
-        [voteDict setObject:songs forKey:@"songs"];
+        //set regular songs dictionary
+        [voteDict setObject:prefsongs forKey:@"prefsongs"];
+        while (![[splitString objectAtIndex:++i] isEqualToString:@"HIST"]){
+            NSArray * splitSong = [[splitString objectAtIndex:i] componentsSeparatedByString:@","];
+            [regsongs setObject:@([[splitSong objectAtIndex:1] integerValue]) forKey:[splitSong objectAtIndex:0]];
+        }
+        //set history array
+        [voteDict setObject:regsongs forKey:@"regsongs"];
+        int j = 0;
+        while (++i < len){
+            [history setObject:[splitString objectAtIndex:i] atIndexedSubscript:j++];
+        }
+        [voteDict setObject:history forKey:@"history"];
         
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"NEWCS"]){
         [voteDict setObject:@"NEWCS" forKey:@"type"];
