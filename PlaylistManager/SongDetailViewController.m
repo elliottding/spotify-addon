@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *songNameLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+
 @property (nonatomic) PlaylistNavigationController *playlistNavigationController;
 
 @end
@@ -37,6 +39,9 @@
 {
     _song = song;
     NSLog(@"set song to %@", song.track.name);
+    self.songNameLabel.text = song.track.name;
+    SPTPartialArtist *artist = song.track.artists[0];
+    self.artistNameLabel.text = artist.name;
     self.songNameLabel.text = song.track.name;
 }
 
@@ -55,9 +60,19 @@
 
 - (IBAction)playSongButtonAction
 {
-    [self.playlistNavigationController.songRoom playSong:self.song];
+    //[self.playlistNavigationController.songRoom playSong:self.song];
+    //[self.playlistNavigationController.songRoom playSong:self.song];
     // [self.playlistNavigationController popViewControllerAnimated:NO];
+    //[self.playlistNavigationController pushPlaybackViewControllerWithSong:self.song];
+    //[self.playlistNavigationController reloadPlaylistTableView];
+    //[[Member instance] RemoveSong: self.song.identifier];
+    //[NSThread sleepForTimeInterval:2.0];
+    //[self.playlistNavigationController popViewControllerAnimated:YES];
+    //[self.playlistNavigationController reloadPlaylistTableView];
+    
     [self.playlistNavigationController pushPlaybackViewControllerWithSong:self.song];
+    [[Member instance] RemoveSong: self.song.identifier];
+    [NSThread sleepForTimeInterval:2.0];
     [self.playlistNavigationController reloadPlaylistTableView];
 }
 
