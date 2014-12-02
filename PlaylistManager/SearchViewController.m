@@ -24,28 +24,21 @@
 
 @interface SearchViewController ()  <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *searchResults;
 
 @property (nonatomic, strong) SPTListPage *searchResultListPage;
 
-@property (nonatomic, strong) UITextField *searchBox;
+@property (nonatomic, weak) IBOutlet UITextField *searchBox;
 
 @end
 
 @implementation SearchViewController
 
+/*
 - (void)loadView
 {
-    /*
-    self.searchResults = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 20; i++)
-    {
-        Song *song = [[Song alloc] init];
-        self.searchResults addObject
-    }
-    */
     static int partition = 6;
     
     CGRect mainFrame = [[UIScreen mainScreen] applicationFrame];
@@ -70,6 +63,7 @@
     
     PlaylistTableView *ptv = [[PlaylistTableView alloc] initWithFrame:tableViewFrame
                                                                 style:UITableViewStylePlain];
+    
     ptv.delegate = self;
     ptv.dataSource = self;
     [mainView addSubview:ptv];
@@ -78,12 +72,16 @@
     self.tableView = ptv;
     self.view = mainView;
 }
-
+*/
+ 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"Add a Song";
     [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:@"SongCell"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.searchBox.delegate = self;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

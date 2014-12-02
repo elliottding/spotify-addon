@@ -91,6 +91,7 @@
 }
 
 -(void)executeDict:(NSMutableDictionary *)dict FromSender: (ServerConnection *) connection{
+    
     if ([[dict objectForKey:@"type"] isEqualToString:@"VOTE"]){
         int i;
         if ((i = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]]) >= 0){
@@ -111,20 +112,29 @@
         NSLog(@"Next song is: %@", self.songRoom.songQueue.nextSong.identifier);
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
+    
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"UPDATE"]){
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
+    
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"SIGNIN"]){
         User *user = [[User alloc] initWithUsername:[dict objectForKey:@"username"]];
         [self.songRoom registerUser:user];
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
+    
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"SIGNOUT"]){
+        [self.songRoom unregisterUsername:[dict objectForKey:@"username"]];
+        NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
+        [self outputText:songRoomString toConnection: connection];
+    
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"REMOVE"]){
         int index = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]];
         [self.songRoom.songQueue removeSongAtIndex:index];
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
     }
+    
 }
 
 

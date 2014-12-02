@@ -22,6 +22,7 @@
     User *user2;
     Song *song1;
     Song *song2;
+    Song *song3;
 }
 
 @end
@@ -39,9 +40,11 @@
     //song2 = [[Song alloc] initWithTrackID:456 andTrack:nil];
     song1 = [[Song alloc] initWithIdentifier:@"7dS5EaCoMnN7DzlpT6aRn2"];
     song2 = [[Song alloc] initWithIdentifier:@"1aKsg5b9sOngINaQXbB0P7"];
+    song3 = [[Song alloc] initWithIdentifier:@"hist"];
     [r registerUser:user1];
     [r.songQueue addSong:song1];
     [r.songQueue addSong:song2];
+    [r.historyQueue addObject:song3];
 }
 
 - (void)tearDown
@@ -77,7 +80,7 @@
 - (void)test_makeSRStatusString
 {
     NSString *statusString = [Parser makeSongRoomStatusString:r];
-    XCTAssertEqualObjects(@"UPSR:user1:PSONGS:RSONGS:7dS5EaCoMnN7DzlpT6aRn2,0:1aKsg5b9sOngINaQXbB0P7,0:HIST", statusString, @"Parser failed to create status message");
+    XCTAssertEqualObjects(@"UPSR:user1:PSONGS:RSONGS:7dS5EaCoMnN7DzlpT6aRn2,0:1aKsg5b9sOngINaQXbB0P7,0:HIST:hist", statusString, @"Parser failed to create status message");
 }
 
 - (void)test_makePlayNextString

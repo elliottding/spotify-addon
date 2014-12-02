@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
+            <connections>
+                <outlet property="searchBox" destination="D9E-qZ-wiJ" id="EPu-la-rbr"/>
+                <outlet property="tableView" destination="1I3-g8-34c" id="WYZ-B8-gbp"/>
+                <outlet property="view" destination="OoJ-5u-Eim" id="fBS-bx-lud"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="OoJ-5u-Eim">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D9E-qZ-wiJ">
+                    <rect key="frame" x="20" y="139" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1I3-g8-34c">
+                    <rect key="frame" x="20" y="177" width="280" height="371"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="1I3-g8-34c" secondAttribute="bottom" constant="20" id="5LZ-nC-J9w"/>
+                <constraint firstAttribute="centerX" secondItem="D9E-qZ-wiJ" secondAttribute="centerX" id="Ina-oZ-FIJ"/>
+                <constraint firstAttribute="centerX" secondItem="1I3-g8-34c" secondAttribute="centerX" id="QlA-ut-rYb"/>
+                <constraint firstItem="D9E-qZ-wiJ" firstAttribute="leading" secondItem="OoJ-5u-Eim" secondAttribute="leading" constant="20" id="WLA-86-STf"/>
+                <constraint firstItem="1I3-g8-34c" firstAttribute="leading" secondItem="OoJ-5u-Eim" secondAttribute="leading" constant="20" id="aCA-8K-S3J"/>
+                <constraint firstAttribute="trailing" secondItem="D9E-qZ-wiJ" secondAttribute="trailing" constant="20" id="bn8-EE-LrY"/>
+                <constraint firstItem="1I3-g8-34c" firstAttribute="top" secondItem="D9E-qZ-wiJ" secondAttribute="bottom" constant="8" id="h8Y-wu-rdq"/>
+                <constraint firstItem="D9E-qZ-wiJ" firstAttribute="top" secondItem="OoJ-5u-Eim" secondAttribute="top" constant="139" id="sBJ-nk-Sl1"/>
+                <constraint firstAttribute="trailing" secondItem="1I3-g8-34c" secondAttribute="trailing" constant="20" id="zWg-dD-0Zj"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

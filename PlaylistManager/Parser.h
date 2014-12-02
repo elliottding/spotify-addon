@@ -12,13 +12,15 @@
 
 @interface Parser : NSObject
 
-+ (NSString *)makeVoteString:(NSString *)username updown:(int)updown songURI:(NSString *)songURI; // "VOTE:1"
++ (NSString *)makeVoteString:(NSString *)username updown:(int)updown songURI:(NSString *)songURI; // "VOTE:1:[SONGURI]"
 + (NSString *)makeQueueString:(NSString *)songURI; // "QUEUE:[SONGURI]"
 + (NSString *)makeUpdateString; // "UPDATE"
 + (NSString *)makeSigninString:(NSString *)username; // "SIGNIN:USERNAME"
++ (NSString *)makeSignoutString:(NSString *)username; // "SIGNOUT:USERNAME"
 + (NSString *)makeSongRoomStatusString:(SongRoom *)songRoom; //
 + (NSString *)makePlayNextString; // "NEWCS"
-+ (NSString *)makeRemoveString:(NSString *)songURI;
++ (NSString *)makeRemoveString:(NSString *)songURI; // "REMOVE:[SONGURI]"
++ (NSString *)makeKickString; // "KICK"
 
 + (NSMutableDictionary *)readString:(NSString *)protocolString;
 
@@ -48,14 +50,32 @@
     "username" : (NSString)
  }
  
- 5. UPSR
+ 5. SIGNOUT
+ {
+    "type" : @"SIGNOUT"
+    "username" : (NSString)
+ }
+ 
+ 6. UPSR
  {
     "type" : @"UPSR"
     "users" : (NSMutableArray)
     "songs" : (NSMutableDictionary)
  }
  
- 6. NEWCS
+ 7. NEWCS
+ {
+    "type" : @"NEWCS"
+ }
+ 
+ 8. REMOVE
+ {
+    "type": @"REMOVE"
+    "songURI" : (NSString)
+
+ }
+ 
+ 9. KICK
  {
     "type" : @"NEWCS"
  }
