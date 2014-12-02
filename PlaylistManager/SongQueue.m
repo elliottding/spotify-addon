@@ -22,6 +22,7 @@ NSString *ObservePropertyName = @"voteScore";
     if (self)
     {
         self.preferredQueue = [[UnsortedSongQueue alloc] init];
+        // [self.preferredQueue addObserver:self forKeyPath:@"nextSong" options:0 context:nil];
     }
     return self;
 }
@@ -33,6 +34,13 @@ NSString *ObservePropertyName = @"voteScore";
         // Deregisters self as observer for all songs
         [self removeSongAtIndex:0];
     }
+    // [self.preferredQueue removeObserver:self forKeyPath:@"nextSong"];
+}
+
+- (void)refreshNextSong
+{
+    [self.preferredQueue refreshNextSong];
+    [super refreshNextSong];
 }
 
 - (Song *)nextSong
@@ -43,7 +51,7 @@ NSString *ObservePropertyName = @"voteScore";
     }
     if (self.count > 0)
     {
-         return super.nextSong;
+        return super.nextSong;
     }
     return nil;
 }
@@ -52,12 +60,12 @@ NSString *ObservePropertyName = @"voteScore";
 - (void)addSong:(Song *)song
 {
     /*
-    check if song is already in songQueue will be implemented in UI
-    if ([_preferredQueue containsSong:song] || [self containsSong:song])
-    {
-        return;
-    }
-    */
+     check if song is already in songQueue will be implemented in UI
+     if ([_preferredQueue containsSong:song] || [self containsSong:song])
+     {
+     return;
+     }
+     */
     
     // Check for the default case first, to avoid unnecessary index-searching
     if (song.voteScore == 0)
@@ -147,8 +155,18 @@ NSString *ObservePropertyName = @"voteScore";
     }
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
 {
+    /*
+    if (object == self.preferredQueue && [keyPath isEqualToString:@"nextSong"])
+    {
+        self.nextSong = self.nextSong;
+        return;
+    }
+    */
     Song *song = (Song *)object;
     if ([keyPath isEqualToString:ObservePropertyName])
     {

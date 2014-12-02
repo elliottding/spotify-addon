@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSMutableArray *songs;
 
 // The next Song to be played from this queue.
-@property (nonatomic, strong, readonly) Song *nextSong;
+@property (nonatomic, strong) Song *nextSong;
 
 // The total number of Songs in this queue.
 @property (nonatomic) NSUInteger count;
@@ -54,7 +54,6 @@
 // added 11-26 used to get the index of a song via the track uri
 - (int)getIndexOfURI:(NSString *) trackURI;
 
-
-
+- (void)refreshNextSong;
 
 @end

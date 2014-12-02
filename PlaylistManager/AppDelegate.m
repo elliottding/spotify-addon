@@ -29,7 +29,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (SongRoom *)createTestRoom
 {
     // Set up test song room
     NSArray *trackIdentifiers = @[@"7dS5EaCoMnN7DzlpT6aRn2",
@@ -53,10 +53,17 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     }
     SongRoom *songRoom = [[SongRoom alloc] initWithName:@"Test Room"];
     songRoom.songQueue = songQueue;
-    
+    return songRoom;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    /*
+    SongRoom *songRoom = [self createTestRoom];
     self.testAdmin = [[Admin alloc] initWithUsername:@"Test Admin"];
     [self.testAdmin startServer:@"Test Room"];
     self.testAdmin.songRoom = songRoom;
+    */
     
     // Set up test member
     [[Member instance] startBrowser];

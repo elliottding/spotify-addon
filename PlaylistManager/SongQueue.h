@@ -18,7 +18,9 @@
 
 // The next Song to be played. Priority is given for songs in the preferred queue.
 // If no Songs are in the preferred queue, then priority is given based on vote score.
-@property (nonatomic, strong, readonly) Song *nextSong;
+@property (nonatomic, strong) Song *nextSong;
+
+@property (nonatomic, strong) Song *currentSong;
 
 // Adds a Song to the regular voting queue.
 - (void)addSong:(Song *)song;

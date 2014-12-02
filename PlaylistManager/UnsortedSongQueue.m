@@ -31,6 +31,11 @@
     return self.songs.count;
 }
 
+- (void)refreshNextSong
+{
+    self.nextSong = self.nextSong;
+}
+
 - (Song *)nextSong
 {
     if (self.count > 0)
@@ -122,6 +127,5 @@
     }
     return -1;
 }
-
 
 @end

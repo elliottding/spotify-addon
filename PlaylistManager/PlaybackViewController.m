@@ -10,6 +10,8 @@
 
 #import "SpotifyRetriever.h"
 
+#import "Member.h"
+
 @interface PlaybackViewController ()
 
 @property (nonatomic) SPTAudioStreamingController *streamer;
@@ -35,6 +37,14 @@
 {
     [super viewDidLoad];
     self.title = @"Now Playing";
+    if (self.streamer.isPlaying)
+    {
+        self.playPauseButton.titleLabel.text = @"Pause";
+    }
+    else
+    {
+        self.playPauseButton.titleLabel.text = @"Play";
+    }
 }
 
 // Ensure that the audio streamer is initialized and logged in.
@@ -59,6 +69,16 @@
     }
 }
 
+- (void)setPlayPauseButtonPlay
+{
+    self.playPauseButton.titleLabel.text = @"Play";
+}
+
+- (void)setPlayPauseButtonPause
+{
+    self.playPauseButton.titleLabel.text = @"Pause";
+}
+
 - (void)playSong:(Song *)song
 {
     NSLog(@"attempting to play %@", song);
@@ -72,6 +92,7 @@
              return;
          }
          NSLog(@"Now playing: %@", song.track.name);
+         [self setPlayPauseButtonPause];
          
          // Set volume slider to reflect true playback volume
          [self.volumeSlider setValue:self.streamer.volume animated:YES];
@@ -112,15 +133,26 @@
     }
     else
     {
-        [self.streamer setIsPlaying:YES callback:^(NSError *error)
-         {
-             if (error != nil)
+        // If current song is nil, then get the next song from the song queue to play
+        if (self.song == nil)
+        {
+            Song *song = [Member instance].songRoom.songQueue.nextSong;
+            [self playSong:song];
+            [[Member instance].songRoom playSong:song];
+        }
+        // Otherwise, unpause the song
+        else
+        {
+            [self.streamer setIsPlaying:YES callback:^(NSError *error)
              {
-                 NSLog(@"Playback resume error: %@", error);
-                 return;
-             }
-             weakSelf.playPauseButton.titleLabel.text = @"Pause";
-         }];
+                 if (error != nil)
+                 {
+                     NSLog(@"Playback resume error: %@", error);
+                     return;
+                 }
+                 weakSelf.playPauseButton.titleLabel.text = @"Pause";
+             }];
+        }
     }
 }
 
