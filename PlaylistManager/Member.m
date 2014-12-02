@@ -135,14 +135,17 @@
         }
         self.songRoom.songQueue = newQ;
         int i = 0;
-        for (Song *song in [dict objectForKey:@"history"]){
-            [self.songRoom.historyQueue setObject:song atIndexedSubscript:i++];
+        for (id key in [dict objectForKey:@"history"]){
+            Song *newsong = [[Song alloc] initWithIdentifier:key];
+            [self.songRoom.historyQueue setObject:newsong atIndexedSubscript:i++];
         }
         self.flag = 1;
-    }
-    else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
         //new song by removing top song
         [self.songRoom.songQueue removeTopSong];
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"KICK"]){
+        //remove self from songroom
+        self.songRoom = nil;
     }
 }
 

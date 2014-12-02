@@ -40,6 +40,12 @@
     return signinString;
 }
 
++ (NSString *)makeSignoutString:(NSString *)username
+{
+    NSString * signoutString = [@"SIGNOUT:" stringByAppendingString:username];
+    return signoutString;
+}
+
 + (NSString *)makeSongRoomStatusString:(SongRoom *)songRoom
 {
     NSString * statusString = @"UPSR:";
@@ -81,6 +87,12 @@
     return queueString;
 }
 
++ (NSString *)makeKickString
+{
+    NSString * kickString = @"KICK";
+    return kickString;
+}
+
 + (NSMutableDictionary *)readString:(NSString *)protocolString
 {
     NSMutableDictionary * voteDict = [[NSMutableDictionary alloc] init];
@@ -102,6 +114,10 @@
         
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"SIGNIN"]){
         [voteDict setObject:@"SIGNIN" forKey:@"type"];
+        [voteDict setObject:[splitString objectAtIndex:1] forKey:@"username"];
+    
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"SIGNOUT"]){
+        [voteDict setObject:@"SIGNOUT" forKey:@"type"];
         [voteDict setObject:[splitString objectAtIndex:1] forKey:@"username"];
         
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"UPSR"]){
@@ -139,10 +155,11 @@
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"NEWCS"]){
         [voteDict setObject:@"NEWCS" forKey:@"type"];
         
-    }
-    else if ([[splitString objectAtIndex:0] isEqualToString:@"REMOVE"]){
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"REMOVE"]){
         [voteDict setObject:@"REMOVE" forKey:@"type"];
         [voteDict setObject:[splitString objectAtIndex:1] forKey:@"songURI"];
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"KICK"]){
+        [voteDict setObject:@"KICK" forKey:@"type"];
     }
     return voteDict;
 }
