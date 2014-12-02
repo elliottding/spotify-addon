@@ -18,6 +18,7 @@
 + (NSString *)makeSigninString:(NSString *)username; // "SIGNIN:USERNAME"
 + (NSString *)makeSongRoomStatusString:(SongRoom *)songRoom; //
 + (NSString *)makePlayNextString; // "NEWCS"
++ (NSString *)makeRemoveString:(NSString *)songURI;
 
 + (NSMutableDictionary *)readString:(NSString *)protocolString;
 

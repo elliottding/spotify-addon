@@ -119,9 +119,12 @@
         [self.songRoom registerUser:user];
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
-        
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"REMOVE"]){
+        int index = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]];
+        [self.songRoom.songQueue removeSongAtIndex:index];
+        NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
+        [self outputText:songRoomString toConnection: connection];
     }
-    
 }
 
 
