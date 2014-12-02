@@ -22,6 +22,8 @@
 // once the browser is started
 // THIS IS OUTDDATED USE CURRENT SERVICES
 
+@property (nonatomic) int flag;
+
 @property (nonatomic, weak) NSMutableArray *  services;
 
 // set this property to the name of the songroom you want to connect to then call the connect method

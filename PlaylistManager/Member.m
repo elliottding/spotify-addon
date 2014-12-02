@@ -56,16 +56,14 @@
     
 }
 
-- (void)manageInput{
+- (void)manageInput {
     while (1) {
-        if(_connection.available){
+        if(_connection.available) {
             NSLog(@"%@", _connection.message);
             [self executeDict:[Parser readString:_connection.message]];
             _connection.message = nil;
             _connection.available = 0;
-            
         }
-        
     }
 }
 
@@ -140,7 +138,9 @@
         for (Song *song in [dict objectForKey:@"history"]){
             [self.songRoom.historyQueue setObject:song atIndexedSubscript:i++];
         }
-    } else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
+        self.flag = 1;
+    }
+    else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
         //new song by removing top song
         [self.songRoom.songQueue removeTopSong];
     }

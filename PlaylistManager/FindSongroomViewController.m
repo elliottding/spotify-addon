@@ -75,6 +75,9 @@
     [Admin instance].username = @"Test Admin";
     [Admin instance].songRoom = songRoom;
     [[Admin instance] startServer:songRoomName];
+    [Member instance].connectTo = @"New Room";
+    [NSThread sleepForTimeInterval:2];
+    [[Member instance] connect];
     
     UIWindow *mainWindow = [UIApplication sharedApplication].windows.firstObject;
     mainWindow.rootViewController = [[TabBarController alloc] initWithSongRoom:songRoom];

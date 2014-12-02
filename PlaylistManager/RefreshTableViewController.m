@@ -25,11 +25,19 @@
                   forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)refresh
+- (void)reload
 {
-    [[Member instance] connect];
+    while ([Member instance].flag != 1);
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
+    NSLog(@"************* RELOADED ***************");
+    [Member instance].flag = 0;
+}
+
+- (void)refresh
+{
+    [[Member instance] updateSongRoom];
+    [NSThread detachNewThreadSelector:@selector(reload) toTarget:self withObject:nil];
 }
 
 @end
