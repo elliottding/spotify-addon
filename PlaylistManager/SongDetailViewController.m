@@ -74,6 +74,7 @@
         //[self.removeSongButton setEnabled:NO];
         self.playSongButton.hidden = YES;
         self.removeSongButton.hidden = YES;
+        self.moveToPreferredButton.hidden = YES;
     }
     else
     {
