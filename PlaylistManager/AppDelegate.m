@@ -108,7 +108,6 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         // Set the SpotifyRetriever session to this session
         [SpotifyRetriever instance].session = session;
         [Member instance].username = session.canonicalUsername;
-        NSLog(@"*(&(&*(&********************* session ID = %@", session);
     };
     
     // Call the token swap service to get a logged in session
