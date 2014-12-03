@@ -78,7 +78,8 @@
 {
     [super viewDidLoad];
     self.title = @"Add a Song";
-    [self.tableView registerClass:[SongSearchTableViewCell class] forCellReuseIdentifier:@"SongCell"];
+    // [self.tableView registerClass:[SongSearchTableViewCell class] forCellReuseIdentifier:@"SongSearchTableViewCell"];
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBox.delegate = self;
@@ -143,15 +144,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *reuseIdentifier = @"SongCell";
-    SongSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
-                                                              forIndexPath:indexPath];
+    static NSString *reuseIdentifier = @"SongSearchTableViewCell";
+    SongSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
     // Initialize a new cell if one was not dequeued
     if (cell == nil)
     {
-        cell = [[SongSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                        reuseIdentifier:reuseIdentifier];
+        // UIViewController *tempController = [[UIViewController alloc] initWithNibName:@"SongSearchTableViewCell" bundle:nil];
+        // cell = (SongSearchTableViewCell *)tempController.view;
+        [tableView registerNib:[UINib nibWithNibName:@"SongSearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"SongSearchTableViewCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SongSearchTableViewCell"];
+        NSLog(@"Cell instantiated %@", cell);
+        //cell = [[SongSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     }
     
     // Set the song of the cell
@@ -162,7 +166,7 @@
     }
     else
     {
-        [NSException raise:@"Index error" format:@"indexPath section %ld is invalid", indexPath.section];
+        [NSException raise:@"Index error" format:@"indexPath section %ld is invalid", (long)indexPath.section];
     }
     
     cell.song = song;
