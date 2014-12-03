@@ -102,6 +102,11 @@
     NSLog(@"attempting to play %@", song);
     self.song = song;
     [self ensureLoggedIn];
+    
+    // HISTORY QUEUE UPDATE
+    [[Member instance].songRoom.historyQueue addObject:self.song];
+    [[Member instance] RemoveSong: self.song.identifier];
+    
     [self.streamer playTrackProvider:song.track callback:^(NSError *error)
      {
          if (error != nil)
@@ -109,6 +114,7 @@
              NSLog(@"Playback error: %@", error);
              return;
          }
+         
          NSLog(@"Now playing: %@", song.track.name);
          [self setPlayPauseButtonPause];
          
@@ -158,7 +164,7 @@
         {
             Song *song = [Member instance].songRoom.songQueue.nextSong;
             [self playSong:song];
-            [[Member instance].songRoom playSong:song];
+            // [[Member instance].songRoom playSong:song];
         }
         // Otherwise, unpause the song
         else

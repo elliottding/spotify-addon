@@ -10,6 +10,8 @@
 
 #import "SongTableViewCell.h"
 
+#import "Member.h"
+
 @interface HistoryViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *historyQueue;
@@ -23,10 +25,15 @@
     self = [super init];
     if (self)
     {
-        self.songRoom = songRoom;
+        // self.songRoom = songRoom;
         self.title = @"Playlist History";
     }
     return self;
+}
+
+- (SongRoom *)songRoom
+{
+    return [Member instance].songRoom;
 }
 
 - (void)loadView
@@ -57,6 +64,7 @@
 {
     if (section == 0)
     {
+        NSLog(@"HistoryViewController: Currently %d items in the queue", self.songRoom.historyQueue.count);
         return self.songRoom.historyQueue.count;
     }
     return 0;

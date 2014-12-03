@@ -71,7 +71,10 @@
     PlaylistNavigationController *pnc = self.playlistNavigationController;
     [pnc popToRootViewControllerAnimated:NO];
     [pnc pushPlaybackViewControllerWithSong:self.song];
-    [[Member instance] RemoveSong: self.song.identifier];
+    
+    // HISTORY QUEUE UPDATE
+    // [[Member instance].songRoom.historyQueue addObject:self.song];
+    // [[Member instance] RemoveSong: self.song.identifier];
     [NSThread sleepForTimeInterval:2.0];
     [pnc reloadPlaylistTableView];
 }

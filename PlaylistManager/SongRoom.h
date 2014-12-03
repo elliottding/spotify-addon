@@ -24,6 +24,9 @@
 // The song queue.
 @property (nonatomic, strong) SongQueue *songQueue;
 
+// Currently playing song
+@property (nonatomic, strong) Song *currentSong;
+
 // The history queue of played songs.
 @property (nonatomic, strong) NSMutableArray *historyQueue;
 // When a song is played, it is removed from the songQueue and appended to the history Queue

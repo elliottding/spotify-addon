@@ -133,6 +133,17 @@
             newsong.voteScore = [[[dict objectForKey:@"regsongs"] objectForKey:key] intValue];
             [newQ appendSong:newsong];
         }
+        
+        // HISTORY QUEUE UPDATE
+        NSDictionary *historyDict = [dict objectForKey:@"history"];
+        for (id key in historyDict)
+        {
+            NSLog(@"Queuing key '%@' in history queue", key);
+            Song *newsong = [[Song alloc] initWithIdentifier:key];
+            newsong.voteScore = [[historyDict objectForKey:key] intValue];
+            [self.songRoom.historyQueue addObject:newsong];
+        }
+        
         self.songRoom.songQueue = newQ;
         int i = 0;
         for (id key in [dict objectForKey:@"history"]){
@@ -155,20 +166,26 @@
     [self outputText:vote];
 }
 
--(void)QueueSong:(NSString *)songURI{
+- (void)QueueSong:(NSString *)songURI{
     NSString *queueRequest = [Parser makeQueueString:songURI];
     [self outputText:queueRequest];
 }
--(NSMutableArray *) currentServices{
+- (NSMutableArray *)currentServices{
     return _connection.services;
 }
 
--(void) updateSongRoom{
+- (void)updateSongRoom{
     NSString * upRequest = [Parser makeUpdateString];
     [self outputText:upRequest];
 }
 
 - (void)RemoveSong:(NSString *)songURI
+{
+    NSString *remove = [Parser makeRemoveString:songURI];
+    [self outputText:remove];
+}
+
+- (void)playSong:(NSString *)songURI
 {
     NSString *remove = [Parser makeRemoveString:songURI];
     [self outputText:remove];

@@ -14,8 +14,9 @@
 #import "SongRoom.h"
 #import "SongQueue.h"
 #import "Member.h"
+#import "RefreshTableViewController.h"
 
-@interface PlaylistNavigationController ()
+@interface PlaylistNavigationController () <UINavigationControllerDelegate>
 
 @property (nonatomic, strong) PlaylistTableViewController *playlistViewController;
 
@@ -52,9 +53,22 @@
         self.playbackViewController = pbvc;
         
         [self pushViewController:ptvc animated:NO];
-        self.songRoom = songRoom;
+        // self.songRoom = songRoom;
+        
+        self.delegate = self;
     }
     return self;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    if ([[navigationController class] isSubclassOfClass:[RefreshTableViewController class]])
+    {
+        NSLog(@"NavigationController refreshing");
+        [(RefreshTableViewController *)navigationController refresh];
+    }
 }
 
 - (SongRoom *)songRoom
