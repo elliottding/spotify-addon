@@ -12,6 +12,8 @@
 
 #import "Member.h"
 
+#import "Admin.h"
+
 NSTimeInterval const NextSongTimerInterval = 2;
 
 @interface PlaybackViewController () <SPTAudioStreamingPlaybackDelegate>
@@ -27,6 +29,10 @@ NSTimeInterval const NextSongTimerInterval = 2;
 @property (nonatomic) IBOutlet UISlider *volumeSlider;
 
 @property (nonatomic) IBOutlet UIImageView *songArtImageView;
+
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *volumeLabel;
 
 @property (nonatomic) NSTimeInterval currentSongDuration;
 
@@ -70,6 +76,13 @@ NSTimeInterval const NextSongTimerInterval = 2;
     else
     {
         self.playPauseButton.titleLabel.text = @"Play";
+    }
+    if (![Admin check])
+    {
+        self.playPauseButton.hidden = YES;
+        self.nextButton.hidden = YES;
+        self.volumeSlider.hidden = YES;
+        self.volumeLabel.hidden = YES;
     }
 }
 

@@ -7,10 +7,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaybackViewController">
             <connections>
                 <outlet property="artistNameLabel" destination="G3C-Ng-CQp" id="uYR-Pf-4B1"/>
+                <outlet property="nextButton" destination="630-73-MFD" id="uMN-x9-O61"/>
                 <outlet property="playPauseButton" destination="3eG-RA-Z7m" id="S8O-tm-Jvl"/>
                 <outlet property="songArtImageView" destination="Lev-5F-az2" id="RPz-Xi-TIT"/>
                 <outlet property="songNameLabel" destination="iza-H0-UPX" id="mcn-wQ-iAw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="volumeLabel" destination="BCH-Bh-qUz" id="AqA-lX-rX8"/>
                 <outlet property="volumeSlider" destination="cZc-ud-YkE" id="D1z-4j-KQU"/>
             </connections>
         </placeholder>
