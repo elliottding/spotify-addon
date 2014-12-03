@@ -117,7 +117,7 @@
         int inQ = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]];
         int inPrefQ = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]];
         
-        if (inQ == -1 || inPrefQ){
+        if (inQ == -1 && inPrefQ == -1){
             NSString *failString = [Parser makeFailedQueueString];
             [self outputText:failString toConnection:connection];
         }
