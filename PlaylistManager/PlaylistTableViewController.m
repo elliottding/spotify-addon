@@ -125,6 +125,11 @@
     }
     else if (indexPath.section == 1)
     {
+        // Loop until ready
+        while (self.songQueue.songs.count <= indexPath.row)
+        {
+            NSLog(@"******* looping: not yet ready");
+        }
         song = self.songQueue.songs[indexPath.row];
     }
     else

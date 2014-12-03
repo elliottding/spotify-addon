@@ -66,7 +66,7 @@
 {
     if ([[navigationController class] isSubclassOfClass:[RefreshTableViewController class]])
     {
-        NSLog(@"NavigationController refreshing");
+        NSLog(@"*** NavigationController refreshing ***");
         [(RefreshTableViewController *)navigationController refresh];
     }
 }

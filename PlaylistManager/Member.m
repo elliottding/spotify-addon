@@ -131,7 +131,7 @@
             NSLog(@"Queing key '%@' in regular queue", key);
             Song *newsong = [[Song alloc] initWithIdentifier:key];
             newsong.voteScore = [[[dict objectForKey:@"regsongs"] objectForKey:key] intValue];
-            [newQ appendSong:newsong];
+            [newQ addSong:newsong];
         }
         
         // HISTORY QUEUE UPDATE
