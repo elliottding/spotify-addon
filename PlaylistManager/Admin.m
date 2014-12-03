@@ -102,7 +102,7 @@
         if ((i = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]]) >= 0){
             VoteBox *vb = [[self.songRoom.songQueue.songs objectAtIndex:i] voteBox];
             [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
-        } else if ([self.songRoom.songQueue.preferredQueue getIndexOfURI:[dict objectForKey:@"songURI"]] >= 0){
+        } else if ((i = [self.songRoom.songQueue.preferredQueue getIndexOfURI:[dict objectForKey:@"songURI"]] >= 0)){
             VoteBox *vb = [[self.songRoom.songQueue.preferredQueue.songs objectAtIndex:i] voteBox];
             [vb setVoteScore:[[dict objectForKey:@"updown"] intValue] forUsername:[dict objectForKey:@"username"]];
         }
