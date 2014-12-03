@@ -135,12 +135,11 @@
         }
         
         // HISTORY QUEUE UPDATE
-        NSDictionary *historyDict = [dict objectForKey:@"history"];
-        for (id key in historyDict)
-        {
+        //NSDictionary *historyDict = [dict objectForKey:@"history"];
+        for (id key in [dict objectForKey:@"history"]){
             NSLog(@"Queuing key '%@' in history queue", key);
             Song *newsong = [[Song alloc] initWithIdentifier:key];
-            newsong.voteScore = [[historyDict objectForKey:key] intValue];
+            //newsong.voteScore = [[historyDict objectForKey:key] intValue];
             [self.songRoom.historyQueue addObject:newsong];
         }
         
@@ -154,6 +153,11 @@
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"NEWCS"]){
         //new song by removing top song
         [self.songRoom.songQueue removeTopSong];
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"CURRENTSONG"]){
+        //update current song
+        [self.songRoom.historyQueue insertObject:self.songRoom.currentSong atIndex:0];
+        Song *currsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"songURI"]];
+        self.songRoom.currentSong = currsong;
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"KICK"]){
         //remove self from songroom
         self.songRoom = nil;
@@ -170,6 +174,12 @@
     NSString *queueRequest = [Parser makeQueueString:songURI];
     [self outputText:queueRequest];
 }
+
+- (void)SendCurrentSong:(NSString *)songURI{
+    NSString *setCurrentSendRequest = [Parser makeCurrentSendString:songURI];
+    [self outputText:setCurrentSendRequest];
+}
+
 - (NSMutableArray *)currentServices{
     return _connection.services;
 }

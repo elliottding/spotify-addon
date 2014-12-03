@@ -28,6 +28,12 @@
     return queueString;
 }
 
++ (NSString *)makeCurrentSendString:(NSString *)songURI
+{
+    NSString *currentSongString = [@"CURRENTSONG:" stringByAppendingString:songURI];
+    return currentSongString;
+}
+
 + (NSString *)makeUpdateString
 {
     NSString * updateString = @"UPDATE";
@@ -111,6 +117,10 @@
     
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"UPDATE"]){
         [voteDict setObject:@"UPDATE" forKey:@"type"];
+        
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"CURRENTSONG"]){
+        [voteDict setObject:[splitString objectAtIndex:1] forKey:@"songURI"];
+        [voteDict setObject:@"CURRENTSONG" forKey:@"type"];
         
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"SIGNIN"]){
         [voteDict setObject:@"SIGNIN" forKey:@"type"];
