@@ -12,6 +12,8 @@
 
 #import "Member.h"
 
+#import "Admin.h"
+
 NSTimeInterval const NextSongTimerInterval = 2;
 
 @interface PlaybackViewController () <SPTAudioStreamingPlaybackDelegate>
@@ -27,6 +29,10 @@ NSTimeInterval const NextSongTimerInterval = 2;
 @property (nonatomic) IBOutlet UISlider *volumeSlider;
 
 @property (nonatomic) IBOutlet UIImageView *songArtImageView;
+
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *volumeLabel;
 
 @property (nonatomic) NSTimeInterval currentSongDuration;
 
@@ -70,6 +76,13 @@ NSTimeInterval const NextSongTimerInterval = 2;
     else
     {
         self.playPauseButton.titleLabel.text = @"Play";
+    }
+    if (![Admin check])
+    {
+        self.playPauseButton.hidden = YES;
+        self.nextButton.hidden = YES;
+        self.volumeSlider.hidden = YES;
+        self.volumeLabel.hidden = YES;
     }
 }
 
@@ -132,6 +145,13 @@ NSTimeInterval const NextSongTimerInterval = 2;
     NSLog(@"attempting to play %@", song);
     self.song = song;
     [self ensureLoggedIn];
+    
+    SongRoom *sr = [Admin instance].songRoom;
+    if (sr.currentSong)
+    {
+        [sr.historyQueue insertObject:sr.currentSong atIndex:0];
+    }
+    sr.currentSong = self.song;
     
     // HISTORY QUEUE UPDATE
     [[Member instance].songRoom.historyQueue addObject:self.song];
