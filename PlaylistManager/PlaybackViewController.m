@@ -228,8 +228,7 @@ didChangePlaybackStatus:(BOOL)isPlaying
         // If current song is nil, then get the next song from the song queue to play
         if (self.song == nil)
         {
-            Song *song = [Member instance].songRoom.songQueue.nextSong;
-            [self playSong:song];
+            [self playNextSong];
             // [[Member instance].songRoom playSong:song];
         }
         // Otherwise, unpause the song
