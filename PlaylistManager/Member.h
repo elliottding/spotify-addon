@@ -57,6 +57,8 @@
 
 -(void) updateSongRoom;
 
+-(void) LogOff;
+
 
 // for testing purposes only
 - (void) outputText:(NSString *)text;

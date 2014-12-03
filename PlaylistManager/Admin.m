@@ -113,7 +113,14 @@
         NSLog(@"QUEUE dict: %@", dict);
         Song * newsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"track"]];
         NSLog(@"Spotify URI: %@", newsong.identifier);
-        [self.songRoom.songQueue addSong:newsong];
+        
+        //TODO
+        if ([self.songRoom.songQueue containsSong:newsong]){
+            NSString *failString = [Parser makeFailedQueueString];
+            [self outputText:failString toConnection:connection];
+        }
+        
+        //[self.songRoom.songQueue addSong:newsong];
         NSLog(@"Next song is: %@", self.songRoom.songQueue.nextSong.identifier);
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
@@ -142,8 +149,13 @@
     
 }
 
-
-
+/*
+- (void)kickUser:(NSString *) username{
+    [self.songRoom unregisterUsername:username];
+    NSString *kickstring = [Parser makeKickString];
+    [self outputText:kickstring toConnection:connection];
+}
+*/
 
 -(void)stopServer{
     [self.songroomServer stop];
