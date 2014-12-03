@@ -32,6 +32,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *playSongButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *moveToPreferredButton;
+
 @property (nonatomic) PlaylistNavigationController *playlistNavigationController;
 
 @end
@@ -125,6 +127,15 @@
     [[Member instance] Vote:self.song.identifier withDirection:-1];
     [NSThread sleepForTimeInterval:2.0];
     //self.song.voteScore -= 1;
+    [self.playlistNavigationController popViewControllerAnimated:YES];
+    [self.playlistNavigationController reloadPlaylistTableView];
+}
+
+- (IBAction)moveToPreferredAction
+{
+    [[Admin instance].songRoom.songQueue moveToPreferred:self.song];
+    [[Member instance] RemoveSong:self.song.identifier];
+    [NSThread sleepForTimeInterval:2.0];
     [self.playlistNavigationController popViewControllerAnimated:YES];
     [self.playlistNavigationController reloadPlaylistTableView];
 }

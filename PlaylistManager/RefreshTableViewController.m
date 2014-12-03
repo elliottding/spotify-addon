@@ -27,11 +27,12 @@
 
 - (void)reload
 {
-    while ([Member instance].flag != 1);
+    // while ([Member instance].flag != 1);
+    [NSThread sleepForTimeInterval:1];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
     NSLog(@"************* RELOADED ***************");
-    [Member instance].flag = 0;
+    // [Member instance].flag = 0;
 }
 
 - (void)refresh
