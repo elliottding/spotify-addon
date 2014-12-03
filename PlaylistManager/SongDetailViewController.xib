@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0Y-Ff-Vaa">
-                    <rect key="frame" x="20" y="274" width="560" height="30"/>
+                    <rect key="frame" x="20" y="310" width="560" height="30"/>
                     <state key="normal" title="Play Song">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -30,7 +30,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3x-7X-gnE">
-                    <rect key="frame" x="20" y="296" width="560" height="30"/>
+                    <rect key="frame" x="20" y="332" width="560" height="30"/>
                     <state key="normal" title="Remove From Queue">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -39,7 +39,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABZ-Fr-hSN">
-                    <rect key="frame" x="20" y="317" width="560" height="30"/>
+                    <rect key="frame" x="20" y="353" width="560" height="30"/>
                     <state key="normal" title="Vote Up">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -48,7 +48,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5V-ZY-jqy">
-                    <rect key="frame" x="20" y="339" width="560" height="30"/>
+                    <rect key="frame" x="20" y="375" width="560" height="30"/>
                     <state key="normal" title="Vote Down">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -57,20 +57,20 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2p-0K-vle">
-                    <rect key="frame" x="20" y="231" width="560" height="21"/>
+                    <rect key="frame" x="20" y="267" width="560" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4h-G2-OOQ">
-                    <rect key="frame" x="255" y="255" width="91" height="21"/>
+                    <rect key="frame" x="255" y="291" width="91" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Ka-38-oue">
-                    <rect key="frame" x="194" y="20" width="213" height="193"/>
+                    <rect key="frame" x="194" y="66" width="213" height="193"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="213" id="V9R-7B-odH"/>
@@ -78,7 +78,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syX-u4-N2w">
-                    <rect key="frame" x="213" y="377" width="175" height="30"/>
+                    <rect key="frame" x="213" y="398" width="175" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Move To Preferred Queue">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,13 +103,13 @@
                 <constraint firstItem="A2p-0K-vle" firstAttribute="centerX" secondItem="7Ka-38-oue" secondAttribute="centerX" id="YgC-6Y-tsz"/>
                 <constraint firstItem="v5V-ZY-jqy" firstAttribute="centerX" secondItem="syX-u4-N2w" secondAttribute="centerX" id="cU4-oE-hnP"/>
                 <constraint firstItem="l3x-7X-gnE" firstAttribute="leading" secondItem="ABZ-Fr-hSN" secondAttribute="leading" id="kbV-gy-KHZ"/>
-                <constraint firstItem="A2p-0K-vle" firstAttribute="top" secondItem="7Ka-38-oue" secondAttribute="bottom" constant="18" id="kpq-7i-gs8"/>
+                <constraint firstItem="A2p-0K-vle" firstAttribute="top" secondItem="7Ka-38-oue" secondAttribute="bottom" constant="8" id="kpq-7i-gs8"/>
                 <constraint firstItem="A2p-0K-vle" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="mYo-gS-rYh"/>
-                <constraint firstItem="7Ka-38-oue" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" symbolic="YES" id="oUc-z0-2Kc"/>
+                <constraint firstItem="7Ka-38-oue" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="oUc-z0-2Kc"/>
                 <constraint firstItem="q0Y-Ff-Vaa" firstAttribute="leading" secondItem="l3x-7X-gnE" secondAttribute="leading" id="oa3-7n-dKd"/>
                 <constraint firstItem="v5V-ZY-jqy" firstAttribute="top" secondItem="l3x-7X-gnE" secondAttribute="bottom" constant="13" id="qNo-ds-J1Z"/>
                 <constraint firstItem="ABZ-Fr-hSN" firstAttribute="top" secondItem="q0Y-Ff-Vaa" secondAttribute="bottom" constant="13" id="sDC-rJ-g7o"/>
-                <constraint firstItem="syX-u4-N2w" firstAttribute="top" secondItem="v5V-ZY-jqy" secondAttribute="bottom" constant="8" symbolic="YES" id="vW0-HK-z8B"/>
+                <constraint firstItem="syX-u4-N2w" firstAttribute="top" secondItem="v5V-ZY-jqy" secondAttribute="bottom" constant="-7" id="vW0-HK-z8B"/>
                 <constraint firstItem="q0Y-Ff-Vaa" firstAttribute="trailing" secondItem="A2p-0K-vle" secondAttribute="trailing" id="vrG-7s-SA2"/>
             </constraints>
         </view>
