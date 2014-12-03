@@ -125,16 +125,16 @@
     }
     else if (indexPath.section == 1)
     {
-        // Loop until ready
-        while (self.songQueue.songs.count <= indexPath.row)
+        // Return an empty cell if the indexPath row is greater than the songQueue count
+        if (self.songQueue.songs.count <= indexPath.row)
         {
-            NSLog(@"******* looping: not yet ready");
+            return cell;
         }
         song = self.songQueue.songs[indexPath.row];
     }
     else
     {
-        [NSException raise:@"Index error" format:@"indexPath section %ld is invalid", indexPath.section];
+        [NSException raise:@"Index error" format:@"indexPath section %ld is invalid", (long)indexPath.section];
     }
     
     cell.song = song;
