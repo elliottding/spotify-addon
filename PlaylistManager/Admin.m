@@ -114,8 +114,10 @@
         Song * newsong = [[Song alloc] initWithIdentifier:[dict objectForKey:@"track"]];
         NSLog(@"Spotify URI: %@", newsong.identifier);
         
-        //TODO
-        if ([self.songRoom.songQueue containsSong:newsong]){
+        int inQ = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]];
+        int inPrefQ = [self.songRoom.songQueue getIndexOfURI:[dict objectForKey:@"songURI"]];
+        
+        if (inQ == -1 || inPrefQ){
             NSString *failString = [Parser makeFailedQueueString];
             [self outputText:failString toConnection:connection];
         }
