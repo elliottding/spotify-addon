@@ -24,6 +24,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *songArtImageView;
+
 @property (nonatomic) PlaylistNavigationController *playlistNavigationController;
 
 @end
@@ -43,6 +45,12 @@
     SPTPartialArtist *artist = song.track.artists[0];
     self.artistNameLabel.text = artist.name;
     self.songNameLabel.text = song.track.name;
+    
+    // Code for Cover Art
+    NSURL *songArtImageURL = song.track.album.largestCover.imageURL;
+    NSData *songArtImageData = [NSData dataWithContentsOfURL:songArtImageURL];
+    UIImage *songArtImage = [UIImage imageWithData:songArtImageData];
+    self.songArtImageView.image = songArtImage;
 }
 
 - (void)viewDidLoad
