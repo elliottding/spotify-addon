@@ -18,6 +18,8 @@
 
 #import "Member.h"
 
+#import "Admin.h"
+
 @interface SongDetailViewController ()
 
 @property (nonatomic, strong) IBOutlet UILabel *songNameLabel;
@@ -72,9 +74,20 @@
     [pnc popToRootViewControllerAnimated:NO];
     [pnc pushPlaybackViewControllerWithSong:self.song];
     
+    
+    //Song *selectedSong = self.song;
+    //[[Member instance] SendCurrentSong:[selectedSong.track.uri absoluteString]];
+    //[NSThread sleepForTimeInterval:2.0];
+    SongRoom *sr = [Admin instance].songRoom;
+    if (sr.currentSong)
+        [sr.historyQueue insertObject:sr.currentSong atIndex:0];
+    sr.currentSong = self.song;
+
+
     // HISTORY QUEUE UPDATE
     // [[Member instance].songRoom.historyQueue addObject:self.song];
     // [[Member instance] RemoveSong: self.song.identifier];
+    
     [NSThread sleepForTimeInterval:2.0];
     [pnc reloadPlaylistTableView];
 }

@@ -14,6 +14,7 @@
 
 + (NSString *)makeVoteString:(NSString *)username updown:(int)updown songURI:(NSString *)songURI; // "VOTE:1:[SONGURI]"
 + (NSString *)makeQueueString:(NSString *)songURI; // "QUEUE:[SONGURI]"
++ (NSString *)makeCurrentSendString:(NSString *)songURI; // "CURRENTSONG:[SONGURI]"
 + (NSString *)makeUpdateString; // "UPDATE"
 + (NSString *)makeSigninString:(NSString *)username; // "SIGNIN:USERNAME"
 + (NSString *)makeSignoutString:(NSString *)username; // "SIGNOUT:USERNAME"
@@ -39,43 +40,49 @@
     "songURI" : (NSString)
  }
  
- 3. UPDATE
+ 3. CURRENTSONG
+ {
+    "type" : @"CURRENTSONG"
+    "songURI" : (NSString)
+ }
+ 
+ 4. UPDATE
  {
     "type" : @"UPDATE"
  }
  
- 4. SIGNIN
+ 5. SIGNIN
  {
     "type" : @"SIGNIN"
     "username" : (NSString)
  }
  
- 5. SIGNOUT
+ 6. SIGNOUT
  {
     "type" : @"SIGNOUT"
     "username" : (NSString)
  }
  
- 6. UPSR
+ 7. UPSR
  {
     "type" : @"UPSR"
     "users" : (NSMutableArray)
     "songs" : (NSMutableDictionary)
  }
  
- 7. NEWCS
+ 8. NEWCS
  {
     "type" : @"NEWCS"
  }
  
- 8. REMOVE
+ 9. REMOVE
  {
     "type": @"REMOVE"
     "songURI" : (NSString)
 
  }
  
- 9. KICK
+ 10. KICK
  {
     "type" : @"NEWCS"
  }
