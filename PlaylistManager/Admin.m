@@ -20,10 +20,15 @@
 
 @property (nonatomic, strong) NSMutableData *outputBuffer;
 
-
 @end
 
 @implementation Admin
+
++ (bool)check
+{
+    Admin *instance = [[self class] instance];
+    return (instance.username != nil);
+}
 
 + (instancetype)instance
 {

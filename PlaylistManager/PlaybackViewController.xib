@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaybackViewController">
@@ -33,7 +32,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cZc-ud-YkE">
-                    <rect key="frame" x="67" y="450" width="187" height="31"/>
+                    <rect key="frame" x="67" y="450" width="187" height="34"/>
                     <connections>
                         <action selector="volumeSliderChangeAction" destination="-1" eventType="valueChanged" id="20x-tI-rYZ"/>
                     </connections>
@@ -61,8 +60,8 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="630-73-MFD">
-                    <rect key="frame" x="191" y="334" width="32" height="30"/>
-                    <state key="normal" title="Next">
+                    <rect key="frame" x="191" y="334" width="30" height="30"/>
+                    <state key="normal" title=">>">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -87,12 +86,6 @@
                 <constraint firstItem="3eG-RA-Z7m" firstAttribute="top" secondItem="iza-H0-UPX" secondAttribute="bottom" constant="8" id="q5o-Nj-hDn"/>
                 <constraint firstAttribute="centerX" secondItem="cZc-ud-YkE" secondAttribute="centerX" id="sWA-tR-3g0"/>
             </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

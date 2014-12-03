@@ -109,7 +109,10 @@ NSTimeInterval const NextSongTimerInterval = 2;
 - (IBAction)playNextSong
 {
     Song *nextSong = [Member instance].songRoom.songQueue.nextSong;
-    [self playSong:nextSong];
+    if (nextSong != nil)
+    {
+        [self playSong:nextSong];
+    }
 }
 
 - (void)checkTimeAndMaybePlayNextSong

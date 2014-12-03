@@ -18,6 +18,8 @@
 
 #import "Member.h"
 
+#import "Admin.h"
+
 @interface SongDetailViewController ()
 
 @property (nonatomic, strong) IBOutlet UILabel *songNameLabel;
@@ -25,6 +27,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *songArtImageView;
+
+@property (weak, nonatomic) IBOutlet UIButton *removeSongButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *playSongButton;
 
 @property (nonatomic) PlaylistNavigationController *playlistNavigationController;
 
@@ -58,6 +64,19 @@
     [super viewDidLoad];
     // Re-set song to ensure proper loading
     self.song = self.song;
+    
+    if (![Admin check])
+    {
+        NSLog(@"***** DISABLING ADMIN FEATURES *****");
+        //[self.playSongButton setEnabled:NO];
+        //[self.removeSongButton setEnabled:NO];
+        self.playSongButton.hidden = YES;
+        self.removeSongButton.hidden = YES;
+    }
+    else
+    {
+        NSLog(@"***** ADMIN %@ FEATURES ENABLED *****", [Admin instance].username);
+    }
 }
 
 - (void)didReceiveMemoryWarning

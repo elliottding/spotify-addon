@@ -7,6 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SongDetailViewController">
             <connections>
                 <outlet property="artistNameLabel" destination="E4h-G2-OOQ" id="Hq4-9L-pEt"/>
+                <outlet property="playSongButton" destination="q0Y-Ff-Vaa" id="48O-YD-XoT"/>
+                <outlet property="removeSongButton" destination="l3x-7X-gnE" id="PWa-yu-5YD"/>
                 <outlet property="songArtImageView" destination="7Ka-38-oue" id="Y2r-Mn-2SS"/>
                 <outlet property="songNameLabel" destination="A2p-0K-vle" id="HqN-86-DYw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
