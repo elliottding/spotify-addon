@@ -28,6 +28,10 @@
 // Check if the user of the app is an Admin
 + (bool)check;
 
+// Kick out a user
+
+- (void) kickUser:(NSString *)username;
+
 // When a song changes envoke this method with the new song and the change
 // will be pushed to all of the server connections
 

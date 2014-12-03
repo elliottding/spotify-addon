@@ -161,7 +161,10 @@
     } else if ([[dict objectForKey:@"type"] isEqualToString:@"KICK"]){
         //remove self from songroom
         self.songRoom = nil;
+    } else if ([[dict objectForKey:@"type"] isEqualToString:@"QFAIL"]){
+        //popup message, queue fail
     }
+
 }
 
 -(void) Vote:(NSString *)songURI withDirection:(int)upDown
@@ -193,6 +196,12 @@
 {
     NSString *remove = [Parser makeRemoveString:songURI];
     [self outputText:remove];
+}
+
+- (void)LogOff
+{
+    NSString *logoffString = [Parser makeSignoutString:self.username];
+    [self outputText:logoffString];
 }
 
 - (void)playSong:(NSString *)songURI

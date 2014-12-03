@@ -99,6 +99,12 @@
     return kickString;
 }
 
++ (NSString *)makeFailedQueueString
+{
+    NSString * failString = @"QFAIL";
+    return failString;
+}
+
 + (NSMutableDictionary *)readString:(NSString *)protocolString
 {
     NSMutableDictionary * voteDict = [[NSMutableDictionary alloc] init];
@@ -170,7 +176,10 @@
         [voteDict setObject:[splitString objectAtIndex:1] forKey:@"songURI"];
     } else if ([[splitString objectAtIndex:0] isEqualToString:@"KICK"]){
         [voteDict setObject:@"KICK" forKey:@"type"];
+    } else if ([[splitString objectAtIndex:0] isEqualToString:@"QFAIL"]){
+        [voteDict setObject:@"QFAIL" forKey:@"type"];
     }
+    
     return voteDict;
 }
 

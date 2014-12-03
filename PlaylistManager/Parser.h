@@ -22,6 +22,7 @@
 + (NSString *)makePlayNextString; // "NEWCS"
 + (NSString *)makeRemoveString:(NSString *)songURI; // "REMOVE:[SONGURI]"
 + (NSString *)makeKickString; // "KICK"
++ (NSString *)makeFailedQueueString;
 
 + (NSMutableDictionary *)readString:(NSString *)protocolString;
 
