@@ -14,6 +14,10 @@
 
 @interface SongSearchTableViewCell ()
 
+@property (weak, nonatomic) IBOutlet UILabel *songNameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+
 @end
 
 @implementation SongSearchTableViewCell
@@ -47,8 +51,7 @@
 
 - (void)trackDidLoad
 {
-    NSString *text = [NSString stringWithFormat:@"%@", self.song.track.name];
-    self.textLabel.text = text;
+    [self updateTextLabels];
 }
 
 - (void)setSong:(Song *)song
@@ -60,7 +63,7 @@
     [self unobserveSong:self.song];
     [self observeSong:song];
     _song = song;
-    [self updateTextLabel];
+    [self updateTextLabels];
 }
 
 - (void)observeSong:(Song *)song
@@ -86,14 +89,18 @@
     }
     if ([keyPath isEqualToString:@"track"]) //| [keyPath isEqualToString:@"voteScore"])
     {
-        [self updateTextLabel];
+        [self updateTextLabels];
     }
 }
 
-- (void)updateTextLabel
+- (void)updateTextLabels
 {
-    NSString *text = [NSString stringWithFormat:@"%@", self.song.track.name];
-    self.textLabel.text = text;
+    SPTPartialArtist *artist = self.song.track.artists[0];
+    NSString *artistName = artist.name;
+    self.artistNameLabel.text = artistName;
+    
+    NSString *songName = self.song.track.name;
+    self.songNameLabel.text = songName;
 }
 
 - (void)dealloc

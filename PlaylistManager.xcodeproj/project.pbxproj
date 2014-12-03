@@ -64,6 +64,7 @@
 		828AA1481A256E53004C2868 /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = 828AA1471A256E53004C2868 /* Admin.m */; };
 		82A939DD1A1AFC1000CB7E45 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A939DC1A1AFC1000CB7E45 /* Parser.m */; };
 		E666490E1A2E6D0A0092BD0B /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E666490D1A2E6D0A0092BD0B /* SearchViewController.xib */; };
+		E66C5EE91A2EBCE6004CEE82 /* SongSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E66C5EE81A2EBCE6004CEE82 /* SongSearchTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +174,7 @@
 		82A939DB1A1AFBFB00CB7E45 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		82A939DC1A1AFC1000CB7E45 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		E666490D1A2E6D0A0092BD0B /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		E66C5EE81A2EBCE6004CEE82 /* SongSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongSearchTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +343,7 @@
 				4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */,
 				325AC5101A2EB5BA00ABFCD1 /* SongSearchTableViewCell.h */,
 				325AC5111A2EB5BA00ABFCD1 /* SongSearchTableViewCell.m */,
+				E66C5EE81A2EBCE6004CEE82 /* SongSearchTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				3BC42C0C1A22DCF200880769 /* PlaylistView.xib in Resources */,
 				4FF553A71A267B650062B600 /* SongDetailViewController.xib in Resources */,
 				4F2945D21A26B1A1001B006A /* PlaybackViewController.xib in Resources */,
+				E66C5EE91A2EBCE6004CEE82 /* SongSearchTableViewCell.xib in Resources */,
 				4F47BB011A12E09800660967 /* Images.xcassets in Resources */,
 				4FE36D621A1E701100D21E5C /* SongView.xib in Resources */,
 				E666490E1A2E6D0A0092BD0B /* SearchViewController.xib in Resources */,
