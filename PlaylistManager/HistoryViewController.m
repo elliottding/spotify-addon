@@ -26,7 +26,7 @@
     if (self)
     {
         // self.songRoom = songRoom;
-        self.title = @"Playlist History";
+        self.title = @"History";
     }
     return self;
 }

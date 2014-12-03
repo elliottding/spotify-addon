@@ -47,8 +47,7 @@
 
 - (void)trackDidLoad
 {
-    NSString *text = [NSString stringWithFormat:@"%@", self.song.track.name];
-    self.textLabel.text = text;
+    [self updateTextLabel];
 }
 
 - (void)setSong:(Song *)song
@@ -92,7 +91,10 @@
 
 - (void)updateTextLabel
 {
-    NSString *text = [NSString stringWithFormat:@"%@", self.song.track.name];
+    SPTPartialArtist *artist = self.song.track.artists[0];
+    NSString *artistName = artist.name;
+    NSString *songName = self.song.track.name;
+    NSString *text = [NSString stringWithFormat:@"%@ - %@", songName, artistName];
     self.textLabel.text = text;
 }
 
