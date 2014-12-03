@@ -60,20 +60,12 @@
 
 - (IBAction)playSongButtonAction
 {
-    //[self.playlistNavigationController.songRoom playSong:self.song];
-    //[self.playlistNavigationController.songRoom playSong:self.song];
-    // [self.playlistNavigationController popViewControllerAnimated:NO];
-    //[self.playlistNavigationController pushPlaybackViewControllerWithSong:self.song];
-    //[self.playlistNavigationController reloadPlaylistTableView];
-    //[[Member instance] RemoveSong: self.song.identifier];
-    //[NSThread sleepForTimeInterval:2.0];
-    //[self.playlistNavigationController popViewControllerAnimated:YES];
-    //[self.playlistNavigationController reloadPlaylistTableView];
-    
-    [self.playlistNavigationController pushPlaybackViewControllerWithSong:self.song];
+    PlaylistNavigationController *pnc = self.playlistNavigationController;
+    [pnc popToRootViewControllerAnimated:NO];
+    [pnc pushPlaybackViewControllerWithSong:self.song];
     [[Member instance] RemoveSong: self.song.identifier];
     [NSThread sleepForTimeInterval:2.0];
-    [self.playlistNavigationController reloadPlaylistTableView];
+    [pnc reloadPlaylistTableView];
 }
 
 - (IBAction)removeFromQueueButtonAction
