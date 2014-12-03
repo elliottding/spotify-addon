@@ -12,7 +12,9 @@
 
 #import "Member.h"
 
-@interface PlaybackViewController ()
+NSTimeInterval const NextSongTimerInterval = 2;
+
+@interface PlaybackViewController () <SPTAudioStreamingPlaybackDelegate>
 
 @property (nonatomic) SPTAudioStreamingController *streamer;
 
@@ -25,6 +27,10 @@
 @property (nonatomic) IBOutlet UISlider *volumeSlider;
 
 @property (nonatomic) IBOutlet UIImageView *songArtImageView;
+
+@property (nonatomic) NSTimeInterval currentSongDuration;
+
+@property (nonatomic) NSTimer *nextSongTimer;
 
 @end
 
@@ -47,6 +53,8 @@
     NSData *songArtImageData = [NSData dataWithContentsOfURL:songArtImageURL];
     UIImage *songArtImage = [UIImage imageWithData:songArtImageData];
     self.songArtImageView.image = songArtImage;
+    
+    self.currentSongDuration = song.track.duration;
     
     _song = song;
 }
@@ -72,6 +80,7 @@
     {
         self.streamer = [SPTAudioStreamingController new];
         [self.streamer addObserver:self forKeyPath:@"currentTrackMetadata" options:0 context:nil];
+        self.streamer.playbackDelegate = self;
     }
     
     if (!self.streamer.loggedIn)
@@ -97,6 +106,24 @@
     self.playPauseButton.titleLabel.text = @"Pause";
 }
 
+- (IBAction)playNextSong
+{
+    Song *nextSong = [Member instance].songRoom.songQueue.nextSong;
+    [self playSong:nextSong];
+}
+
+- (void)checkTimeAndMaybePlayNextSong
+{
+    // [self.streamer.currentTrackMetadata objectForKey:SPTAudioStreamingMetadataTrackDuration];
+    double timeFrac = self.streamer.currentPlaybackPosition / self.currentSongDuration;
+    NSLog(@"Playback timer firing; progress = %f", timeFrac);
+    if (timeFrac > 0.999 || self.streamer.currentPlaybackPosition < 0.001)
+    {
+        [self.nextSongTimer invalidate];
+        [self playNextSong];
+    }
+}
+
 - (void)playSong:(Song *)song
 {
     NSLog(@"attempting to play %@", song);
@@ -120,6 +147,9 @@
          
          // Set volume slider to reflect true playback volume
          [self.volumeSlider setValue:self.streamer.volume animated:YES];
+         
+         // Run next song timer
+         self.nextSongTimer = [NSTimer scheduledTimerWithTimeInterval:NextSongTimerInterval target:self selector:@selector(checkTimeAndMaybePlayNextSong) userInfo:nil repeats:YES];
      }];
 }
 
@@ -139,11 +169,24 @@
     }
 }
 
+- (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming
+didChangePlaybackStatus:(BOOL)isPlaying
+{
+    if (isPlaying)
+    {
+        [self setPlayPauseButtonPause];
+    }
+    else
+    {
+        [self setPlayPauseButtonPlay];
+    }
+}
+
 // Handle Play/Pause button tap
 - (IBAction)playPauseButtonAction
 {
     // Avoid retain cycle in callback
-    __unsafe_unretained typeof(self) weakSelf = self;
+    // __unsafe_unretained typeof(self) weakSelf = self;
     
     if (self.streamer.isPlaying)
     {
@@ -154,7 +197,7 @@
                  NSLog(@"Playback pause error: %@", error);
                  return;
              }
-             weakSelf.playPauseButton.titleLabel.text = @"Play";
+             // [weakSelf setPlayPauseButtonPlay];
          }];
     }
     else
@@ -176,7 +219,7 @@
                      NSLog(@"Playback resume error: %@", error);
                      return;
                  }
-                 weakSelf.playPauseButton.titleLabel.text = @"Pause";
+                 // [weakSelf setPlayPauseButtonPause];
              }];
         }
     }

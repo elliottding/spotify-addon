@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaybackViewController">
@@ -32,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cZc-ud-YkE">
-                    <rect key="frame" x="67" y="450" width="187" height="34"/>
+                    <rect key="frame" x="67" y="450" width="187" height="31"/>
                     <connections>
                         <action selector="volumeSliderChangeAction" destination="-1" eventType="valueChanged" id="20x-tI-rYZ"/>
                     </connections>
@@ -54,17 +55,26 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lev-5F-az2">
                     <rect key="frame" x="60" y="67" width="200" height="200"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="Rsb-wa-Lt7"/>
                         <constraint firstAttribute="height" constant="200" id="w0T-KT-K30"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="630-73-MFD">
+                    <rect key="frame" x="191" y="334" width="32" height="30"/>
+                    <state key="normal" title="Next">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="playNextSong" destination="-1" eventType="touchUpInside" id="Drr-4P-Z2m"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="Lev-5F-az2" secondAttribute="centerX" id="0ZN-fv-wYw"/>
                 <constraint firstItem="Lev-5F-az2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="67" id="31X-DN-SL1"/>
+                <constraint firstItem="3eG-RA-Z7m" firstAttribute="centerY" secondItem="630-73-MFD" secondAttribute="centerY" id="FPa-0Q-Q0i"/>
                 <constraint firstItem="iza-H0-UPX" firstAttribute="top" secondItem="Lev-5F-az2" secondAttribute="bottom" constant="32" id="IjG-Sd-g6O"/>
                 <constraint firstAttribute="bottom" secondItem="BCH-Bh-qUz" secondAttribute="bottom" constant="60" id="JiW-gE-OpP"/>
                 <constraint firstItem="G3C-Ng-CQp" firstAttribute="top" secondItem="Lev-5F-az2" secondAttribute="bottom" constant="8" id="UAl-AK-bHE"/>
@@ -73,10 +83,16 @@
                 <constraint firstAttribute="centerX" secondItem="iza-H0-UPX" secondAttribute="centerX" id="dcY-ZY-a1p"/>
                 <constraint firstAttribute="centerX" secondItem="3eG-RA-Z7m" secondAttribute="centerX" id="jaa-PY-6va"/>
                 <constraint firstAttribute="centerX" secondItem="G3C-Ng-CQp" secondAttribute="centerX" id="mx2-rB-meg"/>
+                <constraint firstItem="630-73-MFD" firstAttribute="leading" secondItem="3eG-RA-Z7m" secondAttribute="trailing" constant="8" id="oP1-1y-NGf"/>
                 <constraint firstItem="3eG-RA-Z7m" firstAttribute="top" secondItem="iza-H0-UPX" secondAttribute="bottom" constant="8" id="q5o-Nj-hDn"/>
                 <constraint firstAttribute="centerX" secondItem="cZc-ud-YkE" secondAttribute="centerX" id="sWA-tR-3g0"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <nil key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
