@@ -120,7 +120,7 @@
             [self outputText:failString toConnection:connection];
         }
         
-        //[self.songRoom.songQueue addSong:newsong];
+        [self.songRoom.songQueue addSong:newsong];
         NSLog(@"Next song is: %@", self.songRoom.songQueue.nextSong.identifier);
         NSString *songRoomString = [Parser makeSongRoomStatusString:self.songRoom];
         [self outputText:songRoomString toConnection: connection];
