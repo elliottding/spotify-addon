@@ -12,8 +12,6 @@
 
 #import "SpotifyRetriever.h"
 
-#import "SongTableViewCell.h"
-
 #import "Song.h"
 
 #import "PlaylistNavigationController.h"
@@ -21,6 +19,8 @@
 #import "SongRoom.h"
 
 #import "Member.h"
+
+#import "SongSearchTableViewCell.h"
 
 @interface SearchViewController ()  <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -78,7 +78,7 @@
 {
     [super viewDidLoad];
     self.title = @"Add a Song";
-    [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:@"SongCell"];
+    [self.tableView registerClass:[SongSearchTableViewCell class] forCellReuseIdentifier:@"SongCell"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.searchBox.delegate = self;
@@ -144,13 +144,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *reuseIdentifier = @"SongCell";
-    SongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
+    SongSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
                                                               forIndexPath:indexPath];
     
     // Initialize a new cell if one was not dequeued
     if (cell == nil)
     {
-        cell = [[SongTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[SongSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:reuseIdentifier];
     }
     

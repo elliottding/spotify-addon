@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		325AC5121A2EB5BA00ABFCD1 /* SongSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 325AC5111A2EB5BA00ABFCD1 /* SongSearchTableViewCell.m */; };
 		3B7F3B311A1D24CD00123649 /* FindSongroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B2C1A1D24CD00123649 /* FindSongroomViewController.m */; };
 		3B7F3B321A1D24CD00123649 /* GuestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B2E1A1D24CD00123649 /* GuestListViewController.m */; };
 		3B7F3B331A1D24CD00123649 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7F3B301A1D24CD00123649 /* HistoryViewController.m */; };
@@ -76,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		325AC5101A2EB5BA00ABFCD1 /* SongSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongSearchTableViewCell.h; sourceTree = "<group>"; };
+		325AC5111A2EB5BA00ABFCD1 /* SongSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongSearchTableViewCell.m; sourceTree = "<group>"; };
 		3B7F3B2B1A1D24CD00123649 /* FindSongroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindSongroomViewController.h; sourceTree = "<group>"; };
 		3B7F3B2C1A1D24CD00123649 /* FindSongroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindSongroomViewController.m; sourceTree = "<group>"; };
 		3B7F3B2D1A1D24CD00123649 /* GuestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuestListViewController.h; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 				4F0D1A131A257D3300BE4412 /* PlaylistTableView.m */,
 				4F0D1A161A257D3300BE4412 /* SongTableViewCell.h */,
 				4F0D1A171A257D3300BE4412 /* SongTableViewCell.m */,
+				325AC5101A2EB5BA00ABFCD1 /* SongSearchTableViewCell.h */,
+				325AC5111A2EB5BA00ABFCD1 /* SongSearchTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				325AC5121A2EB5BA00ABFCD1 /* SongSearchTableViewCell.m in Sources */,
 				3B7F3B391A1D4F1200123649 /* SelectPlaylistTableViewController.m in Sources */,
 				4F47BB291A12E0DC00660967 /* User.m in Sources */,
 				4F47BB261A12E0DC00660967 /* SongQueue.m in Sources */,
